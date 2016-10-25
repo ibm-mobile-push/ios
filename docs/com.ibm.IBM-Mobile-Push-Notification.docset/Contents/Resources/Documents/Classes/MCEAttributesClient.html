@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>MCEAttributesClient Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">IBM Mobile Push Notification </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">IBM</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/deleteChannelAttributes:completion:">- deleteChannelAttributes:completion:</option>
+		
+		<option value="//api/name/deleteUserAttributes:completion:">- deleteUserAttributes:completion:</option>
+		
+		<option value="//api/name/setChannelAttributes:completion:">- setChannelAttributes:completion:</option>
+		
+		<option value="//api/name/setUserAttributes:completion:">- setUserAttributes:completion:</option>
+		
+		<option value="//api/name/updateChannelAttributes:completion:">- updateChannelAttributes:completion:</option>
+		
+		<option value="//api/name/updateUserAttributes:completion:">- updateUserAttributes:completion:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">MCEAttributesClient Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td><a href="../Classes/MCEClient.html">MCEClient</a> : NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>MCEAttributesClient.h<br />MCEAttributesClient.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The MCEAttributesClient class can be used to set, update, or delete user or channel attributes directly on the server. If an error occurs, you can resend the request, if desired; or, if you want the SDK to handle retries, use the <a href="../Classes/MCEAttributesQueueManager.html">MCEAttributesQueueManager</a> class.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Channel Methods" name="task_Channel Methods"></a>
+						<h2 class="task-title">Channel Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/setChannelAttributes:completion:" title="setChannelAttributes:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setChannelAttributes:completion:">&ndash;&nbsp;setChannelAttributes:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The setChannelAttributes method replaces channel attributes on the server with the specified set of attribute key value pairs.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setChannelAttributes:(NSDictionary *)<em>attributes</em> completion:(void ( ^ ) ( NSError *error ))<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The setChannelAttributes method replaces channel attributes on the server with the specified set of attribute key value pairs.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEAttributesClient.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateChannelAttributes:completion:" title="updateChannelAttributes:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateChannelAttributes:completion:">&ndash;&nbsp;updateChannelAttributes:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The updateChannelAttributes method adds or updates the specified attributes to the channel record on the server.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateChannelAttributes:(NSDictionary *)<em>attributes</em> completion:(void ( ^ ) ( NSError *error ))<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The updateChannelAttributes method adds or updates the specified attributes to the channel record on the server.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEAttributesClient.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteChannelAttributes:completion:" title="deleteChannelAttributes:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteChannelAttributes:completion:">&ndash;&nbsp;deleteChannelAttributes:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The deleteChannelAttributes method removes the specified keys from the channel record on the server.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteChannelAttributes:(NSArray *)<em>attributeKeys</em> completion:(void ( ^ ) ( NSError *error ))<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The deleteChannelAttributes method removes the specified keys from the channel record on the server.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEAttributesClient.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="User Methods" name="task_User Methods"></a>
+						<h2 class="task-title">User Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/setUserAttributes:completion:" title="setUserAttributes:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setUserAttributes:completion:">&ndash;&nbsp;setUserAttributes:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The setUserAttributes method replaces the user attributes on the server with the specified set of attribute key value pairs.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setUserAttributes:(NSDictionary *)<em>attributes</em> completion:(void ( ^ ) ( NSError *error ))<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The setUserAttributes method replaces the user attributes on the server with the specified set of attribute key value pairs.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEAttributesClient.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateUserAttributes:completion:" title="updateUserAttributes:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateUserAttributes:completion:">&ndash;&nbsp;updateUserAttributes:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The updateUserAttributes method adds or updates the specified attributes to the user record on the server.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateUserAttributes:(NSDictionary *)<em>attributes</em> completion:(void ( ^ ) ( NSError *error ))<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The updateUserAttributes method adds or updates the specified attributes to the user record on the server.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEAttributesClient.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/deleteUserAttributes:completion:" title="deleteUserAttributes:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/deleteUserAttributes:completion:">&ndash;&nbsp;deleteUserAttributes:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The deleteUserAttributes method removes the specified keys from the user record on the server.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)deleteUserAttributes:(NSArray *)<em>attributeKeys</em> completion:(void ( ^ ) ( NSError *error ))<em>callback</em></code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The deleteUserAttributes method removes the specified keys from the user record on the server.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEAttributesClient.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 IBM. All rights reserved. Updated: 2016-08-09</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

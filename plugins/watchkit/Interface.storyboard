@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11191" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <imageView alignment="left" hidden="YES" id="mMK-X7-PUz"/>
+                        <label alignment="left" hidden="YES" text="Label" id="WOr-0z-gjC"/>
+                    </items>
+                    <connections>
+                        <outlet property="openImage" destination="mMK-X7-PUz" id="5Gr-V4-Grn"/>
+                        <outlet property="openLabel" destination="WOr-0z-gjC" id="udc-NK-cms"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="mce-temp-category" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController">
+                    <items>
+                        <imageView alignment="left" hidden="YES" contentMode="scaleAspectFit" id="YHs-RF-8T5"/>
+                        <group width="1" alignment="left" layout="vertical" id="WI1-GW-a3n">
+                            <items>
+                                <label alignment="left" hidden="YES" text="Label" id="MIp-Jo-nnc">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label alignment="left" hidden="YES" text="Label" id="14b-4o-haw"/>
+                            </items>
+                        </group>
+                        <map height="100" alignment="left" hidden="YES" id="sEs-rQ-mag"/>
+                    </items>
+                    <connections>
+                        <outlet property="body" destination="14b-4o-haw" id="huc-nv-BJp"/>
+                        <outlet property="group" destination="WI1-GW-a3n" id="C32-EU-LOO"/>
+                        <outlet property="header" destination="YHs-RF-8T5" id="9cG-wJ-mau"/>
+                        <outlet property="label" destination="MIp-Jo-nnc" id="ocN-kc-NmI"/>
+                        <outlet property="map" destination="sEs-rQ-mag" id="iQZ-o8-LXF"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>

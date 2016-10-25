@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MCEInboxPostTemplateDisplay">
+            <connections>
+                <outlet property="contentView" destination="KJY-Yk-Kb8" id="SAp-Aa-IYu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0P-66-kmn">
+                    <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="bem-uZ-Ywm"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem title="Dismiss" id="JJE-EN-bHX">
+                            <connections>
+                                <action selector="dismiss:" destination="-1" id="hfd-jC-RC6"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJY-Yk-Kb8" customClass="MCEInboxPostTemplateView">
+                    <rect key="frame" x="8" y="49" width="584" height="543"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="W0P-66-kmn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9aW-JW-qnE"/>
+                <constraint firstItem="KJY-Yk-Kb8" firstAttribute="top" secondItem="W0P-66-kmn" secondAttribute="bottom" constant="8" id="FFs-4h-FEx"/>
+                <constraint firstItem="KJY-Yk-Kb8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Gtl-UB-8sz"/>
+                <constraint firstAttribute="trailing" secondItem="W0P-66-kmn" secondAttribute="trailing" id="KZT-vg-V4a"/>
+                <constraint firstItem="W0P-66-kmn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Y7f-5c-6VI"/>
+                <constraint firstAttribute="trailing" secondItem="KJY-Yk-Kb8" secondAttribute="trailing" constant="8" id="r8D-WR-adJ"/>
+            </constraints>
+            <point key="canvasLocation" x="228" y="325"/>
+        </view>
+    </objects>
+</document>

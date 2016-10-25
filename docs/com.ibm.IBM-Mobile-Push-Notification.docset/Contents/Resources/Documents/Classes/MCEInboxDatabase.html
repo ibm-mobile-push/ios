@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>MCEInboxDatabase Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">IBM Mobile Push Notification </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">IBM</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/sharedInstance">+ sharedInstance</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/fetchInboxMessageId:completion:">- fetchInboxMessageId:completion:</option>
+		
+		<option value="//api/name/fetchInboxMessageViaRichContentId:completion:">- fetchInboxMessageViaRichContentId:completion:</option>
+		
+		<option value="//api/name/fetchInboxMessages:ascending:">- fetchInboxMessages:ascending:</option>
+		
+		<option value="//api/name/fetchRichContentId:">- fetchRichContentId:</option>
+		
+		<option value="//api/name/setDeletedForInboxMessageId:">- setDeletedForInboxMessageId:</option>
+		
+		<option value="//api/name/setReadForInboxMessageId:">- setReadForInboxMessageId:</option>
+		
+		<option value="//api/name/setReadForRichContentId:">- setReadForRichContentId:</option>
+		
+		<option value="//api/name/updateDatabase:">- updateDatabase:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">MCEInboxDatabase Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>MCEInboxDatabase.h<br />MCEInboxDatabase.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The MCEInboxDatabase class owns and interacts with the inbox database.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sharedInstance" title="sharedInstance"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedInstance">+&nbsp;sharedInstance</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>This method returns the singleton object of this class.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)sharedInstance</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>This method returns the singleton object of this class.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fetchInboxMessages:ascending:" title="fetchInboxMessages:ascending:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fetchInboxMessages:ascending:">&ndash;&nbsp;fetchInboxMessages:ascending:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The fetchInboxMessages: method asynchronously retrieves an NSArray of <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> objects from the inbox database.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)fetchInboxMessages:(void ( ^ ) ( NSMutableArray *inboxMessages , NSError *error ))<em>completion</em> ascending:(BOOL)<em>ascending</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completion</code></th>
+						<td><p>This callback returns an NSArray of <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> objects or an NSError in the case of failure.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ascending</code></th>
+						<td><p>A boolean value that toggles if the contents should be sorted ascending (TRUE) or descending (FALSE)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The fetchInboxMessages: method asynchronously retrieves an NSArray of <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> objects from the inbox database.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fetchRichContentId:" title="fetchRichContentId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fetchRichContentId:">&ndash;&nbsp;fetchRichContentId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The fetchRichContentId:completion: method asynchronously retrieves a single <a href="../Classes/MCERichContent.html">MCERichContent</a> object from the inbox database by richContentId.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (MCERichContent *)fetchRichContentId:(NSString *)<em>richContentId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>richContentId</code></th>
+						<td><p>A unique identifier for the rich content.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><a href="../Classes/MCERichContent.html">MCERichContent</a> object for specified richContentId.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The fetchRichContentId:completion: method asynchronously retrieves a single <a href="../Classes/MCERichContent.html">MCERichContent</a> object from the inbox database by richContentId.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fetchInboxMessageId:completion:" title="fetchInboxMessageId:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fetchInboxMessageId:completion:">&ndash;&nbsp;fetchInboxMessageId:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The fetchInboxMessageId:completion: method retrieves a single <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> object from the inbox database by inboxMessageId.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)fetchInboxMessageId:(NSString *)<em>inboxMessageId</em> completion:(void ( ^ ) ( MCEInboxMessage *inboxMessage , NSError *error ))<em>completion</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inboxMessageId</code></th>
+						<td><p>A unique identifier for the inbox message.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completion</code></th>
+						<td><p>This callback returns a single <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> object or an NSError in the case of failure. The NSError could have the domain  &ldquo;Inbox message not in storage&rdquo; in the case of the message not being in the database. In this case, you can listen for the NSNotification message MCESyncDatabase and call the syncDatabase method to update the database.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The fetchInboxMessageId:completion: method retrieves a single <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> object from the inbox database by inboxMessageId.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setReadForInboxMessageId:" title="setReadForInboxMessageId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setReadForInboxMessageId:">&ndash;&nbsp;setReadForInboxMessageId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The setReadForInboxMessageId: method sets the read flag for a single message in the inbox database.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setReadForInboxMessageId:(NSString *)<em>inboxMessageId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inboxMessageId</code></th>
+						<td><p>A unique identifier for the inbox message.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The setReadForInboxMessageId: method sets the read flag for a single message in the inbox database.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDeletedForInboxMessageId:" title="setDeletedForInboxMessageId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDeletedForInboxMessageId:">&ndash;&nbsp;setDeletedForInboxMessageId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The setDeletedForInboxMessageId: method sets the deleted flag for a single message in the inbox database.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setDeletedForInboxMessageId:(NSString *)<em>inboxMessageId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inboxMessageId</code></th>
+						<td><p>A unique identifier for the inbox message.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The setDeletedForInboxMessageId: method sets the deleted flag for a single message in the inbox database.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setReadForRichContentId:" title="setReadForRichContentId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setReadForRichContentId:">&ndash;&nbsp;setReadForRichContentId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The setReadForRichContentId: method sets the read flag for all the messages with the specified richContentId in the inbox database.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setReadForRichContentId:(NSString *)<em>richContentId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>richContentId</code></th>
+						<td><p>A unique identifier for the rich content.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The setReadForRichContentId: method sets the read flag for all the messages with the specified richContentId in the inbox database.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/fetchInboxMessageViaRichContentId:completion:" title="fetchInboxMessageViaRichContentId:completion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/fetchInboxMessageViaRichContentId:completion:">&ndash;&nbsp;fetchInboxMessageViaRichContentId:completion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The fetchInboxMessageViaRichContentId:completion: method returns the first inbox message for the specified richContentId.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)fetchInboxMessageViaRichContentId:(NSString *)<em>richContentId</em> completion:(void ( ^ ) ( MCEInboxMessage *inboxMessage , NSError *error ))<em>completion</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>richContentId</code></th>
+						<td><p>A unique identifier for the rich content.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>completion</code></th>
+						<td><p>This callback returns the most recent <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> object or an NSError message in the case of failure. The NSError could have the domain &ldquo;Inbox message not in storage&rdquo; in the case of the message not being in the database. In this case, you can listen for the NSNotification message MCESyncDatabase and call the syncDatabase method to update the database.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The fetchInboxMessageViaRichContentId:completion: method returns the first inbox message for the specified richContentId.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateDatabase:" title="updateDatabase:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateDatabase:">&ndash;&nbsp;updateDatabase:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The updateDatabase: method updates the local database with the specified list of <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> objects. This is done in an upsert style operation.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)updateDatabase:(NSArray *)<em>messages</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>messages</code></th>
+						<td><p>An array of <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> objects.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The updateDatabase: method updates the local database with the specified list of <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> objects. This is done in an upsert style operation.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInboxDatabase.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 IBM. All rights reserved. Updated: 2016-08-09</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

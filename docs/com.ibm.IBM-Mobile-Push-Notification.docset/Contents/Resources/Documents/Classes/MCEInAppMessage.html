@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>MCEInAppMessage Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">IBM Mobile Push Notification </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">IBM</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/content">content</option>
+		
+		<option value="//api/name/expirationDate">expirationDate</option>
+		
+		<option value="//api/name/inAppMessageId">inAppMessageId</option>
+		
+		<option value="//api/name/maxViews">maxViews</option>
+		
+		<option value="//api/name/numViews">numViews</option>
+		
+		<option value="//api/name/rules">rules</option>
+		
+		<option value="//api/name/template">template</option>
+		
+		<option value="//api/name/triggerDate">triggerDate</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/inAppMessageFromResultSet:">+ inAppMessageFromResultSet:</option>
+		
+		<option value="//api/name/inAppMessageWithPayload:">+ inAppMessageWithPayload:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/contentData">- contentData</option>
+		
+		<option value="//api/name/execute">- execute</option>
+		
+		<option value="//api/name/initFromResultSet:">- initFromResultSet:</option>
+		
+		<option value="//api/name/initWithPayload:">- initWithPayload:</option>
+		
+		<option value="//api/name/isExpired">- isExpired</option>
+		
+		<option value="//api/name/isOverViewed">- isOverViewed</option>
+		
+		<option value="//api/name/isTriggered">- isTriggered</option>
+		
+		<option value="//api/name/rulesData">- rulesData</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">MCEInAppMessage Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>MCEInAppMessage.h<br />MCEInAppMessage.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The MCEInAppMessage class represents a single in app message.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/inAppMessageId" title="inAppMessageId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/inAppMessageId">&nbsp;&nbsp;inAppMessageId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The inAppMessageId property is an auto incrementing unique identifier for in app messages.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSInteger inAppMessageId</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The inAppMessageId property is an auto incrementing unique identifier for in app messages.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/maxViews" title="maxViews"></a>
+	<h3 class="method-title"><code><a href="#//api/name/maxViews">&nbsp;&nbsp;maxViews</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The maxViews property defines the maxiumum number of times a message can be viewed, after which it is deleted.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSInteger maxViews</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The maxViews property defines the maxiumum number of times a message can be viewed, after which it is deleted.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/numViews" title="numViews"></a>
+	<h3 class="method-title"><code><a href="#//api/name/numViews">&nbsp;&nbsp;numViews</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The numViews property defines the current view count for a message.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSInteger numViews</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The numViews property defines the current view count for a message.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/template" title="template"></a>
+	<h3 class="method-title"><code><a href="#//api/name/template">&nbsp;&nbsp;template</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The template property defines the registered template that displays this message.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSString *template</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The template property defines the registered template that displays this message.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/content" title="content"></a>
+	<h3 class="method-title"><code><a href="#//api/name/content">&nbsp;&nbsp;content</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The content property defines the content of the message. Its structure and values are defined by the developer of the <a href="#//api/name/template">template</a> that displays the message.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSDictionary *content</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The content property defines the content of the message. Its structure and values are defined by the developer of the <a href="#//api/name/template">template</a> that displays the message.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/triggerDate" title="triggerDate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/triggerDate">&nbsp;&nbsp;triggerDate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The triggerDate property defines when the message can be initially displayed to the user. After this date, the message is displayed in listings of available messages. Before this date, the message is not displayed in listings of available messages.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSDate *triggerDate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The triggerDate property defines when the message can be initially displayed to the user. After this date, the message is displayed in listings of available messages. Before this date, the message is not displayed in listings of available messages.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/expirationDate" title="expirationDate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/expirationDate">&nbsp;&nbsp;expirationDate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The expirationDate property defines the availability end date for displaying the message. After the date, the message is not displayed in listings of available messages.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSDate *expirationDate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The expirationDate property defines the availability end date for displaying the message. After the date, the message is not displayed in listings of available messages.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rules" title="rules"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rules">&nbsp;&nbsp;rules</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The rules property defines the specific keyword rules that contain this message.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSArray *rules</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The rules property defines the specific keyword rules that contain this message.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/inAppMessageFromResultSet:" title="inAppMessageFromResultSet:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/inAppMessageFromResultSet:">+&nbsp;inAppMessageFromResultSet:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The inAppMessageFromResultSet: method allocates and constructs a MCEInAppMessage object from a database result set.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)inAppMessageFromResultSet:(MCEResultSet *)<em>resultSet</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>resultSet</code></th>
+						<td><p>The resultSet parameter is a database result set object from the inAppMessage table.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a fully allocated and initialized MCEInAppMessage object.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The inAppMessageFromResultSet: method allocates and constructs a MCEInAppMessage object from a database result set.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initFromResultSet:" title="initFromResultSet:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initFromResultSet:">&ndash;&nbsp;initFromResultSet:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The initFromResultSet: method constructs a MCEInAppMessage object from a database result set.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initFromResultSet:(MCEResultSet *)<em>resultSet</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>resultSet</code></th>
+						<td><p>The resultSet parameter is a database result set object from the inAppMessage table.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a fully initialized MCEInAppMessage object.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The initFromResultSet: method constructs a MCEInAppMessage object from a database result set.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/inAppMessageWithPayload:" title="inAppMessageWithPayload:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/inAppMessageWithPayload:">+&nbsp;inAppMessageWithPayload:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The inAppMessageWithPayload: method allocates and constructs a MCEInAppMessage object from a APNS payload.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)inAppMessageWithPayload:(NSDictionary *)<em>payload</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>payload</code></th>
+						<td><p>An APNS payload containing an MCEInAppMessage definition.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a fully allocatated and initialized MCEInAppMessage object.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The inAppMessageWithPayload: method allocates and constructs a MCEInAppMessage object from a APNS payload.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithPayload:" title="initWithPayload:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithPayload:">&ndash;&nbsp;initWithPayload:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The initWithPayload: method constructs a MCEInAppMessage object from a APNS payload.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithPayload:(NSDictionary *)<em>payload</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>payload</code></th>
+						<td><p>An APNS payload containing an MCEInAppMessage definition.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a fully initialized MCEInAppMessage object.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The initWithPayload: method constructs a MCEInAppMessage object from a APNS payload.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rulesData" title="rulesData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rulesData">&ndash;&nbsp;rulesData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The rulesData method returns the <a href="#//api/name/rules">rules</a> property as an NSData object for archiving.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSData *)rulesData</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns an NSData object representing the <a href="#//api/name/rules">rules</a> array.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The rulesData method returns the <a href="#//api/name/rules">rules</a> property as an NSData object for archiving.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/contentData" title="contentData"></a>
+	<h3 class="method-title"><code><a href="#//api/name/contentData">&ndash;&nbsp;contentData</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The contentData method returns the <a href="#//api/name/content">content</a> property as an NSData object for archiving.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSData *)contentData</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns an NSData object representing the <a href="#//api/name/content">content</a> dictionary.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The contentData method returns the <a href="#//api/name/content">content</a> property as an NSData object for archiving.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/execute" title="execute"></a>
+	<h3 class="method-title"><code><a href="#//api/name/execute">&ndash;&nbsp;execute</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The execute method queries the <a href="../Classes/MCEInAppTemplateRegistry.html">MCEInAppTemplateRegistry</a> for a <a href="#//api/name/template">template</a> to display the in-app message and tells the <a href="#//api/name/template">template</a> object to display the message. It returns TRUE if it is finds a <a href="#//api/name/template">template</a> object to display the message and FALSE otherwise.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)execute</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The execute method queries the <a href="../Classes/MCEInAppTemplateRegistry.html">MCEInAppTemplateRegistry</a> for a <a href="#//api/name/template">template</a> to display the in-app message and tells the <a href="#//api/name/template">template</a> object to display the message. It returns TRUE if it is finds a <a href="#//api/name/template">template</a> object to display the message and FALSE otherwise.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isExpired" title="isExpired"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isExpired">&ndash;&nbsp;isExpired</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The isExpired method returns TRUE if the current date is greater than the <a href="#//api/name/expirationDate">expirationDate</a> property value and FALSE otherwise.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isExpired</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The isExpired method returns TRUE if the current date is greater than the <a href="#//api/name/expirationDate">expirationDate</a> property value and FALSE otherwise.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isOverViewed" title="isOverViewed"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isOverViewed">&ndash;&nbsp;isOverViewed</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The isOverViewed method returns TRUE if the <a href="#//api/name/numViews">numViews</a> property is larger or equal to the <a href="#//api/name/maxViews">maxViews</a> property and FALSE otherwise.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isOverViewed</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The isOverViewed method returns TRUE if the <a href="#//api/name/numViews">numViews</a> property is larger or equal to the <a href="#//api/name/maxViews">maxViews</a> property and FALSE otherwise.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isTriggered" title="isTriggered"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isTriggered">&ndash;&nbsp;isTriggered</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The isTriggered method returns TRUE if the current date is greater than the <a href="#//api/name/triggerDate">triggerDate</a> property value and FALSE otherwise.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isTriggered</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The isTriggered method returns TRUE if the current date is greater than the <a href="#//api/name/triggerDate">triggerDate</a> property value and FALSE otherwise.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">MCEInAppMessage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 IBM. All rights reserved. Updated: 2016-08-09</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

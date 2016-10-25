@@ -1,0 +1,10 @@
+1. Add watch target for existing IBM Mobile Push integrated application
+2. Set Team in target for watchkit extension, app and watchkit app to the same team.
+3. Edit info.plist, add NSUserActivityTypes array with one string "com.ibm.handleaction"
+4. Implement the methods in "interface controller additions.m" in the default WKInterfaceController implementation of the watchkit extension:
+4. Implement the methods in "interface controller additions.h" in the default WKInterfaceController header of the watchkit extension:
+5. Implement the methods in "notification controller additions.m" in the notification controller implementation of the watchkit extension:
+5. Implement the methods in "notification controller additions.h" in the notification controller header of the watchkit extension:
+6. Copy the iphone-38 and iphone-42 images to the Images.xcassets of the watchkit extension
+7. Copy the notification controller and interface controller design from the sample Interface.storyboard to your Interface.storyboard in the watchkit app (make sure to set the interface controller to the "initial interface controller")
+8. implement method from "application delegate additions.m" in your application delegate of the iPhone app

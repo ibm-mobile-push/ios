@@ -1,0 +1,18 @@
+{
+    "Please note: if you are using a Swift based Application Delegate you must include the product name and class name in AppDelegateClass, for example": "SwiftSample.AppDelegate",
+    "appDelegateClass": "AppDelegate",
+    
+    "Please note: if you are in Europe, you may need to change the value in 'baseUrl' below to": "https://euapi.ibm.xtify.com/3.0/",
+    "baseUrl": "https://api.ibm.xtify.com/3.0/",
+    
+    "appKey":
+    {
+        "dev":"INSERT YOUR DEV APPKEY HERE",
+        "prod":"INSERT YOUR PROD APPKEY HERE"
+    },
+    "autoInitializeFlag": true,
+    "sessionTimeout": 20,
+    "metricTimeInterval": 180,
+    "loglevel": "error",
+    "logfile": true
+}
