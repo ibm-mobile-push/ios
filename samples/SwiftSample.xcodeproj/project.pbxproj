@@ -42,6 +42,9 @@
 		C361A9A41D35772100D4EA9B /* MCENotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C361A9A31D35772100D4EA9B /* MCENotificationService.m */; };
 		C367FDC11BE2733300AD32AE /* CellStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */; };
 		C3778E861D53CD2300811B72 /* TextInputActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3778E851D53CD2300811B72 /* TextInputActionPlugin.m */; };
+		C3942CC31D70B1B20099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC21D70B1B20099BA1E /* MapKit.framework */; };
+		C3942CC51D70B1D00099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC41D70B1D00099BA1E /* CoreLocation.framework */; };
+		C3942CD01D70B39C0099BA1E /* GeofenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3942CCF1D70B39C0099BA1E /* GeofenceVC.swift */; };
 		C39AAC531C5815FF0096DBD1 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C39AAC521C5815FF0096DBD1 /* background.jpg */; };
 		C39AAC551C5816D40096DBD1 /* MCEInAppVideoTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C39AAC541C5816D40096DBD1 /* MCEInAppVideoTemplateForeground.xib */; };
 		C39D40241BE01521006D06C0 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40231BE01521006D06C0 /* RegistrationVC.swift */; };
@@ -51,7 +54,6 @@
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3C09DD41D342AEC0076005A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */; };
-		C3C09DD61D342AF20076005A /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C09DD51D342AF20076005A /* libz.1.2.8.tbd */; };
 		C3C09DD71D342C690076005A /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
 		C3C09DD81D342C690076005A /* IBMMobilePush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3C399081B20DE7C0080DC49 /* SnoozeActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C399071B20DE7C0080DC49 /* SnoozeActionPlugin.m */; };
@@ -164,6 +166,9 @@
 		C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellStatusTableViewController.swift; sourceTree = "<group>"; };
 		C3778E841D53CD2300811B72 /* TextInputActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextInputActionPlugin.h; path = "../../plugins/text-input-action/TextInputActionPlugin.h"; sourceTree = "<group>"; };
 		C3778E851D53CD2300811B72 /* TextInputActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextInputActionPlugin.m; path = "../../plugins/text-input-action/TextInputActionPlugin.m"; sourceTree = "<group>"; };
+		C3942CC21D70B1B20099BA1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C3942CC41D70B1D00099BA1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C3942CCF1D70B39C0099BA1E /* GeofenceVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeofenceVC.swift; sourceTree = "<group>"; };
 		C39AAC521C5815FF0096DBD1 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		C39AAC541C5816D40096DBD1 /* MCEInAppVideoTemplateForeground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppVideoTemplateForeground.xib; path = "../plugins/InApp/Video Template/MCEInAppVideoTemplateForeground.xib"; sourceTree = SOURCE_ROOT; };
 		C39D40221BE01520006D06C0 /* SwiftSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -174,7 +179,6 @@
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		C3C09DD51D342AF20076005A /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		C3C399061B20DE7C0080DC49 /* SnoozeActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnoozeActionPlugin.h; sourceTree = "<group>"; };
 		C3C399071B20DE7C0080DC49 /* SnoozeActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnoozeActionPlugin.m; sourceTree = "<group>"; };
 		C3C399091B20DE850080DC49 /* AddToPassbookClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToPassbookClient.h; sourceTree = "<group>"; };
@@ -225,7 +229,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3C09DD61D342AF20076005A /* libz.1.2.8.tbd in Frameworks */,
+				C3942CC51D70B1D00099BA1E /* CoreLocation.framework in Frameworks */,
+				C3942CC31D70B1B20099BA1E /* MapKit.framework in Frameworks */,
 				C3C09DD41D342AEC0076005A /* libsqlite3.0.tbd in Frameworks */,
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
 				C3C09DD71D342C690076005A /* IBMMobilePush.framework in Frameworks */,
@@ -361,7 +366,8 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C3C09DD51D342AF20076005A /* libz.1.2.8.tbd */,
+				C3942CC41D70B1D00099BA1E /* CoreLocation.framework */,
+				C3942CC21D70B1B20099BA1E /* MapKit.framework */,
 				C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */,
 				C3A80AD91BA3687300EE45ED /* CoreData.framework */,
 				C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */,
@@ -472,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				C30252811BE168D600CA5D5D /* main.swift */,
+				C3942CCF1D70B39C0099BA1E /* GeofenceVC.swift */,
 				C31380821BE1567700BC5910 /* AppDelegate.swift */,
 				C31380461BE154B900BC5910 /* MainVC.swift */,
 				C31380431BE1455400BC5910 /* InAppVC.swift */,
@@ -670,6 +677,7 @@
 				C39D40281BE02349006D06C0 /* EditCell.swift in Sources */,
 				C35F70AE1C654EB000070DB6 /* MCEInboxPostTemplate.m in Sources */,
 				C3DC928A1C5939AB0006CF55 /* MCEAlternateInboxTableViewController.m in Sources */,
+				C3942CD01D70B39C0099BA1E /* GeofenceVC.swift in Sources */,
 				C3778E861D53CD2300811B72 /* TextInputActionPlugin.m in Sources */,
 				C3CF5BEC1C5803C50026ECC8 /* MCEInAppVideoPlayerView.m in Sources */,
 				C3C399111B20DE8B0080DC49 /* AddToCalendarPlugin.m in Sources */,
@@ -744,7 +752,7 @@
 				INFOPLIST_FILE = SwiftSampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE.SwiftSampleNotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SwiftSampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -768,7 +776,7 @@
 				INFOPLIST_FILE = SwiftSampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE.SwiftSampleNotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SwiftSampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSampleNotificationService/SwiftSampleNotificationService-Bridging-Header.h";
@@ -877,7 +885,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = SwiftSample;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -904,7 +912,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = SwiftSample;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

@@ -14,11 +14,17 @@
 
 
 @import Foundation;
+@import CoreLocation;
 
 #define MCE_FF_TABLET @"tablet"
 #define MCE_FF_HANDSET @"handset"
 
-/** The MCEApiUtil class contains some helper methods for interacting with APIs. */
+typedef struct {
+    CLLocationCoordinate2D min;
+    CLLocationCoordinate2D max;
+} MCELocationBounds;
+
+/** The MCEApiUtil class contains some helper methods for interacting with APIs */
 @interface MCEApiUtil : NSObject
 
 /** The deviceModel method returns the model of the device being used. */
@@ -63,5 +69,9 @@
  @returns Cached NSData object.
  */
 +(NSData*)cachedDataForUrl:(NSURL*)url downloadIfRequired: (BOOL)download;
+
+
++ (MCELocationBounds)boundsForLatitude: (double) latitude longitude: (double)longitude radius: (double)radius;
++ (CLLocationCoordinate2D) locationWithBearing:(float)bearing distance:(float)distanceMeters fromLocation: (CLLocationCoordinate2D)origin;
 
 @end

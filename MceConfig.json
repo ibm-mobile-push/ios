@@ -10,6 +10,17 @@
         "dev":"INSERT YOUR DEV APPKEY HERE",
         "prod":"INSERT YOUR PROD APPKEY HERE"
     },
+    
+    "Please note, the existince of the location key will enable geofence location support, if geofence support is not desired, remove the key":"",
+    "geofence":{
+        
+        "Sync radius is in meters":"",
+        "syncRadius": 10000,
+        
+        "choose one of the following values for accuracy: best, 10m, 100m, 1km, 3km":"",
+        "accuracy": "3km"
+    },
+    
     "autoInitializeFlag": true,
     "sessionTimeout": 20,
     "metricTimeInterval": 180,

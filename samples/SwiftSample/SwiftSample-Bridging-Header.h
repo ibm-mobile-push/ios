@@ -27,3 +27,4 @@
 #import "MCEInAppBannerTemplate.h"
 
 #import "TextInputActionPlugin.h"
+#import <IBMMobilePush/MCELocationClient.h>

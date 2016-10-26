@@ -43,6 +43,7 @@ FOUNDATION_EXPORT const unsigned char IBMMobilePushVersionString[];
 #import <IBMMobilePush/MCECallbackDatabaseManager.h>
 #import <IBMMobilePush/MCEPhoneHomeManager.h>
 #import <IBMMobilePush/UIColor+Hex.h>
+#import <IBMMobilePush/MCELocationDatabase.h>
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <IBMMobilePush/MCENotificationDelegate.h>

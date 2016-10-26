@@ -42,4 +42,7 @@
 -(instancetype)initWithName: (NSString*)name type:(NSString*)type timestamp:(NSDate*)timestamp attributes:(NSDictionary*)attributes attribution: (NSString*)attribution;
 -(instancetype) initWithResultSet:(MCEResultSet*)results;
 
+-(NSDictionary*)packageEvent;
++(MCEEvent*)unpackageEvent: (NSDictionary *) packagedEvent;
 @end
+

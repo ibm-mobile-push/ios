@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2014
+ * © Copyright IBM Corp. 2014, 2016
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -11,7 +11,7 @@
 /** The MCEConstants header contains several important SDK integration constants */
 
 /** The MCESdkVersion constant contains the current release number */
-static NSString * const MCESdkVersion = @"3.6.2.0";
+static NSString * const MCESdkVersion = @"3.6.3.0";
 
 /** The RegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
 static NSString * const RegisteredNotification = @"RegisteredNotification";
@@ -70,3 +70,19 @@ static NSString * const InboxSource = @"inboxMessage";
 /** The Event type reported for inbox notification actions */
 static NSString * const InAppSource = @"inAppMessage";
 
+/** The LocationDatabaseReady message is sent when the location database is ready to be used. */
+static NSString * const LocationDatabaseReady = @"LocationDatabaseReady";
+
+static NSString * const LocationDatabaseUpdated = @"LocationDatabaseUpdated";
+
+/* The EnteredGeofence message is sent when a geofence has been breached */
+static NSString * const EnteredGeofence = @"EnteredGeofence";
+
+/* The EnteredGeofence message is sent when a geofence has been left */
+static NSString * const ExitedGeofence = @"ExitedGeofence";
+
+static NSString * const DownloadedLocations = @"DownloadedLocations";
+
+static NSString * const ResetReferenceLocation = @"ResetReferenceLocation";
+
+static NSString * const RefreshActiveGeofences = @"RefreshActiveGeofences";

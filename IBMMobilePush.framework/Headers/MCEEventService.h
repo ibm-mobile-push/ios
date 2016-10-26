@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2014
+ * © Copyright IBM Corp. 2014, 2016
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -9,11 +9,13 @@
  */
 
 @import Foundation;
-#import "MCEEvent.h"
 
-@class MCEResultSet, MCEInboxMessage;
+@class MCETaskQueue;
+@class MCEEvent;
+@class MCEInboxMessage;
 
-/** The MCEEventService class is used to add events to the event queue and to flush the queue. */
+/** The MCEEventService class allows the developer to queue events to the server. If errors occur the update will retry automatically and back-off as needed. */
+
 @interface MCEEventService : NSObject
 
 /** This method returns the singleton object of this class. */
@@ -32,7 +34,7 @@
 /** Record a view of an inbox message */
 -(void)recordViewForInboxMessage:(MCEInboxMessage*)inboxMessage attribution: (NSString*)attribution;
 
-/** Record if push is enabled or disabled. */
--(void)sendPushEnabledEvent;
+/** Record if push is enabled or disabled */
+-(void) sendPushEnabledEvent;
 
 @end

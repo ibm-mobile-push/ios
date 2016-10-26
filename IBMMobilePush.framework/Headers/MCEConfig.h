@@ -39,26 +39,9 @@ extern int mceLogLevel;
  */
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
-/** Name of geofence seed file included in application binary */
-@property NSString * geofenceSeed;
+@property BOOL geofenceEnabled;
 
-/** Last sync timestamp for geofence seed included in application binary */
-@property NSDate * geofenceDate;
-
-/** Are geofences enabled or not */
-@property BOOL geofence;
-
-/** Are beacons enabled or not */
-@property BOOL beacon;
-
-/** Beacon UUID to search for */
-@property NSUUID * beaconUUID;
-
-/** Name of beacon seed file included in application binary */
-@property NSString * beaconSeed;
-
-/** Last sync timestamp for beacon seed included in application binary */
-@property NSDate * beaconDate;
+@property int geofenceRadius;
 
 /** Location accuracy to set for location manager object */
 @property CLLocationAccuracy geofenceAccuracy;

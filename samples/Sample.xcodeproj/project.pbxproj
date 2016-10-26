@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C30106631D4BBAD100F3E8D1 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
-		C30106641D4BBAD100F3E8D1 /* IBMMobilePush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C302AE491D3FFC71007AFB66 /* SampleNotificationService.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C3B2A2B21D2593A600286475 /* SampleNotificationService.entitlements */; };
 		C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C317F74E1B41FF1B00962B55 /* MceConfig.json */; };
 		C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C31827031B71257B00D497A2 /* richnotification.xcdatamodel */; };
 		C31AAD5F1D25CA4000A8F6BD /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2A29A1D245B4E00286475 /* NotificationService.m */; };
-		C32284821D3028AA0041DB45 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C7A6DA1CE282B2008CAF58 /* libz.1.2.5.tbd */; };
 		C32FC4111B44A5590035CAB8 /* InAppVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C32FC40F1B44A5590035CAB8 /* InAppVC.m */; };
 		C335717C1B3B6461003E0A7A /* MCEInboxDefaultTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C33571671B3B6461003E0A7A /* MCEInboxDefaultTemplate.m */; };
 		C335717D1B3B6461003E0A7A /* MCEInboxDefaultTemplateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C33571691B3B6461003E0A7A /* MCEInboxDefaultTemplateCell.m */; };
@@ -23,6 +20,7 @@
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
 		C33D80931D2EE88B0073C2A3 /* MCENotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */; };
 		C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */; };
+		C35C1E7F1D70ABFB00BAB781 /* GeofenceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C1E7E1D70ABFB00BAB781 /* GeofenceVC.m */; };
 		C35C86981B45D71F00C07ABB /* MCEInAppBannerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C86951B45D71F00C07ABB /* MCEInAppBannerTemplate.m */; };
 		C35C86991B45D71F00C07ABB /* MCEInAppBannerTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35C86961B45D71F00C07ABB /* MCEInAppBannerTemplate.xib */; };
 		C35C869A1B45D71F00C07ABB /* Mini Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35C86971B45D71F00C07ABB /* Mini Images.xcassets */; };
@@ -42,6 +40,10 @@
 		C375B6A71C52B08D0076E229 /* MCEInAppImageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C375B6A41C52B08D0076E229 /* MCEInAppImageTemplate.m */; };
 		C375B6A81C52B08D0076E229 /* MCEInAppImageTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A51C52B08D0076E229 /* MCEInAppImageTemplate.xib */; };
 		C375B6A91C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */; };
+		C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CBC1D70AEB80099BA1E /* MapKit.framework */; };
+		C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */; };
+		C3A5F69F1DAD6CEF0066506A /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */; };
+		C3A5F6A01DAD6CEF0066506A /* IBMMobilePush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */; };
@@ -87,13 +89,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C30803661D4AC2EA00630FC2 /* Embed Frameworks */ = {
+		C3A5F69D1DAD623B0066506A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C30106641D4BBAD100F3E8D1 /* IBMMobilePush.framework in Embed Frameworks */,
+				C3A5F6A01DAD6CEF0066506A /* IBMMobilePush.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +133,8 @@
 		C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCENotificationService.m; path = "../../plugins/notification-service/MCENotificationService.m"; sourceTree = "<group>"; };
 		C34E05291B740D4500376671 /* MCEInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxTableViewController.h; sourceTree = "<group>"; };
 		C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxTableViewController.m; sourceTree = "<group>"; };
+		C35C1E7D1D70ABFB00BAB781 /* GeofenceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceVC.h; sourceTree = "<group>"; };
+		C35C1E7E1D70ABFB00BAB781 /* GeofenceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeofenceVC.m; sourceTree = "<group>"; };
 		C35C86941B45D71F00C07ABB /* MCEInAppBannerTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInAppBannerTemplate.h; sourceTree = "<group>"; };
 		C35C86951B45D71F00C07ABB /* MCEInAppBannerTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInAppBannerTemplate.m; sourceTree = "<group>"; };
 		C35C86961B45D71F00C07ABB /* MCEInAppBannerTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCEInAppBannerTemplate.xib; sourceTree = "<group>"; };
@@ -160,9 +164,11 @@
 		C375B6A41C52B08D0076E229 /* MCEInAppImageTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCEInAppImageTemplate.m; path = "../plugins/InApp/Image Template/MCEInAppImageTemplate.m"; sourceTree = SOURCE_ROOT; };
 		C375B6A51C52B08D0076E229 /* MCEInAppImageTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplate.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplate.xib"; sourceTree = SOURCE_ROOT; };
 		C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplateForeground.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplateForeground.xib"; sourceTree = SOURCE_ROOT; };
+		C3942CBC1D70AEB80099BA1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../IBMMobilePush.framework; sourceTree = "<group>"; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		C3AF22E11D2C359B00A1D266 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		C3B2A2971D245B4E00286475 /* SampleNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SampleNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B2A2991D245B4E00286475 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
@@ -183,7 +189,6 @@
 		C3C58E2A1C0F5CBC001F39D3 /* DisplayWebViewPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayWebViewPlugin.m; sourceTree = "<group>"; };
 		C3C58E2B1C0F5CBC001F39D3 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		C3C58E2C1C0F5CBC001F39D3 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		C3C7A6DA1CE282B2008CAF58 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		C3CD8BE01CDBA51D00E4F441 /* TextInputActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextInputActionPlugin.h; path = "../../plugins/text-input-action/TextInputActionPlugin.h"; sourceTree = "<group>"; };
 		C3CD8BE11CDBA51D00E4F441 /* TextInputActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextInputActionPlugin.m; path = "../../plugins/text-input-action/TextInputActionPlugin.m"; sourceTree = "<group>"; };
 		C3CF5BCB1C57ED4B0026ECC8 /* MCEInAppVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCEInAppVideoPlayerView.h; path = "../plugins/InApp/Video Template/MCEInAppVideoPlayerView.h"; sourceTree = SOURCE_ROOT; };
@@ -234,10 +239,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */,
 				C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */,
-				C32284821D3028AA0041DB45 /* libz.1.2.5.tbd in Frameworks */,
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
-				C30106631D4BBAD100F3E8D1 /* IBMMobilePush.framework in Frameworks */,
+				C3A5F69F1DAD6CEF0066506A /* IBMMobilePush.framework in Frameworks */,
+				C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */,
 				C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,12 +377,12 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */,
+				C3942CBC1D70AEB80099BA1E /* MapKit.framework */,
 				C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */,
-				C3C7A6DA1CE282B2008CAF58 /* libz.1.2.5.tbd */,
 				C3A80AD91BA3687300EE45ED /* CoreData.framework */,
 				C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */,
 				C31223981AD46573004175D7 /* IBMMobilePush.framework */,
-				C3AF22E11D2C359B00A1D266 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 		C3D01E521A607F7E00C9A66C = {
 			isa = PBXGroup;
 			children = (
+				C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */,
 				C31827031B71257B00D497A2 /* richnotification.xcdatamodel */,
 				C3C399051B20DE740080DC49 /* Plugins */,
 				C3B2A2981D245B4E00286475 /* SampleNotificationService */,
@@ -481,6 +488,8 @@
 			isa = PBXGroup;
 			children = (
 				C3E61CC31D1300A8006EC588 /* Sample.entitlements */,
+				C35C1E7D1D70ABFB00BAB781 /* GeofenceVC.h */,
+				C35C1E7E1D70ABFB00BAB781 /* GeofenceVC.m */,
 				C3D01E621A607F7E00C9A66C /* AppDelegate.h */,
 				C3D01E631A607F7F00C9A66C /* AppDelegate.m */,
 				C3ED8B2B1BA8D9DF00B79D65 /* MainVC.h */,
@@ -559,7 +568,7 @@
 				C3D01E581A607F7E00C9A66C /* Frameworks */,
 				C3D01E591A607F7E00C9A66C /* Resources */,
 				C3B2A2A31D245B4E00286475 /* Embed App Extensions */,
-				C30803661D4AC2EA00630FC2 /* Embed Frameworks */,
+				C3A5F69D1DAD623B0066506A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -590,6 +599,9 @@
 							com.apple.Keychain = {
 								enabled = 0;
 							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 0;
 							};
@@ -609,7 +621,7 @@
 								enabled = 0;
 							};
 							com.apple.Maps.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
 								enabled = 1;
@@ -715,6 +727,7 @@
 				C3CD8BE21CDBA51D00E4F441 /* TextInputActionPlugin.m in Sources */,
 				C3E4F15B1A8BE19900844271 /* StaticCategoriesVC.m in Sources */,
 				C3C58E2D1C0F5CBC001F39D3 /* DisplayWebViewPlugin.m in Sources */,
+				C35C1E7F1D70ABFB00BAB781 /* GeofenceVC.m in Sources */,
 				C3C3990D1B20DE850080DC49 /* AddToPassbookClient.m in Sources */,
 				C362D38A1A8C68690095814E /* EditCell.m in Sources */,
 				C35F70831C654DE500070DB6 /* MCEInboxPostTemplate.m in Sources */,
@@ -772,7 +785,7 @@
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE.SampleNotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -792,7 +805,7 @@
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE.SampleNotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -899,7 +912,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = Sample;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -928,7 +941,7 @@
 					"$(PROJECT_DIR)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "INSERT-YOUR-BUNDLE-ID-HERE";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = Sample;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

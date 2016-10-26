@@ -242,6 +242,7 @@ static const int SEND_QUEUE_INDEX = 3;
         {
             MCEEvent * event = [[MCEEvent alloc] init];
             [event fromDictionary: @{ @"name":@"appOpened", @"type":@"simpleNotification", @"timestamp":[[NSDate alloc]init]}];
+            event.attributes = @{@"client": @TRUE };
             self.clientStatus=SENT;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
