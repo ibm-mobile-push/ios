@@ -42,8 +42,8 @@
 		C375B6A91C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */; };
 		C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CBC1D70AEB80099BA1E /* MapKit.framework */; };
 		C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */; };
-		C3A5F69F1DAD6CEF0066506A /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */; };
-		C3A5F6A01DAD6CEF0066506A /* IBMMobilePush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C3A089C91DD1098B00F53C54 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
+		C3A089CB1DD1099000F53C54 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A089CA1DD1099000F53C54 /* libz.tbd */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */; };
@@ -89,17 +89,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C3A5F69D1DAD623B0066506A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C3A5F6A01DAD6CEF0066506A /* IBMMobilePush.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C3B2A2A31D245B4E00286475 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +155,7 @@
 		C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplateForeground.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplateForeground.xib"; sourceTree = SOURCE_ROOT; };
 		C3942CBC1D70AEB80099BA1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C3A089CA1DD1099000F53C54 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../IBMMobilePush.framework; sourceTree = "<group>"; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -239,10 +229,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A089CB1DD1099000F53C54 /* libz.tbd in Frameworks */,
+				C3A089C91DD1098B00F53C54 /* IBMMobilePush.framework in Frameworks */,
 				C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */,
 				C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */,
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
-				C3A5F69F1DAD6CEF0066506A /* IBMMobilePush.framework in Frameworks */,
 				C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */,
 				C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */,
 			);
@@ -377,6 +368,7 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3A089CA1DD1099000F53C54 /* libz.tbd */,
 				C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */,
 				C3942CBC1D70AEB80099BA1E /* MapKit.framework */,
 				C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */,
@@ -568,7 +560,6 @@
 				C3D01E581A607F7E00C9A66C /* Frameworks */,
 				C3D01E591A607F7E00C9A66C /* Resources */,
 				C3B2A2A31D245B4E00286475 /* Embed App Extensions */,
-				C3A5F69D1DAD623B0066506A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

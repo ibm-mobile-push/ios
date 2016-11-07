@@ -51,11 +51,11 @@
 		C39D40261BE01AD0006D06C0 /* StaticCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40251BE01AD0006D06C0 /* StaticCategoriesVC.swift */; };
 		C39D40281BE02349006D06C0 /* EditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40271BE02349006D06C0 /* EditCell.swift */; };
 		C39D402A1BE0240D006D06C0 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40291BE0240D006D06C0 /* EventsVC.swift */; };
+		C3A089C61DD1097900F53C54 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
+		C3A089C81DD1097E00F53C54 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A089C71DD1097E00F53C54 /* libz.tbd */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3C09DD41D342AEC0076005A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */; };
-		C3C09DD71D342C690076005A /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
-		C3C09DD81D342C690076005A /* IBMMobilePush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3C399081B20DE7C0080DC49 /* SnoozeActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C399071B20DE7C0080DC49 /* SnoozeActionPlugin.m */; };
 		C3C3990D1B20DE850080DC49 /* AddToPassbookClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3990A1B20DE850080DC49 /* AddToPassbookClient.m */; };
 		C3C3990E1B20DE850080DC49 /* AddToPassbookPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C3990C1B20DE850080DC49 /* AddToPassbookPlugin.m */; };
@@ -98,17 +98,6 @@
 				C361A99C1D3576E900D4EA9B /* SwiftSampleNotificationService.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C3C09DD91D342C690076005A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C3C09DD81D342C690076005A /* IBMMobilePush.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -176,6 +165,7 @@
 		C39D40251BE01AD0006D06C0 /* StaticCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticCategoriesVC.swift; sourceTree = "<group>"; };
 		C39D40271BE02349006D06C0 /* EditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCell.swift; sourceTree = "<group>"; };
 		C39D40291BE0240D006D06C0 /* EventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
+		C3A089C71DD1097E00F53C54 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -229,11 +219,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A089C81DD1097E00F53C54 /* libz.tbd in Frameworks */,
+				C3A089C61DD1097900F53C54 /* IBMMobilePush.framework in Frameworks */,
 				C3942CC51D70B1D00099BA1E /* CoreLocation.framework in Frameworks */,
 				C3942CC31D70B1B20099BA1E /* MapKit.framework in Frameworks */,
 				C3C09DD41D342AEC0076005A /* libsqlite3.0.tbd in Frameworks */,
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
-				C3C09DD71D342C690076005A /* IBMMobilePush.framework in Frameworks */,
 				C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +357,7 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3A089C71DD1097E00F53C54 /* libz.tbd */,
 				C3942CC41D70B1D00099BA1E /* CoreLocation.framework */,
 				C3942CC21D70B1B20099BA1E /* MapKit.framework */,
 				C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */,
@@ -547,7 +539,6 @@
 				C3D01E571A607F7E00C9A66C /* Sources */,
 				C3D01E581A607F7E00C9A66C /* Frameworks */,
 				C3D01E591A607F7E00C9A66C /* Resources */,
-				C3C09DD91D342C690076005A /* Embed Frameworks */,
 				C361A9A01D3576E900D4EA9B /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -752,7 +743,7 @@
 				INFOPLIST_FILE = SwiftSampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SwiftSampleNotificationService;
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -776,7 +767,7 @@
 				INFOPLIST_FILE = SwiftSampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SwiftSampleNotificationService;
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSampleNotificationService/SwiftSampleNotificationService-Bridging-Header.h";
