@@ -244,7 +244,7 @@
     }
     
     [inboxMessage read];
-    [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution:inboxMessage.attribution];
+    [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution:inboxMessage.attribution mailingId:inboxMessage.mailingId];
     
     MCERichContent * richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId:richContentId];
     

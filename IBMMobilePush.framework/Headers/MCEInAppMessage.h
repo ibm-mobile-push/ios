@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2015
+ * © Copyright IBM Corp. 2014, 2016
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -40,6 +40,8 @@
 @property NSArray * rules;
 
 @property NSString * attribution;
+
+@property NSString * mailingId;
 
 /** The inAppMessageFromResultSet: method allocates and constructs a MCEInAppMessage object from a database result set. 
  

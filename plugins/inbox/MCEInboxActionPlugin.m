@@ -13,6 +13,7 @@
 
 @interface MCEInboxActionPlugin  ()
 @property NSString * attribution;
+@property NSString * mailingId;
 @property NSString * richContentIdToShow;
 @property id <MCETemplateDisplay> displayViewController;
 @end
@@ -46,7 +47,7 @@
     [[MCEInboxDatabase sharedInstance] fetchInboxMessageViaRichContentId: richContent.richContentId completion:^(MCEInboxMessage *inboxMessage, NSError *error) {
         
         [[MCEInboxDatabase sharedInstance] setReadForRichContentId: richContent.richContentId];
-        [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution: self.attribution];
+        [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution: self.attribution mailingId: self.mailingId];
         
         self.displayViewController.richContent = richContent;
         self.displayViewController.inboxMessage = inboxMessage;
@@ -60,6 +61,12 @@
     if(payload[@"mce"] && payload[@"mce"][@"attribution"])
     {
         self.attribution = payload[@"mce"][@"attribution"];
+    }
+    
+    self.mailingId=nil;
+    if(payload[@"mce"] && payload[@"mce"][@"mailingId"])
+    {
+        self.mailingId = payload[@"mce"][@"mailingId"];
     }
     
     NSString * richContentId = action[@"value"];
@@ -83,7 +90,7 @@
 +(void)registerPlugin
 {
     [[NSNotificationCenter defaultCenter] addObserver:[self sharedInstance] selector:@selector(syncDatabase:) name:@"MCESyncDatabase" object:nil];
-
+    
     MCEActionRegistry * registry = [MCEActionRegistry sharedInstance];
     [registry registerTarget: [self sharedInstance] withSelector:@selector(showInboxMessage:payload:) forAction: @"openInboxMessage"];
 }

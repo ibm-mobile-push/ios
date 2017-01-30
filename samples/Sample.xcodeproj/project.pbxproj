@@ -37,13 +37,13 @@
 		C35F708D1C654DE500070DB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35F70821C654DE500070DB6 /* Media.xcassets */; };
 		C362D38A1A8C68690095814E /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C362D3881A8C68690095814E /* EditCell.m */; };
 		C369816C1AA6241500F9448B /* MailDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C369816B1AA6241500F9448B /* MailDelegate.m */; };
+		C36992E21DD258B200EA178E /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
+		C36992F01DD3CA7700EA178E /* iBeaconVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C36992EF1DD3CA7700EA178E /* iBeaconVC.m */; };
 		C375B6A71C52B08D0076E229 /* MCEInAppImageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C375B6A41C52B08D0076E229 /* MCEInAppImageTemplate.m */; };
 		C375B6A81C52B08D0076E229 /* MCEInAppImageTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A51C52B08D0076E229 /* MCEInAppImageTemplate.xib */; };
 		C375B6A91C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */; };
 		C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CBC1D70AEB80099BA1E /* MapKit.framework */; };
 		C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */; };
-		C3A089C91DD1098B00F53C54 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
-		C3A089CB1DD1099000F53C54 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A089CA1DD1099000F53C54 /* libz.tbd */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */; };
@@ -149,14 +149,14 @@
 		C362D3881A8C68690095814E /* EditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCell.m; sourceTree = "<group>"; };
 		C369816A1AA6241500F9448B /* MailDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailDelegate.h; sourceTree = "<group>"; };
 		C369816B1AA6241500F9448B /* MailDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailDelegate.m; sourceTree = "<group>"; };
+		C36992EE1DD3CA7700EA178E /* iBeaconVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iBeaconVC.h; sourceTree = "<group>"; };
+		C36992EF1DD3CA7700EA178E /* iBeaconVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iBeaconVC.m; sourceTree = "<group>"; };
 		C375B6A31C52B08D0076E229 /* MCEInAppImageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCEInAppImageTemplate.h; path = "../plugins/InApp/Image Template/MCEInAppImageTemplate.h"; sourceTree = SOURCE_ROOT; };
 		C375B6A41C52B08D0076E229 /* MCEInAppImageTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCEInAppImageTemplate.m; path = "../plugins/InApp/Image Template/MCEInAppImageTemplate.m"; sourceTree = SOURCE_ROOT; };
 		C375B6A51C52B08D0076E229 /* MCEInAppImageTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplate.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplate.xib"; sourceTree = SOURCE_ROOT; };
 		C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplateForeground.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplateForeground.xib"; sourceTree = SOURCE_ROOT; };
 		C3942CBC1D70AEB80099BA1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C3A089CA1DD1099000F53C54 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../IBMMobilePush.framework; sourceTree = "<group>"; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -229,8 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3A089CB1DD1099000F53C54 /* libz.tbd in Frameworks */,
-				C3A089C91DD1098B00F53C54 /* IBMMobilePush.framework in Frameworks */,
+				C36992E21DD258B200EA178E /* IBMMobilePush.framework in Frameworks */,
 				C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */,
 				C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */,
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
@@ -368,7 +367,6 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C3A089CA1DD1099000F53C54 /* libz.tbd */,
 				C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */,
 				C3942CBC1D70AEB80099BA1E /* MapKit.framework */,
 				C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */,
@@ -457,7 +455,6 @@
 		C3D01E521A607F7E00C9A66C = {
 			isa = PBXGroup;
 			children = (
-				C3A5F69E1DAD6CEF0066506A /* IBMMobilePush.framework */,
 				C31827031B71257B00D497A2 /* richnotification.xcdatamodel */,
 				C3C399051B20DE740080DC49 /* Plugins */,
 				C3B2A2981D245B4E00286475 /* SampleNotificationService */,
@@ -482,6 +479,8 @@
 				C3E61CC31D1300A8006EC588 /* Sample.entitlements */,
 				C35C1E7D1D70ABFB00BAB781 /* GeofenceVC.h */,
 				C35C1E7E1D70ABFB00BAB781 /* GeofenceVC.m */,
+				C36992EE1DD3CA7700EA178E /* iBeaconVC.h */,
+				C36992EF1DD3CA7700EA178E /* iBeaconVC.m */,
 				C3D01E621A607F7E00C9A66C /* AppDelegate.h */,
 				C3D01E631A607F7F00C9A66C /* AppDelegate.m */,
 				C3ED8B2B1BA8D9DF00B79D65 /* MainVC.h */,
@@ -720,6 +719,7 @@
 				C3C58E2D1C0F5CBC001F39D3 /* DisplayWebViewPlugin.m in Sources */,
 				C35C1E7F1D70ABFB00BAB781 /* GeofenceVC.m in Sources */,
 				C3C3990D1B20DE850080DC49 /* AddToPassbookClient.m in Sources */,
+				C36992F01DD3CA7700EA178E /* iBeaconVC.m in Sources */,
 				C362D38A1A8C68690095814E /* EditCell.m in Sources */,
 				C35F70831C654DE500070DB6 /* MCEInboxPostTemplate.m in Sources */,
 				C3C3990E1B20DE850080DC49 /* AddToPassbookPlugin.m in Sources */,

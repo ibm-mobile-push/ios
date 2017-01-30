@@ -24,6 +24,7 @@
     NSError * error = nil;
     NSString * identifier = [[NSUUID UUID] UUIDString];
     NSURL * attachmentURL = [NSURL fileURLWithPathComponents:@[NSTemporaryDirectory(), downloadTask.originalRequest.URL.lastPathComponent]];
+    self.bestAttemptContent.body = attachmentURL.absoluteString;
     [[NSFileManager defaultManager] copyItemAtURL:location toURL:attachmentURL error:&error];
     if(error)
     {

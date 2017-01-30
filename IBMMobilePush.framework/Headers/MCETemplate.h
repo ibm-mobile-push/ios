@@ -32,7 +32,6 @@
 
 /** The setRichContent:inboxMessage: method is used to set the current rich content and inbox message values that the UITableViewCell should display.
  
- @param richContent The MCERichContent object that represents the content to display.
  @param inboxMessage The MCEInboxMessage object that represents a single message in the inbox.
 */
 

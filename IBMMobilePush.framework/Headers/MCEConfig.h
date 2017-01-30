@@ -39,9 +39,16 @@ extern int mceLogLevel;
  */
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
+@property int locationSyncRadius;
+@property int locationSyncTimeout;
+
 @property BOOL geofenceEnabled;
 
-@property int geofenceRadius;
+/** Are beacons enabled or not */
+@property BOOL beaconEnabled;
+
+/** Beacon UUID to search for */
+@property NSUUID * beaconUUID;
 
 /** Location accuracy to set for location manager object */
 @property CLLocationAccuracy geofenceAccuracy;

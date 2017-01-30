@@ -17,34 +17,35 @@ FOUNDATION_EXPORT double IBMMobilePushVersionNumber;
 //! Project version string for IBMMobilePush.
 FOUNDATION_EXPORT const unsigned char IBMMobilePushVersionString[];
 
-#import <IBMMobilePush/MCEAttributesClient.h>
-#import <IBMMobilePush/MCEEvent.h>
-#import <IBMMobilePush/MCEEventService.h>
-#import <IBMMobilePush/MCESdk.h>
 #import <IBMMobilePush/MCEActionRegistry.h>
+#import <IBMMobilePush/MCEApiUtil.h>
+#import <IBMMobilePush/MCEApiUtil.h>
 #import <IBMMobilePush/MCEAppDelegate.h>
-#import <IBMMobilePush/MCERegistrationDetails.h>
-#import <IBMMobilePush/MCEConstants.h>
-#import <IBMMobilePush/MCEApiUtil.h>
+#import <IBMMobilePush/MCEAttributesClient.h>
 #import <IBMMobilePush/MCEAttributesQueueManager.h>
-#import <IBMMobilePush/MCEInboxDatabase.h>
-#import <IBMMobilePush/MCEInboxMessage.h>
-#import <IBMMobilePush/MCETemplateRegistry.h>
-#import <IBMMobilePush/MCEWebViewActionDelegate.h>
+#import <IBMMobilePush/MCECallbackDatabaseManager.h>
+#import <IBMMobilePush/MCEClient.h>
+#import <IBMMobilePush/MCEConfig.h>
+#import <IBMMobilePush/MCEConstants.h>
+#import <IBMMobilePush/MCEEvent.h>
 #import <IBMMobilePush/MCEEventClient.h>
-#import <IBMMobilePush/MCEApiUtil.h>
-#import <IBMMobilePush/MCERichContent.h>
+#import <IBMMobilePush/MCEEventService.h>
+#import <IBMMobilePush/MCEGeofenceManager.h>
 #import <IBMMobilePush/MCEInAppManager.h>
 #import <IBMMobilePush/MCEInAppMessage.h>
-#import <IBMMobilePush/MCEInAppTemplateRegistry.h>
 #import <IBMMobilePush/MCEInAppTemplate.h>
+#import <IBMMobilePush/MCEInAppTemplateRegistry.h>
+#import <IBMMobilePush/MCEInboxDatabase.h>
+#import <IBMMobilePush/MCEInboxMessage.h>
 #import <IBMMobilePush/MCEInboxQueueManager.h>
-
-#import <IBMMobilePush/MCECallbackDatabaseManager.h>
-#import <IBMMobilePush/MCEPhoneHomeManager.h>
-#import <IBMMobilePush/UIColor+Hex.h>
+#import <IBMMobilePush/MCELocationClient.h>
 #import <IBMMobilePush/MCELocationDatabase.h>
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
 #import <IBMMobilePush/MCENotificationDelegate.h>
-#endif
+#import <IBMMobilePush/MCEPhoneHomeManager.h>
+#import <IBMMobilePush/MCERegistrationDetails.h>
+#import <IBMMobilePush/MCERichContent.h>
+#import <IBMMobilePush/MCESdk.h>
+#import <IBMMobilePush/MCETemplate.h>
+#import <IBMMobilePush/MCETemplateRegistry.h>
+#import <IBMMobilePush/MCEWebViewActionDelegate.h>
+#import <IBMMobilePush/UIColor+Hex.h>

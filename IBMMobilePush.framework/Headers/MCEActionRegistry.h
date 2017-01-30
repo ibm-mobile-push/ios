@@ -43,7 +43,7 @@
  
  @param target the object that will accept action messages
  @param selector a selector that processes the action, can either take one or two arguments. The first argument is always the action payload and the second, if included is the full APNS payload.
- @param action the specified action type name to be used in the APNS payload as the type value
+ @param type action the specified action type name to be used in the APNS payload as the type value
  
  @return TRUE or FALSE depending if the registration was successful or not.
  
@@ -53,7 +53,7 @@
 /** This method performs the registered specified action for the APNS payload.
  
  @param action the action dictionary to be executed. (either the "notification-action" or one of the "category-actions")
- @param userInfo the full APNS payload
+ @param payload the full APNS payload
  @param source the event type value to report
  
  */
@@ -62,7 +62,7 @@
 /** This method performs the registered specified action for the APNS payload.
  
  @param action the action dictionary to be executed. (either the "notification-action" or one of the "category-actions")
- @param userInfo the full APNS payload
+ @param payload the full APNS payload
  @param source the event type value to report
  @param attributes Additional attributes for event payload
  
@@ -72,7 +72,7 @@
 /** This method performs the registered specified action for the APNS payload.
  
  @param action the action dictionary to be executed. (either the "notification-action" or one of the "category-actions")
- @param userInfo the full APNS payload
+ @param payload the full APNS payload
  @param source the event type value to report
  @param userText Text entered by the user
  */

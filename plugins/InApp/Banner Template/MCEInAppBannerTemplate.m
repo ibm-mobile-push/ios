@@ -57,7 +57,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
         CGRect hiddenFrame = self.hiddenFrame;
         
         [self configureTopBanner];
-
+        
         deltaY -= hiddenFrame.size.height - self.hiddenFrame.size.height;
         
         if([animate boolValue]==FALSE)
@@ -78,7 +78,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
     if([animate boolValue])
     {
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
-
+            
             self.view.frame = frame;
         } completion:^(BOOL finished) {
             
@@ -148,7 +148,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
             return [UIColor colorWithRed:red green:green blue:blue alpha:1];
         }
     }
-
+    
     return defaultColor;
 }
 
@@ -201,7 +201,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
             }
         }
     }
-
+    
 }
 
 -(void)configureBanner
@@ -225,7 +225,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
 -(void)configureTopBanner
 {
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-
+    
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     
     CGRect frame = self.view.frame;
@@ -259,7 +259,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
 -(void)showBanner
 {
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
-
+    
     self.view.alpha = 0;
     self.view.frame = self.hiddenFrame;
     [window addSubview:self.view];
@@ -277,7 +277,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
 {
     [self.dismissTimer invalidate];
     self.dismissTimer = nil;
-
+    
     if(self.view.superview)
     {
         [UIView animateWithDuration:self.animationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^(){
@@ -307,9 +307,18 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
 
 -(IBAction)tap:(id)sender
 {
+    NSDictionary * payload = @{@"mce": [NSMutableDictionary dictionary]};
+    if(self.inAppMessage.attribution)
+    {
+        payload[@"mce"][@"attribution"] = self.inAppMessage.attribution;
+    }
+    if(self.inAppMessage.mailingId)
+    {
+        payload[@"mce"][@"mailingId"] = self.inAppMessage.mailingId;
+    }
     [self dismiss:self];
     [[MCEInAppManager sharedInstance] disable: self.inAppMessage];
-    [[MCEActionRegistry sharedInstance] performAction:self.inAppMessage.content[@"action"] forPayload: self.inAppMessage.attribution ? @{@"mce":@{@"attribution":self.inAppMessage.attribution}} : @{} source:InAppSource];
+    [[MCEActionRegistry sharedInstance] performAction:self.inAppMessage.content[@"action"] forPayload: payload source:InAppSource];
 }
 
 -(void)setInAppMessage:(MCEInAppMessage *)inAppMessage

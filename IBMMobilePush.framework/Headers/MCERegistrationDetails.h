@@ -43,7 +43,7 @@
 
 /** Set pushToken
  
- @param pushToken a new NSData to use as the push token
+ @param deviceToken a new NSData to use as the push token
  */
 +(void)setPushToken:(NSData*)deviceToken;
 

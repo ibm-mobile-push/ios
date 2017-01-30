@@ -34,6 +34,8 @@
 /** Record a view of an inbox message */
 -(void)recordViewForInboxMessage:(MCEInboxMessage*)inboxMessage attribution: (NSString*)attribution;
 
+-(void)recordViewForInboxMessage:(MCEInboxMessage*)inboxMessage attribution: (NSString*)attribution mailingId: (NSString*)mailingId;
+
 /** Record if push is enabled or disabled */
 -(void) sendPushEnabledEvent;
 

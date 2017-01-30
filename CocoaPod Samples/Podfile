@@ -1,0 +1,13 @@
+project 'SwiftSample.xcodeproj'
+
+"""
+target 'Sample' do
+  pod 'IBMMobilePush', :path => '..'
+end
+"""
+
+project 'Sample.xcodeproj'
+target 'Sample' do
+  pod 'IBMMobilePush', :path => '..'
+end
+

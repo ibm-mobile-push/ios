@@ -1,0 +1,1 @@
+../../../../../../IBMMobilePush.framework/Headers/MCETemplateRegistry.h

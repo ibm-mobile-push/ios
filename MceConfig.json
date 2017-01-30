@@ -2,8 +2,8 @@
     "Please note: if you are using a Swift based Application Delegate you must include the product name and class name in AppDelegateClass, for example": "SwiftSample.AppDelegate",
     "appDelegateClass": "AppDelegate",
     
-    "Please note: if you are in Europe, you may need to change the value in 'baseUrl' below to": "https://euapi.ibm.xtify.com/3.0/",
-    "baseUrl": "https://api.ibm.xtify.com/3.0/",
+    "Please note: if you are in Europe, you may need to change the value in 'baseUrl' below to": "https://sdk6.ibm.xtify.com",
+    "baseUrl": "https://sdk.ibm.xtify.com",
     
     "appKey":
     {
@@ -11,19 +11,39 @@
         "prod":"INSERT YOUR PROD APPKEY HERE"
     },
     
-    "Please note, the existince of the location key will enable geofence location support, if geofence support is not desired, remove the key":"",
-    "geofence":{
+    "Please note, the existince of the location key is not required, if it is not present though, iBeacon and Geofence support will be disabled.":"",
+    "location": {
         
-        "Sync radius is in meters":"",
-        "syncRadius": 10000,
+        "The sync key is only used to customize the iBeacon and Geofence syncing sevice, it is not required for those features":"",
+        "sync": {
+            "Location Sync radius is in meters, default 100km":"",
+            "syncRadius": 100000,
         
-        "choose one of the following values for accuracy: best, 10m, 100m, 1km, 3km":"",
-        "accuracy": "3km"
+            "Specify how long to wait before syncing again on significant location change in seconds, default 5 minutes":"",
+            "syncInterval": 300
+        },
+        
+        "Please note, the existince of the location key will enable geofence location support, if geofence support is not desired, remove the key":"",
+        "geofence":{
+            "choose one of the following values for accuracy: ": ["best", "10m", "100m", "1km", "3km"],
+            "accuracy": "3km"
+        },
+        
+        "Please note, the existince of the ibeacon key will enable iBeacon support, if iBeacon support is not desired, remove the key":"",
+        "ibeacon": {
+            "UUID": "SET YOUR IBEACON UUID HERE"
+        },
     },
     
-    "autoInitializeFlag": true,
+    "When the autoInitialize value is set to true it will start user registration immediately, if you want to trigger user registration later at a specific point in your app, set this value to": false,
+    "autoInitialize": true,
+    
+    "The sessionTimeout value will set how long sessions last until a new one is reported on next app open in minutes": "",
     "sessionTimeout": 20,
-    "metricTimeInterval": 180,
+    
+    "Choose one of the following values for loglevel: ": ["none", "error", "info", "warn", "verbose"],
     "loglevel": "error",
+    
+    "Set logfile to true to write logs to the iTunes sync directory for debugging": "",
     "logfile": true
 }

@@ -16,8 +16,11 @@
 		C31380831BE1567700BC5910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380821BE1567700BC5910 /* AppDelegate.swift */; };
 		C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C317F74E1B41FF1B00962B55 /* MceConfig.json */; };
 		C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C31827031B71257B00D497A2 /* richnotification.xcdatamodel */; };
+		C3211D971DEE1D8300F1CDFA /* iBeaconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3211D961DEE1D8300F1CDFA /* iBeaconVC.swift */; };
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
 		C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */; };
+		C35134CA1DEF58C900261B85 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
+		C35134CB1DEF58F700261B85 /* SwiftSampleNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C361A9951D3576E800D4EA9B /* SwiftSampleNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C35C86981B45D71F00C07ABB /* MCEInAppBannerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C86951B45D71F00C07ABB /* MCEInAppBannerTemplate.m */; };
 		C35C86991B45D71F00C07ABB /* MCEInAppBannerTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35C86961B45D71F00C07ABB /* MCEInAppBannerTemplate.xib */; };
 		C35C869A1B45D71F00C07ABB /* Mini Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35C86971B45D71F00C07ABB /* Mini Images.xcassets */; };
@@ -38,7 +41,6 @@
 		C35F70B71C654EB000070DB6 /* MCEInboxPostTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A71C654EB000070DB6 /* MCEInboxPostTemplateView.xib */; };
 		C35F70B81C654EB000070DB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A81C654EB000070DB6 /* Media.xcassets */; };
 		C361A9981D3576E900D4EA9B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361A9971D3576E900D4EA9B /* NotificationService.swift */; };
-		C361A99C1D3576E900D4EA9B /* SwiftSampleNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C361A9951D3576E800D4EA9B /* SwiftSampleNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C361A9A41D35772100D4EA9B /* MCENotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C361A9A31D35772100D4EA9B /* MCENotificationService.m */; };
 		C367FDC11BE2733300AD32AE /* CellStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */; };
 		C3778E861D53CD2300811B72 /* TextInputActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3778E851D53CD2300811B72 /* TextInputActionPlugin.m */; };
@@ -51,8 +53,6 @@
 		C39D40261BE01AD0006D06C0 /* StaticCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40251BE01AD0006D06C0 /* StaticCategoriesVC.swift */; };
 		C39D40281BE02349006D06C0 /* EditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40271BE02349006D06C0 /* EditCell.swift */; };
 		C39D402A1BE0240D006D06C0 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40291BE0240D006D06C0 /* EventsVC.swift */; };
-		C3A089C61DD1097900F53C54 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
-		C3A089C81DD1097E00F53C54 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A089C71DD1097E00F53C54 /* libz.tbd */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3C09DD41D342AEC0076005A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */; };
@@ -79,7 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C361A99A1D3576E900D4EA9B /* PBXContainerItemProxy */ = {
+		C35134CC1DEF58F700261B85 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3D01E531A607F7E00C9A66C /* Project object */;
 			proxyType = 1;
@@ -89,13 +89,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C361A9A01D3576E900D4EA9B /* Embed App Extensions */ = {
+		C35134CE1DEF58F700261B85 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C361A99C1D3576E900D4EA9B /* SwiftSampleNotificationService.appex in Embed App Extensions */,
+				C35134CB1DEF58F700261B85 /* SwiftSampleNotificationService.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +113,7 @@
 		C31380821BE1567700BC5910 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C317F74E1B41FF1B00962B55 /* MceConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MceConfig.json; path = ../MceConfig.json; sourceTree = SOURCE_ROOT; };
 		C31827031B71257B00D497A2 /* richnotification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = richnotification.xcdatamodel; path = ../richnotification.xcdatamodel; sourceTree = "<group>"; };
+		C3211D961DEE1D8300F1CDFA /* iBeaconVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iBeaconVC.swift; sourceTree = "<group>"; };
 		C335716E1B3B6461003E0A7A /* MCEInboxActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxActionPlugin.h; sourceTree = "<group>"; };
 		C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxActionPlugin.m; sourceTree = "<group>"; };
 		C34E05291B740D4500376671 /* MCEInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxTableViewController.h; sourceTree = "<group>"; };
@@ -165,7 +166,6 @@
 		C39D40251BE01AD0006D06C0 /* StaticCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticCategoriesVC.swift; sourceTree = "<group>"; };
 		C39D40271BE02349006D06C0 /* EditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCell.swift; sourceTree = "<group>"; };
 		C39D40291BE0240D006D06C0 /* EventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
-		C3A089C71DD1097E00F53C54 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -219,8 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3A089C81DD1097E00F53C54 /* libz.tbd in Frameworks */,
-				C3A089C61DD1097900F53C54 /* IBMMobilePush.framework in Frameworks */,
+				C35134CA1DEF58C900261B85 /* IBMMobilePush.framework in Frameworks */,
 				C3942CC51D70B1D00099BA1E /* CoreLocation.framework in Frameworks */,
 				C3942CC31D70B1B20099BA1E /* MapKit.framework in Frameworks */,
 				C3C09DD41D342AEC0076005A /* libsqlite3.0.tbd in Frameworks */,
@@ -357,7 +356,6 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C3A089C71DD1097E00F53C54 /* libz.tbd */,
 				C3942CC41D70B1D00099BA1E /* CoreLocation.framework */,
 				C3942CC21D70B1B20099BA1E /* MapKit.framework */,
 				C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */,
@@ -471,6 +469,7 @@
 			children = (
 				C30252811BE168D600CA5D5D /* main.swift */,
 				C3942CCF1D70B39C0099BA1E /* GeofenceVC.swift */,
+				C3211D961DEE1D8300F1CDFA /* iBeaconVC.swift */,
 				C31380821BE1567700BC5910 /* AppDelegate.swift */,
 				C31380461BE154B900BC5910 /* MainVC.swift */,
 				C31380431BE1455400BC5910 /* InAppVC.swift */,
@@ -539,12 +538,12 @@
 				C3D01E571A607F7E00C9A66C /* Sources */,
 				C3D01E581A607F7E00C9A66C /* Frameworks */,
 				C3D01E591A607F7E00C9A66C /* Resources */,
-				C361A9A01D3576E900D4EA9B /* Embed App Extensions */,
+				C35134CE1DEF58F700261B85 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C361A99B1D3576E900D4EA9B /* PBXTargetDependency */,
+				C35134CD1DEF58F700261B85 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Silverpop;
@@ -574,6 +573,7 @@
 					C3D01E5A1A607F7E00C9A66C = {
 						CreatedOnToolsVersion = 6.1.1;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -686,6 +686,7 @@
 				C35F70AF1C654EB000070DB6 /* MCEInboxPostTemplateCell.m in Sources */,
 				C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */,
 				C3C3990D1B20DE850080DC49 /* AddToPassbookClient.m in Sources */,
+				C3211D971DEE1D8300F1CDFA /* iBeaconVC.swift in Sources */,
 				C35F70B11C654EB000070DB6 /* MCEInboxPostTemplateDisplay.m in Sources */,
 				C35F70B31C654EB000070DB6 /* MCEInboxPostTemplateImage.m in Sources */,
 				C3C58E351C0F6090001F39D3 /* WebViewController.m in Sources */,
@@ -703,10 +704,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C361A99B1D3576E900D4EA9B /* PBXTargetDependency */ = {
+		C35134CD1DEF58F700261B85 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C361A9941D3576E800D4EA9B /* SwiftSampleNotificationService */;
-			targetProxy = C361A99A1D3576E900D4EA9B /* PBXContainerItemProxy */;
+			targetProxy = C35134CC1DEF58F700261B85 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -745,6 +746,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSampleNotificationService/SwiftSampleNotificationService-Bridging-Header.h";
@@ -866,6 +869,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SwiftSample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -878,6 +882,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = SwiftSample;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -893,6 +899,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SwiftSample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -905,6 +912,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = SwiftSample;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;

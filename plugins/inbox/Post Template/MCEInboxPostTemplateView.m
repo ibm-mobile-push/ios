@@ -80,16 +80,22 @@ const int MARGIN = 8;
 
 -(NSDictionary*)payload
 {
+    NSDictionary * payload = @{@"mce": [NSMutableDictionary dictionary]};
     if(self.message.attribution)
     {
-        return @{@"mce":@{@"attribution":self.message.attribution}};
+        payload[@"mce"][@"attribution"] = self.message.attribution;
     }
-    return @{};
+    if(self.message.mailingId)
+    {
+        payload[@"mce"][@"mailingId"] = self.message.mailingId;
+    }
+    
+    return payload;
 }
 
 -(IBAction)leftButton:(id)sender
 {
-
+    
     NSArray * actions = self.richContent.content[@"actions"];
     if(actions.count > 0)
     {

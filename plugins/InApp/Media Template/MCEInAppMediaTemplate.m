@@ -18,18 +18,24 @@
 {
     [self dismiss:self];
     [[MCEInAppManager sharedInstance] disable: self.inAppMessage];
-    NSDictionary * payload = @{};
+    
+    NSDictionary * payload = @{@"mce": [NSMutableDictionary dictionary]};
     if(self.inAppMessage.attribution)
     {
-        payload = @{@"mce":@{@"attribution":self.inAppMessage.attribution}};
+        payload[@"mce"][@"attribution"] = self.inAppMessage.attribution;
     }
+    if(self.inAppMessage.mailingId)
+    {
+        payload[@"mce"][@"mailingId"] = self.inAppMessage.mailingId;
+    }
+    
     [[MCEActionRegistry sharedInstance] performAction:self.inAppMessage.content[@"action"] forPayload:payload source:InAppSource];
 }
 
 -(void)setTextHeight
 {
     CGRect textSize = [self.textLabel.titleLabel textRectForBounds:CGRectMake(0, 0, self.textLabel.frame.size.width, CGFLOAT_MAX) limitedToNumberOfLines: self.textLabel.titleLabel.numberOfLines];
-
+    
     [UIView animateWithDuration:0.25 animations:^{
         self.textHeightConstraint.constant = textSize.size.height;
         self.foreTextHeightConstraint.constant = textSize.size.height;
@@ -120,7 +126,7 @@
 
 -(void)viewDidLoad
 {
-    [super viewDidLoad];   
+    [super viewDidLoad];
     self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     
     self.textLabel.titleLabel.numberOfLines = 2;

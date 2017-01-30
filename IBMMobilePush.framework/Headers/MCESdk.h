@@ -38,7 +38,7 @@
 
 
 /** Register device token with IBM Push Notification servers
- @param device token from APNS registration request in application delegate application:didRegisterForRemoteNotificationsWithDeviceToken:
+ @param deviceToken from APNS registration request in application delegate application:didRegisterForRemoteNotificationsWithDeviceToken:
  */
 - (void)registerDeviceToken:(NSData *)deviceToken;
 
@@ -49,7 +49,6 @@
 /** Shows a dynamic category notification, integration point of the application delegate application:didReceiveRemoteNotification:fetchCompletionHandler: method.
 
  @param userInfo passed from didReceiveRemoteNotification parameter of caller
- @param completionHandler passed from fetchCompletionHandler parameter of caller
  */
 - (void)presentDynamicCategoryNotification:(NSDictionary *)userInfo;
 
@@ -62,7 +61,6 @@
 
  @param userInfo notification.userInfo of the forLocalNotification parameter of the caller
  @param identifier the identifier parameter of the caller
- @param completionHandler the completionHandler parameter of the caller
  */
 - (void)processDynamicCategoryNotification:(NSDictionary *)userInfo identifier:(NSString*)identifier userText: (NSString*)userText;
 
@@ -78,8 +76,7 @@
  
  @param userInfo notification.userInfo of the forLocalNotification parameter of the caller
  @param identifier the identifier parameter of the caller
- @param completionHandler the completionHandler parameter of the caller
-
+ 
  */
 - (void)processCategoryNotification:(NSDictionary *)userInfo identifier:(NSString*)identifier;
 

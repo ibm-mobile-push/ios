@@ -30,6 +30,8 @@
 /** The attribution property is used to set the attribution value of the event. */
 @property NSString *attribution;
 
+@property NSString * mailingId;
+
 /** The toDictionary method is used to return the contents of the MCEEvent object as a dictionary. */
 - (NSDictionary*)toDictionary;
 
@@ -40,6 +42,7 @@
 -(instancetype)initWithName: (NSString*)name type:(NSString*)type timestamp:(NSDate*)timestamp;
 -(instancetype)initWithName: (NSString*)name type:(NSString*)type timestamp:(NSDate*)timestamp attributes:(NSDictionary*)attributes;
 -(instancetype)initWithName: (NSString*)name type:(NSString*)type timestamp:(NSDate*)timestamp attributes:(NSDictionary*)attributes attribution: (NSString*)attribution;
+-(instancetype)initWithName: (NSString*)name type:(NSString*)type timestamp:(NSDate*)timestamp attributes:(NSDictionary*)attributes attribution: (NSString*)attribution mailingId: (NSString*)mailingId;
 -(instancetype) initWithResultSet:(MCEResultSet*)results;
 
 -(NSDictionary*)packageEvent;

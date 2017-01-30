@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2015
+ * © Copyright IBM Corp. 2014, 2016
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -32,6 +32,8 @@
 
 /** attribution is an identifier that specifies a campaign. */
 @property NSString * attribution;
+
+@property NSString * mailingId;
 
 /** isRead is TRUE when the message has been read and FALSE by default. */
 @property (readonly) BOOL isRead;

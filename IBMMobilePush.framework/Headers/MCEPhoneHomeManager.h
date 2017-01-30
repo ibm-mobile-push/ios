@@ -14,4 +14,7 @@
 
 /** The phoneHome method forces a phone home update. First, you must set the NSUserDefaults key MCELastPhoneHome to [NSDate distantPast]. */
 +(void)phoneHome;
+
++(void)forcePhoneHome;
+
 @end

@@ -14,7 +14,10 @@
 @interface MCELocationDatabase : NSObject
 + (instancetype)sharedInstance;
 -(NSMutableSet*)geofencesNearLatitude: (double)latitude longitude:(double)longitude radius: (double)radius;
--(BOOL)updateLocations:(NSArray*)locations;
+-(BOOL)upsertLocations:(NSArray*)locations;
 -(BOOL)deleteLocations:(NSArray*)locationIds;
 -(void)clearDatabase;
+-(BOOL)import:(NSDictionary*)json;
+-(NSString*)locationIdForBeaconMajor: (NSNumber*)major minor: (NSNumber*)minor;
+-(NSMutableSet*)beaconRegions;
 @end

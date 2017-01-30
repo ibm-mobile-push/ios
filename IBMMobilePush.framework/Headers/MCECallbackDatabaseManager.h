@@ -37,7 +37,10 @@
 /** The selectCallbacks:withBlock: method returns the original callback dictionaries and a list of associated IDs.
  
  @param callback A name of the callback, used when calling insertCallback:dictionary:
- @param withBlock a code block to execute when callbacks are retrieved from the database
+ @param block a code block to execute when callbacks are retrieved from the database
+ */
+
+/*
  @param dictionaries an array of dictionaries that were inserted into the databases
  @param ids an array of ids that can be used to clear these callbacks with deleteCallbacksById:
  */

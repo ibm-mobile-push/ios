@@ -129,11 +129,11 @@
     
     // Notification that background server sync is complete
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDatabase:) name:@"MCESyncDatabase" object:nil];
-
+    
     // Used by user to start a background server sync
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-
+    
     self.inboxMessages=[NSMutableArray array];
     self.richContents = [NSMutableDictionary dictionary];
     
@@ -181,7 +181,7 @@
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.item];
     id<MCETemplate> template = [[MCETemplateRegistry sharedInstance] handlerForTemplate:inboxMessage.template];
     UITableViewCell* cell = [template cellForTableView: tableView inboxMessage:inboxMessage indexPath: indexPath];
-
+    
     if(!cell)
     {
         NSLog(@"Couldn't get a blank cell for template %@, perhaps it wasn't registered?", template);
@@ -207,7 +207,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-
+    
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.row];
     
     NSString * richContentId = inboxMessage.richContentId;
@@ -219,7 +219,7 @@
         NSLog(@"%@ template requested but not registered", template);
         return;
     }
-
+    
     if([templateHandler shouldDisplayInboxMessage:inboxMessage])
     {
         NSLog(@"%@ template says should display inboxMessageId %@", template, inboxMessage.inboxMessageId);
@@ -229,18 +229,18 @@
         NSLog(@"%@ template says should not display inboxMessageId %@", template, inboxMessage.inboxMessageId);
         return;
     }
-
+    
     [inboxMessage read];
-    [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution:inboxMessage.attribution];
-
+    [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution:inboxMessage.attribution mailingId:inboxMessage.mailingId];
+    
     MCERichContent * richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId:richContentId];
-
+    
     [displayViewController setInboxMessage: inboxMessage];
     [displayViewController setRichContent: richContent];
     [displayViewController setContent];
     
     UIViewController * vc = (UIViewController *)displayViewController;
-
+    
     UIBarButtonItem * spaceButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     UIBarButtonItem * previousButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"chevron-up"] style:UIBarButtonItemStylePlain target:self action:@selector(previousMessage:)];
     previousButton.associatedObject = indexPath;
@@ -256,11 +256,11 @@
         nextButton.enabled=FALSE;
     else
         nextButton.enabled=TRUE;
-
+    
     UIBarButtonItem * deleteButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(delete:)];
     deleteButton.associatedObject = displayViewController;
     vc.navigationItem.rightBarButtonItems = @[deleteButton, spaceButton, nextButton, previousButton];
-
+    
     
     if(self.alternateDisplayViewController)
     {
@@ -317,7 +317,7 @@
             [self tableView: self.tableView didSelectRowAtIndexPath: newIndexPath];
         }
     }
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath
