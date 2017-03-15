@@ -37,13 +37,13 @@
 		C35F708D1C654DE500070DB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35F70821C654DE500070DB6 /* Media.xcassets */; };
 		C362D38A1A8C68690095814E /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C362D3881A8C68690095814E /* EditCell.m */; };
 		C369816C1AA6241500F9448B /* MailDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C369816B1AA6241500F9448B /* MailDelegate.m */; };
-		C36992E21DD258B200EA178E /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
 		C36992F01DD3CA7700EA178E /* iBeaconVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C36992EF1DD3CA7700EA178E /* iBeaconVC.m */; };
 		C375B6A71C52B08D0076E229 /* MCEInAppImageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C375B6A41C52B08D0076E229 /* MCEInAppImageTemplate.m */; };
 		C375B6A81C52B08D0076E229 /* MCEInAppImageTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A51C52B08D0076E229 /* MCEInAppImageTemplate.xib */; };
 		C375B6A91C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */; };
 		C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CBC1D70AEB80099BA1E /* MapKit.framework */; };
 		C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */; };
+		C39569FA1E71F3CE00FB17A0 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39569F61E71F34100FB17A0 /* IBMMobilePush.framework */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */; };
@@ -103,7 +103,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C31223981AD46573004175D7 /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../IBMMobilePush.framework; sourceTree = "<group>"; };
 		C317F74E1B41FF1B00962B55 /* MceConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MceConfig.json; path = ../MceConfig.json; sourceTree = SOURCE_ROOT; };
 		C31827031B71257B00D497A2 /* richnotification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = richnotification.xcdatamodel; path = ../richnotification.xcdatamodel; sourceTree = "<group>"; };
 		C32FC40F1B44A5590035CAB8 /* InAppVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppVC.m; sourceTree = "<group>"; };
@@ -157,6 +156,7 @@
 		C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplateForeground.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplateForeground.xib"; sourceTree = SOURCE_ROOT; };
 		C3942CBC1D70AEB80099BA1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C39569F61E71F34100FB17A0 /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../IBMMobilePush.framework; sourceTree = "<group>"; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -229,7 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C36992E21DD258B200EA178E /* IBMMobilePush.framework in Frameworks */,
+				C39569FA1E71F3CE00FB17A0 /* IBMMobilePush.framework in Frameworks */,
 				C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */,
 				C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */,
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
@@ -367,12 +367,12 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C39569F61E71F34100FB17A0 /* IBMMobilePush.framework */,
 				C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */,
 				C3942CBC1D70AEB80099BA1E /* MapKit.framework */,
 				C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */,
 				C3A80AD91BA3687300EE45ED /* CoreData.framework */,
 				C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */,
-				C31223981AD46573004175D7 /* IBMMobilePush.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

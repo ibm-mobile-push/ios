@@ -37,22 +37,18 @@
         return;
     }
     
-    MCERichContent* richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId:self.richContentIdToShow];
-    [self displayRichContent: richContent];
+    MCEInboxMessage * message = [[MCEInboxDatabase sharedInstance] inboxMessageWithRichContentId:self.richContentIdToShow];
+    [self displayRichContent: message];
     self.richContentIdToShow=nil;
 }
 
--(void)displayRichContent: (MCERichContent*)richContent
+-(void)displayRichContent: (MCEInboxMessage*)inboxMessage
 {
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessageViaRichContentId: richContent.richContentId completion:^(MCEInboxMessage *inboxMessage, NSError *error) {
-        
-        [[MCEInboxDatabase sharedInstance] setReadForRichContentId: richContent.richContentId];
-        [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution: self.attribution mailingId: self.mailingId];
-        
-        self.displayViewController.richContent = richContent;
-        self.displayViewController.inboxMessage = inboxMessage;
-        [self.displayViewController setContent];
-    }];
+    inboxMessage.isRead = TRUE;
+    [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution: self.attribution mailingId: self.mailingId];
+    
+    self.displayViewController.inboxMessage = inboxMessage;
+    [self.displayViewController setContent];
 }
 
 -(void)showInboxMessage:(NSDictionary*)action payload:(NSDictionary*)payload

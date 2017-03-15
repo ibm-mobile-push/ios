@@ -15,7 +15,6 @@
 #import <IBMMobilePush/MCETemplateRegistry.h>
 #import <IBMMobilePush/MCETemplate.h>
 #import <IBMMobilePush/MCEInboxMessage.h>
-#import <IBMMobilePush/MCERichContent.h>
 #import <IBMMobilePush/MCEEventService.h>
 #import <IBMMobilePush/MCEInboxQueueManager.h>
 
@@ -104,19 +103,18 @@
 
 -(void)syncDatabase:(NSNotification*)notification
 {
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessages: ^(NSMutableArray * inboxMessages, NSError * error) {
-        if(error)
-        {
-            NSLog(@"Could not sync database %@", [error localizedDescription]);
-            return;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self smartUpdateMessages:inboxMessages];
-            [self.refreshControl endRefreshing];
-        });
-        
-    } ascending:self.ascending];
+    NSMutableArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending: self.ascending];
+     
+    if(!inboxMessages)
+    {
+        NSLog(@"Could not sync database");
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self smartUpdateMessages:inboxMessages];
+        [self.refreshControl endRefreshing];
+    });
 }
 
 -(void)viewDidLoad
@@ -142,19 +140,19 @@
     [activity startAnimating];
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:activity];
     
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessages: ^(NSMutableArray * inboxMessages, NSError * error) {
-        if(error)
-        {
-            NSLog(@"Could not fetch inbox messages");
-            return;
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self smartUpdateMessages:inboxMessages];
-            self.navigationItem.rightBarButtonItem = self.editButtonItem;
-            [[MCEInboxQueueManager sharedInstance] syncInbox];
-        });
-    } ascending:self.ascending];
+    NSMutableArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending: self.ascending];
+                                      
+    if(!inboxMessages)
+    {
+        NSLog(@"Could not fetch inbox messages");
+        return;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self smartUpdateMessages:inboxMessages];
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        [[MCEInboxQueueManager sharedInstance] syncInbox];
+    });
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -167,7 +165,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
         MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.section];
-        [inboxMessage delete];
+        inboxMessage.isDeleted=TRUE;
         [self.inboxMessages removeObjectAtIndex: indexPath.section];
         [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
@@ -223,7 +221,6 @@
     
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.section];
     
-    NSString * richContentId = inboxMessage.richContentId;
     NSString * template = inboxMessage.template;
     id <MCETemplate> templateHandler = [[MCETemplateRegistry sharedInstance] handlerForTemplate: template];
     id <MCETemplateDisplay> displayViewController = [templateHandler displayViewController];
@@ -243,13 +240,10 @@
         return;
     }
     
-    [inboxMessage read];
+    inboxMessage.isRead=TRUE;
     [[MCEEventService sharedInstance] recordViewForInboxMessage:inboxMessage attribution:inboxMessage.attribution mailingId:inboxMessage.mailingId];
     
-    MCERichContent * richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId:richContentId];
-    
     [displayViewController setInboxMessage: inboxMessage];
-    [displayViewController setRichContent: richContent];
     [displayViewController setContent];
     
     UIViewController * vc = (UIViewController *)displayViewController;
@@ -296,7 +290,7 @@
         id <MCETemplateDisplay> templateDisplay = (id<MCETemplateDisplay>) sender.associatedObject;
         if(templateDisplay)
         {
-            [templateDisplay.inboxMessage delete];
+            templateDisplay.inboxMessage.isDeleted=TRUE;
             [self syncDatabase:nil];
             [self.navigationController popViewControllerAnimated:TRUE];
         }

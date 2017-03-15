@@ -9,7 +9,7 @@
  */
 
 @import UIKit;
-@class MCERichContent, MCEInboxMessage;
+@class MCEInboxMessage;
 
 /** The MCEInboxDatabase class owns and interacts with the inbox database. */
 @interface MCEInboxDatabase : NSObject
@@ -17,56 +17,25 @@
 /** This method returns the singleton object of this class. */
 + (instancetype)sharedInstance;
 
-/** The fetchInboxMessages: method asynchronously retrieves an NSArray of MCEInboxMessage objects from the inbox database.
+/** The inboxMessagesAscending: method retrieves an NSArray of MCEInboxMessage objects from the inbox database.
 
  @param ascending A boolean value that toggles if the contents should be sorted ascending (TRUE) or descending (FALSE)
- @param completion This callback returns an NSArray of MCEInboxMessage objects or an NSError in the case of failure.
+ @return Returns an NSArray of MCEInboxMessage objects or a nil value in the case of failure.
  */
--(void)fetchInboxMessages:(void (^)(NSMutableArray * inboxMessages, NSError * error))completion ascending:(BOOL)ascending;
+-(NSMutableArray*)inboxMessagesAscending:(BOOL)ascending;
 
-/** The fetchRichContentId:completion: method asynchronously retrieves a single MCERichContent object from the inbox database by richContentId.
- 
- @param richContentId A unique identifier for the rich content.
- @returns MCERichContent object for specified richContentId.
- */
-- (MCERichContent *) fetchRichContentId:(NSString*)richContentId;
-
-/** The fetchInboxMessageId:completion: method retrieves a single MCEInboxMessage object from the inbox database by inboxMessageId.
+/** The inboxMessageWithInboxMessageId: method retrieves a single MCEInboxMessage object from the inbox database by inboxMessageId.
  
  @param inboxMessageId A unique identifier for the inbox message.
- @param completion This callback returns a single MCEInboxMessage object or an NSError in the case of failure. The NSError could have the domain  "Inbox message not in storage" in the case of the message not being in the database. In this case, you can listen for the NSNotification message MCESyncDatabase and call the syncDatabase method to update the database.
+ @return Returns a single MCEInboxMessage object or a nil value in the case of failure.
  */
--(void)fetchInboxMessageId:(NSString*)inboxMessageId completion: (void (^)(MCEInboxMessage * inboxMessage, NSError * error))completion;
+-(MCEInboxMessage*)inboxMessageWithInboxMessageId:(NSString*)inboxMessageId;
 
-/** The setReadForInboxMessageId: method sets the read flag for a single message in the inbox database.
- 
- @param inboxMessageId A unique identifier for the inbox message.
- */
--(void)setReadForInboxMessageId:(NSString*)inboxMessageId;
-
-/** The setDeletedForInboxMessageId: method sets the deleted flag for a single message in the inbox database.
- 
- @param inboxMessageId A unique identifier for the inbox message.
- */
--(void)setDeletedForInboxMessageId:(NSString*)inboxMessageId;
-
-/** The setReadForRichContentId: method sets the read flag for all the messages with the specified richContentId in the inbox database.
+/** The inboxMessageWithRichContentId: method returns the latest inbox message for the specified richContentId.
  
  @param richContentId A unique identifier for the rich content.
+ @return Returns the most recent MCEInboxMessage object or a nil value in the case of failure. 
  */
--(void)setReadForRichContentId:(NSString*)richContentId;
-
-/** The fetchInboxMessageViaRichContentId:completion: method returns the first inbox message for the specified richContentId.
- 
- @param richContentId A unique identifier for the rich content.
- @param completion This callback returns the most recent MCEInboxMessage object or an NSError message in the case of failure. The NSError could have the domain "Inbox message not in storage" in the case of the message not being in the database. In this case, you can listen for the NSNotification message MCESyncDatabase and call the syncDatabase method to update the database.
- */
--(void)fetchInboxMessageViaRichContentId:(NSString*)richContentId completion: (void (^)(MCEInboxMessage * inboxMessage, NSError * error))completion;
-
-/** The updateDatabase: method updates the local database with the specified list of MCEInboxMessage objects. This is done in an upsert style operation.
- 
- @param messages An array of MCEInboxMessage objects.
- */
--(void)updateDatabase: (NSArray*)messages;
+-(MCEInboxMessage*)inboxMessageWithRichContentId:(NSString*)richContentId;
 
 @end

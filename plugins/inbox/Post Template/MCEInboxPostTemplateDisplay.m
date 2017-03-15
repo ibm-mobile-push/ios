@@ -23,19 +23,18 @@
     }
     
     // May need to refresh if payload is out of sync.
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessageId:self.inboxMessage.inboxMessageId completion: ^(MCEInboxMessage* newInboxMessage, NSError * error){
-        if(error)
-        {
-            NSLog(@"Could not fetch inbox message %@", self.inboxMessage.inboxMessageId);
-        }
-        
-        if([newInboxMessage isEqual: self.inboxMessage])
-        {
-            return;
-        }
-        
-        [self setContent];
-    }];
+    MCEInboxMessage* newInboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:self.inboxMessage.inboxMessageId];
+    if(!newInboxMessage)
+    {
+        NSLog(@"Could not fetch inbox message %@", self.inboxMessage.inboxMessageId);
+    }
+    
+    if([newInboxMessage isEqual: self.inboxMessage])
+    {
+        return;
+    }
+    
+    [self setContent];
 }
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

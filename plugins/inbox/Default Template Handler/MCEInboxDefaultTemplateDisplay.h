@@ -18,5 +18,4 @@
 @property IBOutlet UILabel * date;
 @property IBOutlet UIActivityIndicatorView * loadingView;
 @property MCEInboxMessage * inboxMessage;
-@property MCERichContent * richContent;
 @end

@@ -19,7 +19,6 @@ const int MARGIN = 8;
 @interface MCEInboxPostTemplateView ()
 @property dispatch_queue_t queue;
 @property MCEInboxMessage * message;
-@property MCERichContent * richContent;
 @property id periodicObserver;
 @property id boundaryObserver;
 @property AVPlayer * player;
@@ -53,7 +52,6 @@ const int MARGIN = 8;
     self.reload = TRUE;
     self.resizeCallback = resizeCallback;
     self.message = inboxMessage;
-    self.richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId: inboxMessage.richContentId];
     
     [self updateHeader];
     [self updateContent];
@@ -66,7 +64,6 @@ const int MARGIN = 8;
     [self unloadVideo];
     
     self.resizeCallback = nil;
-    self.richContent = nil;
     self.message = nil;
     
     [self updateHeader];
@@ -96,7 +93,7 @@ const int MARGIN = 8;
 -(IBAction)leftButton:(id)sender
 {
     
-    NSArray * actions = self.richContent.content[@"actions"];
+    NSArray * actions = self.message.content[@"actions"];
     if(actions.count > 0)
     {
         [[MCEActionRegistry sharedInstance]performAction:actions[0] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId}];
@@ -105,7 +102,7 @@ const int MARGIN = 8;
 
 -(IBAction)rightButton:(id)sender
 {
-    NSArray * actions = self.richContent.content[@"actions"];
+    NSArray * actions = self.message.content[@"actions"];
     if(actions.count > 1)
     {
         [[MCEActionRegistry sharedInstance]performAction:actions[1] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId}];
@@ -114,7 +111,7 @@ const int MARGIN = 8;
 
 -(IBAction)centerButton:(id)sender
 {
-    NSArray * actions = self.richContent.content[@"actions"];
+    NSArray * actions = self.message.content[@"actions"];
     if(actions.count > 2)
     {
         [[MCEActionRegistry sharedInstance]performAction:actions[2] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId}];
@@ -123,7 +120,7 @@ const int MARGIN = 8;
 
 -(void)updateActions
 {
-    NSArray * actions = self.richContent.content[@"actions"];
+    NSArray * actions = self.message.content[@"actions"];
     if(actions)
     {
         CGFloat width = [UIApplication sharedApplication].keyWindow.frame.size.width - MARGIN*2;
@@ -178,8 +175,8 @@ const int MARGIN = 8;
 
 -(void)updateHeader
 {
-    self.header.text = self.richContent ? self.richContent.content[@"header"] : @"";
-    self.subHeader.text = self.richContent ? self.richContent.content[@"subHeader"] : @"";
+    self.header.text = self.message ? self.message.content[@"header"] : @"";
+    self.subHeader.text = self.message ? self.message.content[@"subHeader"] : @"";
     [self updateHeaderImage];
 }
 
@@ -208,7 +205,7 @@ const int MARGIN = 8;
 
 -(void)updateHeaderImage
 {
-    if(!self.richContent || !self.richContent.content[@"headerImage"])
+    if(!self.message || !self.message.content[@"headerImage"])
     {
         [self updateHeaderImageData: nil];
         return;
@@ -216,7 +213,7 @@ const int MARGIN = 8;
     
     [self.headerActivity startAnimating];
     dispatch_async(self.queue, ^(){
-        NSString * urlString = self.richContent.content[@"headerImage"];
+        NSString * urlString = self.message.content[@"headerImage"];
         NSURL * url = [NSURL URLWithString:urlString];
         if(!url)
         {
@@ -241,8 +238,8 @@ const int MARGIN = 8;
     [self resizeViewConstraints: self.videoPlay size: CGSizeZero];
     [self resizeViewConstraints: self.videoProgress size: CGSizeZero];
     
-    NSString * videoUrlString = self.richContent ? self.richContent.content[@"contentVideo"] : nil;
-    NSString * imageUrlString = self.richContent ? self.richContent.content[@"contentImage"] : nil;
+    NSString * videoUrlString = self.message ? self.message.content[@"contentVideo"] : nil;
+    NSString * imageUrlString = self.message ? self.message.content[@"contentImage"] : nil;
     if(videoUrlString || imageUrlString)
     {
         self.contentVideoImageMargin.constant = MARGIN;
@@ -295,7 +292,7 @@ const int MARGIN = 8;
 
 -(IBAction)enlargeImage:(id)sender
 {
-    NSString * imageUrlString = self.richContent ? self.richContent.content[@"contentImage"] : nil;
+    NSString * imageUrlString = self.message ? self.message.content[@"contentImage"] : nil;
     
     MCEInboxPostTemplateImage * viewController = [[MCEInboxPostTemplateImage alloc] initWithNibName:@"MCEInboxPostTemplateImage" bundle:nil imageUrlString: imageUrlString];
     viewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -311,7 +308,7 @@ const int MARGIN = 8;
 -(void)updateContentText
 {
     CGFloat width = [UIApplication sharedApplication].keyWindow.frame.size.width - MARGIN*2;
-    self.contentText.text = self.richContent ? self.richContent.content[@"contentText"] : @"";
+    self.contentText.text = self.message ? self.message.content[@"contentText"] : @"";
     self.contentTextMargin.constant = [self.contentText.text length] ? MARGIN : 0;
     CGRect contentTextSize = [self.contentText textRectForBounds:CGRectMake(0, 0, width, CGFLOAT_MAX) limitedToNumberOfLines: self.fullScreen ? 0 : 2];
     [self resizeViewConstraints:self.contentText size:contentTextSize.size];
@@ -441,7 +438,7 @@ const int MARGIN = 8;
             return;
         }
         
-        NSURL * url = [NSURL URLWithString:self.richContent.content[@"contentVideo"]];
+        NSURL * url = [NSURL URLWithString:self.message.content[@"contentVideo"]];
         self.resizeCallback(videoSize, url, self.reload);
         [self resizeViewConstraints:self.contentVideo contentUrl: url];
     }

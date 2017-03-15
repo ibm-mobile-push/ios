@@ -10,7 +10,6 @@
 
 @import UIKit;
 @class MCEInboxMessage;
-@class MCERichContent;
 
 /** The MCEWebViewActionDelegate class provides a UIWebViewDelegate that can respond to actionid: scheme actions tied to the MCEActionRegistry. */
 @interface MCEWebViewActionDelegate : NSObject <UIWebViewDelegate>
@@ -31,7 +30,7 @@
 @property NSDictionary * eventPayload;
 
 /** Convenience method for setting properties for inbox messages */
--(void)configureForSource:(NSString*)source inboxMessage:(MCEInboxMessage*)inboxMessage richContent:(MCERichContent*)richContent actions:(NSDictionary*)actions;
+-(void)configureForSource:(NSString*)source inboxMessage:(MCEInboxMessage*)inboxMessage actions:(NSDictionary*)actions;
 
 /** Convenience method for setting properties */
 -(void)configureForSource:(NSString*)source attributes:(NSDictionary*)attributes attribution: (NSString*)attribution actions:(NSDictionary*)actions;

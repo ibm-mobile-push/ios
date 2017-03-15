@@ -66,12 +66,6 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/deleteMessageId:">- deleteMessageId:</option>
-		
-		<option value="//api/name/inboxQueue">- inboxQueue</option>
-		
-		<option value="//api/name/readMessageId:">- readMessageId:</option>
-		
 		<option value="//api/name/syncInbox">- syncInbox</option>
 		
 	</optgroup>
@@ -170,168 +164,6 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/inboxQueue" title="inboxQueue"></a>
-	<h3 class="method-title"><code><a href="#//api/name/inboxQueue">&ndash;&nbsp;inboxQueue</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The inboxQueue method returns the current task queue object that processes updates that are sent to this class.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (MCETaskQueue *)inboxQueue</code></div>
-
-		    
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>The inboxQueue method returns the current task queue object that processes updates that are sent to this class.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">MCEInboxQueueManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/readMessageId:" title="readMessageId:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/readMessageId:">&ndash;&nbsp;readMessageId:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The readMessageId: method adds an read update task to the queue for the specified message ID. After the update task is complete, it sends an NSNotification with the MCESyncDatabase name.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)readMessageId:(NSString *)<em>inboxMessageId</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>inboxMessageId</code></th>
-						<td><p>The unique identifier of a <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> that you want to update.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>The readMessageId: method adds an read update task to the queue for the specified message ID. After the update task is complete, it sends an NSNotification with the MCESyncDatabase name.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">MCEInboxQueueManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/deleteMessageId:" title="deleteMessageId:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/deleteMessageId:">&ndash;&nbsp;deleteMessageId:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>The deleteMessageId: method adds a delete task to the queue for the specified message ID. After the delete task is complete, it sends an NSNotification with the MCESyncDatabase name.</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>- (void)deleteMessageId:(NSString *)<em>inboxMessageId</em></code></div>
-
-		    
-			
-			<div class="method-subsection arguments-section parameters">
-				<h4 class="method-subtitle parameter-title">Parameters</h4>
-				<table class="argument-def parameter-def">
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>inboxMessageId</code></th>
-						<td><p>The unique identifier of a <a href="../Classes/MCEInboxMessage.html">MCEInboxMessage</a> that you want to delete.</p></td>
-					</tr>
-				
-				</table>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>The deleteMessageId: method adds a delete task to the queue for the specified message ID. After the delete task is complete, it sends an NSNotification with the MCESyncDatabase name.</p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">MCEInboxQueueManager.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/syncInbox" title="syncInbox"></a>
 	<h3 class="method-title"><code><a href="#//api/name/syncInbox">&ndash;&nbsp;syncInbox</a></code>
 </h3>
@@ -390,7 +222,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 IBM. All rights reserved. Updated: 2017-01-03</p>
+						<p class="copyright">Copyright &copy; 2017 IBM. All rights reserved. Updated: 2017-03-10</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

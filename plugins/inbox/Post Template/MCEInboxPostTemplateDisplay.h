@@ -14,5 +14,4 @@
 @interface MCEInboxPostTemplateDisplay : UIViewController <MCETemplateDisplay>
 @property IBOutlet MCEInboxPostTemplateView * contentView;
 @property MCEInboxMessage * inboxMessage;
-@property MCERichContent * richContent;
 @end

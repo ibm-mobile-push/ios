@@ -97,10 +97,8 @@ extern CGFloat UNKNOWN_IMAGE_HEIGHT;
     CGFloat width = tableView.frame.size.width - MARGIN * 2;
     CGFloat height = HEADER_IMAGE_SIZE.height + MARGIN * 2;
     
-    MCERichContent * richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId: inboxMessage.richContentId];
-    
-    NSString * videoUrlString = richContent.content[@"contentVideo"];
-    NSString * imageUrlString = richContent.content[@"contentImage"];
+    NSString * videoUrlString = inboxMessage.content[@"contentVideo"];
+    NSString * imageUrlString = inboxMessage.content[@"contentImage"];
     NSString * cachedContentSize = nil;
     if(videoUrlString || imageUrlString)
     {
@@ -130,7 +128,7 @@ extern CGFloat UNKNOWN_IMAGE_HEIGHT;
         }
     }
     
-    NSString * contentText = richContent.content[@"contentText"];
+    NSString * contentText = inboxMessage.content[@"contentText"];
     if(contentText)
     {
         height += MARGIN*2;
@@ -140,7 +138,7 @@ extern CGFloat UNKNOWN_IMAGE_HEIGHT;
         height += contentRect.size.height;
     }
     
-    NSArray * actions = richContent.content[@"actions"];
+    NSArray * actions = inboxMessage.content[@"actions"];
     if(actions)
     {
         height += MARGIN + 30;

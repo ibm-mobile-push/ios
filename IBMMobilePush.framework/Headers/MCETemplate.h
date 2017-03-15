@@ -10,15 +10,13 @@
 
 @import UIKit;
 @class MCEInboxMessage;
-@class MCERichContent;
 
 /** The MCETemplateDisplay protocol must be implemented by UIViewControllers to display full page content of inbox messages. */
 @protocol MCETemplateDisplay
 
 @property MCEInboxMessage * inboxMessage;
-@property MCERichContent * richContent;
 
-/** Update the view to show the MCEInboxMessage and MCERichContent assigned.
+/** Update the view to show the MCEInboxMessage assigned.
  */
 -(void)setContent;
 

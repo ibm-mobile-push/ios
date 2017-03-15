@@ -69,8 +69,6 @@
 
 -(void)setInboxMessage:(MCEInboxMessage *)inboxMessage
 {
-    MCERichContent * richContent = [[MCEInboxDatabase sharedInstance] fetchRichContentId: inboxMessage.richContentId];
-    
     if([inboxMessage isExpired])
     {
         [self setStyleForExpiredMessage:inboxMessage];
@@ -81,7 +79,7 @@
     }
     
     
-    NSDictionary * preview = richContent.content[@"messagePreview"];
+    NSDictionary * preview = inboxMessage.content[@"messagePreview"];
     
     if(inboxMessage.isRead)
     {

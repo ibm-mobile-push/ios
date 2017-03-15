@@ -10,13 +10,14 @@
 
 @import Foundation;
 
-@class MCEResultSet;
-
-/** The MCEInboxMessage class represents an inbox message that is sent to the user. The richContentId can be used to query the MCERichContent object that represents the content of the message. */
+/** The MCEInboxMessage class represents an inbox message that is sent to the user. */
 @interface MCEInboxMessage : NSObject
 
 /** inboxMessageId is a unique identifier for the inbox message. */
 @property NSString * inboxMessageId;
+
+/** content is where the template's content is stored. The elements of this dictionary are undefined by the SDK and consist of whatever is sent. */
+@property NSDictionary * content;
 
 /** richContentId is a unique identifier for the rich content. */
 @property NSString * richContentId;
@@ -36,47 +37,25 @@
 @property NSString * mailingId;
 
 /** isRead is TRUE when the message has been read and FALSE by default. */
-@property (readonly) BOOL isRead;
+@property BOOL isRead;
 
 /** isDeleted is TRUE when the message no longer displays in the message list and is FALSE by default. */
-@property (readonly) BOOL isDeleted;
+@property BOOL isDeleted;
 
+/** The isExpired property returns TRUE when the message is expired and FALSE otherwise. */
+@property (readonly) BOOL isExpired;
 
-/** The initWithResultSet: method initializes a MCEInboxMessage object through a database result set.
+/** The contentData: method returns the NSData that represents the content object in the database.
  
- @param results A database result set.
- @return Returns the initialized object.
+ @param error An error describing what went wrong.
+ @return An NSData object represents the content object.
  */
--(instancetype)initWithResultSet:(MCEResultSet*)results;
+-(NSData*)contentData: (NSError **)error;
 
-/** The inboxMessageFromResultSet: method allocates and initializes a MCEInboxMessage object through a database result set.
+/** The contentData method returns the NSData that represents the content object in the database or nil if a problem occurs.
  
- @param results A database result set.
- @return Returns the initialized object.
+ @return An NSData object represents the content object or nil.
  */
-+(instancetype)inboxMessageFromResultSet:(MCEResultSet*)results;
-
-/** The initWithPayload: method initializes a MCEInboxMessage object through a response from the server API.
- 
- @param payload the response from the server API that represents a single inbox message.
- @return Returns the initialized object.
- */
--(instancetype)initWithPayload:(NSDictionary*)payload;
-
-/** The inboxMessageFromPayload: method allocates and initializes a MCEInboxMessage object through a response from the server API.
- 
- @param payload the response from the server API that represents a single inbox message.
- @return Returns the initialized object.
- */
-+(instancetype)inboxMessageFromPayload:(NSDictionary*)payload;
-
-/** The isExpired method returns TRUE when the message is expired and FALSE otherwise. */
--(BOOL)isExpired;
-
-/** The read method sets the isRead flag to TRUE and updates the local inbox database. */
--(void)read;
-
-/** The delete method sets the isDeleted flag to TRUE and updates the local inbox database. */
--(void)delete;
+-(NSData*)contentData;
 
 @end

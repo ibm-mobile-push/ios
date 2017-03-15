@@ -20,19 +20,18 @@
     }
     
     // May need to refresh if payload is out of sync.
-    [[MCEInboxDatabase sharedInstance] fetchInboxMessageId:self.inboxMessage.inboxMessageId completion: ^(MCEInboxMessage* newInboxMessage, NSError * error){
-        if(error)
-        {
-            NSLog(@"Could not fetch inbox message %@", self.inboxMessage.inboxMessageId);
-        }
-        
-        if([newInboxMessage isEqual: self.inboxMessage])
-        {
-            return;
-        }
-        
-        [self setContent];
-    }];
+    MCEInboxMessage* newInboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId:self.inboxMessage.inboxMessageId];
+    if(!newInboxMessage)
+    {
+        NSLog(@"Could not fetch inbox message %@", self.inboxMessage.inboxMessageId);
+    }
+    
+    if([newInboxMessage isEqual: self.inboxMessage])
+    {
+        return;
+    }
+    
+    [self setContent];
 }
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,11 +56,11 @@
 
 -(void)setContent
 {
-    NSDictionary * messageDetails = self.richContent.content[@"messageDetails"];
-    NSDictionary * preview = self.richContent.content[@"messagePreview"];
+    NSDictionary * messageDetails = self.inboxMessage.content[@"messageDetails"];
+    NSDictionary * preview = self.inboxMessage.content[@"messagePreview"];
     
     MCEWebViewActionDelegate * actionDelegate = [MCEWebViewActionDelegate sharedInstance];
-    [actionDelegate configureForSource: InboxSource inboxMessage: self.inboxMessage richContent: self.richContent actions:self.richContent.content[@"actions"] ];
+    [actionDelegate configureForSource: InboxSource inboxMessage: self.inboxMessage actions:self.inboxMessage.content[@"actions"] ];
 
     self.webView.delegate=actionDelegate;
     [self.webView loadHTMLString:messageDetails[@"richContent"] baseURL:nil];
@@ -130,7 +129,7 @@
         }
     }
 
-    if(self.richContent)
+    if(self.inboxMessage)
     {
         [self setContent];
     }
