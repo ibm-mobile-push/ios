@@ -11,7 +11,7 @@
 /** The MCEConstants header contains several important SDK integration constants */
 
 /** The MCESdkVersion constant contains the current release number */
-static NSString * const MCESdkVersion = @"3.6.4.1";
+static NSString * const MCESdkVersion = @"3.6.4.2";
 
 /** The RegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
 static NSString * const RegisteredNotification = @"RegisteredNotification";
