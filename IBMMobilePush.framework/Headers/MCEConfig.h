@@ -39,9 +39,13 @@ extern int mceLogLevel;
  */
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
+/** locationSyncRadius specifies the size of the reference region to sync from the server to the device. */
 @property int locationSyncRadius;
+
+/** locationSyncTimeout specifies the minimum frequently that the deivce can sync locations from the server. */
 @property int locationSyncTimeout;
 
+/** geofenceEnabled specifies if geofences are enabled in the config file. */
 @property BOOL geofenceEnabled;
 
 /** Are beacons enabled or not */

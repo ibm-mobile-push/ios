@@ -140,7 +140,7 @@
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:activity];
     
     NSMutableArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending: self.ascending];
- 
+    
     if(!inboxMessages)
     {
         NSLog(@"Could not fetch inbox messages");

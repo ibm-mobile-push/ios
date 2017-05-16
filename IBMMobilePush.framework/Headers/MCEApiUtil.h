@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2016
+ * © Copyright IBM Corp. 2014, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -18,11 +18,6 @@
 
 #define MCE_FF_TABLET @"tablet"
 #define MCE_FF_HANDSET @"handset"
-
-typedef struct {
-    CLLocationCoordinate2D min;
-    CLLocationCoordinate2D max;
-} MCELocationBounds;
 
 /** The MCEApiUtil class contains some helper methods for interacting with APIs */
 @interface MCEApiUtil : NSObject
@@ -69,9 +64,5 @@ typedef struct {
  @returns Cached NSData object.
  */
 +(NSData*)cachedDataForUrl:(NSURL*)url downloadIfRequired: (BOOL)download;
-
-
-+ (MCELocationBounds)boundsForLatitude: (double) latitude longitude: (double)longitude radius: (double)radius;
-+ (CLLocationCoordinate2D) locationWithBearing:(float)bearing distance:(float)distanceMeters fromLocation: (CLLocationCoordinate2D)origin;
 
 @end

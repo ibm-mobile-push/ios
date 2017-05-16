@@ -35,6 +35,7 @@
 /** Convenience method for setting properties */
 -(void)configureForSource:(NSString*)source attributes:(NSDictionary*)attributes attribution: (NSString*)attribution actions:(NSDictionary*)actions;
 
+/** Convenience method for setting properties */
 -(void)configureForSource:(NSString*)source attributes:(NSDictionary*)attributes attribution: (NSString*)attribution mailingId: (NSString*)mailingId actions:(NSDictionary*)actions;
 
 @end

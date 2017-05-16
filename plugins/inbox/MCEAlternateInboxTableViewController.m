@@ -51,7 +51,7 @@
     {
         return;
     }
-        
+    
     // determine what messages are new
     NSMutableIndexSet * newIndexes = [NSMutableIndexSet indexSet];
     for(MCEInboxMessage * message in allMessages)
@@ -104,7 +104,7 @@
 -(void)syncDatabase:(NSNotification*)notification
 {
     NSMutableArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending: self.ascending];
-     
+    
     if(!inboxMessages)
     {
         NSLog(@"Could not sync database");
@@ -141,7 +141,7 @@
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:activity];
     
     NSMutableArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending: self.ascending];
-                                      
+    
     if(!inboxMessages)
     {
         NSLog(@"Could not fetch inbox messages");

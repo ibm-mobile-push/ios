@@ -12,9 +12,10 @@
 /** The MCEPhoneHomeManager class can be used to force a phone home update when you know the userId or channelId is updated on the server. */
 @interface MCEPhoneHomeManager : NSObject
 
-/** The phoneHome method forces a phone home update. First, you must set the NSUserDefaults key MCELastPhoneHome to [NSDate distantPast]. */
+/** The phoneHome method tries to phone home, if a phone home was done less the 24 hours ago this method will do nothing. */
 +(void)phoneHome;
 
+/** The forcePhoneHome method forces a phone home update. */
 +(void)forcePhoneHome;
 
 @end

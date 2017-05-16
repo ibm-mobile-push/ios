@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2016
+ * © Copyright IBM Corp. 2014, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -30,7 +30,8 @@ FOUNDATION_EXPORT const unsigned char IBMMobilePushVersionString[];
 #import <IBMMobilePush/MCEEvent.h>
 #import <IBMMobilePush/MCEEventClient.h>
 #import <IBMMobilePush/MCEEventService.h>
-#import <IBMMobilePush/MCEGeofenceManager.h>
+#import <IBMMobilePush/MCEGeofence.h>
+#import <IBMMobilePush/MCEArea.h>
 #import <IBMMobilePush/MCEInAppManager.h>
 #import <IBMMobilePush/MCEInAppMessage.h>
 #import <IBMMobilePush/MCEInAppTemplate.h>
@@ -48,3 +49,4 @@ FOUNDATION_EXPORT const unsigned char IBMMobilePushVersionString[];
 #import <IBMMobilePush/MCETemplateRegistry.h>
 #import <IBMMobilePush/MCEWebViewActionDelegate.h>
 #import <IBMMobilePush/UIColor+Hex.h>
+

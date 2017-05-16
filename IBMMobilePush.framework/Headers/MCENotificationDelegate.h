@@ -10,6 +10,9 @@
 
 @import UserNotifications;
 
+/**
+ MCENotificationDelegate provides SDK integration for the UNUserNotificationCenterDelegate methods introduced in iOS 10. 
+ */
 @interface MCENotificationDelegate : NSObject <UNUserNotificationCenterDelegate>
 
 /** This method returns the singleton object of this class. */

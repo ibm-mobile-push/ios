@@ -78,7 +78,12 @@
  */
 -(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source userText: (NSString*)userText;
 
+/** This method allows the action plugins to specifiy if they want the user prompted for text input if it isn't provided by the standard text input push method.
+ 
+ @param action the action dictionary to be evaluated. (either the "notification-action" or one of the "category-actions")
+ 
+ @return TRUE or FALSE depending if the action plugin wants the user to be prompted for text input if it wasn't provided otherwise.
+*/
 -(BOOL)actionExpectsUserText:(NSDictionary*)action;
--(BOOL)actionExpectsPayload:(NSDictionary*)action;
 
 @end

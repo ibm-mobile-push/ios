@@ -15,8 +15,13 @@
 
 @interface MCESdk : NSObject
 
+/** This property sets the current alert view class, it can be customized by the developer of the application. */
 @property Class customAlertViewClass;
+
+/** This property sets the current alert view controller class, it can be customized by the developer of the application. */
 @property Class customAlertControllerClass;
+
+@property (nonatomic, assign) BOOL (^presentNotification)(NSDictionary * userInfo);
 
 /** This method returns the singleton object of this class. */
 + (instancetype)sharedInstance;
@@ -98,9 +103,13 @@
 /* Current configuration object, loaded when handleApplicationLaunchWithConfig: or handleApplicationLaunch execute. */
 @property (nonatomic) MCEConfig* config;
 
+/** This method walks through the view controller stack for the top view controller. */
 -(UIViewController*)findCurrentViewController;
 
+/** This property returns the current alert view class, it can be customized by the developer of the application. */
 -(Class) alertViewClass;
+
+/** This property returns the current alert view controller class, it can be customized by the developer of the application. */
 -(Class) alertControllerClass;
 
 @end

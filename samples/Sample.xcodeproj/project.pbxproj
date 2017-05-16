@@ -19,6 +19,8 @@
 		C33571801B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = C335716D1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib */; };
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
 		C33D80931D2EE88B0073C2A3 /* MCENotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */; };
+		C3462B431E92AC35000AAB41 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */; };
+		C3462B471E92AD44000AAB41 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */; };
 		C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */; };
 		C35C1E7F1D70ABFB00BAB781 /* GeofenceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C1E7E1D70ABFB00BAB781 /* GeofenceVC.m */; };
 		C35C86981B45D71F00C07ABB /* MCEInAppBannerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C86951B45D71F00C07ABB /* MCEInAppBannerTemplate.m */; };
@@ -119,6 +121,8 @@
 		C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxActionPlugin.m; sourceTree = "<group>"; };
 		C33D80911D2EE88B0073C2A3 /* MCENotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCENotificationService.h; path = "../../plugins/notification-service/MCENotificationService.h"; sourceTree = "<group>"; };
 		C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCENotificationService.m; path = "../../plugins/notification-service/MCENotificationService.m"; sourceTree = "<group>"; };
+		C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C34E05291B740D4500376671 /* MCEInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxTableViewController.h; sourceTree = "<group>"; };
 		C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxTableViewController.m; sourceTree = "<group>"; };
 		C35C1E7D1D70ABFB00BAB781 /* GeofenceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceVC.h; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C39569FA1E71F3CE00FB17A0 /* IBMMobilePush.framework in Frameworks */,
+				C3462B471E92AD44000AAB41 /* SystemConfiguration.framework in Frameworks */,
+				C3462B431E92AC35000AAB41 /* CoreBluetooth.framework in Frameworks */,
 				C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */,
 				C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */,
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
@@ -368,6 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				C39569F61E71F34100FB17A0 /* IBMMobilePush.framework */,
+				C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */,
+				C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */,
 				C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */,
 				C3942CBC1D70AEB80099BA1E /* MapKit.framework */,
 				C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */,
@@ -505,8 +513,7 @@
 				C317F74E1B41FF1B00962B55 /* MceConfig.json */,
 				C3D01E5E1A607F7E00C9A66C /* Supporting Files */,
 			);
-			name = Sample;
-			path = "Sample ";
+			path = Sample;
 			sourceTree = "<group>";
 		};
 		C3D01E5E1A607F7E00C9A66C /* Supporting Files */ = {
@@ -772,6 +779,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -792,6 +800,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -890,19 +899,24 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)/..",
+					"$(PROJECT_DIR)/Sample",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Sample /Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = Sample;
 				PROVISIONING_PROFILE = "";
@@ -919,19 +933,24 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)/..",
+					"$(PROJECT_DIR)/Sample",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Sample /Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE;
 				PRODUCT_NAME = Sample;
 				PROVISIONING_PROFILE = "";

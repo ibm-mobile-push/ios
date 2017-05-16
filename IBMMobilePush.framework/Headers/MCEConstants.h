@@ -11,7 +11,7 @@
 /** The MCEConstants header contains several important SDK integration constants */
 
 /** The MCESdkVersion constant contains the current release number */
-static NSString * const MCESdkVersion = @"3.6.4.3";
+static NSString * const MCESdkVersion = @"3.6.6.0";
 
 /** The RegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
 static NSString * const RegisteredNotification = @"RegisteredNotification";
@@ -81,11 +81,17 @@ static NSString * const EnteredGeofence = @"EnteredGeofence";
 /* The EnteredGeofence message is sent when a geofence has been left */
 static NSString * const ExitedGeofence = @"ExitedGeofence";
 
+/** The EnteredBeacon message is sent when a beacon region has been breached */
 static NSString * const EnteredBeacon = @"EnteredBeacon";
+
+/** The ExitedBeacon message is sent when a beacon region has been left */
 static NSString * const ExitedBeacon = @"ExitedBeacon";
 
+/** The DownloadedLocations message is sent when locations updates are downloaded from the server. */
 static NSString * const DownloadedLocations = @"DownloadedLocations";
 
+/** The ResetReferenceLocation message is sent when the reference location has changed. */
 static NSString * const ResetReferenceLocation = @"ResetReferenceLocation";
 
+/** The RefreshActiveGeofences message is sent when the active geofences have changed. */
 static NSString * const RefreshActiveGeofences = @"RefreshActiveGeofences";

@@ -39,8 +39,10 @@
 /** The rules property defines the specific keyword rules that contain this message. */
 @property NSArray * rules;
 
+/** The attribution property represents the attribution from the original push message. */
 @property NSString * attribution;
 
+/** The mailingId property represents the mailingId from the original push message. */
 @property NSString * mailingId;
 
 /** The inAppMessageFromResultSet: method allocates and constructs a MCEInAppMessage object from a database result set. 

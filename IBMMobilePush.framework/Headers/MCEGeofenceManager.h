@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2016, 2016
+ * © Copyright IBM Corp. 2016, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -13,7 +13,8 @@
 
 @interface MCEGeofenceManager : NSObject <CLLocationManagerDelegate>
 + (instancetype)sharedInstance;
--(NSMutableSet *)geofencesNearLatitude:(double)latitude longitude:(double)longitude;
+-(NSMutableSet *)geofencesNearCoordinate:(CLLocationCoordinate2D)coordinate;
 -(void)resetReferenceLocation;
 -(void)updateGeofences;
+-(void)updateVisitTracking;
 @end

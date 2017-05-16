@@ -17,6 +17,4 @@
 /** The sendEvents:completion: method is used to send events directly to the server. If an error occurs, you can resend the request, if desired. */
 - (void)sendEvents:(NSArray*)events completion:(void (^)(NSError * error))callback;
 
-- (void)sendPackagedEvents:(NSArray*)events completion:(void (^)(NSError * error))callback;
-
 @end

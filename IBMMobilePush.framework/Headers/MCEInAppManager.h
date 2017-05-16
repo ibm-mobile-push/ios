@@ -42,8 +42,16 @@
  */
 -(void) executeRule: (NSArray*)rules;
 
+/** The disable: method removes an inAppMessage from the database.
+ 
+ @param inAppMessage the message object to be deleted.
+ */
 -(void)disable:(MCEInAppMessage*)inAppMessage;
 
+/** The disable: method removes an inAppMessage from the database.
+ 
+ @param inAppMessageId the id of the message to be deleted.
+ */
 -(void)disableById:(NSInteger)inAppMessageId;
 
 @end
