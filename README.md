@@ -1,3 +1,5 @@
+*BY DOWNLOADING, INSTALLING, COPYING, ACCESSING, CLICKING ON AN “ACCEPT” BUTTON, OR OTHERWISE USING THE PROGRAM, LICENSEE AGREES TO THE TERMS OF THIS AGREEMENT.*
+
 IBM® Mobile Push Notification provides a simple way to integrate Apple Push Notification Service (APNS) with your iOS (iPhone & iPad) 7.0 and above applications.
 
 The IBM Push Notification SDK for Apple iOS provides application publishers with APNS registration, mobile app message handling and display, and inbox and in-app message support.
