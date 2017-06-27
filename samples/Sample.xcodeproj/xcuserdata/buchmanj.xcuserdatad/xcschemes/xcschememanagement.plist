@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SampleContentExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>SampleNotificationService.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,6 +22,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>C30598EF1EFD6BF70019E9E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C30599051EFD6C250019E9E8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C3B2A2961D245B4E00286475</key>
 		<dict>
 			<key>primary</key>
