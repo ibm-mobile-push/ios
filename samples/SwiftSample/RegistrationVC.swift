@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2016
+ * © Copyright IBM Corp. 2015, 2017
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -14,6 +14,7 @@ enum RegistrationItems: Int
     case UserId
     case ChannelId
     case AppKey
+    case Registration
     
     static let count: Int = 3
 }
@@ -44,7 +45,7 @@ class RegistrationVC : UITableViewController
         {
             s.endRefreshing()
         }
-        tableView.reloadRows(at: [IndexPath(item: 0, section: 0), IndexPath(item: 1, section: 0)], with: .automatic)
+        tableView.reloadRows(at: [IndexPath(item: 3, section: 0), IndexPath(item: 0, section: 0), IndexPath(item: 1, section: 0)], with: .automatic)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -57,16 +58,28 @@ class RegistrationVC : UITableViewController
             {
             case .UserId:
                 cell.textLabel!.text = "User Id"
-                cell.detailTextLabel!.text = MCERegistrationDetails.userId()
+                cell.detailTextLabel!.text = MCERegistrationDetails.sharedInstance().userId
                 break
             case .ChannelId:
                 cell.textLabel!.text = "Channel Id"
-                cell.detailTextLabel!.text = MCERegistrationDetails.channelId()
+                cell.detailTextLabel!.text = MCERegistrationDetails.sharedInstance().channelId
                 break
             case .AppKey:
                 let config = MCESdk.sharedInstance().config
                 cell.textLabel!.text = "App Key"
                 cell.detailTextLabel!.text = config?.appKey
+                break
+            case .Registration:
+                cell.textLabel!.text = "Registration"
+                if MCERegistrationDetails.sharedInstance().mceRegistered
+                {
+                    cell.detailTextLabel!.text = "Registered"
+                }
+                else
+                {
+                    cell.detailTextLabel!.text = "Click to start"
+                }
+                
                 break
             }
         }
@@ -96,5 +109,12 @@ class RegistrationVC : UITableViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+        if indexPath.item == 3
+        {
+            if !MCERegistrationDetails.sharedInstance().mceRegistered
+            {
+                MCESdk.sharedInstance().manualInitialization()
+            }
+        }
     }
 }

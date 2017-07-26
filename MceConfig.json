@@ -18,7 +18,7 @@
         "sync": {
             "Location Sync radius is in meters, default 100km":"",
             "syncRadius": 100000,
-        
+            
             "Specify how long to wait before syncing again on significant location change in seconds, default 5 minutes":"",
             "syncInterval": 300
         },

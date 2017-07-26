@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2016
+ * © Copyright IBM Corp. 2014, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -110,7 +110,31 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
     {
         [self configureBottomBanner];
     }
-    [self showBanner];
+    
+    if(message.content[@"mainImage"])
+    {
+        [NSThread detachNewThreadSelector:@selector(downloadImage:) toTarget:self withObject:message];
+    }
+    else
+    {
+        [self showBanner: nil];
+    }
+}
+
+-(void)downloadImage:(MCEInboxMessage * )message
+{
+    UIImage * background_image = nil;
+    NSURL * url = [NSURL URLWithString: message.content[@"mainImage"]];
+    if(url)
+    {
+        NSData * background_image_data = [NSData dataWithContentsOfURL: url];
+        if(background_image_data)
+        {
+            background_image = [UIImage imageWithData:background_image_data];
+        }
+    }
+    
+    [self performSelectorOnMainThread:@selector(showBanner:) withObject:background_image waitUntilDone:FALSE];
 }
 
 // Register with MCEInAppRegistry for displaying "default" InApp messages
@@ -256,8 +280,11 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
     self.hiddenFrame = frame;
 }
 
--(void)showBanner
+-(void)showBanner: (UIImage *)background_image
 {
+    self.view.layer.contents = (__bridge id _Nullable)(background_image.CGImage);
+    self.view.layer.contentsGravity = kCAGravityResizeAspect;
+
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     
     self.view.alpha = 0;

@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2016
+ * © Copyright IBM Corp. 2011, 2017
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -71,7 +71,7 @@
         [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
             // Enable or disable features based on authorization.
             NSLog(@"Notifications response %d, %@", granted, error);
-            [application registerForRemoteNotifications];
+            [application performSelectorOnMainThread:@selector(registerForRemoteNotifications) withObject:nil waitUntilDone:TRUE];
             [center setNotificationCategories:[self appCategories]];
         }];
     }

@@ -18,7 +18,6 @@
 		C335717F1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716C1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.m */; };
 		C33571801B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = C335716D1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib */; };
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
-		C33D80931D2EE88B0073C2A3 /* MCENotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */; };
 		C3462B431E92AC35000AAB41 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */; };
 		C3462B471E92AD44000AAB41 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */; };
 		C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */; };
@@ -45,7 +44,6 @@
 		C375B6A91C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */; };
 		C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CBC1D70AEB80099BA1E /* MapKit.framework */; };
 		C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */; };
-		C39569FA1E71F3CE00FB17A0 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C39569F61E71F34100FB17A0 /* IBMMobilePush.framework */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3AF23051D2C45D500A1D266 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */; };
@@ -68,6 +66,8 @@
 		C3D01E6A1A607F7F00C9A66C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D01E681A607F7F00C9A66C /* Main.storyboard */; };
 		C3D01E6C1A607F7F00C9A66C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D01E6B1A607F7F00C9A66C /* Images.xcassets */; };
 		C3D01E6F1A607F7F00C9A66C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D01E6D1A607F7F00C9A66C /* LaunchScreen.xib */; };
+		C3D1C9651EF06ED70054B0A8 /* IBMMobilePushNotificationService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D1C9641EF06ED70054B0A8 /* IBMMobilePushNotificationService.framework */; };
+		C3D1C9671EF06EE60054B0A8 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3D1C9661EF06EE60054B0A8 /* IBMMobilePush.framework */; };
 		C3DC7EA91B83ECB800BA1CDD /* Inbox Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DC7EA81B83ECB800BA1CDD /* Inbox Images.xcassets */; };
 		C3DC928D1C59457B0006CF55 /* MCEInAppMediaTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC928C1C59457B0006CF55 /* MCEInAppMediaTemplate.m */; };
 		C3DC929A1C59586B0006CF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DC92991C59586B0006CF55 /* Assets.xcassets */; };
@@ -102,6 +102,16 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3C471C81EEF27580047468C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -119,8 +129,6 @@
 		C335716D1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCEInboxDefaultTemplateDisplay.xib; sourceTree = "<group>"; };
 		C335716E1B3B6461003E0A7A /* MCEInboxActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxActionPlugin.h; sourceTree = "<group>"; };
 		C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxActionPlugin.m; sourceTree = "<group>"; };
-		C33D80911D2EE88B0073C2A3 /* MCENotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCENotificationService.h; path = "../../plugins/notification-service/MCENotificationService.h"; sourceTree = "<group>"; };
-		C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCENotificationService.m; path = "../../plugins/notification-service/MCENotificationService.m"; sourceTree = "<group>"; };
 		C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C34E05291B740D4500376671 /* MCEInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxTableViewController.h; sourceTree = "<group>"; };
@@ -160,7 +168,6 @@
 		C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplateForeground.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplateForeground.xib"; sourceTree = SOURCE_ROOT; };
 		C3942CBC1D70AEB80099BA1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C39569F61E71F34100FB17A0 /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../IBMMobilePush.framework; sourceTree = "<group>"; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -200,6 +207,8 @@
 		C3D01E691A607F7F00C9A66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3D01E6B1A607F7F00C9A66C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C3D01E6E1A607F7F00C9A66C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C3D1C9641EF06ED70054B0A8 /* IBMMobilePushNotificationService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePushNotificationService.framework; path = ../IBMMobilePushNotificationService.framework; sourceTree = "<group>"; };
+		C3D1C9661EF06EE60054B0A8 /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../IBMMobilePush.framework; sourceTree = "<group>"; };
 		C3DC7EA81B83ECB800BA1CDD /* Inbox Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Inbox Images.xcassets"; sourceTree = "<group>"; };
 		C3DC928B1C59457B0006CF55 /* MCEInAppMediaTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCEInAppMediaTemplate.h; path = "../plugins/InApp/Media Template/MCEInAppMediaTemplate.h"; sourceTree = SOURCE_ROOT; };
 		C3DC928C1C59457B0006CF55 /* MCEInAppMediaTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCEInAppMediaTemplate.m; path = "../plugins/InApp/Media Template/MCEInAppMediaTemplate.m"; sourceTree = SOURCE_ROOT; };
@@ -226,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D1C9651EF06ED70054B0A8 /* IBMMobilePushNotificationService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C39569FA1E71F3CE00FB17A0 /* IBMMobilePush.framework in Frameworks */,
+				C3D1C9671EF06EE60054B0A8 /* IBMMobilePush.framework in Frameworks */,
 				C3462B471E92AD44000AAB41 /* SystemConfiguration.framework in Frameworks */,
 				C3462B431E92AC35000AAB41 /* CoreBluetooth.framework in Frameworks */,
 				C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */,
@@ -373,7 +383,8 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C39569F61E71F34100FB17A0 /* IBMMobilePush.framework */,
+				C3D1C9661EF06EE60054B0A8 /* IBMMobilePush.framework */,
+				C3D1C9641EF06ED70054B0A8 /* IBMMobilePushNotificationService.framework */,
 				C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */,
 				C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */,
 				C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */,
@@ -400,8 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				C3B2A2B21D2593A600286475 /* SampleNotificationService.entitlements */,
-				C33D80911D2EE88B0073C2A3 /* MCENotificationService.h */,
-				C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */,
 				C3B2A2991D245B4E00286475 /* NotificationService.h */,
 				C3B2A29A1D245B4E00286475 /* NotificationService.m */,
 				C3B2A29C1D245B4E00286475 /* Info.plist */,
@@ -421,7 +430,8 @@
 				C354C7BE1B39F4520014F070 /* AddToPassbook Plugin */,
 				C354C7BF1B39F45E0014F070 /* SnoozeAction Plugin */,
 			);
-			path = Plugins;
+			name = Plugins;
+			path = ../plugins;
 			sourceTree = "<group>";
 		};
 		C3C58E281C0F5CBC001F39D3 /* Web Action Plugin */ = {
@@ -456,8 +466,7 @@
 				C3CF5BCF1C57ED4B0026ECC8 /* MCEInAppVideoTemplate.xib */,
 				C3CF5BD01C57ED4B0026ECC8 /* MCEInAppVideoTemplateForeground.xib */,
 			);
-			name = "Video Template";
-			path = "../../../plugins/InApp/Video Template";
+			path = "Video Template";
 			sourceTree = "<group>";
 		};
 		C3D01E521A607F7E00C9A66C = {
@@ -566,6 +575,7 @@
 				C3D01E581A607F7E00C9A66C /* Frameworks */,
 				C3D01E591A607F7E00C9A66C /* Resources */,
 				C3B2A2A31D245B4E00286475 /* Embed App Extensions */,
+				C3C471C81EEF27580047468C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -689,7 +699,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C33D80931D2EE88B0073C2A3 /* MCENotificationService.m in Sources */,
 				C31AAD5F1D25CA4000A8F6BD /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,15 +786,23 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/..",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -796,17 +813,24 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/..",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.SampleNotificationService;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -898,6 +922,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -932,6 +957,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (

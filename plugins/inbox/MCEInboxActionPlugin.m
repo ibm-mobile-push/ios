@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2016
+ * © Copyright IBM Corp. 2015, 2017
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -15,7 +15,8 @@
 @property NSString * attribution;
 @property NSString * mailingId;
 @property NSString * richContentIdToShow;
-@property id <MCETemplateDisplay> displayViewController;
+@property NSString * inboxMessageIdToShow;
+@property UIViewController <MCETemplateDisplay> * displayViewController;
 @end
 
 @implementation MCEInboxActionPlugin
@@ -32,14 +33,31 @@
 
 -(void)syncDatabase:(NSNotification*)notification
 {
-    if(!self.richContentIdToShow)
+    MCEInboxMessage * message = nil;
+    if(self.inboxMessageIdToShow)
     {
-        return;
+        message = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId: self.inboxMessageIdToShow];
+    }
+    else if(self.richContentIdToShow)
+    {
+        message = [[MCEInboxDatabase sharedInstance] inboxMessageWithRichContentId:self.richContentIdToShow];
     }
     
-    MCEInboxMessage * message = [[MCEInboxDatabase sharedInstance] inboxMessageWithRichContentId:self.richContentIdToShow];
-    [self displayRichContent: message];
-    self.richContentIdToShow=nil;
+    if(message)
+    {
+        [self.displayViewController setLoading];
+        
+        UIViewController * controller = MCESdk.sharedInstance.findCurrentViewController;
+        [controller presentViewController:(UIViewController*)self.displayViewController animated:TRUE completion:nil];
+
+        [self displayRichContent: message];
+        self.richContentIdToShow=nil;
+        self.inboxMessageIdToShow=nil;
+    }
+    else
+    {
+        NSLog(@"Could not get inbox message from database");
+    }
 }
 
 -(void)displayRichContent: (MCEInboxMessage*)inboxMessage
@@ -54,32 +72,25 @@
 -(void)showInboxMessage:(NSDictionary*)action payload:(NSDictionary*)payload
 {
     self.attribution=nil;
-    if(payload[@"mce"] && payload[@"mce"][@"attribution"])
+    self.mailingId=nil;
+    if(payload[@"mce"])
     {
         self.attribution = payload[@"mce"][@"attribution"];
-    }
-    
-    self.mailingId=nil;
-    if(payload[@"mce"] && payload[@"mce"][@"mailingId"])
-    {
         self.mailingId = payload[@"mce"][@"mailingId"];
     }
     
-    NSString * richContentId = action[@"value"];
-    NSString * template = action[@"template"];
+    self.inboxMessageIdToShow=action[@"inboxMessageId"];
+    self.richContentIdToShow=action[@"value"];
     
+    NSString * template = action[@"template"];
     self.displayViewController = [[MCETemplateRegistry sharedInstance] viewControllerForTemplate: template];
+
     if(!self.displayViewController)
     {
         NSLog(@"Could not showInboxMessage %@, %@ template not registered", action, template);
+        return;
     }
     
-    [self.displayViewController setLoading];
-    
-    UIViewController * controller = MCESdk.sharedInstance.findCurrentViewController;
-    [controller presentViewController:(UIViewController*)self.displayViewController animated:TRUE completion:nil];
-    
-    self.richContentIdToShow=richContentId;
     [[MCEInboxQueueManager sharedInstance] syncInbox];
 }
 

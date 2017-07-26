@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2011, 2015
+ * © Copyright IBM Corp. 2011, 2017
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 #import "RegistrationVC.h"
@@ -35,7 +35,7 @@
 -(IBAction)refresh:(id)sender
 {
     [sender endRefreshing];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0 ], [NSIndexPath indexPathForItem:1 inSection:0 ]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:3 inSection:0 ], [NSIndexPath indexPathForItem:0 inSection:0 ], [NSIndexPath indexPathForItem:1 inSection:0 ]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark UITableViewDataSource
@@ -47,12 +47,12 @@
     if(indexPath.item==0)
     {
         cell.textLabel.text=@"User Id";
-        cell.detailTextLabel.text=MCERegistrationDetails.userId;
+        cell.detailTextLabel.text=MCERegistrationDetails.sharedInstance.userId;
     }
     if(indexPath.item==1)
     {
         cell.textLabel.text=@"Channel Id";
-        cell.detailTextLabel.text=MCERegistrationDetails.channelId;
+        cell.detailTextLabel.text=MCERegistrationDetails.sharedInstance.channelId;
     }
     if(indexPath.item==2)
     {
@@ -60,13 +60,17 @@
         cell.textLabel.text=@"App Key";
         cell.detailTextLabel.text=config.appKey;
     }
-    
+    if(indexPath.item==3)
+    {
+        cell.textLabel.text=@"Registration";
+        cell.detailTextLabel.text=MCERegistrationDetails.sharedInstance.mceRegistered ? @"Finished": @"Click to start";
+    }
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -89,14 +93,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-    if(indexPath.item==3)
-        [self.orgTextField becomeFirstResponder];
-    else if(indexPath.item==4)
-        [self.apiTextField becomeFirstResponder];
-    else
+    
+    if(indexPath.item == 3)
     {
-        [self.orgTextField resignFirstResponder];
-        [self.apiTextField resignFirstResponder];
+        if(!MCERegistrationDetails.sharedInstance.mceRegistered)
+        {
+            [MCESdk.sharedInstance manualInitialization];
+        }
     }
+    
 }
 @end
+
+

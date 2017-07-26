@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2016
+ * © Copyright IBM Corp. 2014, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -21,6 +21,8 @@
 @interface MCEAlternateInboxTableViewController ()
 @property NSMutableArray * inboxMessages;
 @property UIViewController * alternateDisplayViewController;
+@property (nonatomic, strong) id previewingContext;
+@property (nonatomic, strong) NSIndexPath *previewingIndexPath;
 @end
 
 @interface NSObject (AssociatedObject)
@@ -153,6 +155,10 @@
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
         [[MCEInboxQueueManager sharedInstance] syncInbox];
     });
+    
+    if ([self isForceTouchAvailable]) {
+        self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -215,10 +221,8 @@
     }];
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(UIViewController*)viewControllerForIndexPath:(NSIndexPath*)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-    
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.section];
     
     NSString * template = inboxMessage.template;
@@ -227,7 +231,7 @@
     if(!displayViewController)
     {
         NSLog(@"%@ template requested but not registered", template);
-        return;
+        return nil;
     }
     
     if([templateHandler shouldDisplayInboxMessage:inboxMessage])
@@ -237,7 +241,7 @@
     else
     {
         NSLog(@"%@ template says should not display inboxMessageId %@", template, inboxMessage.inboxMessageId);
-        return;
+        return nil;
     }
     
     inboxMessage.isRead=TRUE;
@@ -268,6 +272,13 @@
     deleteButton.associatedObject = displayViewController;
     vc.navigationItem.rightBarButtonItems = @[deleteButton, spaceButton, nextButton, previousButton];
     
+    return vc;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+    UIViewController * vc = [self viewControllerForIndexPath:indexPath];
     
     if(self.alternateDisplayViewController)
     {
@@ -312,6 +323,26 @@
     
 }
 
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.item];
+    return @[
+             [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                 NSLog(@"Delete message!");
+                 inboxMessage.isDeleted=TRUE;
+                 
+                 [self.inboxMessages removeObjectAtIndex: indexPath.row];
+                 [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+             }],
+             [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:inboxMessage.isRead ? @"Read" : @"Unread" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+                 NSLog(@"Set to read/unread!");
+                 inboxMessage.isRead = !inboxMessage.isRead;
+                 [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+             }]
+             ];
+    
+}
+
 -(IBAction)nextMessage:(UIBarButtonItem*)sender
 {
     if(sender.associatedObject)
@@ -342,6 +373,54 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *) tableView
 {
     return [self.inboxMessages count];
+}
+
+
+#pragma mark Peek/Pop Support
+
+- (BOOL)isForceTouchAvailable
+{
+    if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)]) {
+        return self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable;
+    }
+    return NO;
+}
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
+    
+    CGPoint cellPostion = [self.tableView convertPoint:location fromView:self.view];
+    self.previewingIndexPath = [self.tableView indexPathForRowAtPoint:cellPostion];
+    
+    if (self.previewingIndexPath)
+    {
+        UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:self.previewingIndexPath];
+        UIViewController * vc = [self viewControllerForIndexPath:self.previewingIndexPath];
+        
+        if(vc)
+        {
+            previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView:self.tableView];
+            return vc;
+        }
+    }
+    
+    return nil;
+}
+
+-(void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)vc
+{
+    if(self.alternateDisplayViewController)
+    {
+        [self.alternateDisplayViewController addChildViewController: vc];
+        vc.view.frame = self.alternateDisplayViewController.view.frame;
+        [self.alternateDisplayViewController.view addSubview: vc.view];
+    }
+    else
+    {
+        [self.navigationController pushViewController:vc animated:TRUE];
+    }
+    
+    [self.tableView reloadRowsAtIndexPaths:@[self.previewingIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
 }
 
 @end

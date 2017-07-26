@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2016
+ * © Copyright IBM Corp. 2015, 2017
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -21,8 +21,10 @@ import UIKit
             let center = UNUserNotificationCenter.current()
             center.delegate=MCENotificationDelegate.sharedInstance()
             center.requestAuthorization(options: [.alert, .sound, .carPlay, .badge], completionHandler: { (granted, error) in
-                print("Notifiations response \(granted) \(error)")
-                application.registerForRemoteNotifications()
+                print("Notifiations response \(granted) \(String(describing: error))")
+                DispatchQueue.main.sync {
+                    application.registerForRemoteNotifications()
+                }
                 center.setNotificationCategories(self.appNotificationCategories())
             })
         }
