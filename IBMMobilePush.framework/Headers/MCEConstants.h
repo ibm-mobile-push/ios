@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2016
+ * © Copyright IBM Corp. 2014, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -11,7 +11,7 @@
 /** The MCEConstants header contains several important SDK integration constants */
 
 /** The MCESdkVersion constant contains the current release number */
-static NSString * const MCESdkVersion = @"3.6.6.1";
+static NSString * const MCESdkVersion = @"3.6.7.0";
 
 /** The RegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
 static NSString * const RegisteredNotification = @"RegisteredNotification";

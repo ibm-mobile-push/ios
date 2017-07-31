@@ -19,24 +19,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../Framework/IBMMobilePush/Registration/MCERegistrationQueueManager.m"
-            timestampString = "520532126.055841"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-updateRegistrationFromAppKey:toAppKey:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../../../Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-            timestampString = "520534728.440348"
+            timestampString = "522903678.472951"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -52,55 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-            timestampString = "520534728.440401"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "-updateRegistrationDeviceToken:completion:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[MCERegistrationClient updateRegistrationDeviceToken:completion:]"
-                  moduleName = "Sample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buchmanj/Projects/Development/iOS/sdk/Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-                  timestampString = "522109227.841765"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "1088">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__66-[MCERegistrationClient updateRegistrationDeviceToken:completion:]_block_invoke"
-                  moduleName = "Sample"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buchmanj/Projects/Development/iOS/sdk/Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-                  timestampString = "522109227.843299"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../../../Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-            timestampString = "520534728.440448"
+            timestampString = "522903678.47302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "234"
@@ -116,7 +52,7 @@
                   moduleName = "Sample"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/buchmanj/Projects/Development/iOS/sdk/Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-                  timestampString = "522109227.847177"
+                  timestampString = "522967264.918293"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "234"
@@ -131,7 +67,7 @@
                   moduleName = "Sample"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/buchmanj/Projects/Development/iOS/sdk/Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-                  timestampString = "522109227.848773"
+                  timestampString = "522967264.920243"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "235"
@@ -148,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../Framework/IBMMobilePush/Registration/MCERegistrationClient.m"
-            timestampString = "520534728.440493"
+            timestampString = "522903678.473069"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"

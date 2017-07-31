@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2016
+ * © Copyright IBM Corp. 2014, 2017
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -41,6 +41,8 @@
  */
 - (void)handleApplicationLaunchWithConfig:(NSDictionary *)config;
 
+
+-(void)deviceTokenRegistartionFailed;
 
 /** Register device token with IBM Push Notification servers
  @param deviceToken from APNS registration request in application delegate application:didRegisterForRemoteNotificationsWithDeviceToken:
