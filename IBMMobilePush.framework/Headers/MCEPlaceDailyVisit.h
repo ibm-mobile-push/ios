@@ -19,7 +19,7 @@
     NSDate * _visitDate;
 }
 @property long placeDailyVisitId;
-@property long placeId;
+@property long long placeId;
 @property NSDate * visitDate;
 @property double hours;
 @property long visitDateInteger;

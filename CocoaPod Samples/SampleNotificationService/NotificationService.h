@@ -8,7 +8,7 @@
  */
 
 #import <UserNotifications/UserNotifications.h>
-#import "MCENotificationService.h"
+#import <IBMMobilePushNotificationService/MCENotificationService.h>
 
 @interface NotificationService : MCENotificationService
 @end

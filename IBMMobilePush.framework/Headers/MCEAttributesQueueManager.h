@@ -26,22 +26,28 @@
  
  When the operation completes successfully, it sends a NSNotification with the SetChannelAttributesSuccess name.
  When the operation fails, it sends a NSNotification with the SetChannelAttributesError name; however, it automatically retries as needed.
+ 
+ Please note, setChannelAttributes is deprecated.
  */
--(void)setChannelAttributes:(NSDictionary*)attributes;
+-(void)setChannelAttributes:(NSDictionary*)attributes __attribute__ ((deprecated));
 
 /** The updateChannelAttributes method adds or updates the specified attributes to the channel record on the server.
  
  When the operation completes successfully, it sends a NSNotification with the UpdateChannelAttributesSuccess name.
  When the operation fails, it sends a NSNotification with the UpdateChannelAttributesError name; however, it automatically retries as needed.
+ 
+ Please note, updateChannelAttributes is deprecated.
  */
--(void)updateChannelAttributes:(NSDictionary*)attributes;
+-(void)updateChannelAttributes:(NSDictionary*)attributes __attribute__ ((deprecated));
 
 /** The deleteChannelAttributes method removes the specified keys from the channel record on the server.
  
  When the operation completes successfully, it sends a NSNotification with the DeleteChannelAttributesSuccess name.
  When the operation fails, it sends a NSNotification with the DeleteChannelAttributesError name; however, it automatically retries as needed.
+ 
+ Please note, deleteChannelAttributes is deprecated.
 */
--(void)deleteChannelAttributes:(NSArray*) keys;
+-(void)deleteChannelAttributes:(NSArray*) keys __attribute__ ((deprecated));
 
 /** @name User Methods */
 
@@ -49,8 +55,10 @@
  
  When the operation completes successfully, it sends a NSNotification with the SetUserAttributesSuccess name.
  When the operation fails, it sends a NSNotification with the SetUserAttributesError name; however, it automatically retries as needed.
+ 
+ Please note, setUserAttributes is deprecated. Please use updateUserAttributes to set attribute values, and deleteUserAttributes to clear existing values.
  */
--(void)setUserAttributes:(NSDictionary*)attributes;
+-(void)setUserAttributes:(NSDictionary*)attributes __attribute__ ((deprecated));
 
 /** The updateUserAttributes method adds or updates the specified attributes to the user record on the server.
  

@@ -17,7 +17,7 @@
 @interface MCEPlaceVisit : NSObject <NSCopying>
 
 @property long placeVisitId;
-@property long placeId;
+@property long long placeId;
 @property NSDate * arrivalDate;
 @property NSDate * departureDate;
 @property double hours;

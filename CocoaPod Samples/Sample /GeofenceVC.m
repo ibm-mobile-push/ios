@@ -32,7 +32,7 @@
 {
     [super viewWillAppear:animated];
     [self createMonitor];
-
+    
     MCEConfig* config = [[MCESdk sharedInstance] config];
     if(config.geofenceEnabled)
     {
@@ -106,7 +106,7 @@
     self.mapView.delegate=self;
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"RefreshActiveGeofences" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-        [self addGeofenceOverlaysNearLatitude:self.lastLocation.coordinate.latitude longitude: self.lastLocation.coordinate.longitude radius:1000];
+        [self addGeofenceOverlaysNearCoordinate:self.lastLocation.coordinate radius:1000];
         NSArray * overlays = self.mapView.overlays;
         [self.mapView removeOverlays:overlays];
         [self.mapView addOverlays:overlays];
@@ -114,7 +114,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserverForName:@"DownloadedLocations" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
-        [self addGeofenceOverlaysNearLatitude:self.lastLocation.coordinate.latitude longitude: self.lastLocation.coordinate.longitude radius:1000];
+        [self addGeofenceOverlaysNearCoordinate: self.lastLocation.coordinate radius:1000];
     }];
 }
 
@@ -142,7 +142,7 @@
             
             double maxMeters = MAX(metersLatitude, metersLongitude);
             
-            [self addGeofenceOverlaysNearLatitude:location.coordinate.latitude longitude:location.coordinate.longitude radius:maxMeters];
+            [self addGeofenceOverlaysNearCoordinate: location.coordinate radius:maxMeters];
             self.lastLocation = location;
         }
         
@@ -179,29 +179,29 @@
     
     if(self.lastLocation==nil || [self.lastLocation distanceFromLocation:location] > 10)
     {
-        [self addGeofenceOverlaysNearLatitude:location.coordinate.latitude longitude:location.coordinate.longitude radius:1000];
+        [self addGeofenceOverlaysNearCoordinate:location.coordinate radius:1000];
         self.lastLocation = location;
     }
 }
 
--(void)addGeofenceOverlaysNearLatitude: (double) latitude longitude: (double) longitude radius: (double) radius
+-(void)addGeofenceOverlaysNearCoordinate: (CLLocationCoordinate2D) coordinate radius: (double) radius
 {
     // This is only needed because the mapkit system blows up when there are too many overlays and annotations
     radius = MIN(radius, 10000);
     dispatch_async(self.queue, ^(void){
         NSMutableArray * additionalOverlays = [NSMutableArray array];
         NSMutableArray * removeOverlays = [NSMutableArray array];
-        NSMutableSet * geofences = [[MCELocationDatabase sharedInstance] geofencesNearLatitude:latitude longitude:longitude radius:radius];
+        NSMutableSet * geofences = [[MCELocationDatabase sharedInstance] geofencesNearCoordinate:coordinate radius:radius];
         NSMutableSet * currentOverlayRefs = [NSMutableSet set];
-        for (CLCircularRegion * geofence in geofences) {
-            NSDictionary * reference = @{@"latitude": @(geofence.center.latitude), @"latitude": @(geofence.center.latitude), @"radius": @(geofence.radius)};
+        for (MCEGeofence * geofence in geofences) {
+            NSDictionary * reference = @{@"latitude": @(geofence.latitude), @"latitude": @(geofence.latitude), @"radius": @(geofence.radius)};
             [currentOverlayRefs addObject:reference];
-
-            if(![self.overlayIds containsObject:geofence.identifier])
+            
+            if(![self.overlayIds containsObject:geofence.locationId])
             {
-                self.circleToIdentifier[reference] = geofence.identifier;
-                [additionalOverlays addObject:[MKCircle circleWithCenterCoordinate:geofence.center radius:geofence.radius]];
-                [self.overlayIds addObject:geofence.identifier];
+                self.circleToIdentifier[reference] = geofence.locationId;
+                [additionalOverlays addObject:[MKCircle circleWithCenterCoordinate:geofence.coordinate radius:geofence.radius]];
+                [self.overlayIds addObject:geofence.locationId];
             }
         }
         

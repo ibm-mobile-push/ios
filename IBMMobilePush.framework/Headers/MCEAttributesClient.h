@@ -16,8 +16,13 @@
 @import Foundation;
 #import "MCEClient.h"
 
-/** The MCEAttributesClient class can be used to set, update, or delete user or channel attributes directly on the server. If an error occurs, you can resend the request, if desired; or, if you want the SDK to handle retries, use the MCEAttributesQueueManager class. */
-@interface MCEAttributesClient : MCEClient
+/** The MCEAttributesClient class can be used to update, or delete user attributes directly on the server. 
+ 
+ Please note, this class is deprecated, please use MCEAttributesQueueManager instead.
+ */
+
+__attribute__ ((deprecated))
+@interface MCEAttributesClient : NSObject
 
 /** @name Channel Methods */
 

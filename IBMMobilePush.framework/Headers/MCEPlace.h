@@ -18,7 +18,7 @@
 @interface MCEPlace : MCEArea <NSCopying>
 @property NSString * name;
 @property NSArray * address;
-@property long placeId;
+@property long long placeId;
 @property NSDate * lastUpdated;
 
 + (instancetype) placeWithPlaceId:(double)placeId database:(MCEDatabase*)db;

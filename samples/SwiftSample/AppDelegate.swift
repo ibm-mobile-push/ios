@@ -53,6 +53,7 @@ import UIKit
         AddToCalendarPlugin.register()
         AddToPassbookPlugin.register()
         SnoozeActionPlugin.register()
+        ExamplePlugin.register()
         
         // MCE Inbox Templates Plugins
         MCEInboxActionPlugin.register()

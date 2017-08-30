@@ -18,6 +18,8 @@
 		C335717F1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716C1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.m */; };
 		C33571801B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = C335716D1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib */; };
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
+		C336C1101F3E08D800C33D40 /* ExamplePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C336C10D1F3E08D800C33D40 /* ExamplePlugin.m */; };
+		C336C1111F3E08D800C33D40 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C336C10F1F3E08D800C33D40 /* ExampleViewController.m */; };
 		C3462B431E92AC35000AAB41 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */; };
 		C3462B471E92AD44000AAB41 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */; };
 		C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */; };
@@ -42,6 +44,7 @@
 		C375B6A71C52B08D0076E229 /* MCEInAppImageTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C375B6A41C52B08D0076E229 /* MCEInAppImageTemplate.m */; };
 		C375B6A81C52B08D0076E229 /* MCEInAppImageTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A51C52B08D0076E229 /* MCEInAppImageTemplate.xib */; };
 		C375B6A91C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */; };
+		C38178C51F3E430400ACDCFC /* ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38178C41F3E430400ACDCFC /* ExampleViewController.xib */; };
 		C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CBC1D70AEB80099BA1E /* MapKit.framework */; };
 		C3942CC71D70B1DF0099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
@@ -129,6 +132,10 @@
 		C335716D1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCEInboxDefaultTemplateDisplay.xib; sourceTree = "<group>"; };
 		C335716E1B3B6461003E0A7A /* MCEInboxActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxActionPlugin.h; sourceTree = "<group>"; };
 		C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxActionPlugin.m; sourceTree = "<group>"; };
+		C336C10C1F3E08D800C33D40 /* ExamplePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamplePlugin.h; path = "example-action/ExamplePlugin.h"; sourceTree = "<group>"; };
+		C336C10D1F3E08D800C33D40 /* ExamplePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamplePlugin.m; path = "example-action/ExamplePlugin.m"; sourceTree = "<group>"; };
+		C336C10E1F3E08D800C33D40 /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleViewController.h; path = "example-action/ExampleViewController.h"; sourceTree = "<group>"; };
+		C336C10F1F3E08D800C33D40 /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleViewController.m; path = "example-action/ExampleViewController.m"; sourceTree = "<group>"; };
 		C3462B421E92AC35000AAB41 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C3462B461E92AD44000AAB41 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C34E05291B740D4500376671 /* MCEInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxTableViewController.h; sourceTree = "<group>"; };
@@ -166,6 +173,7 @@
 		C375B6A41C52B08D0076E229 /* MCEInAppImageTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCEInAppImageTemplate.m; path = "../plugins/InApp/Image Template/MCEInAppImageTemplate.m"; sourceTree = SOURCE_ROOT; };
 		C375B6A51C52B08D0076E229 /* MCEInAppImageTemplate.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplate.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplate.xib"; sourceTree = SOURCE_ROOT; };
 		C375B6A61C52B08D0076E229 /* MCEInAppImageTemplateForeground.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MCEInAppImageTemplateForeground.xib; path = "../plugins/InApp/Image Template/MCEInAppImageTemplateForeground.xib"; sourceTree = SOURCE_ROOT; };
+		C38178C41F3E430400ACDCFC /* ExampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ExampleViewController.xib; path = "example-action/ExampleViewController.xib"; sourceTree = "<group>"; };
 		C3942CBC1D70AEB80099BA1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -302,6 +310,18 @@
 			path = "../plugins/inbox/Default Template Handler";
 			sourceTree = SOURCE_ROOT;
 		};
+		C336C10B1F3E08C900C33D40 /* Example Action Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				C336C10C1F3E08D800C33D40 /* ExamplePlugin.h */,
+				C336C10D1F3E08D800C33D40 /* ExamplePlugin.m */,
+				C336C10E1F3E08D800C33D40 /* ExampleViewController.h */,
+				C336C10F1F3E08D800C33D40 /* ExampleViewController.m */,
+				C38178C41F3E430400ACDCFC /* ExampleViewController.xib */,
+			);
+			name = "Example Action Plugin";
+			sourceTree = "<group>";
+		};
 		C354C7BC1B39F41E0014F070 /* ActionMenu Plugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +441,7 @@
 		C3C399051B20DE740080DC49 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				C336C10B1F3E08C900C33D40 /* Example Action Plugin */,
 				C3CD8BDF1CDBA4CD00E4F441 /* Text Input Plugin */,
 				C3C58E281C0F5CBC001F39D3 /* Web Action Plugin */,
 				C32FC3FC1B449F620035CAB8 /* InApp */,
@@ -683,6 +704,7 @@
 				C302AE491D3FFC71007AFB66 /* SampleNotificationService.entitlements in Resources */,
 				C35F70871C654DE500070DB6 /* MCEInboxPostTemplateDisplay.xib in Resources */,
 				C3CF5BD31C57ED4B0026ECC8 /* MCEInAppVideoTemplate.xib in Resources */,
+				C38178C51F3E430400ACDCFC /* ExampleViewController.xib in Resources */,
 				C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */,
 				C3DC7EA91B83ECB800BA1CDD /* Inbox Images.xcassets in Resources */,
 				C3D01E6C1A607F7F00C9A66C /* Images.xcassets in Resources */,
@@ -728,6 +750,7 @@
 				C3DC928D1C59457B0006CF55 /* MCEInAppMediaTemplate.m in Sources */,
 				C35C86981B45D71F00C07ABB /* MCEInAppBannerTemplate.m in Sources */,
 				C3CF5BD21C57ED4B0026ECC8 /* MCEInAppVideoTemplate.m in Sources */,
+				C336C1101F3E08D800C33D40 /* ExamplePlugin.m in Sources */,
 				C335717D1B3B6461003E0A7A /* MCEInboxDefaultTemplateCell.m in Sources */,
 				C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */,
 				C3CD8BE21CDBA51D00E4F441 /* TextInputActionPlugin.m in Sources */,
@@ -739,6 +762,7 @@
 				C362D38A1A8C68690095814E /* EditCell.m in Sources */,
 				C35F70831C654DE500070DB6 /* MCEInboxPostTemplate.m in Sources */,
 				C3C3990E1B20DE850080DC49 /* AddToPassbookPlugin.m in Sources */,
+				C336C1111F3E08D800C33D40 /* ExampleViewController.m in Sources */,
 				C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */,
 				C369816C1AA6241500F9448B /* MailDelegate.m in Sources */,
 				C3C58E2E1C0F5CBC001F39D3 /* WebViewController.m in Sources */,

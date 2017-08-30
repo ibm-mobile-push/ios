@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9C35CB250DE24FDDBCE333A /* libPods-Sample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA9FBB0BC2EEFD2C41145C3D /* libPods-Sample.a */; };
 		C302AE491D3FFC71007AFB66 /* SampleNotificationService.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C3B2A2B21D2593A600286475 /* SampleNotificationService.entitlements */; };
 		C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C31827031B71257B00D497A2 /* richnotification.xcdatamodel */; };
 		C31AAD5F1D25CA4000A8F6BD /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2A29A1D245B4E00286475 /* NotificationService.m */; };
@@ -17,7 +18,6 @@
 		C335717F1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716C1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.m */; };
 		C33571801B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = C335716D1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib */; };
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
-		C33D80931D2EE88B0073C2A3 /* MCENotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */; };
 		C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */; };
 		C35C1E7F1D70ABFB00BAB781 /* GeofenceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C1E7E1D70ABFB00BAB781 /* GeofenceVC.m */; };
 		C35C86981B45D71F00C07ABB /* MCEInAppBannerTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C86951B45D71F00C07ABB /* MCEInAppBannerTemplate.m */; };
@@ -67,6 +67,7 @@
 		C3DC7EA91B83ECB800BA1CDD /* Inbox Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DC7EA81B83ECB800BA1CDD /* Inbox Images.xcassets */; };
 		C3DC928D1C59457B0006CF55 /* MCEInAppMediaTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC928C1C59457B0006CF55 /* MCEInAppMediaTemplate.m */; };
 		C3DC929A1C59586B0006CF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DC92991C59586B0006CF55 /* Assets.xcassets */; };
+		C3E337BB1F4765DC00778E71 /* IBMMobilePushNotificationService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E337BA1F4765DC00778E71 /* IBMMobilePushNotificationService.framework */; };
 		C3E345DB1C59244300C25A9E /* MCEAlternateInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E345DA1C59244300C25A9E /* MCEAlternateInboxTableViewController.m */; };
 		C3E4F14F1A8BC69B00844271 /* RegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F14E1A8BC69B00844271 /* RegistrationVC.m */; };
 		C3E4F1521A8BE16600844271 /* PushActionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F1511A8BE16600844271 /* PushActionsVC.m */; };
@@ -115,8 +116,6 @@
 		C335716D1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCEInboxDefaultTemplateDisplay.xib; sourceTree = "<group>"; };
 		C335716E1B3B6461003E0A7A /* MCEInboxActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxActionPlugin.h; sourceTree = "<group>"; };
 		C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxActionPlugin.m; sourceTree = "<group>"; };
-		C33D80911D2EE88B0073C2A3 /* MCENotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCENotificationService.h; path = "../../plugins/notification-service/MCENotificationService.h"; sourceTree = "<group>"; };
-		C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCENotificationService.m; path = "../../plugins/notification-service/MCENotificationService.m"; sourceTree = "<group>"; };
 		C34E05291B740D4500376671 /* MCEInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxTableViewController.h; sourceTree = "<group>"; };
 		C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxTableViewController.m; sourceTree = "<group>"; };
 		C35C1E7D1D70ABFB00BAB781 /* GeofenceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeofenceVC.h; sourceTree = "<group>"; };
@@ -197,6 +196,8 @@
 		C3DC928B1C59457B0006CF55 /* MCEInAppMediaTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCEInAppMediaTemplate.h; path = "../plugins/InApp/Media Template/MCEInAppMediaTemplate.h"; sourceTree = SOURCE_ROOT; };
 		C3DC928C1C59457B0006CF55 /* MCEInAppMediaTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCEInAppMediaTemplate.m; path = "../plugins/InApp/Media Template/MCEInAppMediaTemplate.m"; sourceTree = SOURCE_ROOT; };
 		C3DC92991C59586B0006CF55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../plugins/InApp/Media Template/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		C3E337B81F47654900778E71 /* IBMMobilePushNotificationService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePushNotificationService.framework; path = ../IBMMobilePushNotificationService.framework; sourceTree = "<group>"; };
+		C3E337BA1F4765DC00778E71 /* IBMMobilePushNotificationService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePushNotificationService.framework; path = ../../IBMMobilePushNotificationService.framework; sourceTree = "<group>"; };
 		C3E345D91C59244300C25A9E /* MCEAlternateInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEAlternateInboxTableViewController.h; sourceTree = "<group>"; };
 		C3E345DA1C59244300C25A9E /* MCEAlternateInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEAlternateInboxTableViewController.m; sourceTree = "<group>"; };
 		C3E4F14D1A8BC69B00844271 /* RegistrationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationVC.h; sourceTree = "<group>"; };
@@ -221,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E337BB1F4765DC00778E71 /* IBMMobilePushNotificationService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +235,7 @@
 				C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */,
 				C3942CBE1D70AEF50099BA1E /* MapKit.framework in Frameworks */,
 				C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */,
+				A9C35CB250DE24FDDBCE333A /* libPods-Sample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +377,7 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3E337B81F47654900778E71 /* IBMMobilePushNotificationService.framework */,
 				C3942CC61D70B1DF0099BA1E /* CoreLocation.framework */,
 				C3942CBC1D70AEB80099BA1E /* MapKit.framework */,
 				C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */,
@@ -398,9 +402,8 @@
 		C3B2A2981D245B4E00286475 /* SampleNotificationService */ = {
 			isa = PBXGroup;
 			children = (
+				C3E337BA1F4765DC00778E71 /* IBMMobilePushNotificationService.framework */,
 				C3B2A2B21D2593A600286475 /* SampleNotificationService.entitlements */,
-				C33D80911D2EE88B0073C2A3 /* MCENotificationService.h */,
-				C33D80921D2EE88B0073C2A3 /* MCENotificationService.m */,
 				C3B2A2991D245B4E00286475 /* NotificationService.h */,
 				C3B2A29A1D245B4E00286475 /* NotificationService.m */,
 				C3B2A29C1D245B4E00286475 /* Info.plist */,
@@ -699,7 +702,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CD435D9361BB23E33B547C33 /* [CP] Copy Pods Resources */ = {
@@ -739,7 +742,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C33D80931D2EE88B0073C2A3 /* MCENotificationService.m in Sources */,
 				C31AAD5F1D25CA4000A8F6BD /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -829,6 +831,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/..",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -849,6 +856,11 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/..",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

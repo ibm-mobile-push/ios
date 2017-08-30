@@ -1,5 +1,5 @@
 PODS:
-  - IBMMobilePush (3.6.4.0)
+  - IBMMobilePush (3.7.0.0)
 
 DEPENDENCIES:
   - IBMMobilePush (from `..`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ..
 
 SPEC CHECKSUMS:
-  IBMMobilePush: de9edc50f62135fa2477c324c4d75bcba1cc4655
+  IBMMobilePush: c84afbffc3a710ad36b40c23994ed73ef9818c79
 
 PODFILE CHECKSUM: b6f8ed6194a8816b05e6d5740d6681ac339fd638
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.1

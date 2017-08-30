@@ -729,7 +729,6 @@
                                                 <constraint firstAttribute="width" constant="239" id="XfM-mx-KDQ"/>
                                             </constraints>
                                             <segments>
-                                                <segment title="Set"/>
                                                 <segment title="Update"/>
                                                 <segment title="Delete"/>
                                             </segments>

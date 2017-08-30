@@ -8,7 +8,6 @@
  */
 #import "EventsVC.h"
 #import <IBMMobilePush/IBMMobilePush.h>
-#import <IBMMobilePush/MCEEventClient.h>
 
 typedef enum
 {
@@ -19,14 +18,11 @@ typedef enum
     QUEUED
 } status;
 
-static const int CLIENT_INDEX = 0;
-static const int EVENT_QUEUE_INDEX = 1;
-static const int ADD_QUEUE_INDEX = 2;
-static const int SEND_QUEUE_INDEX = 3;
+static const int EVENT_QUEUE_INDEX = 0;
+static const int ADD_QUEUE_INDEX = 1;
+static const int SEND_QUEUE_INDEX = 2;
 
 @interface EventsVC ()
-@property MCEEventClient * eventClient;
-@property status clientStatus;
 @property status eventQueueStatus;
 @property status addQueueStatus;
 @property status sendQueueStatus;
@@ -59,11 +55,9 @@ static const int SEND_QUEUE_INDEX = 3;
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.clientStatus=NORMAL;
     self.eventQueueStatus=NORMAL;
     self.addQueueStatus=NORMAL;
     self.sendQueueStatus=NORMAL;
-    self.eventClient = [[MCEEventClient alloc] init];
     
     self.queueSuccessObserver = [[NSNotificationCenter defaultCenter]addObserverForName:MCEEventSuccess object:nil queue:[NSOperationQueue mainQueue] usingBlock: ^(NSNotification*note){
         [self updateButtonsTo: RECIEVED events: note.userInfo[@"events"]];
@@ -86,41 +80,6 @@ static const int SEND_QUEUE_INDEX = 3;
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"view"];
     
     switch (indexPath.item) {
-        case CLIENT_INDEX:
-            cell.textLabel.text=@"Send Event Via Client";
-            if(self.clientStatus==SENT)
-            {
-                NSLog(@"Show Sending");
-                cell.detailTextLabel.text = @"Sending";
-                self.clientStatus=NORMAL;
-            }
-            else if(self.clientStatus==RECIEVED)
-            {
-                NSLog(@"Show Received %@ %@", [NSThread currentThread], [NSThread mainThread]);
-                cell.detailTextLabel.text = @"Received";
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-                    self.clientStatus=NORMAL;
-                    NSLog(@"Reload %@ %@", [NSThread currentThread], [NSThread mainThread]);
-                    [self.tableView reloadData];
-                });
-            }
-            else if(self.clientStatus==FAILED)
-            {
-                NSLog(@"Show Failed");
-                cell.detailTextLabel.text = @"Failed";
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-                    self.clientStatus=NORMAL;
-                    [self.tableView reloadData];
-                });
-            }
-            else
-            {
-                NSLog(@"Show Normal");
-                cell.detailTextLabel.text = @"";
-            }
-            
-            break;
         case EVENT_QUEUE_INDEX:
             cell.textLabel.text=@"Send Event Via Queue";
             if(self.eventQueueStatus==SENT)
@@ -213,7 +172,7 @@ static const int SEND_QUEUE_INDEX = 3;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -238,30 +197,6 @@ static const int SEND_QUEUE_INDEX = 3;
     [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
     
     switch (indexPath.item) {
-        case CLIENT_INDEX:
-        {
-            MCEEvent * event = [[MCEEvent alloc] init];
-            [event fromDictionary: @{ @"name":@"appOpened", @"type":@"simpleNotification", @"timestamp":[[NSDate alloc]init]}];
-            event.attributes = @{@"client": @TRUE };
-            self.clientStatus=SENT;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-            });
-            [self.eventClient sendEvents:@[event] completion:^(NSError* error) {
-                if(error)
-                {
-                    self.clientStatus=FAILED;
-                }
-                else
-                {
-                    self.clientStatus=RECIEVED;
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                });
-            }];
-            break;
-        }
         case EVENT_QUEUE_INDEX:
         {
             MCEEvent * event = [[MCEEvent alloc] init];

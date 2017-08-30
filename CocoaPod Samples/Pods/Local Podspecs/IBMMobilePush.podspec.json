@@ -1,6 +1,6 @@
 {
   "name": "IBMMobilePush",
-  "version": "3.6.4.0",
+  "version": "3.7.0.0",
   "summary": "Integration for IBM Mobile Push Notification",
   "description": "Marketers use customer data and individual behaviors collected from a variety of sources to inform and drive real-time personalized customer interactions with IBM Marketing Cloud. You can use IBM Mobile Push Notification with IBM Marketing Cloud to allow marketers to send mobile app push notifications along with their customer interactions. By implementing the SDKs into your mobile app, you can send push notifications to your users based on criteria such as location, date, events, and more.",
   "homepage": "https://developer.ibm.com/push/",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "git@github.com:ibm-mobile-push/ios.git",
-    "tag": "3.6.4.0"
+    "tag": "3.7.0.0"
   },
   "platforms": {
     "ios": "8.0"

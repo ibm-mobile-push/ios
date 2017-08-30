@@ -29,7 +29,7 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         locationManager.delegate = self
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("DownloadedLocations"), object: nil, queue: OperationQueue.main) { (note) in
-            self.addGeofenceOverlaysNearLatitude(latitude: self.lastLocation!.coordinate.latitude, longitude: self.lastLocation!.coordinate.latitude, radius: 1000)
+            self.addGeofenceOverlaysNearCoordinate(coordinate: self.lastLocation!.coordinate, radius: 1000)
         }
     }
     
@@ -118,7 +118,7 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
                 let metersLongitude = east.distance(from: west)
                 
                 let maxMeters = max(metersLatitude, metersLongitude)
-                addGeofenceOverlaysNearLatitude(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, radius: maxMeters)
+                addGeofenceOverlaysNearCoordinate(coordinate: location.coordinate, radius: maxMeters)
                 lastLocation = location
             }
         }
@@ -162,18 +162,18 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         
         if(lastLocation == nil || lastLocation!.distance(from: location!)>10)
         {
-            addGeofenceOverlaysNearLatitude(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, radius: 1000)
+            addGeofenceOverlaysNearCoordinate(coordinate: location!.coordinate, radius: 1000)
             lastLocation = location
         }
     }
     
-    func addGeofenceOverlaysNearLatitude(latitude: Double, longitude: Double, radius: Double)
+    func addGeofenceOverlaysNearCoordinate(coordinate: CLLocationCoordinate2D, radius: Double)
     {
         let r = min(radius, 10000)
         DispatchQueue.global().async {
             var overlays = [MKOverlay]()
             var annotations = [MKAnnotation]()
-            let geofences = MCELocationDatabase.sharedInstance().geofencesNearLatitude(latitude, longitude: longitude, radius: r)
+            let geofences = MCELocationDatabase.sharedInstance().geofencesNearCoordinate(coordinate, radius: r)
             for geofence in geofences!
             {
                 if let geofence = geofence as? CLCircularRegion

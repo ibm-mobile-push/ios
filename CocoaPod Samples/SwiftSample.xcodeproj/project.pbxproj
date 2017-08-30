@@ -39,7 +39,6 @@
 		C35F70B71C654EB000070DB6 /* MCEInboxPostTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A71C654EB000070DB6 /* MCEInboxPostTemplateView.xib */; };
 		C35F70B81C654EB000070DB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A81C654EB000070DB6 /* Media.xcassets */; };
 		C361A9981D3576E900D4EA9B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361A9971D3576E900D4EA9B /* NotificationService.swift */; };
-		C361A9A41D35772100D4EA9B /* MCENotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C361A9A31D35772100D4EA9B /* MCENotificationService.m */; };
 		C367FDC11BE2733300AD32AE /* CellStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */; };
 		C3778E861D53CD2300811B72 /* TextInputActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3778E851D53CD2300811B72 /* TextInputActionPlugin.m */; };
 		C3942CC31D70B1B20099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC21D70B1B20099BA1E /* MapKit.framework */; };
@@ -74,6 +73,7 @@
 		C3DC928A1C5939AB0006CF55 /* MCEAlternateInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC92891C5939AB0006CF55 /* MCEAlternateInboxTableViewController.m */; };
 		C3DC92921C59567B0006CF55 /* MCEInAppMediaTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DC92911C59567B0006CF55 /* MCEInAppMediaTemplate.m */; };
 		C3DC929C1C5958770006CF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DC929B1C5958770006CF55 /* Assets.xcassets */; };
+		C3E337BF1F4769AA00778E71 /* IBMMobilePushNotificationService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E337BE1F4769AA00778E71 /* IBMMobilePushNotificationService.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,8 +149,6 @@
 		C361A9971D3576E900D4EA9B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C361A9991D3576E900D4EA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C361A9A11D35772000D4EA9B /* SwiftSampleNotificationService-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSampleNotificationService-Bridging-Header.h"; sourceTree = "<group>"; };
-		C361A9A21D35772100D4EA9B /* MCENotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCENotificationService.h; path = "../../plugins/notification-service/MCENotificationService.h"; sourceTree = "<group>"; };
-		C361A9A31D35772100D4EA9B /* MCENotificationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCENotificationService.m; path = "../../plugins/notification-service/MCENotificationService.m"; sourceTree = "<group>"; };
 		C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellStatusTableViewController.swift; sourceTree = "<group>"; };
 		C3778E841D53CD2300811B72 /* TextInputActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextInputActionPlugin.h; path = "../../plugins/text-input-action/TextInputActionPlugin.h"; sourceTree = "<group>"; };
 		C3778E851D53CD2300811B72 /* TextInputActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextInputActionPlugin.m; path = "../../plugins/text-input-action/TextInputActionPlugin.m"; sourceTree = "<group>"; };
@@ -203,6 +201,8 @@
 		C3DC92901C59567B0006CF55 /* MCEInAppMediaTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCEInAppMediaTemplate.h; path = "../plugins/InApp/Media Template/MCEInAppMediaTemplate.h"; sourceTree = SOURCE_ROOT; };
 		C3DC92911C59567B0006CF55 /* MCEInAppMediaTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCEInAppMediaTemplate.m; path = "../plugins/InApp/Media Template/MCEInAppMediaTemplate.m"; sourceTree = SOURCE_ROOT; };
 		C3DC929B1C5958770006CF55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../plugins/InApp/Media Template/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		C3E337BC1F47699B00778E71 /* IBMMobilePushNotificationService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePushNotificationService.framework; path = ../IBMMobilePushNotificationService.framework; sourceTree = "<group>"; };
+		C3E337BE1F4769AA00778E71 /* IBMMobilePushNotificationService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePushNotificationService.framework; path = ../../IBMMobilePushNotificationService.framework; sourceTree = "<group>"; };
 		C9812990A67557509672294C /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E337BF1F4769AA00778E71 /* IBMMobilePushNotificationService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +364,7 @@
 		C35FB4031A64670000CEF4DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C3E337BC1F47699B00778E71 /* IBMMobilePushNotificationService.framework */,
 				C3942CC41D70B1D00099BA1E /* CoreLocation.framework */,
 				C3942CC21D70B1B20099BA1E /* MapKit.framework */,
 				C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */,
@@ -376,9 +378,8 @@
 		C361A9961D3576E900D4EA9B /* SwiftSampleNotificationService */ = {
 			isa = PBXGroup;
 			children = (
+				C3E337BE1F4769AA00778E71 /* IBMMobilePushNotificationService.framework */,
 				C3C62E751D35784B00990096 /* SwiftSampleNotificationService.entitlements */,
-				C361A9A21D35772100D4EA9B /* MCENotificationService.h */,
-				C361A9A31D35772100D4EA9B /* MCENotificationService.m */,
 				C361A9971D3576E900D4EA9B /* NotificationService.swift */,
 				C361A9991D3576E900D4EA9B /* Info.plist */,
 				C361A9A11D35772000D4EA9B /* SwiftSampleNotificationService-Bridging-Header.h */,
@@ -706,7 +707,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C361A9A41D35772100D4EA9B /* MCENotificationService.m in Sources */,
 				C361A9981D3576E900D4EA9B /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,6 +798,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/..",
+				);
 				INFOPLIST_FILE = SwiftSampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -824,6 +829,11 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/..",
+				);
 				INFOPLIST_FILE = SwiftSampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

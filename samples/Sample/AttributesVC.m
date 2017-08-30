@@ -21,16 +21,22 @@
 @property UITextField * nameField;
 @property UITextField * valueField;
 @property UISegmentedControl * actionField;
-@property MCEAttributesClient * client;
 @property MCEAttributesQueueManager * queue;
 @end
+
+static const int UPDATE_INDEX = 0;
+static const int DELETE_INDEX = 1;
+
+static const int ENTER_NAME_INDEX = 0;
+static const int ENTER_VALUE_INDEX = 1;
+static const int CHOOSE_ACTION_INDEX = 2;
+static const int SEND_VIA_QUEUE_INDEX = 3;
 
 @implementation AttributesVC
 
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.client = [[MCEAttributesClient alloc] init];
     self.queue = [[MCEAttributesQueueManager alloc] init];
     self.flashSent=FALSE;
     self.flashReceived=FALSE;
@@ -40,41 +46,25 @@
     self.flashQueueFailure=FALSE;
     
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(attributesQueueSuccess:) name:SetUserAttributesSuccess object:nil];
-    [center addObserver:self selector:@selector(attributesQueueError:) name:SetUserAttributesError object:nil];
     [center addObserver:self selector:@selector(attributesQueueSuccess:) name:UpdateUserAttributesSuccess object:nil];
     [center addObserver:self selector:@selector(attributesQueueError:) name:UpdateUserAttributesError object:nil];
     [center addObserver:self selector:@selector(attributesQueueSuccess:) name:DeleteUserAttributesSuccess object:nil];
     [center addObserver:self selector:@selector(attributesQueueError:) name:DeleteUserAttributesError object:nil];
-    [center addObserver:self selector:@selector(attributesQueueSuccess:) name:SetChannelAttributesSuccess object:nil];
-    [center addObserver:self selector:@selector(attributesQueueError:) name:SetChannelAttributesError object:nil];
-    [center addObserver:self selector:@selector(attributesQueueSuccess:) name:UpdateChannelAttributesSuccess object:nil];
-    [center addObserver:self selector:@selector(attributesQueueError:) name:UpdateChannelAttributesError object:nil];
-    [center addObserver:self selector:@selector(attributesQueueSuccess:) name:DeleteChannelAttributesSuccess object:nil];
-    [center addObserver:self selector:@selector(attributesQueueError:) name:DeleteChannelAttributesError object:nil];
 }
 -(void)dealloc
 {
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self name: SetUserAttributesSuccess object:nil];
-    [center removeObserver:self name: SetUserAttributesError object:nil];
     [center removeObserver:self name: UpdateUserAttributesSuccess object:nil];
     [center removeObserver:self name: UpdateUserAttributesError object:nil];
     [center removeObserver:self name: DeleteUserAttributesSuccess object:nil];
     [center removeObserver:self name: DeleteUserAttributesError object:nil];
-    [center removeObserver:self name: SetChannelAttributesSuccess object:nil];
-    [center removeObserver:self name: SetChannelAttributesError object:nil];
-    [center removeObserver:self name: UpdateChannelAttributesSuccess object:nil];
-    [center removeObserver:self name: UpdateChannelAttributesError object:nil];
-    [center removeObserver:self name: DeleteChannelAttributesSuccess object:nil];
-    [center removeObserver:self name: DeleteChannelAttributesError object:nil];
 }
 
 -(void)attributesQueueSuccess:(NSNotification*)notification
 {
     self.flashQueueReceived=TRUE;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:4 inSection:0] ] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:SEND_VIA_QUEUE_INDEX inSection:0] ] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
     
 }
@@ -83,7 +73,7 @@
 {
     self.flashQueueFailure=TRUE;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:4 inSection:0] ] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:SEND_VIA_QUEUE_INDEX inSection:0] ] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
     return;
 }
@@ -91,20 +81,16 @@
 -(void)changeSelect:(id)sender
 {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    if(self.actionField.selectedSegmentIndex==0)
-    {
-        [defaults setObject:@"set" forKey:@"action"];
-    }
-    else if(self.actionField.selectedSegmentIndex==1)
+    if(self.actionField.selectedSegmentIndex==UPDATE_INDEX)
     {
         [defaults setObject:@"update" forKey:@"action"];
     }
-    else if(self.actionField.selectedSegmentIndex==2)
+    else if(self.actionField.selectedSegmentIndex==DELETE_INDEX)
     {
         [defaults setObject:@"delete" forKey:@"action"];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:ENTER_VALUE_INDEX inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     });
 }
 
@@ -112,71 +98,37 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    if(indexPath.item==3 || indexPath.item==4)
+    if(indexPath.item==SEND_VIA_QUEUE_INDEX)
     {
         UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"view"];
         
-        if(indexPath.item==3)
+        cell.textLabel.text = @"Click to send via queue";
+        if(self.flashQueueReceived)
         {
-            cell.textLabel.text = @"Click to send";
-            if(self.flashReceived)
-            {
-                cell.detailTextLabel.text = @"Received";
-                self.flashReceived=FALSE;
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                });
-            }
-            else if(self.flashSent)
-            {
-                cell.detailTextLabel.text = @"Sending (60 second timeout)";
-                self.flashSent=FALSE;
-            }
-            else if(self.flashFailure)
-            {
-                cell.detailTextLabel.text = @"Failed";
-                self.flashFailure=FALSE;
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                });
-            }
-            else
-            {
-                cell.detailTextLabel.text = @"";
-            }
+            cell.detailTextLabel.text = @"Received";
+            self.flashQueueReceived=FALSE;
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            });
+        }
+        else if(self.flashQueueSent)
+        {
+            cell.detailTextLabel.text = @"Sending (60 second timeout)";
+            self.flashQueueSent=FALSE;
+        }
+        else if(self.flashQueueFailure)
+        {
+            cell.detailTextLabel.text = @"Failed";
+            self.flashQueueFailure=FALSE;
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            });
         }
         else
         {
-            cell.textLabel.text = @"Click to send via queue";
-            if(self.flashQueueReceived)
-            {
-                cell.detailTextLabel.text = @"Received";
-                self.flashQueueReceived=FALSE;
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                });
-            }
-            else if(self.flashQueueSent)
-            {
-                cell.detailTextLabel.text = @"Sending (60 second timeout)";
-                self.flashQueueSent=FALSE;
-            }
-            else if(self.flashQueueFailure)
-            {
-                cell.detailTextLabel.text = @"Failed";
-                self.flashQueueFailure=FALSE;
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC*5), dispatch_get_main_queue(), ^{
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                });
-            }
-            else
-            {
-                cell.detailTextLabel.text = @"";
-            }
+            cell.detailTextLabel.text = @"";
         }
         
         [cell.detailTextLabel setNeedsDisplay];
@@ -186,19 +138,17 @@
     EditCell * cell = nil;
     
     NSString * action = [defaults stringForKey:@"action"];
-    if(indexPath.item==2)
+    if(indexPath.item==CHOOSE_ACTION_INDEX)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"select"];
         cell.textField.text=@"Choose an Action";
         UISegmentedControl * detail = cell.selectField;
         [detail addTarget:self action:@selector(changeSelect:) forControlEvents:UIControlEventValueChanged];
         
-        if([action isEqual:@"set"])
-            detail.selectedSegmentIndex=0;
-        else if([action isEqual:@"update"])
-            detail.selectedSegmentIndex=1;
+        if([action isEqual:@"update"])
+            detail.selectedSegmentIndex=UPDATE_INDEX;
         else if([action isEqual:@"delete"])
-            detail.selectedSegmentIndex=2;
+            detail.selectedSegmentIndex=DELETE_INDEX;
         self.actionField=detail;
     }
     else
@@ -207,13 +157,13 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"edit"];
         UITextField * detail = cell.editField;
         detail.delegate=self;
-        if(indexPath.item==0)
+        if(indexPath.item==ENTER_NAME_INDEX)
         {
             cell.textField.text=@"Enter your attribute";
             self.nameField=detail;
             key=@"attributeName";
         }
-        else if(indexPath.item==1)
+        else if(indexPath.item==ENTER_VALUE_INDEX)
         {
             cell.textField.text=@"Enter your value";
             self.valueField=detail;
@@ -231,7 +181,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -246,7 +196,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.item==2)
+    if(indexPath.item==CHOOSE_ACTION_INDEX)
         return 68;
     return 44;
 }
@@ -257,9 +207,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
     
-    if(indexPath.item==0)
+    if(indexPath.item==ENTER_NAME_INDEX)
         [self.nameField becomeFirstResponder];
-    else if(indexPath.item==1)
+    else if(indexPath.item==ENTER_VALUE_INDEX)
         [self.valueField becomeFirstResponder];
     else
     {
@@ -267,7 +217,7 @@
         [self.valueField resignFirstResponder];
     }
     
-    if(indexPath.item==3 || indexPath.item==4)
+    if(indexPath.item==SEND_VIA_QUEUE_INDEX)
     {
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSString * action = [defaults stringForKey:@"action"];
@@ -279,42 +229,7 @@
             return;
         }
         
-        if(indexPath.item==3)
-        {
-            void (^completion)(NSError*) = ^(NSError * error) {
-                if(error)
-                {
-                    self.flashFailure=TRUE;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    });
-                    return;
-                }
-                
-                self.flashReceived=TRUE;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                });
-            };
-            
-            if([action isEqual:@"delete"])
-            {
-                [self.client deleteUserAttributes: @[attributeName] completion: completion];
-            }
-            if([action isEqual:@"update"])
-            {
-                [self.client updateUserAttributes: @{attributeName:attributeValue} completion: completion];
-            }
-            if([action isEqual:@"set"])
-            {
-                [self.client setUserAttributes: @{attributeName:attributeValue} completion:completion];
-            }
-            self.flashSent=TRUE;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            });
-        }
-        if(indexPath.item==4)
+        if(indexPath.item==SEND_VIA_QUEUE_INDEX)
         {
             if([action isEqual:@"delete"])
             {
@@ -323,10 +238,6 @@
             if([action isEqual:@"update"])
             {
                 [self.queue updateUserAttributes: @{attributeName:attributeValue}];
-            }
-            if([action isEqual:@"set"])
-            {
-                [self.queue setUserAttributes: @{attributeName:attributeValue}];
             }
             self.flashQueueSent=TRUE;
             dispatch_async(dispatch_get_main_queue(), ^{

@@ -13,5 +13,5 @@
 @interface MCEAppDelegate : UIResponder <UIApplicationDelegate>
 
 /** This is the instance of the developer's application delegate that forwards calls to the MCEAppDelegate instance. */
-@property id<UIApplicationDelegate> appDelegate;
+@property (readonly) id<UIApplicationDelegate> appDelegate;
 @end

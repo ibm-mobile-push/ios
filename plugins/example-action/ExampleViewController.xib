@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExampleViewController">
+            <connections>
+                <outlet property="payloadLabel" destination="7oo-wa-aN3" id="43o-3V-wJc"/>
+                <outlet property="view" destination="9O2-Fj-zpw" id="yM0-dp-xzS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="9O2-Fj-zpw">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oo-wa-aN3">
+                    <rect key="frame" x="16" y="127" width="343" height="520"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ihb-GA-QzK">
+                    <rect key="frame" x="0.0" y="31" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="5Eo-Dx-uOL"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem title="Dismiss" id="OGP-49-Pxe">
+                            <connections>
+                                <action selector="dismiss:" destination="-1" id="Fou-59-BBs"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7oo-wa-aN3" firstAttribute="top" secondItem="Ihb-GA-QzK" secondAttribute="bottom" constant="20" id="JNK-oa-eXF"/>
+                <constraint firstItem="Ihb-GA-QzK" firstAttribute="top" secondItem="9O2-Fj-zpw" secondAttribute="top" constant="20" id="aKh-Sh-0Uf"/>
+                <constraint firstItem="7oo-wa-aN3" firstAttribute="leading" secondItem="9O2-Fj-zpw" secondAttribute="leading" constant="16" id="iBy-yM-lSf"/>
+                <constraint firstItem="Ihb-GA-QzK" firstAttribute="trailing" secondItem="9O2-Fj-zpw" secondAttribute="trailing" id="jhE-ZT-n5V"/>
+                <constraint firstAttribute="trailing" secondItem="7oo-wa-aN3" secondAttribute="trailing" constant="16" id="riV-Ga-SUE"/>
+                <constraint firstItem="Ihb-GA-QzK" firstAttribute="leading" secondItem="9O2-Fj-zpw" secondAttribute="leading" id="uYU-5g-zcB"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

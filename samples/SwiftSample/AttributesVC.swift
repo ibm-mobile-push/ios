@@ -14,14 +14,12 @@ enum AttributeItems: Int
     case name
     case value
     case action
-    case sendClient
     case sendQueue
-    static let count: Int = 5
+    static let count: Int = 4
 }
 
 enum Actions: Int
 {
-    case set
     case update
     case delete
 }
@@ -35,10 +33,8 @@ class AttributesVC : CellStatusTableViewController, UITextFieldDelegate
     @IBOutlet weak var actionField: UISegmentedControl?
 
     var queue: MCEAttributesQueueManager
-    var client: MCEAttributesClient
     required init?(coder aDecoder: NSCoder) {
         queue = MCEAttributesQueueManager.sharedInstance()
-        client = MCEAttributesClient.init()
         super.init(coder: aDecoder)
         status = ["client": .normal, "queue": .normal]
         
@@ -86,9 +82,6 @@ class AttributesVC : CellStatusTableViewController, UITextFieldDelegate
             {
                 switch(actionValue)
                 {
-                case .set:
-                    defaults.set("set", forKey: "action")
-                    break
                 case .update:
                     defaults.set("update", forKey: "action")
                     break
@@ -153,11 +146,6 @@ class AttributesVC : CellStatusTableViewController, UITextFieldDelegate
                     break;
                 }
                 return cell
-            case .sendClient:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "view", for: indexPath as IndexPath)
-                cell.textLabel!.text = "Click to send"
-                cellStatus(cell: cell, key: "client")
-                return cell
             case .sendQueue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "view", for: indexPath as IndexPath)
                 cell.textLabel!.text = "Click to send via queue"
@@ -213,7 +201,7 @@ class AttributesVC : CellStatusTableViewController, UITextFieldDelegate
             }
             
             
-            if(attributeItem == .sendClient || attributeItem == .sendQueue)
+            if(attributeItem == .sendQueue)
             {
                 let defaults = UserDefaults.standard
                 let action = defaults.string(forKey: "action")
@@ -224,54 +212,20 @@ class AttributesVC : CellStatusTableViewController, UITextFieldDelegate
                     UIAlertView.init(title: "Please enter values", message: "Please enter names and values before pressing the send button", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
                     return
                 }
-                
-                if(attributeItem == .sendClient)
+            
+                switch(action!)
                 {
-                    let completion:(Error?)->Void = {
-                        (error:Error?) -> Void in
-                        if error != nil
-                        {
-                            self.status["client"] = .failed
-                        }
-                        else
-                        {
-                            self.status["client"] = .recieved
-                        }
-                    }
-                    switch(action!)
-                    {
-                    case "delete":
-                        client.deleteUserAttributes([name!], completion: completion)
-                        break
-                    case "update":
-                        client.updateUserAttributes([name! : value!], completion: completion)
-                        break
-                    case "set":
-                        client.setUserAttributes([name! : value!], completion: completion)
-                        break
-                    default:
-                        break
-                    }
-                    status["client"] = .sent
+                case "delete":
+                    queue.deleteUserAttributes([name!])
+                    break
+                case "update":
+                    queue.updateUserAttributes([name! : value!])
+                    break
+                default:
+                    break                    
                 }
-                else if(attributeItem == .sendQueue)
-                {
-                    switch(action!)
-                    {
-                    case "delete":
-                        queue.deleteUserAttributes([name!])
-                        break
-                    case "update":
-                        queue.updateUserAttributes([name! : value!])
-                        break
-                    case "set":
-                        queue.setUserAttributes([name! : value!])
-                        break
-                    default:
-                        break                    
-                    }
-                    status["queue"] = .sent
-                }
+                status["queue"] = .sent
+            
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.tableView.reloadRows(at: [indexPath as IndexPath], with: .automatic)
                 })

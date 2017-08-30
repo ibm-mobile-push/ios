@@ -23,6 +23,7 @@
 #import "SnoozeActionPlugin.h"
 #import "DisplayWebViewPlugin.h"
 #import "TextInputActionPlugin.h"
+#import "ExamplePlugin.h"
 
 // MCE Inbox Plugins
 #import "MCEInboxActionPlugin.h"
@@ -122,6 +123,7 @@
         
         // Action Plugins
         [ActionMenuPlugin registerPlugin];
+        [ExamplePlugin registerPlugin];
         [AddToCalendarPlugin registerPlugin];
         [AddToPassbookPlugin registerPlugin];
         [SnoozeActionPlugin registerPlugin];

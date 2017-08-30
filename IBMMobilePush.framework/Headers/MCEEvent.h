@@ -10,7 +10,7 @@
 
 @import Foundation;
 
-/** The MCEEvent class represents events to be sent to the server via the MCEEventClient or MCEEventService classes. */
+/** The MCEEvent class represents events to be sent to the server via the MCEEventService class. */
 @interface MCEEvent : NSObject
 
 /** The type property is used to set the type value of the event. */

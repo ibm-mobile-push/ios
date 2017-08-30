@@ -49,11 +49,11 @@
 /** The deviceToken method converts from an NSData, provided by APNS to an NSString. */
 + (NSString *)deviceToken:(NSData *)deviceToken;
 
-/** The packageAttributes method takes a list of key value pairs and reformats it into an array of (key, value, type) in the attributes key of a dictionary. */
-+ (NSDictionary*)packageAttributes:(NSDictionary*)attributes;
+/** The packageAttributes method takes a list of key value pairs and reformats it into an array of (key, value, type). */
++ (NSArray*)packageAttributes:(NSDictionary*)attributes;
 
-/** The attributesFromPackagedAttributes: method takes an array of (key, value, type) in the attribute key of a dictionary and reformats it into a standard key value dictionary. */
-+ (NSDictionary*)attributesFromPackagedAttributes:(NSDictionary*)packagedAttributes;
+/** The attributesFromPackagedAttributes: method takes an array of (key, value, type) and reformats it into a standard key value dictionary. */
++ (NSDictionary*)attributesFromPackagedAttributes:(NSArray*)packagedAttributes;
 
 /** The pushEnabled method returns if the user has enabled or disabled push. */
 +(BOOL)pushEnabled;

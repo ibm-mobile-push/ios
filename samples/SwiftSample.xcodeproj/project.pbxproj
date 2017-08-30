@@ -14,10 +14,13 @@
 		C31380441BE1455400BC5910 /* InAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380431BE1455400BC5910 /* InAppVC.swift */; };
 		C31380471BE154B900BC5910 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380461BE154B900BC5910 /* MainVC.swift */; };
 		C31380831BE1567700BC5910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380821BE1567700BC5910 /* AppDelegate.swift */; };
+		C314C8761F3E4DC10096691B /* ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C314C8751F3E4DC10096691B /* ExampleViewController.xib */; };
 		C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C317F74E1B41FF1B00962B55 /* MceConfig.json */; };
 		C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C31827031B71257B00D497A2 /* richnotification.xcdatamodel */; };
 		C3211D971DEE1D8300F1CDFA /* iBeaconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3211D961DEE1D8300F1CDFA /* iBeaconVC.swift */; };
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
+		C336C1091F3E089400C33D40 /* ExamplePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C336C1061F3E089400C33D40 /* ExamplePlugin.m */; };
+		C336C10A1F3E089400C33D40 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C336C1081F3E089400C33D40 /* ExampleViewController.m */; };
 		C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */; };
 		C35134CA1DEF58C900261B85 /* IBMMobilePush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C31223981AD46573004175D7 /* IBMMobilePush.framework */; };
 		C35134CB1DEF58F700261B85 /* SwiftSampleNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C361A9951D3576E800D4EA9B /* SwiftSampleNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -111,11 +114,16 @@
 		C31380431BE1455400BC5910 /* InAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppVC.swift; sourceTree = "<group>"; };
 		C31380461BE154B900BC5910 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		C31380821BE1567700BC5910 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C314C8751F3E4DC10096691B /* ExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleViewController.xib; sourceTree = "<group>"; };
 		C317F74E1B41FF1B00962B55 /* MceConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MceConfig.json; path = ../MceConfig.json; sourceTree = SOURCE_ROOT; };
 		C31827031B71257B00D497A2 /* richnotification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = richnotification.xcdatamodel; path = ../richnotification.xcdatamodel; sourceTree = "<group>"; };
 		C3211D961DEE1D8300F1CDFA /* iBeaconVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iBeaconVC.swift; sourceTree = "<group>"; };
 		C335716E1B3B6461003E0A7A /* MCEInboxActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxActionPlugin.h; sourceTree = "<group>"; };
 		C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxActionPlugin.m; sourceTree = "<group>"; };
+		C336C1051F3E089400C33D40 /* ExamplePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamplePlugin.h; sourceTree = "<group>"; };
+		C336C1061F3E089400C33D40 /* ExamplePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamplePlugin.m; sourceTree = "<group>"; };
+		C336C1071F3E089400C33D40 /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		C336C1081F3E089400C33D40 /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
 		C34E05291B740D4500376671 /* MCEInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxTableViewController.h; sourceTree = "<group>"; };
 		C34E052A1B740D4500376671 /* MCEInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxTableViewController.m; sourceTree = "<group>"; };
 		C35C86941B45D71F00C07ABB /* MCEInAppBannerTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInAppBannerTemplate.h; sourceTree = "<group>"; };
@@ -260,6 +268,19 @@
 			path = ../plugins/inbox;
 			sourceTree = SOURCE_ROOT;
 		};
+		C336C1041F3E085F00C33D40 /* Example Action Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				C314C8751F3E4DC10096691B /* ExampleViewController.xib */,
+				C336C1051F3E089400C33D40 /* ExamplePlugin.h */,
+				C336C1061F3E089400C33D40 /* ExamplePlugin.m */,
+				C336C1071F3E089400C33D40 /* ExampleViewController.h */,
+				C336C1081F3E089400C33D40 /* ExampleViewController.m */,
+			);
+			name = "Example Action Plugin";
+			path = "../plugins/example-action";
+			sourceTree = "<group>";
+		};
 		C354C7BC1B39F41E0014F070 /* ActionMenu Plugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +412,7 @@
 		C3C399051B20DE740080DC49 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				C336C1041F3E085F00C33D40 /* Example Action Plugin */,
 				C3778E831D53CD0A00811B72 /* Text Input Action */,
 				C3C58E2F1C0F6090001F39D3 /* WebAction Plugin */,
 				C32FC3FC1B449F620035CAB8 /* InApp */,
@@ -400,7 +422,8 @@
 				C354C7BE1B39F4520014F070 /* AddToPassbook Plugin */,
 				C354C7BF1B39F45E0014F070 /* SnoozeAction Plugin */,
 			);
-			path = Plugins;
+			name = Plugins;
+			path = ../plugins;
 			sourceTree = "<group>";
 		};
 		C3C58E2F1C0F6090001F39D3 /* WebAction Plugin */ = {
@@ -631,6 +654,7 @@
 				C35F70B81C654EB000070DB6 /* Media.xcassets in Resources */,
 				C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */,
 				C35F70B21C654EB000070DB6 /* MCEInboxPostTemplateDisplay.xib in Resources */,
+				C314C8761F3E4DC10096691B /* ExampleViewController.xib in Resources */,
 				C3DC7EA91B83ECB800BA1CDD /* Inbox Images.xcassets in Resources */,
 				C3D01E6C1A607F7F00C9A66C /* Images.xcassets in Resources */,
 				C35C86991B45D71F00C07ABB /* MCEInAppBannerTemplate.xib in Resources */,
@@ -670,6 +694,7 @@
 				C3778E861D53CD2300811B72 /* TextInputActionPlugin.m in Sources */,
 				C3CF5BEC1C5803C50026ECC8 /* MCEInAppVideoPlayerView.m in Sources */,
 				C3C399111B20DE8B0080DC49 /* AddToCalendarPlugin.m in Sources */,
+				C336C1091F3E089400C33D40 /* ExamplePlugin.m in Sources */,
 				C3C399081B20DE7C0080DC49 /* SnoozeActionPlugin.m in Sources */,
 				C367FDC11BE2733300AD32AE /* CellStatusTableViewController.swift in Sources */,
 				C35F70B51C654EB000070DB6 /* MCEInboxPostTemplateVideoPlayerView.m in Sources */,
@@ -688,6 +713,7 @@
 				C35F70B11C654EB000070DB6 /* MCEInboxPostTemplateDisplay.m in Sources */,
 				C35F70B31C654EB000070DB6 /* MCEInboxPostTemplateImage.m in Sources */,
 				C3C58E351C0F6090001F39D3 /* WebViewController.m in Sources */,
+				C336C10A1F3E089400C33D40 /* ExampleViewController.m in Sources */,
 				C3C58E341C0F6090001F39D3 /* DisplayWebViewPlugin.m in Sources */,
 				C3C3990E1B20DE850080DC49 /* AddToPassbookPlugin.m in Sources */,
 				C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */,

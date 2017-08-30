@@ -11,18 +11,15 @@ import UIKit
 
 enum EventItems: Int
 {
-    case sendViaClient
     case sendViaQueue
     case queueEvent
     case sendQueue
     
-    static let count: Int = 4
+    static let count: Int = 3
 }
 
 class EventsVC : CellStatusTableViewController
 {
-    var eventClient: MCEEventClient
-    
     func updateButtonsToReceived(note: NSNotification)
     {
         updateButtonsTo(newStatus: .recieved, events: note.userInfo!["events"] as! [MCEEvent])
@@ -65,8 +62,6 @@ class EventsVC : CellStatusTableViewController
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("MCEEventFailure"), object: nil)
     }
     required init?(coder aDecoder: NSCoder) {
-        eventClient = MCEEventClient()
-        
         super.init(coder: aDecoder)
         status = [ "client": .normal, "eventQueue": .normal, "addQueue": .normal, "sendQueue": .normal ]
 
@@ -82,10 +77,6 @@ class EventsVC : CellStatusTableViewController
         {
             switch(eventItem)
             {
-            case .sendViaClient:
-                cell.textLabel!.text = "Send Event Via Client"
-                cellStatus(cell: cell, key: "client")
-                break
             case .sendViaQueue:
                 cell.textLabel!.text="Send Event Via Queue"
                 cellStatus(cell: cell, key: "eventQueue")
@@ -131,29 +122,6 @@ class EventsVC : CellStatusTableViewController
         {
             switch(eventItem)
             {
-            case .sendViaClient:
-                let event = MCEEvent.init()
-                event.fromDictionary(["name" : "appOpened", "type": "simpleNotification", "timestamp": NSDate.init()])
-                status["client"] = .sent
-                DispatchQueue.main.async(execute: { () -> Void in
-                    tableView.reloadData()
-                })
-                
-                eventClient.sendEvents([event], completion: { (error: Error?) -> Void in
-                    if let _ = error
-                    {
-                        self.status["client"] = .failed
-                    }
-                    else
-                    {
-                        self.status["client"] = .recieved
-                    }
-                    
-                    DispatchQueue.main.async(execute:  { () -> Void in
-                        tableView.reloadData()
-                    })
-                })
-                break
             case .sendViaQueue:
                 let event = MCEEvent.init()
                 event.fromDictionary(["name" : "appOpened", "type": "simpleNotification", "timestamp": NSDate.init(), "attributes": ["reference": "eventQueueEvent"]])
