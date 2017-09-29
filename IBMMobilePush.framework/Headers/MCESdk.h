@@ -53,6 +53,9 @@
  */
 - (void) manualInitialization;
 
+/** Manually initialize location services for SDK, requires location's autoInitialize=FALSE MceConfig.plist flag. This is used to delay location services initalization until desired. */
+-(void)manualLocationInitialization;
+
 /** Shows a dynamic category notification, integration point of the application delegate application:didReceiveRemoteNotification:fetchCompletionHandler: method.
 
  @param userInfo passed from didReceiveRemoteNotification parameter of caller

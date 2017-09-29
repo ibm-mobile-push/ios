@@ -27,6 +27,9 @@ extern int mceLogLevel;
 /** autoInitializeFlag specifies if the SDK should initialize itself automatically or wait until the MCESdk manualInitialization method is called. This could be helpful if you want to limit the registered users and channels in your database. If not specified, this value is TRUE. */
 @property BOOL autoInitializeFlag;
 
+/** autoInitializeLocationFlag specifies if the SDK should initialize the location services at first launch or wait until the MCESdk manualLocationInitialization method is called. */
+@property BOOL autoInitializeLocationFlag;
+
 /** metricTimeInterval specifies how frequently metrics are sent to the server. If not specified, it defaults to 3 minutes. */
 @property double metricTimeInterval;
 

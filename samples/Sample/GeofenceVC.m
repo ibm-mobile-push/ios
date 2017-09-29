@@ -19,8 +19,6 @@
 @property NSMutableDictionary * circleToIdentifier;
 @end
 
-// TODO listen for geofence changes from SDK!
-
 @implementation GeofenceVC
 -(void)awakeFromNib
 {
@@ -28,22 +26,53 @@
     self.queue = dispatch_queue_create("background", nil);
 }
 
+-(IBAction)enable:(id)sender
+{
+    [MCESdk.sharedInstance manualLocationInitialization];
+}
+
+-(void)updateStatus
+{
+    MCEConfig* config = [[MCESdk sharedInstance] config];
+    if(config.geofenceEnabled)
+    {
+        switch(CLLocationManager.authorizationStatus)
+        {
+            case kCLAuthorizationStatusDenied:
+                [self.status setTitle:@"DENIED" forState:UIControlStateNormal];
+                [self.status setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                break;
+            case kCLAuthorizationStatusNotDetermined:
+                [self.status setTitle:@"DELAYED (Touch to enable)" forState:UIControlStateNormal];
+                [self.status setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+                break;
+            case kCLAuthorizationStatusAuthorizedAlways:
+                [self.status setTitle:@"ENABLED" forState:UIControlStateNormal];
+                [self.status setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+                break;
+            case kCLAuthorizationStatusRestricted:
+                [self.status setTitle:@"RESTRICTED?" forState:UIControlStateNormal];
+                [self.status setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+
+                break;
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+                [self.status setTitle:@"ENABLED WHEN IN USE" forState:UIControlStateNormal];
+                [self.status setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+                break;
+        }
+    }
+    else
+    {
+        [self.status setTitle:@"DISABLED" forState:UIControlStateNormal];
+        [self.status setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self createMonitor];
-
-    MCEConfig* config = [[MCESdk sharedInstance] config];
-    if(config.geofenceEnabled)
-    {
-        self.status.text = @"ENABLED";
-        self.status.textColor=[UIColor greenColor];
-    }
-    else
-    {
-        self.status.text = @"DISABLED";
-        self.status.textColor=[UIColor redColor];
-    }
+    [self updateStatus];
 }
 
 // TODO remove monitor when app not in foreground?
@@ -51,28 +80,10 @@
 {
     self.overlayIds = [NSMutableSet set];
     self.circleToIdentifier = [NSMutableDictionary dictionary];
-    CLAuthorizationStatus authStatus = CLLocationManager.authorizationStatus;
-    if(authStatus == kCLAuthorizationStatusRestricted || authStatus == kCLAuthorizationStatusDenied)
-    {
-        NSLog(@"Not allowed to use location services, notify user?");
-        return;
-    }
     
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
-    
-    if(authStatus == kCLAuthorizationStatusNotDetermined)
-    {
-        NSLog(@"auth status unknown, asking user");
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    if(!CLLocationManager.locationServicesEnabled)
-    {
-        NSLog(@"location services is not enabled, notify user?");
-        return;
-    }
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -256,6 +267,11 @@
     renderer.lineWidth = 1;
     renderer.lineDashPattern = @[ @(2), @(2) ];
     return renderer;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    [self updateStatus];
 }
 
 @end

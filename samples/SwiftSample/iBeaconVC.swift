@@ -9,13 +9,31 @@
 
 import Foundation
 
-class iBeaconVC: UITableViewController {
+class iBeaconVC: UITableViewController, CLLocationManagerDelegate {
     var beaconRegions = [CLBeaconRegion]()
     var beaconStatus = [NSNumber:String]()
+    var locationManager: CLLocationManager
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        tableView.reloadRows(at: [IndexPath(item: 1, section:0)], with: .automatic)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        locationManager = CLLocationManager()
+        super.init(coder: aDecoder)
+        locationManager.delegate = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.beaconRegions = MCELocationDatabase.sharedInstance().beaconRegions().sortedArray(using: [ NSSortDescriptor(key: "major", ascending: true) ]) as! [CLBeaconRegion]
+        if let regions = MCELocationDatabase.sharedInstance().beaconRegions()
+        {
+            self.beaconRegions = regions.sortedArray(using: [ NSSortDescriptor(key: "major", ascending: true) ]) as! [CLBeaconRegion]
+        }
+        else
+        {
+            self.beaconRegions = []
+        }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: EnteredBeacon), object: nil, queue: OperationQueue.main) {
             notification in
@@ -51,16 +69,45 @@ class iBeaconVC: UITableViewController {
             if(indexPath.item==0)
             {
                 vertical.textLabel!.text = "UUID"
-                vertical.detailTextLabel!.text = config?.beaconUUID.uuidString
-                vertical.detailTextLabel!.textColor = UIColor.black
+                if let uuid = config?.beaconUUID
+                {
+                    vertical.detailTextLabel!.text = uuid.uuidString
+                    vertical.detailTextLabel!.textColor = .black
+                }
+                else
+                {
+                    vertical.detailTextLabel!.text = "UNDEFINED"
+                    vertical.detailTextLabel!.textColor = .gray
+                }
             }
             else
             {
                 vertical.textLabel!.text = "Status"
                 if(config!.beaconEnabled)
                 {
-                    vertical.detailTextLabel!.text = "ENABLED"
-                    vertical.detailTextLabel!.textColor = UIColor.green
+                    switch(CLLocationManager.authorizationStatus())
+                    {
+                    case .denied:
+                        vertical.detailTextLabel!.text = "DENIED"
+                        vertical.detailTextLabel!.textColor = .red
+                        break
+                    case .notDetermined:
+                        vertical.detailTextLabel!.text = "DELAYED (Touch to enable)"
+                        vertical.detailTextLabel!.textColor = .gray
+                        break
+                    case .authorizedAlways:
+                        vertical.detailTextLabel!.text = "ENABLED"
+                        vertical.detailTextLabel!.textColor = .green
+                        break
+                    case .restricted:
+                        vertical.detailTextLabel!.text = "RESTRICTED?"
+                        vertical.detailTextLabel!.textColor = .gray
+                        break
+                    case .authorizedWhenInUse:
+                        vertical.detailTextLabel!.text = "ENABLED WHEN IN USE"
+                        vertical.detailTextLabel!.textColor = .gray
+                        break
+                    }
                 }
                 else
                 {
@@ -74,7 +121,7 @@ class iBeaconVC: UITableViewController {
         let basic = tableView.dequeueReusableCell(withIdentifier: "basic", for: indexPath)
         let major = self.beaconRegions[indexPath.item].major
         basic.textLabel!.text = String(format: "%@", major!)
-        if(self.beaconStatus[major!] != nil)
+        if self.beaconStatus[major!] != nil
         {
             basic.detailTextLabel!.text = self.beaconStatus[major!]
         }
@@ -85,7 +132,12 @@ class iBeaconVC: UITableViewController {
         
         return basic
     }
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.item == 1
+        {
+            MCESdk.sharedInstance().manualLocationInitialization()
+        }
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section==0)
         {

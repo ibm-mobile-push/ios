@@ -14,7 +14,7 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var gpsButton: UIBarButtonItem!
-    @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var status: UIButton!
     
     var locationManager: CLLocationManager
     var lastLocation: CLLocation?
@@ -33,47 +33,52 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    func updateStatus()
+    {
         let config = MCESdk.sharedInstance().config;
         if(config!.geofenceEnabled)
         {
-            status.text="ENABLED"
-            status.textColor = UIColor.green
+            switch(CLLocationManager.authorizationStatus())
+            {
+            case .denied:
+                status.setTitle("DENIED", for: .normal)
+                status.setTitleColor(.red, for: .normal)
+                break
+            case .notDetermined:
+                status.setTitle("DELAYED (Touch to enable)", for: .normal)
+                status.setTitleColor(.gray, for: .normal)
+                break
+            case .authorizedAlways:
+                status.setTitle("ENABLED", for: .normal)
+                status.setTitleColor(.green, for: .normal)
+                break
+            case .restricted:
+                status.setTitle("RESTRICTED?", for: .normal)
+                status.setTitleColor(.gray, for: .normal)
+                break
+            case .authorizedWhenInUse:
+                status.setTitle("ENABLED WHEN IN USE", for: .normal)
+                status.setTitleColor(.gray, for: .normal)
+                break
+            }
         }
         else
         {
-            status.text="DISABLED"
-            status.textColor = UIColor.red
+            status.setTitle("DISABLED", for: .normal)
+            status.setTitleColor(.red, for: .normal)
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateStatus()
         createMonitor()
     }
     
     func createMonitor()
     {
         overlayIds = []
-        let authStatus = CLLocationManager.authorizationStatus()
-        if(authStatus == CLAuthorizationStatus.restricted || authStatus == CLAuthorizationStatus.denied)
-        {
-            NSLog("Not allowed to use location services, notify user?")
-            return
-        }
-        
         locationManager.startUpdatingLocation()
-        
-        if(authStatus == CLAuthorizationStatus.notDetermined)
-        {
-            NSLog("Auth status unknown, asking user")
-            locationManager.requestWhenInUseAuthorization()
-        }
-        
-        if(!CLLocationManager.locationServicesEnabled())
-        {
-            NSLog("Location services is not enabled, notifiy user?")
-            return
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -128,7 +133,12 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     {
         return true
     }
-    
+
+    @IBAction func enable(sender: AnyObject)
+    {
+        MCESdk.sharedInstance().manualLocationInitialization()
+    }
+
     @IBAction func refresh(sender: AnyObject)
     {
         MCELocationClient().scheduleSync()
@@ -204,5 +214,9 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         renderer.lineWidth = 1
         renderer.lineDashPattern = [2,2]
         return renderer
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        updateStatus()
     }
 }

@@ -14,7 +14,8 @@
 @interface GeofenceVC : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate>
 @property IBOutlet MKMapView * mapView;
 @property IBOutlet UIBarButtonItem * gpsButton;
-@property IBOutlet UILabel * status;
+@property IBOutlet UIButton * status;
 -(IBAction)clickGpsButton:(id)sender;
 -(IBAction)refresh:(id)sender;
+-(IBAction)enable:(id)sender;
 @end

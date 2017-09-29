@@ -7,8 +7,9 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import CoreLocation;
 
-@interface iBeaconVC : UITableViewController
+@interface iBeaconVC : UITableViewController <CLLocationManagerDelegate>
 -(IBAction)refresh:(id)sender;
 @end
