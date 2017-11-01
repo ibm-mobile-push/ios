@@ -9,10 +9,8 @@
  */
 
 @import Foundation;
-
 @import CoreLocation;
-@import CoreBluetooth;
 
-@interface MCEBeaconManager: NSObject <CLLocationManagerDelegate, CBCentralManagerDelegate>
+@interface MCEBeaconManager: NSObject <CLLocationManagerDelegate>
 + (instancetype)sharedInstance;
 @end
