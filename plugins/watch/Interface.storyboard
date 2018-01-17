@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13507"/>
+    </dependencies>
+    <scenes>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="hj1-9W-fak">
+            <objects>
+                <notificationController id="7lY-jN-ZUz">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="PYE-El-T2r"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="mce-watch-category" id="yqb-oE-wSO"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="PYE-El-T2r" id="KSP-DE-Szp"/>
+                        <segue destination="NDp-KU-Pwj" kind="relationship" relationship="dynamicNotificationInterface" id="D36-ho-Uh9"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="1265"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="4ai-0g-JXT">
+            <objects>
+                <controller id="NDp-KU-Pwj" customClass="NotificationController">
+                    <items>
+                        <imageView width="1" height="82" alignment="center" hidden="YES" contentMode="scaleAspectFill" id="Ydl-22-Lbn"/>
+                        <group width="1" alignment="left" contentMode="top" layout="vertical" id="Zib-J1-ogD">
+                            <items>
+                                <label width="136" alignment="left" hidden="YES" text="Label" textAlignment="left" numberOfLines="4" id="fDW-jX-kAG">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label width="136" alignment="left" hidden="YES" text="body" textAlignment="left" numberOfLines="5" id="ccv-LI-faH">
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                </label>
+                                <map height="100" alignment="left" hidden="YES" id="Hhl-rB-aPv"/>
+                            </items>
+                            <edgeInsets key="margins" left="3" right="3" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="backgroundGroup" destination="Zib-J1-ogD" id="cad-jE-wTy"/>
+                        <outlet property="bodyLabel" destination="ccv-LI-faH" id="NHv-Go-i1c"/>
+                        <outlet property="headerImage" destination="Ydl-22-Lbn" id="weY-A0-j8a"/>
+                        <outlet property="mapView" destination="Hhl-rB-aPv" id="tbK-uk-frM"/>
+                        <outlet property="titleLabel" destination="fDW-jX-kAG" id="584-O4-I6i"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="548" y="1265"/>
+        </scene>
+        <!--HandOff-->
+        <scene sceneID="FMb-OH-ACX">
+            <objects>
+                <controller identifier="handoff" title="HandOff" id="siw-o4-Wey" customClass="HandOffController">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="0I8-1G-c1Z">
+                            <items>
+                                <label width="1" height="0.59999999999999998" alignment="left" text="Please continue on your iPhone or Mac with handoff" textAlignment="center" numberOfLines="0" id="i39-Wt-Kut"/>
+                                <button width="1" alignment="left" verticalAlignment="bottom" title="Dismiss" id="wOk-cI-OBx">
+                                    <connections>
+                                        <action selector="dismiss:" destination="siw-o4-Wey" id="3bu-Mp-VSd"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="948"/>
+        </scene>
+    </scenes>
+</document>

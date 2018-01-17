@@ -7,7 +7,11 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+#if __has_feature(modules)
+@import UIKit;
+#else
 #import <UIKit/UIKit.h>
+#endif
 
 @interface ExampleViewController : UIViewController
 @property NSString *payload;

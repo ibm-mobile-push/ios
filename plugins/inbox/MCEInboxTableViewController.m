@@ -21,6 +21,7 @@
 @property UIViewController * alternateDisplayViewController;
 @property (nonatomic, strong) id previewingContext;
 @property (nonatomic, strong) NSIndexPath *previewingIndexPath;
+@property NSObject * observer;
 @end
 
 @interface NSObject (AssociatedObject)
@@ -32,87 +33,83 @@
 // The purpose of this method is to smoothly update the list of messages instead of just executing [self.tableView reloadData];
 -(void)smartUpdateMessages:(NSMutableArray*)inboxMessages
 {
-    NSArray * originalMessages = [self.inboxMessages copy];
-    
-    // create a single unified list of all the messages
-    NSMutableArray * allMessages = [inboxMessages mutableCopy];
-    for(MCEInboxMessage * message in self.inboxMessages)
-    {
-        if(![allMessages containsObject:message])
-        {
-            [allMessages addObject: message];
-        }
-    }
-    
-    // Sorted same as the db
-    [allMessages sortUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey: @"sendDate" ascending: self.ascending] ]];
-    
-    if([allMessages isEqual:originalMessages])
+    if([inboxMessages isEqual:self.inboxMessages])
     {
         return;
     }
     
-    // determine what messages are new
-    NSMutableArray * newIndexes = [NSMutableArray array];
-    for(MCEInboxMessage * message in allMessages)
+    NSSet * newMessages = [NSSet setWithArray:inboxMessages];
+    NSSet * oldMessages = [NSSet setWithArray:self.inboxMessages];
+    
+    [self.tableView beginUpdates];
+
+    NSMutableSet * deletedMessages = [oldMessages mutableCopy];
+    [deletedMessages minusSet: newMessages];
+
+    if([deletedMessages count])
     {
-        if(![self.inboxMessages containsObject: message])
+        NSMutableArray * removedIndexes = [NSMutableArray array];
+        for(MCEInboxMessage * message in deletedMessages)
         {
-            NSInteger row = [allMessages indexOfObject: message];
-            [newIndexes addObject: [NSIndexPath indexPathForRow: row inSection: 0]];
+            NSUInteger index = [self.inboxMessages indexOfObject:message];
+            [removedIndexes addObject: [NSIndexPath indexPathForRow: index inSection: 0]];
         }
+        [self.tableView deleteRowsAtIndexPaths:removedIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
-    // insert the new messages into the table
-    self.inboxMessages = allMessages;
-    [self.tableView insertRowsAtIndexPaths:newIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    // find the messages that aren't in the final message list anymore
-    NSMutableArray * removedIndexes = [NSMutableArray array];
-    for (MCEInboxMessage * message in allMessages) {
-        if(![inboxMessages containsObject:message])
+    NSMutableSet * insertedMessages = [newMessages mutableCopy];
+    [insertedMessages minusSet: oldMessages];
+
+    if([insertedMessages count])
+    {
+        NSMutableArray * insertedIndexes = [NSMutableArray array];
+        for(MCEInboxMessage * message in insertedMessages)
         {
-            NSInteger row = [allMessages indexOfObject: message];
-            [removedIndexes addObject: [NSIndexPath indexPathForRow: row inSection: 0]];
+            NSUInteger index = [inboxMessages indexOfObject:message];
+            [insertedIndexes addObject: [NSIndexPath indexPathForRow: index inSection: 0]];
         }
+        [self.tableView insertRowsAtIndexPaths:insertedIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-    
-    // delete the messages that aren't in the final list
-    self.inboxMessages = inboxMessages;
-    [self.tableView deleteRowsAtIndexPaths:removedIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    
-    // find the messages that the isRead status changed
-    NSMutableArray * readIndexes = [NSMutableArray array];
-    for (MCEInboxMessage * message in self.inboxMessages) {
-        if([originalMessages containsObject:message])
+
+    NSMutableArray * updatedIndexes = [NSMutableArray array];
+    for (MCEInboxMessage * message in inboxMessages) {
+        NSUInteger index = [self.inboxMessages indexOfObject: message];
+        if(index != NSNotFound)
         {
-            NSInteger row = [originalMessages indexOfObject: message];
-            MCEInboxMessage * originalMessage = [originalMessages objectAtIndex: row];
+            MCEInboxMessage * originalMessage = [self.inboxMessages objectAtIndex:index];
             if(originalMessage.isRead != message.isRead)
             {
-                [readIndexes addObject: [NSIndexPath indexPathForRow: row inSection: 0]];
+                [updatedIndexes addObject: [NSIndexPath indexPathForRow: index inSection: 0]];
             }
         }
     }
+    [self.tableView reloadRowsAtIndexPaths:updatedIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    // update the rows with isRead status changes
-    [self.tableView reloadRowsAtIndexPaths: readIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    
+    self.inboxMessages = inboxMessages;
+    [self.tableView endUpdates];
 }
 
 -(void)syncDatabase:(NSNotification*)notification
 {
-    NSMutableArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending:self.ascending];
-    if(!inboxMessages)
-    {
-        NSLog(@"Could not sync database");
-        return;
-    }
-    
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self smartUpdateMessages:inboxMessages];
         [self.refreshControl endRefreshing];
+
+        NSMutableArray * inboxMessages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending:self.ascending];
+        if(!inboxMessages)
+        {
+            NSLog(@"Could not sync database");
+            return;
+        }
+        
+        [self smartUpdateMessages:inboxMessages];
+    });
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[MCEInboxQueueManager sharedInstance] syncInbox];
     });
 }
 
@@ -168,8 +165,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.row];
         inboxMessage.isDeleted=TRUE;
-        [self.inboxMessages removeObjectAtIndex: indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self syncDatabase:nil];
     }
 }
 
@@ -182,7 +178,7 @@
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.item];
-    id<MCETemplate> template = [[MCETemplateRegistry sharedInstance] handlerForTemplate:inboxMessage.template];
+    id<MCETemplate> template = [[MCETemplateRegistry sharedInstance] handlerForTemplate:inboxMessage.templateName];
     UITableViewCell* cell = [template cellForTableView: tableView inboxMessage:inboxMessage indexPath: indexPath];
     
     if(!cell)
@@ -203,15 +199,14 @@
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.item];
     return @[
              [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-                 NSLog(@"Delete message!");
+                 NSLog(@"Delete message %@", inboxMessage.inboxMessageId);
                  inboxMessage.isDeleted=TRUE;
                  
-                 [self.inboxMessages removeObjectAtIndex: indexPath.row];
-                 [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                 [self syncDatabase:nil];
              }],
              [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:inboxMessage.isRead ? @"Mark as Unread" : @"Mark as Read" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-                 NSLog(@"Set to read/unread!");
                  inboxMessage.isRead = !inboxMessage.isRead;
+                 NSLog(@"Set message %@ to %@!", inboxMessage.inboxMessageId, inboxMessage.isRead ? @"Read" : @"Unread");
                  [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
              }]
              ];
@@ -231,7 +226,7 @@
 {
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.row];
     
-    NSString * template = inboxMessage.template;
+    NSString * template = inboxMessage.templateName;
     id <MCETemplate> templateHandler = [[MCETemplateRegistry sharedInstance] handlerForTemplate: template];
     id <MCETemplateDisplay> displayViewController = [templateHandler displayViewController];
     if(!displayViewController)
@@ -265,7 +260,6 @@
         previousButton.enabled=FALSE;
     else
         previousButton.enabled=TRUE;
-    
     
     UIBarButtonItem * nextButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"chevron-down"] style:UIBarButtonItemStylePlain target:self action:@selector(nextMessage:)];
     nextButton.associatedObject = indexPath;
@@ -308,8 +302,8 @@
         if(templateDisplay)
         {
             templateDisplay.inboxMessage.isDeleted=TRUE;
-            [self syncDatabase:nil];
             [self.navigationController popViewControllerAnimated:TRUE];
+            [self syncDatabase:nil];
         }
     }
 }
@@ -347,7 +341,7 @@
 - (CGFloat)tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath
 {
     MCEInboxMessage * inboxMessage = self.inboxMessages[indexPath.item];
-    id<MCETemplate> template = [[MCETemplateRegistry sharedInstance] handlerForTemplate:inboxMessage.template];
+    id<MCETemplate> template = [[MCETemplateRegistry sharedInstance] handlerForTemplate:inboxMessage.templateName];
     return [template tableView: tableView heightForRowAtIndexPath:indexPath inboxMessage:inboxMessage];
 }
 
@@ -375,12 +369,12 @@
     
     CGPoint cellPostion = [self.tableView convertPoint:location fromView:self.view];
     self.previewingIndexPath = [self.tableView indexPathForRowAtPoint:cellPostion];
-
+    
     if (self.previewingIndexPath)
     {
         UITableViewCell *tableCell = [self.tableView cellForRowAtIndexPath:self.previewingIndexPath];
         UIViewController * vc = [self viewControllerForIndexPath:self.previewingIndexPath];
-    
+        
         if(vc)
         {
             previewingContext.sourceRect = [self.view convertRect:tableCell.frame fromView:self.tableView];

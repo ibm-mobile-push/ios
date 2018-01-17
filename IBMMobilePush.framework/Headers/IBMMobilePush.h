@@ -8,8 +8,13 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
 @import Foundation;
+#else
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
 
 //! Project version number for IBMMobilePush.
 FOUNDATION_EXPORT double IBMMobilePushVersionNumber;

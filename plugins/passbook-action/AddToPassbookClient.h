@@ -7,9 +7,15 @@
  * deposited with the U.S. Copyright Office.
  */
 
-#import <Foundation/Foundation.h>
-#import <IBMMobilePush/IBMMobilePush.h>
+#if __has_feature(modules)
+@import Foundation;
 @import PassKit;
+#else
+#import <Foundation/Foundation.h>
+#import <PassKit/PassKit.h>
+#endif
+
+#import <IBMMobilePush/IBMMobilePush.h>
 
 typedef void (^PassCallback)(PKPass * pass, NSError* error);
 

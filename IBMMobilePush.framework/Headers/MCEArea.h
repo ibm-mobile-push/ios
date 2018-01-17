@@ -8,19 +8,19 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
 @import CoreLocation;
+#else
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#endif
 
 /** The MCEArea class represents a geographic area. */
 @interface MCEArea : NSObject
 
 /** radius represents the size of the geographic area from the center to edge in meters */
 @property double radius;
-
-@property double minLatitude;
-@property double maxLatitude;
-@property double minLongitude;
-@property double maxLongitude;
 
 /** latitude represents the latitude at the center of the geographic area */
 @property (readonly) double latitude;

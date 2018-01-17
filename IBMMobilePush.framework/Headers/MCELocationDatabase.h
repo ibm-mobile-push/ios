@@ -8,8 +8,14 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
 @import CoreLocation;
+#else
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#endif
+
 
 /** MCELocationDatabase manages the database that holds the synced locations from the server. */
 @interface MCELocationDatabase : NSObject

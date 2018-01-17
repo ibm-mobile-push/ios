@@ -7,7 +7,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 /** The MCEPhoneHomeManager class can be used to force a phone home update when you know the userId or channelId is updated on the server. */
 @interface MCEPhoneHomeManager : NSObject

@@ -10,7 +10,11 @@
 #import "MCEInboxPostTemplateImage.h"
 #import "MCEInboxPostTemplateView.h"
 
+#if __has_feature(modules)
 @import AVFoundation;
+#else
+#import <AVFoundation/AVFoundation.h>
+#endif
 
 const CGFloat UNKNOWN_IMAGE_HEIGHT = 100;
 const CGSize HEADER_IMAGE_SIZE = {54, 54};

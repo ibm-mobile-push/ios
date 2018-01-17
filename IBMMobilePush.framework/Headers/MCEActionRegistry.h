@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
+#else
+#import <UIKit/UIKit.h>
+#endif
 
 /** This protocol defines the optional method that is used to configure alert fields in text entry actions. */
 @protocol MCEActionProtocol <NSObject>

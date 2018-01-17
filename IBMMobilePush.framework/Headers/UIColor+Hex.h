@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
+#else
+#import <UIKit/UIKit.h>
+#endif
 
 /** This class extension is used to translate an html color representation to a UIColor. */
 @interface UIColor (fromHex)

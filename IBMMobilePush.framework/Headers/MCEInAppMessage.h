@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 @class MCEResultSet;
 
@@ -25,7 +29,7 @@
 @property NSInteger numViews;
 
 /** The template property defines the registered template that displays this message. */
-@property NSString * template;
+@property NSString * templateName;
 
 /** The content property defines the content of the message. Its structure and values are defined by the developer of the template that displays the message. */
 @property NSDictionary * content;

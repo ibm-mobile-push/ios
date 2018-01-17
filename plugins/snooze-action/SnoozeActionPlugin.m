@@ -24,7 +24,7 @@
 -(void)performAction:(NSDictionary*)action payload:(NSDictionary*)payload
 {
     NSInteger minutes = [[action valueForKey:@"value"] integerValue];
-    NSLog(@"Snooze for %ld minutes", minutes);
+    NSLog(@"Snooze for %ld minutes", (long)minutes);
     UILocalNotification * notification = [[UILocalNotification alloc] init];
     
     notification.userInfo = payload;

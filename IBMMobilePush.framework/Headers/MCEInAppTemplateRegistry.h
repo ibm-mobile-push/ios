@@ -8,7 +8,12 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
+
 #import "MCEInAppTemplate.h"
 
 /** The MCEInAppTemplateRegistry class is used to tie inApp template names to display handlers. */

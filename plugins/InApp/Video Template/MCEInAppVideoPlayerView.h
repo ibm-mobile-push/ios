@@ -7,8 +7,13 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
-#import <UIKit/UIKit.h>
+#if __has_feature(modules)
+@import UIKit;
 @import AVFoundation;
+#else
+#import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#endif
 
 @interface MCEInAppVideoPlayerView : UIButton
 -(void)loadVideoPlayer:(AVPlayer*)player;

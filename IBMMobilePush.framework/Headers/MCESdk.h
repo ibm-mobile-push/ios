@@ -9,7 +9,12 @@
  */
 
 #import "MCEConfig.h"
+
+#if __has_feature(modules)
 @import UIKit;
+#else
+#import <UIKit/UIKit.h>
+#endif
 
 /** The MCESdk class is the central integration point for the SDK as a whole. */
 
@@ -21,6 +26,7 @@
 /** This property sets the current alert view controller class, it can be customized by the developer of the application. */
 @property Class customAlertControllerClass;
 
+/** This property can be used to override if a notification is delivered to the device when the app is running. */
 @property (nonatomic, assign) BOOL (^presentNotification)(NSDictionary * userInfo);
 
 /** This method returns the singleton object of this class. */
@@ -41,7 +47,7 @@
  */
 - (void)handleApplicationLaunchWithConfig:(NSDictionary *)config;
 
-
+/** This method should be called if the application:didFailToRegisterForRemoteNotificationsWithError: method is called if manual integration is used. */
 -(void)deviceTokenRegistartionFailed;
 
 /** Register device token with IBM Push Notification servers

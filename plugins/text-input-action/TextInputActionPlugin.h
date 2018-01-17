@@ -8,7 +8,12 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
+@import UIKit;
+#else
 #import <UIKit/UIKit.h>
+#endif
+
 #import <IBMMobilePush/IBMMobilePush.h>
 
 @interface TextInputActionPlugin : NSObject <MCEActionProtocol>

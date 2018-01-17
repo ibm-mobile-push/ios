@@ -8,7 +8,12 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
+#else
+#import <UIKit/UIKit.h>
+#endif
+
 @class MCEInboxMessage;
 
 /** The MCEInboxDatabase class owns and interacts with the inbox database. */
@@ -37,5 +42,8 @@
  @return Returns the most recent MCEInboxMessage object or a nil value in the case of failure. 
  */
 -(MCEInboxMessage*)inboxMessageWithRichContentId:(NSString*)richContentId;
+
+/** Clears expired messages from the database. */
+-(void)clearExpiredMessages;
 
 @end

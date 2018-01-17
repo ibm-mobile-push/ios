@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
+@import UIKit;
+#else
 #import <UIKit/UIKit.h>
+#endif
 
 @interface WebViewController : UIViewController <UIWebViewDelegate>
 -(instancetype)initWithURL:(NSURL*)url;

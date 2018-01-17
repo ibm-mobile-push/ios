@@ -8,8 +8,14 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
 @import UIKit;
+#else
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#endif
+
 #import "MCEClient.h"
 
 /**

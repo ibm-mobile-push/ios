@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 /** The MCEInboxMessage class represents an inbox message that is sent to the user. */
 @interface MCEInboxMessage : NSObject
@@ -29,7 +33,7 @@
 @property NSDate * sendDate;
 
 /** template is an identifier that matches a template object in the MCETemplateRegistry. */
-@property NSString * template;
+@property NSString * templateName;
 
 /** attribution is an identifier that specifies a campaign. */
 @property NSString * attribution;
@@ -44,18 +48,5 @@
 
 /** The isExpired property returns TRUE when the message is expired and FALSE otherwise. */
 @property (readonly) BOOL isExpired;
-
-/** The contentData: method returns the NSData that represents the content object in the database.
- 
- @param error An error describing what went wrong.
- @return An NSData object represents the content object.
- */
--(NSData*)contentData: (NSError **)error;
-
-/** The contentData method returns the NSData that represents the content object in the database or nil if a problem occurs.
- 
- @return An NSData object represents the content object or nil.
- */
--(NSData*)contentData;
 
 @end

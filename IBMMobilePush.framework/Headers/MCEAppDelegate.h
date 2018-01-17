@@ -7,7 +7,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
+#else
+#import <UIKit/UIKit.h>
+#endif
 
 /** The MCEAppDelegate class is used for the simple integration method. It replaces the application delegate in main.m and forwards application delegate callbacks to the class specified in MceConfig.plist. This allows for simplified integration because you are not required to manually specify the integration points in the application delegate. */
 @interface MCEAppDelegate : UIResponder <UIApplicationDelegate>

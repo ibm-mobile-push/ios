@@ -1,0 +1,6 @@
+framework module IBMMobilePush {
+  umbrella header "IBMMobilePush.h"
+
+  export *
+  module * { export * }
+}

@@ -7,10 +7,17 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
-#import <Foundation/Foundation.h>
-#import <IBMMobilePush/IBMMobilePush.h>
+#if __has_feature(modules)
+@import Foundation;
 @import EventKit;
 @import EventKitUI;
+#else
+#import <Foundation/Foundation.h>
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
+#endif
+
+#import <IBMMobilePush/IBMMobilePush.h>
 
 @interface AddToCalendarPlugin : NSObject <EKEventEditViewDelegate, MCEActionProtocol>
 + (instancetype)sharedInstance;

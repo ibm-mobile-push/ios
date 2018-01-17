@@ -63,16 +63,22 @@
     [self.contentView setInboxMessage: self.inboxMessage resizeCallback: ^(CGSize size, NSURL * url, BOOL reload){
     }];
 }
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
     self.view.translatesAutoresizingMaskIntoConstraints=NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setContent];
+    if(self.inboxMessage)
+    {
+        [self setContent];
+        self.inboxMessage.isRead = TRUE;
+    }
 }
 
 -(void)setLoading

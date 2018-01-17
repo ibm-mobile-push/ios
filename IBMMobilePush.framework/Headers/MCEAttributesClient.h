@@ -13,7 +13,12 @@
 // Copyright (c) 2013 Xtify. All rights reserved.
 //
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
+
 #import "MCEClient.h"
 
 /** The MCEAttributesClient class can be used to update, or delete user attributes directly on the server. 

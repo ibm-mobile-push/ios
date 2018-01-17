@@ -8,7 +8,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 /** The MCECallbackDatabaseManager class is used to queue callbacks in the Cordova plugin until the JavaScript callback methods are registered with the SDK. */
 

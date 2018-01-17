@@ -8,7 +8,12 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
+@import Foundation;
+#else
 #import <Foundation/Foundation.h>
+#endif
+
 #import <IBMMobilePush/IBMMobilePush.h>
 
 @interface DisplayWebViewPlugin : NSObject <MCEActionProtocol>

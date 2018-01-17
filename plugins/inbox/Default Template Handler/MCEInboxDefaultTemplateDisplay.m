@@ -132,6 +132,7 @@
     if(self.inboxMessage)
     {
         [self setContent];
+        self.inboxMessage.isRead = TRUE;
     }
 }
 

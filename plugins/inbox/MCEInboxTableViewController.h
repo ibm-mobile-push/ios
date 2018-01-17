@@ -7,7 +7,11 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+#if __has_feature(modules)
+@import UIKit;
+#else
 #import <UIKit/UIKit.h>
+#endif
 
 /** The MCEInboxTableViewController class handles all the details of pulling data from the database and displaying previews through a UITableView and full content through UIViewControllers. It can be used as the class of a UITableViewController to display the preview messages in or as a delegate and datasource for a UITableView of your choice. 
  

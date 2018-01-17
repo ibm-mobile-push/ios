@@ -8,7 +8,12 @@
  */
 
 #import "MCEInAppVideoTemplate.h"
+
+#if __has_feature(modules)
 @import AVFoundation;
+#else
+#import <AVFoundation/AVFoundation.h>
+#endif
 
 @interface MCEInAppVideoTemplate ()
 @property AVPlayer * player;

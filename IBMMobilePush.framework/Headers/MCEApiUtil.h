@@ -13,11 +13,20 @@
 //
 
 
+#if __has_feature(modules)
 @import Foundation;
 @import CoreLocation;
+#else
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#endif
 
+#if TARGET_OS_WATCH
+#define MCE_FF_WATCH @"watch"
+#else
 #define MCE_FF_TABLET @"tablet"
 #define MCE_FF_HANDSET @"handset"
+#endif
 
 /** The MCEApiUtil class contains some helper methods for interacting with APIs */
 @interface MCEApiUtil : NSObject
@@ -34,8 +43,10 @@
 /** The osVersion method returns the version of the OS that is running. */
 + (NSString *)osVersion;
 
+#if TARGET_OS_WATCH==0
 /** The carrierName method returns the name of the carrier that the device is connected to. */
 + (NSString *)carrierName;
+#endif
 
 /** The currentDateInISO8601Format returns the current timestamp in ISO8601 format. */
 + (NSString *)currentDateInISO8601Format;
@@ -49,14 +60,10 @@
 /** The deviceToken method converts from an NSData, provided by APNS to an NSString. */
 + (NSString *)deviceToken:(NSData *)deviceToken;
 
-/** The packageAttributes method takes a list of key value pairs and reformats it into an array of (key, value, type). */
-+ (NSArray*)packageAttributes:(NSDictionary*)attributes;
-
-/** The attributesFromPackagedAttributes: method takes an array of (key, value, type) and reformats it into a standard key value dictionary. */
-+ (NSDictionary*)attributesFromPackagedAttributes:(NSArray*)packagedAttributes;
-
+#if TARGET_OS_WATCH==0
 /** The pushEnabled method returns if the user has enabled or disabled push. */
 +(BOOL)pushEnabled;
+#endif
 
 /** Returns cached data for specified URL.
  @param url Resource location

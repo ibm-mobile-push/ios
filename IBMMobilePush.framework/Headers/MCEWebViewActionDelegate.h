@@ -8,7 +8,12 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
+#else
+#import <UIKit/UIKit.h>
+#endif
+
 @class MCEInboxMessage;
 
 /** The MCEWebViewActionDelegate class provides a UIWebViewDelegate that can respond to actionid: scheme actions tied to the MCEActionRegistry. */

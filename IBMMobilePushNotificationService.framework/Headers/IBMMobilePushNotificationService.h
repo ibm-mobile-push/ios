@@ -8,8 +8,13 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
 @import Foundation;
+#else
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
 
 //! Project version number for IBMMobilePushNotificationService.
 FOUNDATION_EXPORT double IBMMobilePushNotificationServiceVersionNumber;
@@ -18,4 +23,5 @@ FOUNDATION_EXPORT double IBMMobilePushNotificationServiceVersionNumber;
 FOUNDATION_EXPORT const unsigned char IBMMobilePushNotificationServiceVersionString[];
 
 #import <IBMMobilePushNotificationService/MCENotificationService.h>
+#import <IBMMobilePushNotificationService/MCEConfig.h>
 

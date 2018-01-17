@@ -8,7 +8,12 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import UIKit;
+#else
+#import <UIKit/UIKit.h>
+#endif
+
 @class MCEInboxMessage;
 
 /** The MCETemplateDisplay protocol must be implemented by UIViewControllers to display full page content of inbox messages. */

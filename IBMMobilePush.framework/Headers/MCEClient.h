@@ -7,7 +7,11 @@
  * deposited with the U.S. Copyright Office.
  */
 
+#if __has_feature(modules)
 @import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
 
 /** The MCEClient class is a baseclass that can be used to communicate with web servers. Subclasses can be either initialized as synchronous or asynchronous and have access to an http client that is configured for their use. */
 
