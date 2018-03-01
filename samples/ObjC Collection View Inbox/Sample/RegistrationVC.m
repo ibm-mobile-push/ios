@@ -22,7 +22,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.observer = [[NSNotificationCenter defaultCenter] addObserverForName:RegisteredNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification*notification){
+    self.observer = [[NSNotificationCenter defaultCenter] addObserverForName:MCERegisteredNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification*notification){
         [self refresh:nil];
     }];
 }

@@ -71,6 +71,7 @@
                                       @"dev":  @"INSERT DEV APPKEY HERE",
                                       @"prod": @"INSERT PROD APPKEY HERE"
                                   },
+                                  @"autoReinitialize": @YES,
                                   @"invalidateExistingUser": @NO,
                                   @"location": @{
                                       @"autoInitialize": @YES,

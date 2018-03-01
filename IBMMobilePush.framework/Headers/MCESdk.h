@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2017
+ * © Copyright IBM Corp. 2014, 2018
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -27,7 +27,7 @@
 @property Class customAlertControllerClass;
 
 /** This property can be used to override if a notification is delivered to the device when the app is running. */
-@property (nonatomic, assign) BOOL (^presentNotification)(NSDictionary * userInfo);
+@property (copy) BOOL (^presentNotification)(NSDictionary * userInfo);
 
 /** This method returns the singleton object of this class. */
 + (instancetype)sharedInstance;
@@ -55,7 +55,7 @@
  */
 - (void)registerDeviceToken:(NSData *)deviceToken;
 
-/** Manually initialize SDK, is used to wait until an event occurs before beginning to interact with the IBM servers. For example, you might not want to create a userid/channelid until after a user logs into your system. Requires  autoInitialize=FALSE MceConfig.plist flag.
+/** Manually initialize SDK, is used to wait until an event occurs before beginning to interact with the IBM servers. For example, you might not want to create a userid/channelid until after a user logs into your system. Requires  autoInitialize=FALSE MceConfig.json flag. This method may also be used if the autoReinitialize flag is set to false in the MceConfig.json file and the SDK is in the GDPR reset state.
  */
 - (void) manualInitialization;
 
@@ -122,5 +122,8 @@
 
 /** This property returns the current alert view controller class, it can be customized by the developer of the application. */
 -(Class) alertControllerClass;
+
+/** This property returns true in the case that the SDK has been reset via a GDPR request but has not yet re-registered with the server. This could be due to the "autoReinitialize" flag being set to false or there is no connectivity. If the "autoReinitialize" flag is set to false and this property returns true, you could present a dialog to the user to verify that they agree to anonymous data collection and execute the manualInitialization method to re-register with the server. */
+-(BOOL)gdprState;
 
 @end

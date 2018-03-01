@@ -17,11 +17,9 @@
 
 @interface MCEInboxTableViewController ()
 @property NSMutableArray * inboxMessages;
-@property NSMutableDictionary * richContents;
 @property UIViewController * alternateDisplayViewController;
 @property (nonatomic, strong) id previewingContext;
 @property (nonatomic, strong) NSIndexPath *previewingIndexPath;
-@property NSObject * observer;
 @end
 
 @interface NSObject (AssociatedObject)
@@ -112,15 +110,15 @@
         [[MCEInboxQueueManager sharedInstance] syncInbox];
     });
 }
-
+-(void)setContentViewController: (NSNotification*)note {
+    self.alternateDisplayViewController = note.object;
+}
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"setContentViewController" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification* note){
-        self.alternateDisplayViewController = note.object;
-    }];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setContentViewController:) name:@"setContentViewController" object:nil];
+  
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
     // Notification that background server sync is complete
@@ -131,7 +129,6 @@
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     self.inboxMessages=[NSMutableArray array];
-    self.richContents = [NSMutableDictionary dictionary];
     
     // Initially, grab contents of database, then start a background server sync
     UIActivityIndicatorView * activity = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

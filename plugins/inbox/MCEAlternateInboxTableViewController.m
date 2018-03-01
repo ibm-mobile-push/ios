@@ -112,13 +112,15 @@
     });
 }
 
+-(void) setContentViewController: (NSNotification*)note {
+    self.alternateDisplayViewController = note.object;
+}
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"setContentViewController" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification* note){
-        self.alternateDisplayViewController = note.object;
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setContentViewController:) name:@"setContentViewController" object:nil];
     
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     

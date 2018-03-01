@@ -8,6 +8,7 @@
  */
 
 import UIKit
+import IBMMobilePush
 
 @objc class AppDelegate : UIResponder, UIApplicationDelegate
 {
@@ -15,6 +16,9 @@ import UIKit
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool
     {
+        MCESdk.sharedInstance().presentNotification = {(userInfo) -> Bool in
+            return true
+        }
         UserDefaults.standard.register(defaults: ["action":"update", "standardType":"dial",  "standardDialValue":"\"8774266006\"",  "standardUrlValue":"\"http://ibm.com\"",  "customType":"sendEmail",  "customValue":"{\"subject\":\"Hello from Sample App\",  \"body\": \"This is an example email body\",  \"recipient\":\"fake-email@fake-site.com\"}",  "categoryId":"example", "button1":"Accept", "button2":"Reject"])
 
         if #available(iOS 10.0, *) {

@@ -11,13 +11,13 @@
 /** The MCEConstants header contains several important SDK integration constants */
 
 /** The MCESdkVersion constant contains the current release number */
-static NSString * const MCESdkVersion = @"3.7.1.0";
+static NSString * const MCESdkVersion = @"3.7.1.1";
 
-/** The RegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
-static NSString * const RegisteredNotification = @"RegisteredNotification";
+/** The MCERegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
+static NSString * const MCERegisteredNotification = @"MCERegisteredNotification";
 
-/** The RegistrationChangedNotification message is sent via NSNotificationCenter when the userId or channelId change durring the phone home process */
-static NSString * const RegistrationChangedNotification = @"RegistrationChangedNotification";
+/** The MCERegistrationChangedNotification message is sent via NSNotificationCenter when the userId or channelId change durring the phone home process */
+static NSString * const MCERegistrationChangedNotification = @"MCERegistrationChangedNotification";
 
 /** The MCEEventSuccess message is sent via NSNotificationCenter when events are successfully sent to the server */
 static NSString * const MCEEventSuccess = @"MCEEventSuccess";

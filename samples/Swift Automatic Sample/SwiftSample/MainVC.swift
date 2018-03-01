@@ -42,7 +42,7 @@ class MainVC : UITableViewController, UIViewControllerPreviewingDelegate
         }
         else
         {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name("RegisteredNotification"), object: nil, queue: .main, using: { (note) in
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("MCERegisteredNotification"), object: nil, queue: .main, using: { (note) in
                 MCEInboxQueueManager.sharedInstance().syncInbox()
             })
         }

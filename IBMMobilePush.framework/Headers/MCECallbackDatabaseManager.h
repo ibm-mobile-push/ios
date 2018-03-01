@@ -1,7 +1,7 @@
 /* IBM Confidential
  * OCO Source Materials
  * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2017
+ * © Copyright IBM Corp. 2014, 2018
  *
  * The source code for this program is not published or otherwise
  * divested of its trade secrets, irrespective of what has been
@@ -16,14 +16,10 @@
 
 /** The MCECallbackDatabaseManager class is used to queue callbacks in the Cordova plugin until the JavaScript callback methods are registered with the SDK. */
 
-@class MCEDatabaseQueue, MCEDatabase;
 @interface MCECallbackDatabaseManager : NSObject
 
 /** This method returns the singleton object of this class. */
 + (instancetype)sharedInstance;
-
-/** The database queue used by the manager */
-@property (nonatomic, strong) MCEDatabaseQueue *databaseQueue;
 
 /** The insertCallback:dictionary: method inserts a callback into the database.
  

@@ -19,16 +19,11 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     var locationManager: CLLocationManager?
     var lastLocation: CLLocation?
     var followGPS: Bool = true
-    var overlayIds: NSMutableSet = []
+    var overlayIds = Set<String>()
     var queue = DispatchQueue(label: "background")
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        DispatchQueue.main.async {
-            self.locationManager = CLLocationManager()
-            self.locationManager!.delegate = self
-        }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("DownloadedLocations"), object: nil, queue: OperationQueue.main) { (note) in
             self.addGeofenceOverlaysNearCoordinate(coordinate: self.lastLocation!.coordinate, radius: 1000)
@@ -79,13 +74,11 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     
     func createMonitor()
     {
-        overlayIds = []
-        if let locationManager = locationManager
-        {
-            locationManager.startUpdatingLocation()
-        }
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        locationManager!.startUpdatingLocation()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         destroyMonitor()
     }
@@ -94,7 +87,6 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     {
         mapView.removeOverlays(mapView.overlays)
         mapView.removeAnnotations(mapView.annotations)
-        overlayIds = []
         if let locationManager = locationManager
         {
             locationManager.stopUpdatingLocation()
@@ -191,20 +183,22 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         DispatchQueue.global().async {
             var overlays = [MKOverlay]()
             var annotations = [MKAnnotation]()
-            let geofences = MCELocationDatabase.sharedInstance().geofencesNearCoordinate(coordinate, radius: r)
-            for geofence in geofences!
+            if let geofences = MCELocationDatabase.sharedInstance().geofencesNearCoordinate(coordinate, radius: r)
             {
-                if let geofence = geofence as? CLCircularRegion
+                for geofence in geofences
                 {
-                    if !self.overlayIds.contains(geofence.identifier)
+                    if let geofence = geofence as? MCEGeofence
                     {
-                        overlays.append(MKCircle(center: geofence.center, radius: geofence.radius))
-                        self.overlayIds.add(geofence.identifier)
-                        let annotation = MKPointAnnotation()
-                        annotation.coordinate=geofence.center
-                        annotation.title=geofence.identifier
-                        annotation.subtitle=NSString(format: "Latitude %f, Longitude %f, Radius: %.1f", geofence.center.latitude, geofence.center.longitude, geofence.radius) as String
-                        annotations.append(annotation)
+                        if !self.overlayIds.contains(geofence.locationId)
+                        {
+                            overlays.append(MKCircle(center: geofence.coordinate, radius: geofence.radius))
+                            self.overlayIds.insert(geofence.locationId)
+                            let annotation = MKPointAnnotation()
+                            annotation.coordinate=geofence.coordinate
+                            annotation.title=geofence.locationId
+                            annotation.subtitle=NSString(format: "Latitude %f, Longitude %f, Radius: %.1f", geofence.coordinate.latitude, geofence.coordinate.longitude, geofence.radius) as String
+                            annotations.append(annotation)
+                        }
                     }
                 }
             }
