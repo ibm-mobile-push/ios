@@ -17,6 +17,9 @@
 
 + (instancetype)sharedInstance;
 
+/** todo */
+@property BOOL userInvalidated;
+
 /** Retrieve userId 
  
  @return userId a string value assigned to the user (potentially multiple devices)

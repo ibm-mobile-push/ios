@@ -123,7 +123,13 @@
 /** This property returns the current alert view controller class, it can be customized by the developer of the application. */
 -(Class) alertControllerClass;
 
-/** This property returns true in the case that the SDK has been reset via a GDPR request but has not yet re-registered with the server. This could be due to the "autoReinitialize" flag being set to false or there is no connectivity. If the "autoReinitialize" flag is set to false and this property returns true, you could present a dialog to the user to verify that they agree to anonymous data collection and execute the manualInitialization method to re-register with the server. */
--(BOOL)gdprState;
+/** This property returns true in the case that the SDK has been reset via a GDPR request but has not yet re-registered with the server. This could be due to the "autoReinitialize" flag being set to false or there is no connectivity. If the "autoReinitialize" flag is set to false and this property returns true, you could present a dialog to the user to verify that they agree to anonymous data collection and execute the manualInitialization method to re-register with the server.
+ 
+Please note, this method is deprecated, please use MCERegistrationDetails.sharedInstance.userInvalidated instead.
+ */
+-(BOOL)gdprState __attribute__ ((deprecated));
+
+/** TODO */
+- (BOOL) invalidateExistingUser;
 
 @end
