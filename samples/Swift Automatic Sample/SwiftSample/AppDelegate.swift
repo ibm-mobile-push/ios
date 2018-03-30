@@ -22,21 +22,52 @@ import IBMMobilePush
         UserDefaults.standard.register(defaults: ["action":"update", "standardType":"dial",  "standardDialValue":"\"8774266006\"",  "standardUrlValue":"\"http://ibm.com\"",  "customType":"sendEmail",  "customValue":"{\"subject\":\"Hello from Sample App\",  \"body\": \"This is an example email body\",  \"recipient\":\"fake-email@fake-site.com\"}",  "categoryId":"example", "button1":"Accept", "button2":"Reject"])
 
         if #available(iOS 10.0, *) {
+            // iOS 10+ Example static action category:
+            let acceptAction = UNNotificationAction(identifier: "Accept", title: "Accept", options: [.foreground])
+            let rejectAction = UNNotificationAction(identifier: "Reject", title: "Reject", options: [.destructive])
+            let category = UNNotificationCategory(identifier: "example", actions: [acceptAction, rejectAction], intentIdentifiers: [], options: [.customDismissAction])
+            
+            var categories = Set<UNNotificationCategory>()
+            categories.insert(category)
+            
+            // iOS 10+ Push Message Registration
             let center = UNUserNotificationCenter.current()
             center.delegate=MCENotificationDelegate.sharedInstance()
             center.requestAuthorization(options: [.alert, .sound, .carPlay, .badge], completionHandler: { (granted, error) in
-                print("Notifiations response \(granted) \(String(describing: error))")
+                if let error = error {
+                    print("Could not request authorization from APNS \(error.localizedDescription)")
+                }
                 DispatchQueue.main.sync {
                     application.registerForRemoteNotifications()
                 }
-                center.setNotificationCategories(self.appNotificationCategories())
+                center.setNotificationCategories(categories)
             })
         }
         else if #available(iOS 8.0, *) {
-            let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: appCategories())
+            // iOS 8+ Example static action category:
+            let acceptAction = UIMutableUserNotificationAction()
+            acceptAction.identifier = "Accept"
+            acceptAction.title = "Accept"
+            acceptAction.isDestructive=false
+            acceptAction.isAuthenticationRequired=false
+            
+            let rejectAction = UIMutableUserNotificationAction()
+            rejectAction.identifier = "Reject"
+            rejectAction.title = "Reject"
+            rejectAction.isDestructive=true
+            rejectAction.isAuthenticationRequired=false
+            
+            let category = UIMutableUserNotificationCategory()
+            category.identifier="example"
+            category.setActions([acceptAction, rejectAction], for: .default)
+            category.setActions([acceptAction, rejectAction], for: .minimal)
+            
+            // iOS 8+ Push Message Registration
+            let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: [category])
             application.registerUserNotificationSettings(settings)
             application.registerForRemoteNotifications()
         } else {
+            // iOS < 8 Push Message Registration
             application.registerForRemoteNotifications(matching: [.badge, .alert, .sound])
         }
 
@@ -58,6 +89,7 @@ import IBMMobilePush
         AddToPassbookPlugin.register()
         SnoozeActionPlugin.register()
         ExamplePlugin.register()
+        CarouselAction.registerPlugin()
         
         // MCE Inbox Templates Plugins
         MCEInboxActionPlugin.register()
@@ -69,38 +101,6 @@ import IBMMobilePush
         MCEActionRegistry.sharedInstance().registerTarget(mail, with: #selector(mail.sendEmail(action:)), forAction: "sendEmail")
         
         TextInputActionPlugin.register()
-    }
-    
-    @available(iOS 10.0, *)
-    func appNotificationCategories() -> Set<UNNotificationCategory>
-    {
-        let acceptAction = UNNotificationAction(identifier: "Accept", title: "Accept", options: [.foreground])
-        let rejectAction = UNNotificationAction(identifier: "Reject", title: "Reject", options: [.destructive])
-        let category = UNNotificationCategory(identifier: "example", actions: [acceptAction, rejectAction], intentIdentifiers: [], options: [.customDismissAction])
-        
-        return (NSSet(object: category) as? Set<UNNotificationCategory>)!;
-    }
-    
-    @available(iOS 8.0, *)
-    func appCategories() -> Set<UIUserNotificationCategory>?
-    {
-        let acceptAction = UIMutableUserNotificationAction.init()
-        acceptAction.identifier = "Accept"
-        acceptAction.title = "Accept"
-        acceptAction.isDestructive=false
-        acceptAction.isAuthenticationRequired=false
-        
-        let rejectAction = UIMutableUserNotificationAction.init()
-        rejectAction.identifier = "Reject"
-        rejectAction.title = "Reject"
-        rejectAction.isDestructive=true
-        rejectAction.isAuthenticationRequired=false
-        
-        let category = UIMutableUserNotificationCategory.init()
-        category.identifier="example"
-        category.setActions([acceptAction, rejectAction], for: .default)
-        category.setActions([acceptAction, rejectAction], for: .minimal)
-        return [category]
     }
     
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {

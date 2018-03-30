@@ -1,12 +1,12 @@
-/* IBM Confidential
- * OCO Source Materials
- * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2017
+/*
+ * Licensed Materials - Property of IBM
  *
- * The source code for this program is not published or otherwise
- * divested of its trade secrets, irrespective of what has been
- * deposited with the U.S. Copyright Office.
+ * 5725E28, 5725I03
+ *
+ * © Copyright IBM Corp. 2014, 2018
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
+
 
 #if __has_feature(modules)
 @import Foundation;
@@ -30,10 +30,10 @@
 
 /** The fetchInAppMessagesForRules:completion: method fetches messages from the database that match one of the provided rule keywords and executes the completion block with those messages found. It doesn't not include messages that are expired, overviewed or not yet triggered.
  
- @param rules The rules array includes rule keyword strings to search. 
+ @param names The rule names that are to be fetched.
  @param completion The completion block is executed after the messages are looked up. It includes a list of messages or an error flag.
  */
--(void) fetchInAppMessagesForRules: (NSArray*)rules completion:(void (^)(NSMutableArray * inAppMessages, NSError * error))completion;
+-(void) fetchInAppMessagesForRules: (NSArray*)names completion:(void (^)(NSMutableArray * inAppMessages, NSError * error))completion;
 
 /** The incrementView: method increments the number of views in the database for the provided message.
  
@@ -53,10 +53,6 @@
  */
 -(void)disable:(MCEInAppMessage*)inAppMessage;
 
-/** The disable: method removes an inAppMessage from the database.
- 
- @param inAppMessageId the id of the message to be deleted.
- */
--(void)disableById:(NSInteger)inAppMessageId;
+-(MCEInAppMessage*) inAppMessageById:(NSString*)inAppMessageId;
 
 @end

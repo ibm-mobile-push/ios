@@ -1,12 +1,12 @@
-/* IBM Confidential
- * OCO Source Materials
- * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2018
+/*
+ * Licensed Materials - Property of IBM
  *
- * The source code for this program is not published or otherwise
- * divested of its trade secrets, irrespective of what has been
- * deposited with the U.S. Copyright Office.
+ * 5725E28, 5725I03
+ *
+ * © Copyright IBM Corp. 2014, 2018
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
+
 
 #if __has_feature(modules)
 @import CoreLocation;
@@ -19,7 +19,7 @@ extern int mceLogLevel;
 /** MCEConfig provides the current configuration of the SDK. */
 @interface MCEConfig : NSObject
 
-+ (instancetype)sharedInstanceWithDictionary:(NSDictionary*)dictionary;
+/** This method returns the singleton object of this class. */
 + (instancetype)sharedInstance;
 
 /** sessionTimeout specifies how long sessions last. It can be specified in the MceConfig.plist file. If it is not specified, it is 20 minutes by default. */
@@ -45,12 +45,6 @@ extern int mceLogLevel;
 
 /** appDelegateClass specifies the class that app delegate calls are forwarded to if you use the easy integration method. By default, it is not specified and does not forward calls that are not present in MceConfig.plist. */
 @property Class appDelegateClass;
-
-/** This method allows the configuration to be initialized with specified values instead of reading from the MceConfig.plist file. 
- 
- @param dictionary specifies all configuration values using the same key names expected from the MceConfig.plist file.
- */
-- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 /** locationSyncRadius specifies the size of the reference region to sync from the server to the device. */
 @property int locationSyncRadius;
@@ -85,7 +79,8 @@ extern int mceLogLevel;
 /** A configuration flag writes databases to the iTunes file sharing location instead of private storage */
 @property BOOL privateDatabaseStorage;
 
-
+/** This configuration flag allows the SDK to register with the server when the registration has been invalidated when it is set to true. When it is false, the application should check the MCERegistrationDetails.sharedInstance.userInvalidated response and when true execute MCESdk.sharedInstance's manualInitialization method in order to register with the server again. */
 @property BOOL autoReinitialize;
 
 @end
+

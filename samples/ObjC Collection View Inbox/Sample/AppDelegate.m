@@ -27,6 +27,7 @@
 #import "DisplayWebViewPlugin.h"
 #import "TextInputActionPlugin.h"
 #import "ExamplePlugin.h"
+#import "CarouselAction.h"
 
 // MCE Inbox Plugins
 #import "MCEInboxActionPlugin.h"
@@ -65,31 +66,55 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[NSUserDefaults standardUserDefaults]registerDefaults:@{@"action":@"update",@"standardType":@"dial", @"standardDialValue":@"\"8774266006\"", @"standardUrlValue":@"\"http://ibm.com\"", @"customType":@"sendEmail", @"customValue":@"{\"subject\":\"Hello from Sample App\", \"body\": \"This is an example email body\", \"recipient\":\"fake-email@fake-site.com\"}", @"categoryId":@"example",@"button1":@"Accept",@"button2":@"Reject"}];
     
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
-    if([UNUserNotificationCenter class])
-    {
+    if([UNUserNotificationCenter class]) {
+        // iOS 10+ Example static action category:
+        UNNotificationAction * acceptAction = [UNNotificationAction actionWithIdentifier:@"Accept" title:@"Accept" options:UNNotificationActionOptionForeground];
+        UNNotificationAction * fooAction = [UNNotificationAction actionWithIdentifier:@"Foo" title:@"Foo" options:UNNotificationActionOptionForeground];
+        UNNotificationAction * rejectAction = [UNNotificationAction actionWithIdentifier:@"Reject" title:@"Reject" options:UNNotificationActionOptionDestructive];
+        UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"example" actions:@[acceptAction, fooAction, rejectAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+        NSSet * applicationCategories = [NSSet setWithObject: category];
+        
+        // iOS 10+ Push Message Registration
         UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate=MCENotificationDelegate.sharedInstance;
+        center.delegate = MCENotificationDelegate.sharedInstance;
         NSUInteger options = UNAuthorizationOptionAlert|UNAuthorizationOptionSound|UNAuthorizationOptionBadge|UNAuthorizationOptionCarPlay;
         [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            // Enable or disable features based on authorization.
-            NSLog(@"Notifications response %d, %@", granted, error);
-            [application performSelectorOnMainThread:@selector(registerForRemoteNotifications) withObject:nil waitUntilDone:TRUE];
-            [center setNotificationCategories:[self appCategories]];
+            [UIApplication.sharedApplication performSelectorOnMainThread:@selector(registerForRemoteNotifications) withObject:nil waitUntilDone:TRUE];
+            [center setNotificationCategories: applicationCategories];
         }];
-    }
-    else
-#endif
-    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
-    {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:[self appCategories]];
-        [application registerUserNotificationSettings:settings];
-        [application registerForRemoteNotifications];
-    }
-    else {
-        //register to receive notifications iOS <8
+    } else if ([UIApplication.sharedApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        // iOS 8+ Example static action category:
+        UIMutableUserNotificationAction * acceptAction = [[UIMutableUserNotificationAction alloc] init];
+        [acceptAction setIdentifier: @"Accept"];
+        [acceptAction setTitle: @"Accept"];
+        [acceptAction setActivationMode: UIUserNotificationActivationModeForeground];
+        [acceptAction setDestructive: false];
+        [acceptAction setAuthenticationRequired: false];
+        
+        UIMutableUserNotificationAction * rejectAction = [[UIMutableUserNotificationAction alloc] init];
+        [rejectAction setIdentifier: @"Reject"];
+        [rejectAction setTitle: @"Reject"];
+        [rejectAction setActivationMode: UIUserNotificationActivationModeBackground];
+        [rejectAction setDestructive: true];
+        [rejectAction setAuthenticationRequired: false];
+        
+        UIMutableUserNotificationCategory * category = [[UIMutableUserNotificationCategory alloc] init];
+        [category setIdentifier: @"example"];
+        [category setActions: @[acceptAction, rejectAction] forContext: UIUserNotificationActionContextDefault];
+        [category setActions: @[acceptAction, rejectAction] forContext: UIUserNotificationActionContextMinimal];
+        NSSet * applicationCategories = [NSSet setWithObject: category];
+        
+        // iOS 8+ Push Message Registration
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories: applicationCategories];
+        [UIApplication.sharedApplication registerUserNotificationSettings:settings];
+        [UIApplication.sharedApplication registerForRemoteNotifications];
+    } else {
+        // iOS < 8 Push Message Registration
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
-        [application registerForRemoteNotificationTypes:myTypes];
+        [UIApplication.sharedApplication registerForRemoteNotificationTypes:myTypes];
+#pragma GCC diagnostic pop
     }
     
     return YES;
@@ -131,48 +156,12 @@
         [SnoozeActionPlugin registerPlugin];
         [DisplayWebViewPlugin registerPlugin];
         [TextInputActionPlugin registerPlugin];
+        [CarouselAction registerPlugin];
         
         // Custom Send Email Plugin Example
         [[MCEActionRegistry sharedInstance] registerTarget:[[MailDelegate alloc] init] withSelector:@selector(sendEmail:) forAction:@"sendEmail"];
     }
     return self;
-}
-
-#pragma mark Define Static Category named "example"
-- (NSSet*)appCategories {
-    
-    if(![UIMutableUserNotificationAction class])
-        return nil;
-    
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
-    if([UNNotificationCategory class])
-    {
-        UNNotificationAction * acceptAction = [UNNotificationAction actionWithIdentifier:@"Accept" title:@"Accept" options:UNNotificationActionOptionForeground];
-        UNNotificationAction * rejectAction = [UNNotificationAction actionWithIdentifier:@"Reject" title:@"Reject" options:UNNotificationActionOptionDestructive];
-        UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"example" actions:@[acceptAction, rejectAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
-        return [NSSet setWithObject: category];
-    }
-#endif
-    
-    UIMutableUserNotificationAction * acceptAction = [[UIMutableUserNotificationAction alloc] init];
-    [acceptAction setIdentifier: @"Accept"];
-    [acceptAction setTitle: @"Accept"];
-    [acceptAction setActivationMode: UIUserNotificationActivationModeForeground];
-    [acceptAction setDestructive: false];
-    [acceptAction setAuthenticationRequired: false];
-    
-    UIMutableUserNotificationAction * rejectAction = [[UIMutableUserNotificationAction alloc] init];
-    [rejectAction setIdentifier: @"Reject"];
-    [rejectAction setTitle: @"Reject"];
-    [rejectAction setActivationMode: UIUserNotificationActivationModeBackground];
-    [rejectAction setDestructive: true];
-    [rejectAction setAuthenticationRequired: false];
-    
-    UIMutableUserNotificationCategory * category = [[UIMutableUserNotificationCategory alloc] init];
-    [category setIdentifier: @"example"];
-    [category setActions:@[acceptAction, rejectAction] forContext: UIUserNotificationActionContextDefault];
-    [category setActions:@[acceptAction, rejectAction] forContext: UIUserNotificationActionContextMinimal];
-    return [NSSet setWithObject: category];
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^_Nonnull __strong)())completionHandler

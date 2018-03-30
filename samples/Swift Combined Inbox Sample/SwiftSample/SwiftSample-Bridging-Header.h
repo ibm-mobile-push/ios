@@ -14,6 +14,7 @@
 #import "SnoozeActionPlugin.h"
 #import "DisplayWebViewPlugin.h"
 #import "ExamplePlugin.h"
+#import "CarouselAction.h"
 
 // MCE Inbox Template Plugins
 #import "MCEInboxActionPlugin.h"

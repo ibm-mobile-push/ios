@@ -39,6 +39,12 @@
 		C35F708B1C654DE500070DB6 /* MCEInboxPostTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = C35F70801C654DE500070DB6 /* MCEInboxPostTemplateView.m */; };
 		C35F708C1C654DE500070DB6 /* MCEInboxPostTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35F70811C654DE500070DB6 /* MCEInboxPostTemplateView.xib */; };
 		C35F708D1C654DE500070DB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35F70821C654DE500070DB6 /* Media.xcassets */; };
+		C3624A20203F63E9003B324C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3624A1F203F63E9003B324C /* UserNotifications.framework */; };
+		C3624A22203F63E9003B324C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3624A21203F63E9003B324C /* UserNotificationsUI.framework */; };
+		C3624A26203F63E9003B324C /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3624A25203F63E9003B324C /* NotificationViewController.m */; };
+		C3624A29203F63E9003B324C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3624A27203F63E9003B324C /* MainInterface.storyboard */; };
+		C3624A2D203F63E9003B324C /* Carousel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3624A1E203F63E9003B324C /* Carousel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C3624A33203F6409003B324C /* CarouselAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C3624A32203F6409003B324C /* CarouselAction.m */; };
 		C362D38A1A8C68690095814E /* EditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C362D3881A8C68690095814E /* EditCell.m */; };
 		C369816C1AA6241500F9448B /* AttributesController.h in Sources */ = {isa = PBXBuildFile; fileRef = C369816B1AA6241500F9448B /* AttributesController.h */; };
 		C36992F01DD3CA7700EA178E /* iBeaconVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C36992EF1DD3CA7700EA178E /* iBeaconVC.m */; };
@@ -99,6 +105,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C3624A2B203F63E9003B324C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3D01E531A607F7E00C9A66C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3624A1D203F63E9003B324C;
+			remoteInfo = Carousel;
+		};
 		C3B2A29D1D245B4E00286475 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3D01E531A607F7E00C9A66C /* Project object */;
@@ -129,6 +142,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C3624A2D203F63E9003B324C /* Carousel.appex in Embed App Extensions */,
 				C3B2A29F1D245B4E00286475 /* Manual Dictionary SampleNotificationService.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -216,6 +230,16 @@
 		C35F70801C654DE500070DB6 /* MCEInboxPostTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxPostTemplateView.m; sourceTree = "<group>"; };
 		C35F70811C654DE500070DB6 /* MCEInboxPostTemplateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MCEInboxPostTemplateView.xib; sourceTree = "<group>"; };
 		C35F70821C654DE500070DB6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		C3624A1E203F63E9003B324C /* Carousel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Carousel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3624A1F203F63E9003B324C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		C3624A21203F63E9003B324C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		C3624A24203F63E9003B324C /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		C3624A25203F63E9003B324C /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		C3624A28203F63E9003B324C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C3624A2A203F63E9003B324C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3624A31203F6409003B324C /* CarouselAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselAction.h; sourceTree = "<group>"; };
+		C3624A32203F6409003B324C /* CarouselAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselAction.m; sourceTree = "<group>"; };
+		C3624A34203F6421003B324C /* Carousel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Carousel.entitlements; path = Carousel/Carousel.entitlements; sourceTree = SOURCE_ROOT; };
 		C362D3871A8C68690095814E /* EditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCell.h; sourceTree = "<group>"; };
 		C362D3881A8C68690095814E /* EditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCell.m; sourceTree = "<group>"; };
 		C369816A1AA6241500F9448B /* MailDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailDelegate.h; sourceTree = "<group>"; };
@@ -317,6 +341,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C3624A1B203F63E9003B324C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3624A22203F63E9003B324C /* UserNotificationsUI.framework in Frameworks */,
+				C3624A20203F63E9003B324C /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3B2A2941D245B4E00286475 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -503,8 +536,25 @@
 				C3AF23041D2C45D500A1D266 /* libsqlite3.0.tbd */,
 				C3A80AD91BA3687300EE45ED /* CoreData.framework */,
 				C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */,
+				C3624A1F203F63E9003B324C /* UserNotifications.framework */,
+				C3624A21203F63E9003B324C /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3624A23203F63E9003B324C /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				C3624A34203F6421003B324C /* Carousel.entitlements */,
+				C3624A31203F6409003B324C /* CarouselAction.h */,
+				C3624A32203F6409003B324C /* CarouselAction.m */,
+				C3624A24203F63E9003B324C /* NotificationViewController.h */,
+				C3624A25203F63E9003B324C /* NotificationViewController.m */,
+				C3624A27203F63E9003B324C /* MainInterface.storyboard */,
+				C3624A2A203F63E9003B324C /* Info.plist */,
+			);
+			name = Carousel;
+			path = "../../plugins/Image Carousel Plugin";
 			sourceTree = "<group>";
 		};
 		C375B68F1C52AF300076E229 /* Image Template */ = {
@@ -589,6 +639,7 @@
 				C3B2A2981D245B4E00286475 /* SampleNotificationService */,
 				C3E2319D1FAA24CD00DCD58D /* watchkitapp */,
 				C3E231AC1FAA24CD00DCD58D /* watchkitapp Extension */,
+				C3624A23203F63E9003B324C /* Carousel */,
 				C35FB4031A64670000CEF4DB /* Frameworks */,
 				C3D01E5D1A607F7E00C9A66C /* Sample */,
 				C3D01E5C1A607F7E00C9A66C /* Products */,
@@ -602,6 +653,7 @@
 				C3B2A2971D245B4E00286475 /* Manual Dictionary SampleNotificationService.appex */,
 				C3E2319C1FAA24CC00DCD58D /* Manual Dictionary SampleWatch.app */,
 				C3E231A81FAA24CD00DCD58D /* Manual Dictionary SampleWatch Extension.appex */,
+				C3624A1E203F63E9003B324C /* Carousel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -704,6 +756,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C3624A1D203F63E9003B324C /* Carousel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3624A30203F63E9003B324C /* Build configuration list for PBXNativeTarget "Carousel" */;
+			buildPhases = (
+				C3624A1A203F63E9003B324C /* Sources */,
+				C3624A1B203F63E9003B324C /* Frameworks */,
+				C3624A1C203F63E9003B324C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Carousel;
+			productName = Carousel;
+			productReference = C3624A1E203F63E9003B324C /* Carousel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C3B2A2961D245B4E00286475 /* Manual Dictionary SampleNotificationService */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3B2A2A21D245B4E00286475 /* Build configuration list for PBXNativeTarget "Manual Dictionary SampleNotificationService" */;
@@ -737,6 +806,7 @@
 			dependencies = (
 				C3B2A29E1D245B4E00286475 /* PBXTargetDependency */,
 				C3E231BB1FAA24CD00DCD58D /* PBXTargetDependency */,
+				C3624A2C203F63E9003B324C /* PBXTargetDependency */,
 			);
 			name = "Sample App";
 			productName = Silverpop;
@@ -787,6 +857,15 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "IBM ExperienceOne Xtify";
 				TargetAttributes = {
+					C3624A1D203F63E9003B324C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					C3B2A2961D245B4E00286475 = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
@@ -810,7 +889,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -856,11 +935,20 @@
 				C3B2A2961D245B4E00286475 /* Manual Dictionary SampleNotificationService */,
 				C3E2319B1FAA24CC00DCD58D /* Manual Dictionary SampleWatch */,
 				C3E231A71FAA24CD00DCD58D /* Manual Dictionary SampleWatch Extension */,
+				C3624A1D203F63E9003B324C /* Carousel */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C3624A1C203F63E9003B324C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3624A29203F63E9003B324C /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3B2A2951D245B4E00286475 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -916,6 +1004,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C3624A1A203F63E9003B324C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3624A26203F63E9003B324C /* NotificationViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3B2A2931D245B4E00286475 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -943,6 +1039,7 @@
 				C375B6A71C52B08D0076E229 /* MCEInAppImageTemplate.m in Sources */,
 				C384E38D1FB0D5CD00067294 /* NotificationDelegate.m in Sources */,
 				C3E4F1581A8BE18900844271 /* EventsVC.m in Sources */,
+				C3624A33203F6409003B324C /* CarouselAction.m in Sources */,
 				C35F70881C654DE500070DB6 /* MCEInboxPostTemplateImage.m in Sources */,
 				C3E4F1551A8BE17700844271 /* AttributesVC.m in Sources */,
 				C35F70841C654DE500070DB6 /* MCEInboxPostTemplateCell.m in Sources */,
@@ -992,6 +1089,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C3624A2C203F63E9003B324C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3624A1D203F63E9003B324C /* Carousel */;
+			targetProxy = C3624A2B203F63E9003B324C /* PBXContainerItemProxy */;
+		};
 		C3B2A29E1D245B4E00286475 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C3B2A2961D245B4E00286475 /* Manual Dictionary SampleNotificationService */;
@@ -1010,6 +1112,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C3624A27203F63E9003B324C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3624A28203F63E9003B324C /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		C3D01E681A607F7F00C9A66C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1037,6 +1147,75 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C3624A2E203F63E9003B324C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = Carousel/Carousel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/../../plugins/Image Carousel Plugin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.Carousel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3624A2F203F63E9003B324C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = Carousel/Carousel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/../../plugins/Image Carousel Plugin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.Carousel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C3B2A2A01D245B4E00286475 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1397,6 +1576,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C3624A30203F63E9003B324C /* Build configuration list for PBXNativeTarget "Carousel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3624A2E203F63E9003B324C /* Debug */,
+				C3624A2F203F63E9003B324C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C3B2A2A21D245B4E00286475 /* Build configuration list for PBXNativeTarget "Manual Dictionary SampleNotificationService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

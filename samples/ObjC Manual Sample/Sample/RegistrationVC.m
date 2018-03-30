@@ -35,7 +35,7 @@
 -(IBAction)refresh:(id)sender
 {
     [sender endRefreshing];
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:3 inSection:0 ], [NSIndexPath indexPathForItem:0 inSection:0 ], [NSIndexPath indexPathForItem:1 inSection:0 ]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadData];
 }
 
 #pragma mark UITableViewDataSource

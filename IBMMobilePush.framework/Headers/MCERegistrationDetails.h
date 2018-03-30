@@ -1,11 +1,12 @@
-/* IBM Confidential
- * OCO Source Materials
- * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2015, 2017
- * The source code for this program is not published or otherwise
- * divested of its trade secrets, irrespective of what has been
- * deposited with the U.S. Copyright Office.
+/*
+ * Licensed Materials - Property of IBM
+ *
+ * 5725E28, 5725I03
+ *
+ * © Copyright IBM Corp. 2015, 2018
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
+
 #if __has_feature(modules)
 @import Foundation;
 #else
@@ -15,21 +16,22 @@
 /** MCERegistrationDetails provides the userId, channelId and pushToken registration details. You might want to store the userId and channelId on your servers if you want to directly target users and channels. */
 @interface MCERegistrationDetails : NSObject
 
+/** This method returns the singleton object of this class. */
 + (instancetype)sharedInstance;
 
-/** todo */
+/** When a user has been invalidated and the autoReinitialize flag is false in the MceConfig.json file, this value will be set to true. Applications must check this value if they want to manually reinitialize the registration and when this value is true, applications should execute MceSdk.sharedInstance's manualInitialization method.  */
 @property BOOL userInvalidated;
 
-/** Retrieve userId 
+/** Retrieve userId
  
  @return userId a string value assigned to the user (potentially multiple devices)
-*/
+ */
 @property NSString * userId;
 
-/** Retrieve channelId 
+/** Retrieve channelId
  
  @return channelId a string value assigned to the channel (device)
-*/
+ */
 @property NSString * channelId;
 
 /** Push Token for APNS registration
@@ -47,7 +49,6 @@
  */
 @property (readonly) BOOL mceRegistered;
 
-
 /** Method is deprecated, please use instance method instead. */
 + (BOOL) mceRegistered __attribute__((deprecated));
 
@@ -63,3 +64,4 @@
 @property NSString * appKey;
 
 @end
+

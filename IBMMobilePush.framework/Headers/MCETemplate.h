@@ -1,11 +1,10 @@
-/* IBM Confidential
- * OCO Source Materials
- * 5725E28, 5725S01, 5725I03
- * © Copyright IBM Corp. 2014, 2017
+/*
+ * Licensed Materials - Property of IBM
  *
- * The source code for this program is not published or otherwise
- * divested of its trade secrets, irrespective of what has been
- * deposited with the U.S. Copyright Office.
+ * 5725E28, 5725I03
+ *
+ * © Copyright IBM Corp. 2014, 2018
+ * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
 #if __has_feature(modules)
@@ -19,6 +18,7 @@
 /** The MCETemplateDisplay protocol must be implemented by UIViewControllers to display full page content of inbox messages. */
 @protocol MCETemplateDisplay
 
+/** This object is assigned to the inboxMessage that should be displayed by the inbox template */
 @property MCEInboxMessage * inboxMessage;
 
 /** Update the view to show the MCEInboxMessage assigned.
@@ -36,7 +36,7 @@
 /** The setRichContent:inboxMessage: method is used to set the current rich content and inbox message values that the UITableViewCell should display.
  
  @param inboxMessage The MCEInboxMessage object that represents a single message in the inbox.
-*/
+ */
 
 -(void)setInboxMessage:(MCEInboxMessage *)inboxMessage;
 
@@ -61,9 +61,10 @@
 -(UITableViewCell *) cellForTableView: (UITableView*)tableView inboxMessage:(MCEInboxMessage *)inboxMessage indexPath:(NSIndexPath*)indexPath;
 
 /** Provides a method for changing the height of the UITableView content preview cells.
-
+ 
  @return height in points.
  */
 -(float)tableView: (UITableView*)tableView heightForRowAtIndexPath: (NSIndexPath*)indexPath inboxMessage: (MCEInboxMessage*)message;
 
 @end
+

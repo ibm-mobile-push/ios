@@ -46,6 +46,12 @@
 		C35F70B71C654EB000070DB6 /* MCEInboxPostTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A71C654EB000070DB6 /* MCEInboxPostTemplateView.xib */; };
 		C35F70B81C654EB000070DB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A81C654EB000070DB6 /* Media.xcassets */; };
 		C361A9981D3576E900D4EA9B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361A9971D3576E900D4EA9B /* NotificationService.swift */; };
+		C3624A56203F64DA003B324C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3624A55203F64DA003B324C /* UserNotifications.framework */; };
+		C3624A58203F64DA003B324C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3624A57203F64DA003B324C /* UserNotificationsUI.framework */; };
+		C3624A5C203F64DA003B324C /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3624A5B203F64DA003B324C /* NotificationViewController.m */; };
+		C3624A5F203F64DA003B324C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3624A5D203F64DA003B324C /* MainInterface.storyboard */; };
+		C3624A63203F64DA003B324C /* Carousel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3624A54203F64DA003B324C /* Carousel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C3624A69203F6500003B324C /* CarouselAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C3624A68203F6500003B324C /* CarouselAction.m */; };
 		C367FDC11BE2733300AD32AE /* CellStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */; };
 		C3778E861D53CD2300811B72 /* TextInputActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3778E851D53CD2300811B72 /* TextInputActionPlugin.m */; };
 		C37C88111EB8E6B500C90CFC /* IBMMobilePushNotificationService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C37C88101EB8E6B500C90CFC /* IBMMobilePushNotificationService.framework */; };
@@ -104,6 +110,13 @@
 			remoteGlobalIDString = C361A9941D3576E800D4EA9B;
 			remoteInfo = SwiftSampleNotificationService;
 		};
+		C3624A61203F64DA003B324C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3D01E531A607F7E00C9A66C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3624A53203F64DA003B324C;
+			remoteInfo = Carousel;
+		};
 		C3E2322A1FAA47FC00DCD58D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3D01E531A607F7E00C9A66C /* Project object */;
@@ -127,6 +140,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C3624A63203F64DA003B324C /* Carousel.appex in Embed App Extensions */,
 				C35134CB1DEF58F700261B85 /* SwiftSampleNotificationService.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -210,6 +224,16 @@
 		C361A9971D3576E900D4EA9B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		C361A9991D3576E900D4EA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C361A9A11D35772000D4EA9B /* SwiftSampleNotificationService-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSampleNotificationService-Bridging-Header.h"; sourceTree = "<group>"; };
+		C3624A54203F64DA003B324C /* Carousel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Carousel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3624A55203F64DA003B324C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		C3624A57203F64DA003B324C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		C3624A5A203F64DA003B324C /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		C3624A5B203F64DA003B324C /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		C3624A5E203F64DA003B324C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C3624A60203F64DA003B324C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3624A67203F6500003B324C /* CarouselAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselAction.h; sourceTree = "<group>"; };
+		C3624A68203F6500003B324C /* CarouselAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselAction.m; sourceTree = "<group>"; };
+		C3624A6A203F654A003B324C /* Carousel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Carousel.entitlements; path = Carousel/Carousel.entitlements; sourceTree = SOURCE_ROOT; };
 		C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellStatusTableViewController.swift; sourceTree = "<group>"; };
 		C3778E841D53CD2300811B72 /* TextInputActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextInputActionPlugin.h; path = "../../plugins/text-input-action/TextInputActionPlugin.h"; sourceTree = "<group>"; };
 		C3778E851D53CD2300811B72 /* TextInputActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextInputActionPlugin.m; path = "../../plugins/text-input-action/TextInputActionPlugin.m"; sourceTree = "<group>"; };
@@ -289,6 +313,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37C88111EB8E6B500C90CFC /* IBMMobilePushNotificationService.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3624A51203F64DA003B324C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3624A58203F64DA003B324C /* UserNotificationsUI.framework in Frameworks */,
+				C3624A56203F64DA003B324C /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +494,8 @@
 				C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */,
 				C3A80AD91BA3687300EE45ED /* CoreData.framework */,
 				C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */,
+				C3624A55203F64DA003B324C /* UserNotifications.framework */,
+				C3624A57203F64DA003B324C /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -474,6 +509,21 @@
 				C361A9A11D35772000D4EA9B /* SwiftSampleNotificationService-Bridging-Header.h */,
 			);
 			path = SwiftSampleNotificationService;
+			sourceTree = "<group>";
+		};
+		C3624A59203F64DA003B324C /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				C3624A6A203F654A003B324C /* Carousel.entitlements */,
+				C3624A67203F6500003B324C /* CarouselAction.h */,
+				C3624A68203F6500003B324C /* CarouselAction.m */,
+				C3624A5A203F64DA003B324C /* NotificationViewController.h */,
+				C3624A5B203F64DA003B324C /* NotificationViewController.m */,
+				C3624A5D203F64DA003B324C /* MainInterface.storyboard */,
+				C3624A60203F64DA003B324C /* Info.plist */,
+			);
+			name = Carousel;
+			path = "../../plugins/Image Carousel Plugin";
 			sourceTree = "<group>";
 		};
 		C3778E831D53CD0A00811B72 /* Text Input Action */ = {
@@ -548,6 +598,7 @@
 				C361A9961D3576E900D4EA9B /* SwiftSampleNotificationService */,
 				C3E2321D1FAA47FB00DCD58D /* SampleWatch */,
 				C3E2322C1FAA47FC00DCD58D /* SampleWatch Extension */,
+				C3624A59203F64DA003B324C /* Carousel */,
 				C35FB4031A64670000CEF4DB /* Frameworks */,
 				C3D01E5D1A607F7E00C9A66C /* SwiftSample */,
 				C3D01E5C1A607F7E00C9A66C /* Products */,
@@ -561,6 +612,7 @@
 				C361A9951D3576E800D4EA9B /* SwiftSampleNotificationService.appex */,
 				C3E2321C1FAA47FB00DCD58D /* SwiftSampleWatch.app */,
 				C3E232281FAA47FC00DCD58D /* SwiftSampleWatch Extension.appex */,
+				C3624A54203F64DA003B324C /* Carousel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -660,6 +712,23 @@
 			productReference = C361A9951D3576E800D4EA9B /* SwiftSampleNotificationService.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		C3624A53203F64DA003B324C /* Carousel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3624A66203F64DA003B324C /* Build configuration list for PBXNativeTarget "Carousel" */;
+			buildPhases = (
+				C3624A50203F64DA003B324C /* Sources */,
+				C3624A51203F64DA003B324C /* Frameworks */,
+				C3624A52203F64DA003B324C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Carousel;
+			productName = Carousel;
+			productReference = C3624A54203F64DA003B324C /* Carousel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C3D01E5A1A607F7E00C9A66C /* SwiftSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3D01E7E1A607F7F00C9A66C /* Build configuration list for PBXNativeTarget "SwiftSample" */;
@@ -675,6 +744,7 @@
 			dependencies = (
 				C35134CD1DEF58F700261B85 /* PBXTargetDependency */,
 				C3E232381FAA47FC00DCD58D /* PBXTargetDependency */,
+				C3624A62203F64DA003B324C /* PBXTargetDependency */,
 			);
 			name = SwiftSample;
 			productName = Silverpop;
@@ -735,11 +805,23 @@
 							};
 						};
 					};
+					C3624A53203F64DA003B324C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					C3D01E5A1A607F7E00C9A66C = {
 						CreatedOnToolsVersion = 6.1.1;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -779,6 +861,7 @@
 				C361A9941D3576E800D4EA9B /* SwiftSampleNotificationService */,
 				C3E2321B1FAA47FB00DCD58D /* SwiftSampleWatch */,
 				C3E232271FAA47FC00DCD58D /* SwiftSampleWatch Extension */,
+				C3624A53203F64DA003B324C /* Carousel */,
 			);
 		};
 /* End PBXProject section */
@@ -788,6 +871,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3624A52203F64DA003B324C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3624A5F203F64DA003B324C /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,6 +940,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C3624A50203F64DA003B324C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3624A5C203F64DA003B324C /* NotificationViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C3D01E571A607F7E00C9A66C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -880,6 +979,7 @@
 				C313803F1BE033D600BC5910 /* AttributesVC.swift in Sources */,
 				C31380471BE154B900BC5910 /* MainVC.swift in Sources */,
 				C35F70AF1C654EB000070DB6 /* MCEInboxPostTemplateCell.m in Sources */,
+				C3624A69203F6500003B324C /* CarouselAction.m in Sources */,
 				C34E052B1B740D4500376671 /* MCEInboxTableViewController.m in Sources */,
 				C3C3990D1B20DE850080DC49 /* AddToPassbookClient.m in Sources */,
 				C3211D971DEE1D8300F1CDFA /* iBeaconVC.swift in Sources */,
@@ -920,6 +1020,11 @@
 			target = C361A9941D3576E800D4EA9B /* SwiftSampleNotificationService */;
 			targetProxy = C35134CC1DEF58F700261B85 /* PBXContainerItemProxy */;
 		};
+		C3624A62203F64DA003B324C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3624A53203F64DA003B324C /* Carousel */;
+			targetProxy = C3624A61203F64DA003B324C /* PBXContainerItemProxy */;
+		};
 		C3E2322B1FAA47FC00DCD58D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C3E232271FAA47FC00DCD58D /* SwiftSampleWatch Extension */;
@@ -933,6 +1038,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C3624A5D203F64DA003B324C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3624A5E203F64DA003B324C /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		C3D01E681A607F7F00C9A66C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1009,6 +1122,57 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		C3624A64203F64DA003B324C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = Carousel/Carousel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/../../plugins/Image Carousel Plugin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.Carousel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3624A65203F64DA003B324C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = Carousel/Carousel.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/../../plugins/Image Carousel Plugin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.Carousel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1333,6 +1497,15 @@
 			buildConfigurations = (
 				C361A99D1D3576E900D4EA9B /* Debug */,
 				C361A99E1D3576E900D4EA9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3624A66203F64DA003B324C /* Build configuration list for PBXNativeTarget "Carousel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3624A64203F64DA003B324C /* Debug */,
+				C3624A65203F64DA003B324C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

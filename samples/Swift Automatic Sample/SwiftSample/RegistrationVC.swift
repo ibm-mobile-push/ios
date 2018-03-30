@@ -47,7 +47,7 @@ class RegistrationVC : UITableViewController
         {
             s.endRefreshing()
         }
-        tableView.reloadRows(at: [IndexPath(item: 3, section: 0), IndexPath(item: 0, section: 0), IndexPath(item: 1, section: 0)], with: .automatic)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
