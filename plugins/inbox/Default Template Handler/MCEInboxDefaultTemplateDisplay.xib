@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +16,8 @@
                 <outlet property="loadingView" destination="i4X-P1-Lfy" id="oUl-Si-lRG"/>
                 <outlet property="subject" destination="Yn4-Bn-P6K" id="fGj-RX-V4B"/>
                 <outlet property="toolbar" destination="TgZ-9b-9P8" id="O8R-eu-6VN"/>
+                <outlet property="toolbarHeightConstraint" destination="J9R-9i-QHU" id="WQu-Sg-Y7f"/>
+                <outlet property="topConstraint" destination="XZJ-sa-Trh" id="pum-MU-pSA"/>
                 <outlet property="view" destination="vnG-Me-tqM" id="Iwm-Co-Pru"/>
                 <outlet property="webView" destination="3eq-ES-N8d" id="jf2-kW-q35"/>
             </connections>
@@ -50,7 +52,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKL-7g-Dmc">
                             <rect key="frame" x="8" y="11" width="361" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

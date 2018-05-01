@@ -16,6 +16,8 @@
 #import <IBMMobilePush/IBMMobilePush.h>
 
 @interface MCEInboxDefaultTemplateDisplay : UIViewController <MCETemplateDisplay>
+@property IBOutlet NSLayoutConstraint * topConstraint;
+@property IBOutlet NSLayoutConstraint * toolbarHeightConstraint;
 @property IBOutlet UIWebView * webView;
 @property IBOutlet UIToolbar * toolbar;
 @property IBOutlet UILabel * subject;

@@ -51,7 +51,8 @@
 
 -(IBAction)dismiss:(id)sender
 {
-    [self dismissViewControllerAnimated:TRUE completion:nil];
+    [self dismissViewControllerAnimated:TRUE completion:^{
+    }];
 }
 
 -(void)setContent
@@ -90,45 +91,32 @@
     CGFloat toolbarHeight = self.toolbar.frame.size.height;
 
     // Adjust spacing between toolbar and top when translucent toolbar or when popup
-    for (NSLayoutConstraint * constraint in self.view.constraints)
+    if([self isModal])
     {
-        if([constraint.firstItem isEqual:self.toolbar])
-        {
-            if(constraint.firstAttribute==NSLayoutAttributeTop)
-            {
-                if([self isModal])
-                {
-                    constraint.constant = statusBarHeight;
-                }
-                else if(self.navigationController.navigationBar.translucent)
-                {
-                    constraint.constant=statusBarHeight + toolbarHeight;
-                }
-                else
-                {
-                    constraint.constant = 0;
-                }
-            }
-        }
-    }
-    
-    // Adjust height of toolbar to hide it when non a popup
-    for (NSLayoutConstraint * constraint in self.toolbar.constraints)
-    {
-        if(constraint.firstAttribute==NSLayoutAttributeHeight)
-        {
-            if([self isModal])
-            {
-                constraint.constant = toolbarHeight;
-            }
-            else
-            {
-                constraint.constant = 0;
+        self.topConstraint.constant = 0;
+        self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
+        
+        UIWindow * window = UIApplication.sharedApplication.keyWindow;
+        if([window respondsToSelector:@selector(safeAreaInsets)]) {
+            if(window.safeAreaInsets.top > statusBarHeight) {
+                self.toolbarHeightConstraint.constant = toolbarHeight + window.safeAreaInsets.top;
+            } else {
+                self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
             }
             
         }
     }
-
+    else if(self.navigationController.navigationBar.translucent)
+    {
+        self.topConstraint.constant = statusBarHeight + toolbarHeight;
+        self.toolbarHeightConstraint.constant = 0;
+    }
+    else
+    {
+        self.topConstraint = 0;
+        self.toolbarHeightConstraint.constant = 0;
+    }
+    
     if(self.inboxMessage)
     {
         [self setContent];

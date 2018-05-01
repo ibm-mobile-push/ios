@@ -138,6 +138,7 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    [MCEInboxQueueManager.sharedInstance syncInbox];
     [[MCEActionRegistry sharedInstance] registerTarget:self withSelector:@selector(displayVideo:) forAction:@"showVideo"];
     [[MCEActionRegistry sharedInstance] registerTarget:self withSelector:@selector(displayTopBanner:) forAction:@"showTopBanner"];
     [[MCEActionRegistry sharedInstance] registerTarget:self withSelector:@selector(displayBottomBanner:) forAction:@"showBottomBanner"];
@@ -243,120 +244,80 @@
             switch (indexPath.item) {
                 case TOP_BANNER_ITEM:
                 {
-                    body = @"Added Five InApp Banner Template Messages";
-                    userInfo = @{@"aps":@{@"alert": body},
-                                      @"notification-action": @{@"type": @"showTopBanner"},
-                                      @"inApp": @{
-                                              @"rules": @[@"topBanner", @"all"],
-                                              @"maxViews": @5,
-                                              @"template": @"default",
-                                              @"content": @{
-                                                      @"orientation":@"top",
-                                                      @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
-                                                      @"text":@"Canned Banner Template Text",
-                                                      @"icon": @"note",
-                                                      @"color": @"0077FF"
-                                                      },
-                                              @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
-                                              @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
-                                              },
-                                      };
+                    userInfo = @{@"inApp": @{
+                                         @"rules": @[@"topBanner", @"all"],
+                                         @"maxViews": @5,
+                                         @"template": @"default",
+                                         @"content": @{
+                                                 @"orientation":@"top",
+                                                 @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
+                                                 @"text":@"Canned Banner Template Text",
+                                                 @"icon": @"note",
+                                                 @"color": @"0077FF"
+                                                 },
+                                         @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
+                                         @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
+                                         },
+                                 };
                     break;
                 }
                 case BOTTOM_BANNER_ITEM:
                 {
-                    body = @"Added Five InApp Banner Template Messages";
-                    userInfo = @{@"aps":@{@"alert": body},
-                                      @"notification-action": @{@"type": @"showBottomBanner"},
-                                      @"inApp": @{
-                                              @"rules": @[@"bottomBanner", @"all"],
-                                              @"maxViews": @5,
-                                              @"template": @"default",
-                                              @"content": @{
-                                                      @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
-                                                      @"text":@"Canned Banner Template Text",
-                                                      @"icon": @"note",
-                                                      @"color": @"0077FF"
-                                                      },
-                                              @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
-                                              @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
-                                              },
-                                      };
+                    userInfo = @{@"inApp": @{
+                                         @"rules": @[@"bottomBanner", @"all"],
+                                         @"maxViews": @5,
+                                         @"template": @"default",
+                                         @"content": @{
+                                                 @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
+                                                 @"text":@"Canned Banner Template Text",
+                                                 @"icon": @"note",
+                                                 @"color": @"0077FF"
+                                                 },
+                                         @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
+                                         @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
+                                         },
+                                 };
                     break;
                 }
                 case IMAGE_ITEM:
                 {
-                    body = @"Added Five InApp Image Template Messages";
-                    userInfo = @{@"aps":@{@"alert": body},
-                                      @"notification-action": @{@"type": @"showImage"},
-                                      @"inApp": @{
-                                              @"rules": @[@"image", @"all"],
-                                              @"maxViews": @5,
-                                              @"template": @"image",
-                                              @"content": @{
-                                                      @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
-                                                      @"title":@"Canned Image Template Title",
-                                                      @"text":@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ",
-                                                      @"image": @"https://www.ibm.com/us-en/images/homepage/leadspace/01172016_ls_dynamic-pricing-announcement_bg_14018_2732x1300.jpg"
-                                                      }
-                                              },
-                                      @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
-                                      @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
-                                      };
+                    userInfo = @{@"inApp": @{
+                                         @"rules": @[@"image", @"all"],
+                                         @"maxViews": @5,
+                                         @"template": @"image",
+                                         @"content": @{
+                                                 @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
+                                                 @"title":@"Canned Image Template Title",
+                                                 @"text":@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ",
+                                                 @"image": @"https://www.ibm.com/us-en/images/homepage/leadspace/01172016_ls_dynamic-pricing-announcement_bg_14018_2732x1300.jpg"
+                                                 }
+                                         },
+                                 @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
+                                 @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
+                                 };
                     break;
                 }
                 case VIDEO_ITEM:
                 {
-                    body = @"Added Five InApp Video Template Messages";
-                    userInfo = @{@"aps":@{@"alert": body},
-                                      @"notification-action": @{@"type": @"showVideo"},
-                                      @"inApp": @{
-                                              @"rules": @[@"video", @"all"],
-                                              @"maxViews": @5,
-                                              @"template": @"video",
-                                              @"content": @{
-                                                      @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
-                                                      @"title":@"Canned Video Template Title",
-                                                      @"text":@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ",
-                                                      @"video":@"http://techslides.com/demos/sample-videos/small.mp4"
-                                                      }
-                                              },
-                                      @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
-                                      @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
-                                      };
+                    userInfo = @{@"inApp": @{
+                                         @"rules": @[@"video", @"all"],
+                                         @"maxViews": @5,
+                                         @"template": @"video",
+                                         @"content": @{
+                                                 @"action": @{@"type":@"url", @"value": @"http://ibm.co"},
+                                                 @"title":@"Canned Video Template Title",
+                                                 @"text":@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt. ",
+                                                 @"video":@"http://techslides.com/demos/sample-videos/small.mp4"
+                                                 }
+                                         },
+                                 @"triggerDate": [MCEApiUtil dateToIso8601Format: [NSDate distantPast] ],
+                                 @"expirationDate": [MCEApiUtil dateToIso8601Format: [NSDate distantFuture] ],
+                                 };
                     break;
                 }
             }
             
-            if([UNMutableNotificationContent class])
-            {
-                UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
-                content.body = body;
-                content.sound = [UNNotificationSound defaultSound];
-                content.userInfo = userInfo;
-                
-                UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.1 repeats:NO];
-                UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"note" content:content trigger:trigger];
-                
-                // Schedule the notification.
-                UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
-                [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-                    if(error)
-                    {
-                        NSLog(@"Could not send local notification %@", error.localizedDescription);
-                        return;
-                    }
-                    NSLog(@"Local notification sent");
-                }];
-            }
-            else
-            {
-                UILocalNotification * localNote = [[UILocalNotification alloc] init];
-                localNote.alertBody = body;
-                localNote.soundName = UILocalNotificationDefaultSoundName;
-                localNote.userInfo = userInfo;
-                [[UIApplication sharedApplication] presentLocalNotificationNow: localNote];
-            }
+            [MCEInAppManager.sharedInstance processPayload: userInfo];
             
             break;
         }

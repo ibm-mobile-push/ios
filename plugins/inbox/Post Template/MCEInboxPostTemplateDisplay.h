@@ -17,6 +17,9 @@
 #import "MCEInboxPostTemplateView.h"
 
 @interface MCEInboxPostTemplateDisplay : UIViewController <MCETemplateDisplay>
+@property IBOutlet NSLayoutConstraint * topConstraint;
+@property IBOutlet NSLayoutConstraint * toolbarHeightConstraint;
+@property IBOutlet UIToolbar * toolbar;
 @property IBOutlet MCEInboxPostTemplateView * contentView;
 @property MCEInboxMessage * inboxMessage;
 @end

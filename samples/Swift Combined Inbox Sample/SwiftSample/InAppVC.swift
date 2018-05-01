@@ -122,6 +122,8 @@ class InAppVC : UITableViewController, MCEActionProtocol
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        MCEInboxQueueManager.sharedInstance().syncInbox()
         MCEActionRegistry.sharedInstance().registerTarget(self, with: #selector(self.displayVideo(userInfo:)), forAction: "showVideo")
         MCEActionRegistry.sharedInstance().registerTarget(self, with: #selector(self.displayTopBanner(userInfo:)), forAction: "showTopBanner")
         MCEActionRegistry.sharedInstance().registerTarget(self, with: #selector(self.displayBottomBanner(userInfo:)), forAction: "showBottomBanner")
@@ -216,11 +218,7 @@ class InAppVC : UITableViewController, MCEActionProtocol
             switch(indexPath.item)
             {
             case TOP_BANNER_ITEM:
-                body = "Added Five InApp Banner Template Messages"
                 userInfo = [
-                    "aps": [
-                        "alert": body                    ],
-                    "notification-action":["type":"showTopBanner"],
                     "inApp":[
                         "rules":["topBanner", "all"],
                         "maxViews": 5,
@@ -241,11 +239,7 @@ class InAppVC : UITableViewController, MCEActionProtocol
                 ]
                 break
             case BOTTOM_BANNER_ITEM:
-                body = "Added Five InApp Banner Template Messages"
                 userInfo = [
-                    "aps": [
-                        "alert": body,
-                    ],
                     "notification-action":["type":"showBottomBanner"],
                     "inApp":[
                         "rules":["bottomBanner", "all"],
@@ -266,11 +260,7 @@ class InAppVC : UITableViewController, MCEActionProtocol
                 ]
                 break
             case IMAGE_ITEM:
-                body = "Added Five InApp Image Template Messages"
                 userInfo = [
-                    "aps": [
-                        "alert": body
-                    ],
                     "notification-action":["type":"showImage"],
                     "inApp":[
                         "rules":["image", "all"],
@@ -291,12 +281,7 @@ class InAppVC : UITableViewController, MCEActionProtocol
                 ]
                 break
             case VIDEO_ITEM:
-                body = "Added Five InApp Video Template Messages"
                 userInfo = [
-                    "aps": [
-                        "alert": body
-                    ],
-                    "notification-action":["type":"showVideo"],
                     "inApp":[
                         "rules":["video", "all"],
                         "maxViews": 5,
@@ -319,28 +304,7 @@ class InAppVC : UITableViewController, MCEActionProtocol
                 break
             }
             
-            if #available(iOS 10.0, *) {
-                let content = UNMutableNotificationContent()
-                content.body = body
-                content.sound = UNNotificationSound.default()
-                content.userInfo = userInfo
-                
-                // Deliver the notification in five seconds.
-                let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
-                let request = UNNotificationRequest.init(identifier: "note", content: content, trigger: trigger)
-                
-                // Schedule the notification.
-                let center = UNUserNotificationCenter.current()
-                center.add(request)
-            }
-            else
-            {
-                let note = UILocalNotification()
-                note.alertBody = body
-                note.soundName = UILocalNotificationDefaultSoundName
-                note.userInfo=userInfo
-                UIApplication.shared.presentLocalNotificationNow(note)
-            }
+            MCEInAppManager.sharedInstance().processPayload(userInfo)
             break
         default:
             break

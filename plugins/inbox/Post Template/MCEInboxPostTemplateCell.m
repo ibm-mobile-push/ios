@@ -19,6 +19,7 @@
 
 -(void)prepareForReuse
 {
+    [super prepareForReuse];
     [self.container prepareForReuse];
 }
 @end

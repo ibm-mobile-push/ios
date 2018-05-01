@@ -127,6 +127,10 @@
 
 -(instancetype)init
 {
+    if(MCERegistrationDetails.sharedInstance.userInvalidated) {
+        [MCESdk.sharedInstance manualInitialization];
+    }
+    
     if(self=[super init])
     {
         MCESdk.sharedInstance.presentNotification = ^BOOL(NSDictionary * userInfo){

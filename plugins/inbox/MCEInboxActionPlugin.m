@@ -19,8 +19,6 @@
 @interface MCEInboxActionPlugin  ()
 @property NSString * attribution;
 @property NSString * mailingId;
-@property NSString * richContentIdToShow;
-@property NSString * inboxMessageIdToShow;
 @property UIViewController <MCETemplateDisplay> * displayViewController;
 @end
 
@@ -34,35 +32,6 @@
         sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
-}
-
--(void)syncDatabase:(NSNotification*)notification
-{
-    MCEInboxMessage * message = nil;
-    if(self.inboxMessageIdToShow)
-    {
-        message = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId: self.inboxMessageIdToShow];
-    }
-    else if(self.richContentIdToShow)
-    {
-        message = [[MCEInboxDatabase sharedInstance] inboxMessageWithRichContentId:self.richContentIdToShow];
-    }
-    
-    if(message)
-    {
-        [self.displayViewController setLoading];
-        
-        UIViewController * controller = MCESdk.sharedInstance.findCurrentViewController;
-        [controller presentViewController:(UIViewController*)self.displayViewController animated:TRUE completion:nil];
-
-        [self displayRichContent: message];
-        self.richContentIdToShow=nil;
-        self.inboxMessageIdToShow=nil;
-    }
-    else
-    {
-        NSLog(@"Could not get inbox message from database");
-    }
 }
 
 -(void)displayRichContent: (MCEInboxMessage*)inboxMessage
@@ -84,27 +53,56 @@
         self.mailingId = payload[@"mce"][@"mailingId"];
     }
     
-    self.inboxMessageIdToShow=action[@"inboxMessageId"];
-    self.richContentIdToShow=action[@"value"];
+    if(!action[@"inboxMessageId"])
+    {
+        NSLog(@"Could not showInboxMessage, no inboxMessageId included %@", action);
+        return;
+    }
     
     NSString * template = action[@"template"];
     self.displayViewController = [[MCETemplateRegistry sharedInstance] viewControllerForTemplate: template];
-
+    
     if(!self.displayViewController)
     {
         NSLog(@"Could not showInboxMessage %@, %@ template not registered", action, template);
         return;
     }
     
-    [[MCEInboxQueueManager sharedInstance] syncInbox];
+    MCEInboxMessage * inboxMessage = [[MCEInboxDatabase sharedInstance] inboxMessageWithInboxMessageId: action[@"inboxMessageId"]];
+    if(inboxMessage)
+    {
+        [self showInboxMessage: inboxMessage];
+    }
+    else
+    {
+        [MCEInboxQueueManager.sharedInstance getInboxMessageId:action[@"inboxMessageId"] completion:^(MCEInboxMessage *inboxMessage, NSError *error) {
+            if(error)
+            {
+                NSLog(@"Could not get inbox message from database %@", error);
+                return;
+            }
+            [self showInboxMessage: inboxMessage];
+        } ];
+    }
+}
+
+-(void)showInboxMessage: (MCEInboxMessage *)inboxMessage
+{
+    if(![NSThread isMainThread])
+    {
+        [self performSelectorOnMainThread:@selector(showInboxMessage:) withObject:inboxMessage waitUntilDone:NO];
+        return;
+    }
+    
+    [self.displayViewController setLoading];
+    UIViewController * controller = MCESdk.sharedInstance.findCurrentViewController;
+    [controller presentViewController:(UIViewController*)self.displayViewController animated:TRUE completion:nil];
+    [self displayRichContent: inboxMessage];
 }
 
 +(void)registerPlugin
 {
-    [[NSNotificationCenter defaultCenter] addObserver:[self sharedInstance] selector:@selector(syncDatabase:) name:@"MCESyncDatabase" object:nil];
-    
-    MCEActionRegistry * registry = [MCEActionRegistry sharedInstance];
-    [registry registerTarget: [self sharedInstance] withSelector:@selector(showInboxMessage:payload:) forAction: @"openInboxMessage"];
+    [MCEActionRegistry.sharedInstance registerTarget: [self sharedInstance] withSelector:@selector(showInboxMessage:payload:) forAction: @"openInboxMessage"];
 }
 
 @end

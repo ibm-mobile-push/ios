@@ -54,7 +54,8 @@
 
 -(IBAction)dismiss:(id)sender
 {
-    [self dismissViewControllerAnimated:TRUE completion:nil];
+    [self dismissViewControllerAnimated:TRUE completion:^{
+    }];
 }
 
 -(void)setContent
@@ -63,14 +64,12 @@
     [self.contentView setInboxMessage: self.inboxMessage resizeCallback: ^(CGSize size, NSURL * url, BOOL reload){
     }];
 }
-
 -(void)awakeFromNib
 {
     [super awakeFromNib];
     self.view.translatesAutoresizingMaskIntoConstraints=NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints=NO;
 }
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -79,6 +78,37 @@
         [self setContent];
         self.inboxMessage.isRead = TRUE;
     }
+    
+    CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
+    CGFloat statusBarHeight = MIN(statusBarSize.width, statusBarSize.height);
+    CGFloat toolbarHeight = self.toolbar.frame.size.height;
+    
+    // Adjust spacing between toolbar and top when translucent toolbar or when popup
+    if([self isModal])
+    {
+        self.topConstraint.constant = 0;
+        self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
+        
+        UIWindow * window = UIApplication.sharedApplication.keyWindow;
+        if([window respondsToSelector:@selector(safeAreaInsets)]) {
+            if(window.safeAreaInsets.top > statusBarHeight) {
+                self.toolbarHeightConstraint.constant = toolbarHeight + window.safeAreaInsets.top;
+            } else {
+                self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
+            }
+        }
+    }
+    else if(self.navigationController.navigationBar.translucent)
+    {
+        self.topConstraint.constant = statusBarHeight + toolbarHeight;
+        self.toolbarHeightConstraint.constant = 0;
+    }
+    else
+    {
+        self.topConstraint = 0;
+        self.toolbarHeightConstraint.constant = 0;
+    }
+
 }
 
 -(void)setLoading

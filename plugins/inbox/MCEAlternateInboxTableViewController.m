@@ -111,7 +111,7 @@
     });
 }
 
--(void) setContentViewController: (NSNotification*)note {
+-(void)setContentViewController: (NSNotification*)note {
     self.alternateDisplayViewController = note.object;
 }
 

@@ -6,7 +6,7 @@
  * © Copyright IBM Corp. 2014, 2018
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
-
+ 
 #if __has_feature(modules)
 @import Foundation;
 #else
@@ -16,6 +16,8 @@
 #import <IBMMobilePush/IBMMobilePush.h>
 
 @interface MCEInAppBannerTemplate : UIViewController <MCEInAppTemplate>
+@property IBOutlet NSLayoutConstraint * topConstraint;
+@property IBOutlet NSLayoutConstraint * bottomConstraint;
 @property IBOutlet UILabel * label;
 @property IBOutlet UIImageView * icon;
 @property IBOutlet UIImageView * close;

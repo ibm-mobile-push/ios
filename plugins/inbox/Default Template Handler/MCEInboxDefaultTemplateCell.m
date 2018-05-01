@@ -27,6 +27,7 @@
 
 -(void)prepareForReuse
 {
+    [super prepareForReuse];
     self.preview.text = @"";
     self.subject.text = @"";
     self.date.text = @"";

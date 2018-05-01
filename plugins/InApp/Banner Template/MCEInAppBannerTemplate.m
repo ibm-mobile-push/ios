@@ -37,6 +37,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
 {
     [super viewDidLoad];
     self.bannerHeight = self.view.frame.size.height;
+    
     self.close.image = [self.close.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(interfaceRotationNote:) name:@"UIApplicationDidChangeStatusBarFrameNotification" object:nil];
 }
@@ -238,15 +239,14 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
 
 -(bool)isTopBanner
 {
-    if([self.inAppMessage.content[@"orientation"] isEqual: @"top"])
-    {
-        return true;
-    }
-    return false;
+    return [self.inAppMessage.content[@"orientation"] isEqual: @"top"];
 }
 
 -(void)configureTopBanner
 {
+    self.bottomConstraint.active = true;
+    self.topConstraint.active = false;
+
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
     
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
@@ -256,6 +256,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
     frame.origin.y = 0;
     frame.size.width = window.frame.size.width;
     frame.size.height = self.bannerHeight + statusBarFrame.size.height;
+    
     self.visibleFrame = frame;
     
     frame.size.width = window.frame.size.width;
@@ -265,13 +266,21 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
 
 -(void)configureBottomBanner
 {
+    self.bottomConstraint.active = false;
+    self.topConstraint.active = true;
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     
     CGRect frame = self.view.frame;
     frame.origin.x = 0;
-    frame.origin.y = window.bounds.size.height - frame.size.height;
     frame.size.width = window.frame.size.width;
     frame.size.height = self.bannerHeight;
+    
+    if([window respondsToSelector:@selector(safeAreaInsets)]) {
+        frame.size.height += window.safeAreaInsets.bottom;
+    }
+
+    frame.origin.y = window.bounds.size.height - frame.size.height;
+    
     self.visibleFrame = frame;
     
     frame.size.width = window.frame.size.width;

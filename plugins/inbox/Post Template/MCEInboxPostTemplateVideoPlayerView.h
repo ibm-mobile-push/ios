@@ -8,13 +8,12 @@
  */
 
 #if __has_feature(modules)
-@import UIKit;
 @import AVFoundation;
+@import UIKit;
 #else
-#import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <UIKit/UIKit.h>
 #endif
-
 
 @interface MCEInboxPostTemplateVideoPlayerView : UIButton
 -(void)loadVideoPlayer:(AVPlayer*)player;
