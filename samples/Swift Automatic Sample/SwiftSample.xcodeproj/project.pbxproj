@@ -46,8 +46,6 @@
 		C35F70B71C654EB000070DB6 /* MCEInboxPostTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A71C654EB000070DB6 /* MCEInboxPostTemplateView.xib */; };
 		C35F70B81C654EB000070DB6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35F70A81C654EB000070DB6 /* Media.xcassets */; };
 		C361A9981D3576E900D4EA9B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C361A9971D3576E900D4EA9B /* NotificationService.swift */; };
-		C3624A56203F64DA003B324C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3624A55203F64DA003B324C /* UserNotifications.framework */; };
-		C3624A58203F64DA003B324C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3624A57203F64DA003B324C /* UserNotificationsUI.framework */; };
 		C3624A5C203F64DA003B324C /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3624A5B203F64DA003B324C /* NotificationViewController.m */; };
 		C3624A5F203F64DA003B324C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3624A5D203F64DA003B324C /* MainInterface.storyboard */; };
 		C3624A63203F64DA003B324C /* Carousel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C3624A54203F64DA003B324C /* Carousel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -225,8 +223,6 @@
 		C361A9991D3576E900D4EA9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C361A9A11D35772000D4EA9B /* SwiftSampleNotificationService-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftSampleNotificationService-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3624A54203F64DA003B324C /* Carousel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Carousel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3624A55203F64DA003B324C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		C3624A57203F64DA003B324C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		C3624A5A203F64DA003B324C /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		C3624A5B203F64DA003B324C /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		C3624A5E203F64DA003B324C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -320,8 +316,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3624A58203F64DA003B324C /* UserNotificationsUI.framework in Frameworks */,
-				C3624A56203F64DA003B324C /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,8 +488,6 @@
 				C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */,
 				C3A80AD91BA3687300EE45ED /* CoreData.framework */,
 				C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */,
-				C3624A55203F64DA003B324C /* UserNotifications.framework */,
-				C3624A57203F64DA003B324C /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
