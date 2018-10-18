@@ -8,7 +8,6 @@
  */
 
 #import "InAppVC.h"
-#import <IBMMobilePush/IBMMobilePush.h>
 
 #define BOTTOM_BANNER_ITEM 0
 #define TOP_BANNER_ITEM 1
@@ -239,7 +238,6 @@
         case CANNED_SECTION:
         {
             NSDictionary * userInfo;
-            NSString * body;
             
             switch (indexPath.item) {
                 case TOP_BANNER_ITEM:

@@ -28,7 +28,7 @@
 @interface MCEActionRegistry : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEActionRegistry * sharedInstance NS_SWIFT_NAME(shared);
 
 /** This method returns true if the action registered for the specified action type expects user text input. 
  @param action The name of the action registered.

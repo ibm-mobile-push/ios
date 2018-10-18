@@ -21,9 +21,16 @@
 }
 
 -(void)performAction:(NSDictionary*)action withPayload:(NSDictionary*)payload {
-    NSUserDefaults * sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: @"group.com.ibm.mce"];
-    NSInteger selected = [sharedDefaults integerForKey:@"MCECarouselSelected"];
-    
+    NSNumber * selectedNumber = action[@"value"];
+    if(!selectedNumber) {
+        NSString * message = [NSString stringWithFormat: @"User Clicked Image or Notification"];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Carousel Plugin" message: message preferredStyle: UIAlertControllerStyleAlert];
+        [alertController addAction: [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:nil]];
+        UIViewController * controller = MCESdk.sharedInstance.findCurrentViewController;
+        [controller presentViewController:alertController animated:TRUE completion:nil];
+        return;
+    }
+    int selected = [selectedNumber intValue];
     NSDictionary * carousel = payload[@"carousel"];
     if(!carousel || ![carousel isKindOfClass: NSDictionary.class]) {
         NSLog(@"Can't find carousel dictionary.");

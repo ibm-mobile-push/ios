@@ -14,7 +14,7 @@
 @interface MCETemplateRegistry : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCETemplateRegistry * sharedInstance NS_SWIFT_NAME(shared);
 
 /** The registerTemplate:handler: method records a specific object to handle templates of the specified name.
  
@@ -22,7 +22,7 @@
  @param handler The template that provides the preview cells and full page display objects. Must implement the MCETemplate protocol.
  @return Returns TRUE if the template can register and FALSE otherwise.
 */
--(BOOL) registerTemplate:(NSString*)templateName hander:(NSObject*)handler;
+-(BOOL) registerTemplate:(NSString*)templateName hander:(NSObject<MCETemplate>*)handler;
 
 /** The viewControllerForTemplate: method returns a view controller for the specified template name. This queries the registered template object for the view controller to display the full screen content.
  

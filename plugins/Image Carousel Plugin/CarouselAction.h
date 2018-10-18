@@ -10,8 +10,10 @@
 @import IBMMobilePush;
 @import UIKit;
 
-@interface CarouselAction : NSObject
-+ (instancetype)sharedInstance;
+NS_ASSUME_NONNULL_BEGIN
+@interface CarouselAction : NSObject <MCEActionProtocol>
+@property(class, nonatomic, readonly) CarouselAction * sharedInstance NS_SWIFT_NAME(shared);
 -(void)performAction:(NSDictionary*)action withPayload:(NSDictionary*)payload;
 +(void)registerPlugin;
 @end
+NS_ASSUME_NONNULL_END

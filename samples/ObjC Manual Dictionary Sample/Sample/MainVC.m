@@ -31,7 +31,7 @@
     }
     
     // Show Inbox counts on main page
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inboxUpdate) name:@"MCESyncDatabase" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inboxUpdate) name: InboxCountUpdate object:nil];
     if(MCERegistrationDetails.sharedInstance.mceRegistered)
     {
         [[MCEInboxQueueManager sharedInstance] syncInbox];
@@ -47,21 +47,14 @@
 // Show Inbox counts on main page
 -(void)inboxUpdate
 {
-    NSArray * messages = [[MCEInboxDatabase sharedInstance] inboxMessagesAscending: true];
-    int unreadCount = 0;
-    for(MCEInboxMessage * message in messages)
-    {
-        if(!message.isRead)
-        {
-            unreadCount += 1;
-        }
-    }
+    int unreadCount = [[MCEInboxDatabase sharedInstance] unreadMessageCount];
+    int messageCount = [[MCEInboxDatabase sharedInstance] messageCount];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSString * subtitle = @"";
         if(MCERegistrationDetails.sharedInstance.mceRegistered)
         {
-            subtitle = [NSString stringWithFormat:@"%lu messages, %d unread", messages.count, unreadCount];
+            subtitle = [NSString stringWithFormat:@"%d messages, %d unread", messageCount, unreadCount];
         }
         inboxCell.detailTextLabel.text = subtitle;
         altInboxCell.detailTextLabel.text = subtitle;

@@ -25,14 +25,14 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("DownloadedLocations"), object: nil, queue: OperationQueue.main) { (note) in
+        NotificationCenter.default.addObserver(forName: MCENotificationName.DownloadedLocations.rawValue, object: nil, queue: OperationQueue.main) { (note) in
             self.addGeofenceOverlaysNearCoordinate(coordinate: self.lastLocation!.coordinate, radius: 1000)
         }
     }
     
     func updateStatus()
     {
-        let config = MCESdk.sharedInstance().config;
+        let config = MCESdk.shared.config;
         if(config!.geofenceEnabled)
         {
             switch(CLLocationManager.authorizationStatus())
@@ -106,7 +106,7 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     
     @objc func didDragMap(gestureRecognizer: UIGestureRecognizer)
     {
-        if(gestureRecognizer.state == UIGestureRecognizerState.ended)
+        if(gestureRecognizer.state == UIGestureRecognizer.State.ended)
         {
             followGPS=false
             updateGpsButton()
@@ -136,7 +136,7 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     
     @IBAction func enable(sender: AnyObject)
     {
-        MCESdk.sharedInstance().manualLocationInitialization()
+        MCESdk.shared.manualLocationInitialization()
     }
     
     @IBAction func refresh(sender: AnyObject)
@@ -166,7 +166,7 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         let location = locations.last
         if(followGPS)
         {
-            let region = MKCoordinateRegionMakeWithDistance(location!.coordinate, 1000, 1000)
+            let region = MKCoordinateRegion.init(center: location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
             mapView.setRegion(region, animated: true)
         }
         
@@ -183,7 +183,7 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         DispatchQueue.global().async {
             var overlays = [MKOverlay]()
             var annotations = [MKAnnotation]()
-            if let geofences = MCELocationDatabase.sharedInstance().geofencesNearCoordinate(coordinate, radius: r)
+            if let geofences = MCELocationDatabase.shared.geofencesNearCoordinate(coordinate, radius: r)
             {
                 for geofence in geofences
                 {

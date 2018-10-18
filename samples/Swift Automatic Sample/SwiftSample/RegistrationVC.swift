@@ -21,24 +21,36 @@ enum RegistrationItems: Int
 
 class RegistrationVC : UITableViewController
 {
-    var observer: AnyObject?
+    var registrationCounter = 0
+    var registrationObserver: AnyObject?
+    var registrationUpdatedObserver: AnyObject?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        registrationCounter = 0
         super.viewWillAppear(animated)
-        observer = NotificationCenter.default.addObserver(forName: Notification.Name("MCERegisteredNotification"), object: nil, queue: OperationQueue.main, using: { (notification: Notification) -> Void in
+        registrationObserver = NotificationCenter.default.addObserver(forName: Notification.Name("MCERegisteredNotification"), object: nil, queue: OperationQueue.main, using: { (notification: Notification) -> Void in
             self.refresh(sender: nil)
+            self.registrationCounter = self.registrationCounter + 1
+        })
+        registrationUpdatedObserver = NotificationCenter.default.addObserver(forName: Notification.Name("MCERegisteredNotification"), object: nil, queue: OperationQueue.main, using: { (notification: Notification) -> Void in
+            self.refresh(sender: nil)
+            self.registrationCounter = self.registrationCounter + 1
         })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let observer = observer {
-            NotificationCenter.default.removeObserver(observer)
-            self.observer = nil
+        if let registrationObserver = registrationObserver {
+            NotificationCenter.default.removeObserver(registrationObserver)
+            self.registrationObserver = nil
+        }
+        if let registrationUpdatedObserver = registrationUpdatedObserver {
+            NotificationCenter.default.removeObserver(registrationUpdatedObserver)
+            self.registrationUpdatedObserver = nil
         }
     }
     
@@ -53,26 +65,32 @@ class RegistrationVC : UITableViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "view", for: indexPath as IndexPath)
-        
+        cell.detailTextLabel!.accessibilityIdentifier = nil
+        cell.accessibilityIdentifier = nil
         if let registrationItem = RegistrationItems(rawValue: indexPath.item)
         {
             switch(registrationItem)
             {
             case .UserId:
                 cell.textLabel!.text = "User Id"
-                cell.detailTextLabel!.text = MCERegistrationDetails.sharedInstance().userId
+                cell.detailTextLabel!.text = MCERegistrationDetails.shared.userId
+                cell.detailTextLabel!.accessibilityIdentifier = "userId"
                 break
             case .ChannelId:
                 cell.textLabel!.text = "Channel Id"
-                cell.detailTextLabel!.text = MCERegistrationDetails.sharedInstance().channelId
+                cell.detailTextLabel!.text = MCERegistrationDetails.shared.channelId
+                cell.detailTextLabel!.accessibilityIdentifier = "channelId"
                 break
             case .AppKey:
                 cell.textLabel!.text = "App Key"
-                cell.detailTextLabel!.text = MCERegistrationDetails.sharedInstance().appKey
+                cell.detailTextLabel!.text = MCERegistrationDetails.shared.appKey
+                cell.detailTextLabel!.accessibilityIdentifier = "appKey"
                 break
             case .Registration:
+                cell.accessibilityIdentifier = "registration"
+                cell.accessibilityValue = "\(registrationCounter)"
                 cell.textLabel!.text = "Registration"
-                if MCERegistrationDetails.sharedInstance().mceRegistered
+                if MCERegistrationDetails.shared.mceRegistered
                 {
                     cell.detailTextLabel!.text = "Registered"
                 }
@@ -112,9 +130,9 @@ class RegistrationVC : UITableViewController
         tableView.deselectRow(at: indexPath as IndexPath, animated: true)
         if indexPath.item == 3
         {
-            if !MCERegistrationDetails.sharedInstance().mceRegistered
+            if !MCERegistrationDetails.shared.mceRegistered
             {
-                MCESdk.sharedInstance().manualInitialization()
+                MCESdk.shared.manualInitialization()
             }
         }
     }

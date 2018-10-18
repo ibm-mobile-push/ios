@@ -14,21 +14,22 @@
 #import <CoreLocation/CoreLocation.h>
 #endif
 
-extern int mceLogLevel;
-
 /** MCEConfig provides the current configuration of the SDK. */
 @interface MCEConfig : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEConfig * sharedInstance NS_SWIFT_NAME(shared);
 
-/** sessionTimeout specifies how long sessions last. It can be specified in the MceConfig.plist file. If it is not specified, it is 20 minutes by default. */
+/** This method allows you to configure the app with a NSDicionary instead of a MceConfig.json file */
++ (instancetype)sharedInstanceWithDictionary:(NSDictionary*)dictionary;
+
+/** sessionTimeout specifies how long sessions last. It can be specified in the MceConfig.json file. If it is not specified, it is 20 minutes by default. */
 @property NSInteger sessionTimeout;
 
-/** baseUrl specifies where the SDK connects to. It can be specified in the MceConfig.plist file. If it is not specified, it is https://api.ibm.com by default. */
+/** baseUrl specifies where the SDK connects to. It can be specified in the MceConfig.json file. If it is not specified, it is https://api.ibm.com by default. */
 @property NSURL* baseUrl;
 
-/** appKey specifies the appKey that is currently in use. A devAppKey and prodAppKey can be specified in the MceConfig.plist file and are automatically determined on launch, depending on the environment the app is running in.
+/** appKey specifies the appKey that is currently in use. A devAppKey and prodAppKey can be specified in the MceConfig.json file and are automatically determined on launch, depending on the environment the app is running in.
  
  Note: This value may not be correct on Apple Watch, please use MCERegistrationDetails.sharedInstance.appKey instead.
  */
@@ -40,10 +41,7 @@ extern int mceLogLevel;
 /** autoInitializeLocationFlag specifies if the SDK should initialize the location services at first launch or wait until the MCESdk manualLocationInitialization method is called. */
 @property BOOL autoInitializeLocationFlag;
 
-/** metricTimeInterval specifies how frequently metrics are sent to the server. If not specified, it defaults to 3 minutes. */
-@property double metricTimeInterval;
-
-/** appDelegateClass specifies the class that app delegate calls are forwarded to if you use the easy integration method. By default, it is not specified and does not forward calls that are not present in MceConfig.plist. */
+/** appDelegateClass specifies the class that app delegate calls are forwarded to if you use the easy integration method. By default, it is not specified and does not forward calls that are not present in MceConfig.json. */
 @property Class appDelegateClass;
 
 /** locationSyncRadius specifies the size of the reference region to sync from the server to the device. */

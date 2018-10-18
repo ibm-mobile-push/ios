@@ -8,12 +8,7 @@
  */
 
 #import "MCEInboxTableViewController.h"
-#import <IBMMobilePush/MCEInboxDatabase.h>
-#import <IBMMobilePush/MCETemplateRegistry.h>
-#import <IBMMobilePush/MCETemplate.h>
-#import <IBMMobilePush/MCEInboxMessage.h>
-#import <IBMMobilePush/MCEEventService.h>
-#import <IBMMobilePush/MCEInboxQueueManager.h>
+#import <IBMMobilePush/IBMMobilePush.h>
 
 @interface MCEInboxTableViewController ()
 @property NSMutableArray * inboxMessages;
@@ -32,60 +27,81 @@
 // The purpose of this method is to smoothly update the list of messages instead of just executing [self.tableView reloadData];
 -(void)smartUpdateMessages:(NSMutableArray*)inboxMessages
 {
-    if([inboxMessages isEqual:self.inboxMessages])
-    {
-        return;
-    }
-    
-    NSSet * newMessages = [NSSet setWithArray:inboxMessages];
-    NSSet * oldMessages = [NSSet setWithArray:self.inboxMessages];
-    
     [self.tableView beginUpdates];
-
-    NSMutableSet * deletedMessages = [oldMessages mutableCopy];
-    [deletedMessages minusSet: newMessages];
-
-    if([deletedMessages count])
-    {
-        NSMutableArray * removedIndexes = [NSMutableArray array];
-        for(MCEInboxMessage * message in deletedMessages)
-        {
-            NSUInteger index = [self.inboxMessages indexOfObject:message];
-            [removedIndexes addObject: [NSIndexPath indexPathForRow: index inSection: 0]];
+    NSSet * newInboxMessageSet = [NSSet setWithArray: inboxMessages];
+    NSSet * inboxMessageSet = [NSSet setWithArray: self.inboxMessages];
+    
+    NSMutableSet * updatedInboxMessages = [newInboxMessageSet mutableCopy];
+    [updatedInboxMessages intersectSet:inboxMessageSet];
+    NSMutableArray * updatedIndexPaths = [NSMutableArray array];
+    for(MCEInboxMessage * inboxMessage in updatedInboxMessages) {
+        NSLog(@"Updated Message: %@", inboxMessage.sendDate);
+        NSUInteger index = [self.inboxMessages indexOfObject: inboxMessage];
+        if(index != NSNotFound) {
+            MCEInboxMessage * oldInboxMessage = self.inboxMessages[index];
+            if(oldInboxMessage && oldInboxMessage.isRead != inboxMessage.isRead) {
+                NSLog(@"%d %d Changed Message: %@ at index %lu", oldInboxMessage.isRead, inboxMessage.isRead, inboxMessage.sendDate, (unsigned long)index);
+                self.inboxMessages[index] = inboxMessage;
+                [updatedIndexPaths addObject: [NSIndexPath indexPathForRow:index inSection:0]];
+            }
+        } else {
+            NSLog(@"Couldn't find inbox message for update.");
         }
-        [self.tableView deleteRowsAtIndexPaths:removedIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    if([updatedIndexPaths count]) {
+        [self.tableView reloadRowsAtIndexPaths: updatedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
-    NSMutableSet * insertedMessages = [newMessages mutableCopy];
-    [insertedMessages minusSet: oldMessages];
-
-    if([insertedMessages count])
-    {
-        NSMutableArray * insertedIndexes = [NSMutableArray array];
-        for(MCEInboxMessage * message in insertedMessages)
-        {
-            NSUInteger index = [inboxMessages indexOfObject:message];
-            [insertedIndexes addObject: [NSIndexPath indexPathForRow: index inSection: 0]];
+    NSMutableSet * deletedInboxMessages = [inboxMessageSet mutableCopy];
+    [deletedInboxMessages minusSet: newInboxMessageSet];
+    NSMutableArray * deletedIndexPaths = [NSMutableArray array];
+    for(MCEInboxMessage * inboxMessage in deletedInboxMessages) {
+        NSLog(@"Removed Message: %@", inboxMessage.sendDate);
+        NSUInteger index = [self.inboxMessages indexOfObject: inboxMessage];
+        if(index != NSNotFound) {
+            NSLog(@"Remove row at index %lu", (unsigned long)index);
+            [deletedIndexPaths addObject: [NSIndexPath indexPathForRow:index inSection:0]];
+        } else {
+            NSLog(@"Couldn't find inbox message for delete.");
         }
-        [self.tableView insertRowsAtIndexPaths:insertedIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-
-    NSMutableArray * updatedIndexes = [NSMutableArray array];
-    for (MCEInboxMessage * message in inboxMessages) {
-        NSUInteger index = [self.inboxMessages indexOfObject: message];
-        if(index != NSNotFound)
-        {
-            MCEInboxMessage * originalMessage = [self.inboxMessages objectAtIndex:index];
-            if(originalMessage.isRead != message.isRead)
-            {
-                [updatedIndexes addObject: [NSIndexPath indexPathForRow: index inSection: 0]];
+    if([deletedIndexPaths count]) {
+        for (NSIndexPath * indexPath in [deletedIndexPaths sortedArrayUsingComparator:^NSComparisonResult(NSIndexPath * obj1, NSIndexPath * obj2) {
+            return obj1.row > obj2.row ? NSOrderedAscending : NSOrderedDescending;
+        }] ) {
+            [self.inboxMessages removeObjectAtIndex: indexPath.row];
+        }
+        
+        [self.tableView deleteRowsAtIndexPaths: deletedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    // Note, we can't use the combined update bits because the indexes added can be the same for multiple rows as it's going through
+    [self.tableView endUpdates];
+    
+    NSMutableSet * addedInboxMessages = [newInboxMessageSet mutableCopy];
+    [addedInboxMessages minusSet: inboxMessageSet];
+    for(MCEInboxMessage * inboxMessage in addedInboxMessages) {
+        NSLog(@"Added Message: %@", inboxMessage.sendDate);
+        NSUInteger index = NSNotFound;
+        for(MCEInboxMessage * oldInboxMessage in self.inboxMessages) {
+            // Note, if you are ordering in ascending order, the operator below should be ">". If you are ordering in decending order, the operator below should be "<"
+            if([oldInboxMessage.sendDate timeIntervalSince1970] < [inboxMessage.sendDate timeIntervalSince1970]) {
+                index = [self.inboxMessages indexOfObject: oldInboxMessage];
+                break;
             }
         }
+        if(index == NSNotFound) {
+            NSLog(@"Append message");
+            [self.inboxMessages addObject: inboxMessage];
+            NSIndexPath * indexPath = [NSIndexPath indexPathForRow:self.inboxMessages.count - 1 inSection:0];
+            [self.tableView insertRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        } else {
+            NSLog(@"Insert Message at index %lu", (unsigned long)index);
+            [self.inboxMessages insertObject:inboxMessage atIndex:index];
+            NSIndexPath * indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+            [self.tableView insertRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
-    [self.tableView reloadRowsAtIndexPaths:updatedIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    self.inboxMessages = inboxMessages;
-    [self.tableView endUpdates];
 }
 
 -(void)syncDatabase:(NSNotification*)notification
@@ -124,7 +140,7 @@
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     
     // Notification that background server sync is complete
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDatabase:) name:@"MCESyncDatabase" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDatabase:) name:MCESyncDatabase object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setContentViewController:) name:@"setContentViewController" object:nil];
     
     // Used by user to start a background server sync

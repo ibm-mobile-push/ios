@@ -41,7 +41,7 @@
 {
     if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDatabase:) name:@"MCESyncDatabase" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDatabase:) name:MCESyncDatabase object:nil];
     }
     return self;
 }
@@ -91,7 +91,7 @@
         
         UIWindow * window = UIApplication.sharedApplication.keyWindow;
         if([window respondsToSelector:@selector(safeAreaInsets)]) {
-            if(window.safeAreaInsets.top > statusBarHeight) {
+            if (@available(iOS 11.0, *)) {
                 self.toolbarHeightConstraint.constant = toolbarHeight + window.safeAreaInsets.top;
             } else {
                 self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;

@@ -15,6 +15,6 @@ class InterfaceController: WKInterfaceController {
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        versionLabel?.setText(MCEWatchSdk.sharedInstance().sdkVersion())
+        versionLabel?.setText(MCEWatchSdk.shared.sdkVersion())
     }
 }

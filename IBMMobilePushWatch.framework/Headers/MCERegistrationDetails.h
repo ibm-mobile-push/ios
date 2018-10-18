@@ -17,7 +17,7 @@
 @interface MCERegistrationDetails : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCERegistrationDetails * sharedInstance NS_SWIFT_NAME(shared);
 
 /** When a user has been invalidated and the autoReinitialize flag is false in the MceConfig.json file, this value will be set to true. Applications must check this value if they want to manually reinitialize the registration and when this value is true, applications should execute MceSdk.sharedInstance's manualInitialization method.  */
 @property BOOL userInvalidated;

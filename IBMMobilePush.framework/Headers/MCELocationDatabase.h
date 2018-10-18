@@ -21,7 +21,7 @@
 @interface MCELocationDatabase : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCELocationDatabase * sharedInstance NS_SWIFT_NAME(shared);
 
 /** This method returns the nearby sycned geofences from the server. */
 -(NSMutableSet*)geofencesNearCoordinate: (CLLocationCoordinate2D)coordinate radius: (double)radius;

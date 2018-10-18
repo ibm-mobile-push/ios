@@ -11,8 +11,10 @@
 
 #if __has_feature(modules)
 @import UIKit;
+@import UserNotifications;
 #else
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 #endif
 
 /** The MCESdk class is the central integration point for the SDK as a whole. */
@@ -29,7 +31,10 @@
 @property (copy) BOOL (^presentNotification)(NSDictionary * userInfo);
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCESdk * sharedInstance NS_SWIFT_NAME(shared);
+
+/** This method allows your app to respond to the open settings for notification request for notification quick settings **/
+@property (copy) void (^openSettingsForNotification)(UNNotification * notification) API_AVAILABLE(ios(12.0));
 
 /** @name Initialization */
 

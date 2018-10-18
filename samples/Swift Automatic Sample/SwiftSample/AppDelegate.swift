@@ -14,9 +14,31 @@ import IBMMobilePush
 {
     var window: UIWindow? 
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool
+    @objc func inboxUpdate() {
+        DispatchQueue.main.async {
+            UIApplication.shared.applicationIconBadgeNumber = Int(MCEInboxDatabase.shared.unreadMessageCount())
+        }
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool
     {
-        MCESdk.sharedInstance().presentNotification = {(userInfo) -> Bool in
+        if #available(iOS 12.0, *) {
+            MCESdk.shared.openSettingsForNotification = { notification in
+                let alert = UIAlertController(title: "Should show app settings for notifications", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                }))
+                MCESdk.shared.findCurrentViewController().present(alert, animated: true, completion: {
+                    
+                })
+            }
+        }
+        
+        inboxUpdate()
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.inboxUpdate), name:
+            MCENotificationName.InboxCountUpdate.rawValue, object: nil)
+
+        MCESdk.shared.presentNotification = {(userInfo) -> Bool in
             return true
         }
         UserDefaults.standard.register(defaults: ["action":"update", "standardType":"dial",  "standardDialValue":"\"8774266006\"",  "standardUrlValue":"\"http://ibm.com\"",  "customType":"sendEmail",  "customValue":"{\"subject\":\"Hello from Sample App\",  \"body\": \"This is an example email body\",  \"recipient\":\"fake-email@fake-site.com\"}",  "categoryId":"example", "button1":"Accept", "button2":"Reject"])
@@ -32,8 +54,18 @@ import IBMMobilePush
             
             // iOS 10+ Push Message Registration
             let center = UNUserNotificationCenter.current()
-            center.delegate=MCENotificationDelegate.sharedInstance()
-            center.requestAuthorization(options: [.alert, .sound, .carPlay, .badge], completionHandler: { (granted, error) in
+            center.delegate=MCENotificationDelegate.shared
+            
+            let options: UNAuthorizationOptions = {
+#if canImport(NaturalLanguage)
+            if #available(iOS 12.0, *) {
+                return [.alert, .sound, .carPlay, .badge, .providesAppNotificationSettings]
+            }
+#endif
+                return [.alert, .sound, .carPlay, .badge]
+            }()
+
+            center.requestAuthorization(options: options, completionHandler: { (granted, error) in
                 if let error = error {
                     print("Could not request authorization from APNS \(error.localizedDescription)")
                 }
@@ -98,13 +130,13 @@ import IBMMobilePush
 
         // Custom Send Email Plugin
         let mail = MailDelegate();
-        MCEActionRegistry.sharedInstance().registerTarget(mail, with: #selector(mail.sendEmail(action:)), forAction: "sendEmail")
+        MCEActionRegistry.shared.registerTarget(mail, with: #selector(mail.sendEmail(action:)), forAction: "sendEmail")
         
         TextInputActionPlugin.register()
     }
     
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        MCEInAppManager.sharedInstance().processPayload(notification.userInfo);
+        MCEInAppManager.shared.processPayload(notification.userInfo);
     }
     
     func isExampleCategory(userInfo: NSDictionary) -> Bool
@@ -182,7 +214,7 @@ import IBMMobilePush
                 event.mailingId = mailingId
             }
 
-            MCEEventService.sharedInstance().add(event, immediate: false)
+            MCEEventService.shared.add(event, immediate: false)
         }
         completionHandler()
     }

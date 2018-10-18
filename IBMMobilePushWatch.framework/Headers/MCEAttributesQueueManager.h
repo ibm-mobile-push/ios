@@ -15,7 +15,7 @@
 @interface MCEAttributesQueueManager : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEAttributesQueueManager * sharedInstance NS_SWIFT_NAME(shared);
 
 /** @name Channel Methods */
 

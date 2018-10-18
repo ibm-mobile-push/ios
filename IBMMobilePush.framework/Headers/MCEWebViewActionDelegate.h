@@ -19,7 +19,7 @@
 @interface MCEWebViewActionDelegate : NSObject <UIWebViewDelegate>
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEWebViewActionDelegate * sharedInstance NS_SWIFT_NAME(shared);
 
 /** The actions that should be responded to. In the format of actionid -> { action dictionary }. */
 @property NSDictionary * actions;

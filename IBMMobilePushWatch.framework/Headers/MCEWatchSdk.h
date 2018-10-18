@@ -21,7 +21,7 @@
 @interface MCEWatchSdk: NSObject <WCSessionDelegate>
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEWatchSdk * sharedInstance NS_SWIFT_NAME(shared);
 
 /** Get the current SDK Version number as a string. */
 -(NSString*)sdkVersion;

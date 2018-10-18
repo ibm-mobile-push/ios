@@ -47,6 +47,32 @@ Example Payload
         ]
     }
 }
+ 
+ Possible workaround but would require the category to be statically compiled into the app, but that could be done in the plugin registration code. It would also require the items array though, which isn't currently possible. And it would require a static category handler built into the application delegate to execute the desired choice in the app. It wouldn't be able to use the custom action system of the SDK for this.
+ 
+ {
+    "aps": {
+      "alert": {
+        "body": "here you go with category actions",
+        "subtitle": "new category actions",
+        "title": "Testing category action"
+      },
+      "category": "carousel",
+      "sound": "default"
+    },
+    "extra": {
+      "items": [
+         {"text":"light", "url":"https://pviq.com/images/pexels-photo-879474.jpg"},
+         {"text":"future", "url":"https://pviq.com/images/pexels-photo-879718.jpg"},
+         {"text":"drinkcoffee", "url":"https://pviq.com/images/pexels-photo-877695.jpg"},
+         {"text":"photo", "url":"https://pviq.com/images/pexels-photo-573316.jpg"},
+         {"text":"moment", "url":"https://pviq.com/images/pexels-photo-618545.jpg"}
+       ]
+    },
+    "notification-action": {
+      "type": "carousel",
+    }
+ }
 */
 
 #import "NotificationViewController.h"
@@ -69,25 +95,15 @@ const int TEXT_HEIGHT = 40;
 
 -(void)didReceiveNotificationResponse:(UNNotificationResponse *)response completionHandler:(void (^)(UNNotificationContentExtensionResponseOption))completion {
     
-    if(!self.content.userInfo || !self.content.userInfo[@"category-actions"]) {
-        NSLog(@"Carousel Plugin can't find category-actions");
+    NSData * data = [response.actionIdentifier dataUsingEncoding:NSUTF8StringEncoding];
+    NSError * error = nil;
+    NSDictionary * action = [NSJSONSerialization JSONObjectWithData: data options:0 error:&error];
+    if(error) {
+        NSLog(@"Couldn't decode action %@", error.localizedDescription);
         return;
     }
     
-    NSArray * actions = self.content.userInfo[@"category-actions"];
-    if(![actions isKindOfClass:NSArray.class]) {
-        NSLog(@"Carousel Plugin category-actions isn't an array");
-        return;
-    }
-    
-    NSInteger actionIndex = response.actionIdentifier.integerValue;
-    NSDictionary * action = actions[actionIndex];
-    if(![action isKindOfClass: NSDictionary.class]) {
-        NSLog(@"Carousel Plugin category-action isn't a dictionary");
-        return;
-    }
-    
-    NSString * actionType = actions[actionIndex][@"type"];
+    NSString * actionType = action[@"type"];
     
     if([actionType isEqual: @"next"]) {
         NSLog(@"Carousel Plugin next image");
@@ -99,8 +115,6 @@ const int TEXT_HEIGHT = 40;
         completion(UNNotificationContentExtensionResponseOptionDoNotDismiss);
     } else if([actionType isEqual: @"carousel"]) {
         NSLog(@"Carousel Plugin open app");
-        NSUserDefaults * sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: @"group.com.ibm.mce"];
-        [sharedDefaults setInteger:self.selected forKey:@"MCECarouselSelected"];
         completion(UNNotificationContentExtensionResponseOptionDismissAndForwardAction);
     } else if([actionType isEqual: @"cancel"]) {
         NSLog(@"Carousel Plugin cancel");
@@ -121,6 +135,44 @@ const int TEXT_HEIGHT = 40;
     });
 }
 
+#ifdef __IPHONE_12_0
+-(NSInteger)selected {
+    return _selected;
+}
+
+-(void)setSelected:(NSInteger)selected {
+    _selected = selected;
+    if(@available(iOS 12.0, *)) {
+        NSMutableArray * actions = [NSMutableArray array];
+        for(UNNotificationAction * action in self.extensionContext.notificationActions) {
+            NSData * data = [action.identifier dataUsingEncoding: NSUTF8StringEncoding];
+            NSError * error = nil;
+            NSDictionary * actionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if(error) {
+                NSLog(@"couldn't decode action identifier %@", error.localizedDescription);
+                return;
+            }
+            if([actionDict[@"type"] isEqual: @"carousel"]) {
+                NSMutableDictionary * mutableActionDict = [actionDict mutableCopy];
+                mutableActionDict[@"value"] = @(selected);
+                data = [NSJSONSerialization dataWithJSONObject:mutableActionDict options:0 error:&error];
+                if(error) {
+                    NSLog(@"couldn't encode action %@", error.localizedDescription);
+                    return;
+                }
+                NSString * identifier = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                UNNotificationAction * newAction = [UNNotificationAction actionWithIdentifier:identifier title:action.title options:UNNotificationActionOptionForeground];
+                [actions addObject: newAction];
+            } else {
+                [actions addObject: action];
+            }
+        }
+        
+        self.extensionContext.notificationActions = actions;
+    }
+}
+#endif
+
 -(void)nextImage {
     dispatch_async(self.queue, ^{
         [self centerToLeft];
@@ -132,9 +184,6 @@ const int TEXT_HEIGHT = 40;
 }
 
 - (void)didReceiveNotification:(UNNotification *)notification {
-    NSUserDefaults * sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: @"group.com.ibm.mce"];
-    [sharedDefaults removeObjectForKey:@"MCECarouselSelected"];
-
     self.selected = 0;
     self.scene = [SKScene sceneWithSize: self.skView.frame.size];
     self.scene.scaleMode = SKSceneScaleModeAspectFill;
@@ -142,7 +191,7 @@ const int TEXT_HEIGHT = 40;
     self.imageNodes = [NSMutableDictionary dictionary];
     self.textNodes = [NSMutableDictionary dictionary];
     [self.skView presentScene: self.scene];
-
+    
     self.content = notification.request.content;
     
     self.titleLabel.text = self.content.title;

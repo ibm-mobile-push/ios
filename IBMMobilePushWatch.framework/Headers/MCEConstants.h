@@ -7,90 +7,104 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+#if __has_feature(modules)
+@import Foundation;
+#else
+#import <Foundation/Foundation.h>
+#endif
+
 /** The MCEConstants header contains several important SDK integration constants */
 
 /** The MCESdkVersion constant contains the current release number */
-static NSString * const MCESdkVersion = @"3.7.1.2.3";
+extern const NSString * MCESdkVersion;
+
+typedef NSNotificationName MCENotificationName NS_STRING_ENUM;
 
 /** The MCERegisteredNotification message is sent via NSNotificationCenter when the SDK registers with the IBM servers */
-static NSString * const MCERegisteredNotification = @"MCERegisteredNotification";
+extern const MCENotificationName MCERegisteredNotification;
 
 /** The MCERegistrationChangedNotification message is sent via NSNotificationCenter when the userId or channelId change durring the phone home process */
-static NSString * const MCERegistrationChangedNotification = @"MCERegistrationChangedNotification";
+extern const MCENotificationName MCERegistrationChangedNotification;
 
 /** The MCEEventSuccess message is sent via NSNotificationCenter when events are successfully sent to the server */
-static NSString * const MCEEventSuccess = @"MCEEventSuccess";
+extern const MCENotificationName MCEEventSuccess;
 
 /** The MCEEventSuccess message is sent via NSNotificationCenter when events fail to send to the server. No action is required by the developer, the system will automatically retry with back-off. */
-static NSString * const MCEEventFailure = @"MCEEventFailure";
+extern const MCENotificationName MCEEventFailure;
 
 /** The SetUserAttributesError message is sent via NSNotificationCenter when Set User Attributes fails to send to the server. No action is required by the developer, the system will automatically retry with back-off. */
-static NSString * const SetUserAttributesError = @"SetUserAttributesError";
+extern const MCENotificationName SetUserAttributesError;
 
 /** The SetUserAttributesSuccess message is sent via NSNotificationCenter when Set User Attributes is successfully sent to the server */
-static NSString * const SetUserAttributesSuccess = @"SetUserAttributesSuccess";
+extern const MCENotificationName SetUserAttributesSuccess;
 
 /** The UpdateUserAttributesError message is sent via NSNotificationCenter when Update User Attributes fails to send to the server. No action is required by the developer, the system will automatically retry with back-off. */
-static NSString * const UpdateUserAttributesError = @"UpdateUserAttributesError";
+extern const MCENotificationName UpdateUserAttributesError;
 
 /** The UpdateUserAttributesSuccess message is sent via NSNotificationCenter when Update User Attributes is successfully sent to the server */
-static NSString * const UpdateUserAttributesSuccess = @"UpdateUserAttributesSuccess";
+extern const MCENotificationName UpdateUserAttributesSuccess;
 
 /** The DeleteUserAttributesError message is sent via NSNotificationCenter when Delete User Attributes fails to send to the server. No action is required by the developer, the system will automatically retry with back-off. */
-static NSString * const DeleteUserAttributesError = @"DeleteUserAttributesError";
+extern const MCENotificationName DeleteUserAttributesError;
 
 /** The DeleteUserAttributesSuccess message is sent via NSNotificationCenter when Delete User Attributes is successfully sent to the server */
-static NSString * const DeleteUserAttributesSuccess = @"DeleteUserAttributesSuccess";
+extern const MCENotificationName DeleteUserAttributesSuccess;
 
 /** The SetChannelAttributesError message is sent via NSNotificationCenter when Set Channel Attributes fails to send to the server. No action is required by the developer, the system will automatically retry with back-off. */
-static NSString * const SetChannelAttributesError = @"SetChannelAttributesError";
+extern const MCENotificationName SetChannelAttributesError;
 
 /** The SetChannelAttributesSuccess message is sent via NSNotificationCenter when Set Channel Attributes is successfully sent to the server */
-static NSString * const SetChannelAttributesSuccess = @"SetChannelAttributesSuccess";
+extern const MCENotificationName SetChannelAttributesSuccess;
 
 /** The UpdateChannelAttributesError message is sent via NSNotificationCenter when Update Channel Attributes fails to send to the server. No action is required by the developer, the system will automatically retry with back-off. */
-static NSString * const UpdateChannelAttributesError = @"UpdateChannelAttributesError";
+extern const MCENotificationName UpdateChannelAttributesError;
 
 /** The UpdateChannelAttributesSuccess message is sent via NSNotificationCenter when Update Channel Attributes is successfully sent to the server */
-static NSString * const UpdateChannelAttributesSuccess = @"UpdateChannelAttributesSuccess";
+extern const MCENotificationName UpdateChannelAttributesSuccess;
 
 /** The DeleteChannelAttributesError message is sent via NSNotificationCenter when Delete Channel Attributes fails to send to the server. No action is required by the developer, the system will automatically retry with back-off. */
-static NSString * const DeleteChannelAttributesError = @"DeleteChannelAttributesError";
+extern const MCENotificationName DeleteChannelAttributesError;
 
 /** The DeleteChannelAttributesSuccess message is sent via NSNotificationCenter when Delete Channel Attributes is successfully sent to the server */
-static NSString * const DeleteChannelAttributesSuccess = @"DeleteChannelAttributesSuccess";
+extern const MCENotificationName DeleteChannelAttributesSuccess;
 
 /** The Event type reported for simple notification actions */
-static NSString * const SimpleNotificationSource = @"simpleNotification";
+extern const NSString * SimpleNotificationSource;
 
 /** The Event type reported for inbox notification actions */
-static NSString * const InboxSource = @"inboxMessage";
+extern const NSString * InboxSource;
 
 /** The Event type reported for inbox notification actions */
-static NSString * const InAppSource = @"inAppMessage";
+extern const NSString * InAppSource;
 
 /** The LocationDatabaseReady message is sent when the location database is ready to be used. */
-static NSString * const LocationDatabaseReady = @"LocationDatabaseReady";
+extern const MCENotificationName LocationDatabaseReady;
 
-static NSString * const LocationDatabaseUpdated = @"LocationDatabaseUpdated";
+extern const MCENotificationName LocationDatabaseUpdated;
 
 /* The EnteredGeofence message is sent when a geofence has been breached */
-static NSString * const EnteredGeofence = @"EnteredGeofence";
+extern const MCENotificationName EnteredGeofence;
 
 /* The EnteredGeofence message is sent when a geofence has been left */
-static NSString * const ExitedGeofence = @"ExitedGeofence";
+extern const MCENotificationName ExitedGeofence;
 
 /** The EnteredBeacon message is sent when a beacon region has been breached */
-static NSString * const EnteredBeacon = @"EnteredBeacon";
+extern const MCENotificationName EnteredBeacon;
 
 /** The ExitedBeacon message is sent when a beacon region has been left */
-static NSString * const ExitedBeacon = @"ExitedBeacon";
+extern const MCENotificationName ExitedBeacon;
 
 /** The DownloadedLocations message is sent when locations updates are downloaded from the server. */
-static NSString * const DownloadedLocations = @"DownloadedLocations";
+extern const MCENotificationName DownloadedLocations;
 
 /** The ResetReferenceLocation message is sent when the reference location has changed. */
-static NSString * const ResetReferenceLocation = @"ResetReferenceLocation";
+extern const MCENotificationName ResetReferenceLocation;
 
 /** The RefreshActiveGeofences message is sent when the active geofences have changed. */
-static NSString * const RefreshActiveGeofences = @"RefreshActiveGeofences";
+extern const MCENotificationName RefreshActiveGeofences;
+
+/** The InboxCountUpdate is sent when the number of inbox messages changes or the unread count of messages changes. */
+extern const MCENotificationName InboxCountUpdate;
+
+/** Called when the Inbox Database has been changed */
+extern const MCENotificationName MCESyncDatabase;

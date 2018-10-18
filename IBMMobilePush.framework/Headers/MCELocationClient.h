@@ -32,7 +32,7 @@
  @param identifier is passed from the application delegate callback.
  @param completionHandler is passed from the application delegate callback.
  */
--(BOOL)handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler;
+-(BOOL)handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler;
 
 /** This method schedules a sync to the server. */
 -(void)scheduleSync;

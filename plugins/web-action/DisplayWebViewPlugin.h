@@ -15,8 +15,10 @@
 
 #import <IBMMobilePush/IBMMobilePush.h>
 
+NS_ASSUME_NONNULL_BEGIN
 @interface DisplayWebViewPlugin : NSObject <MCEActionProtocol>
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) DisplayWebViewPlugin * sharedInstance NS_SWIFT_NAME(shared);
 -(void)performAction:(NSDictionary*)action;
 +(void)registerPlugin;
 @end
+NS_ASSUME_NONNULL_END

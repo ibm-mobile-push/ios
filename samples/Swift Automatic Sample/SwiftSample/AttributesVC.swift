@@ -3,243 +3,341 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2017
+ * © Copyright IBM Corp. 2011, 2018
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+import IBMMobilePush
 import UIKit
 
-enum AttributeItems: Int
-{
-    case name
-    case value
-    case action
-    case sendQueue
-    static let count: Int = 4
+extension UIColor {
+    class var failure: UIColor {
+        return UIColor(red: 0.5, green: 0, blue: 0, alpha: 1)
+    }
+    
+    class var queued: UIColor {
+        return UIColor(red: 0.574, green: 0.566, blue: 0, alpha: 1)
+    }
+    
+    class var success: UIColor {
+        return UIColor(red: 0, green: 0.5, blue: 0, alpha: 1)
+    }
 }
 
-enum Actions: Int
-{
-    case update
-    case delete
+enum ValueTypes: Int, CaseIterable {
+    case date
+    case string
+    case bool
+    case number
 }
 
-class AttributesVC : CellStatusTableViewController, UITextFieldDelegate
-{
-    let observations = ["UpdateUserAttributes", "DeleteUserAttributes"]
-
-    var nameField: KeyedTextField?
-    var valueField: KeyedTextField?
-    var actionField: UISegmentedControl?
-
-    var queue: MCEAttributesQueueManager
-    required init?(coder aDecoder: NSCoder) {
-        queue = MCEAttributesQueueManager.sharedInstance()
-        super.init(coder: aDecoder)
-        status = ["queue": .normal]
+class AttributesVC: UIViewController {
+    
+    enum OperationTypes: Int {
+        case update
+        case delete
+    }
+    
+    enum UserDefaultKeys: String {
+        case bool = "attributeBoolValueKey"
+        case string = "attributeStringValueKey"
+        case number = "attributeNumberValueKey"
+        case date = "attributeDateValueKey"
+        case name = "attributeNameKey"
+        case operation = "attributeOperationKey"
+        case valueType = "attributeValueTypeKey"
+    }
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var valueTypeControl: UISegmentedControl!
+    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var boolSwitch: UISwitch!
+    @IBOutlet weak var operationTypeControl: UISegmentedControl!
+    @IBOutlet weak var addQueueButton: UIButton!
+    @IBOutlet weak var booleanView: UIView!
+    
+    var datePicker = UIDatePicker()
+    var dateFormatter = DateFormatter()
+    var keyboardToolbar = UIToolbar()
+    var numberFormatter = NumberFormatter()
+    
+    @IBAction func addQueueTap(sender: Any) {
+        valueTextField.resignFirstResponder()
+        nameTextField.resignFirstResponder()
         
-        let center = NotificationCenter.default
-        for observation in observations
-        {
-            center.addObserver(self, selector: #selector(self.attributesQueueSuccess(note:)), name: NSNotification.Name(observation + "Success"), object: nil)
-            center.addObserver(self, selector: #selector(self.attributesQueueError(note:)), name: NSNotification.Name(observation + "Error"), object: nil)
+        guard let name = UserDefaults.standard.string(forKey: UserDefaultKeys.name.rawValue), let operation = OperationTypes(rawValue: operationTypeControl.selectedSegmentIndex), let valueType = ValueTypes(rawValue: valueTypeControl.selectedSegmentIndex) else {
+            return
         }
-    }
-    
-    deinit
-    {
-        let center = NotificationCenter.default
-        for observation in observations
-        {
-            center.removeObserver(self, name: NSNotification.Name(rawValue: observation + "Success"), object: nil)
-            center.removeObserver(self, name: NSNotification.Name(observation + "Error"), object: nil)
-        }
-    }
-    
-    @objc func attributesQueueSuccess(note: NSNotification)
-    {
-        status["queue"] = .recieved
-        DispatchQueue.main.async() { () -> Void in
-            self.tableView.reloadRows(at: [IndexPath(item: 3, section: 0)], with: .automatic)
-        }
-    }
-    
-    @objc func attributesQueueError(note: NSNotification)
-    {
-        status["queue"] = .failed
-        DispatchQueue.main.async() { () -> Void in
-            self.tableView.reloadRows(at: [IndexPath(item: 3, section: 0)], with: .automatic)
-        }
-    }
-    
-    @objc func changeSelect(sender: AnyObject)
-    {
-        let defaults = UserDefaults.standard
         
-        if let actionField = self.actionField
-        {
-            if let actionValue = Actions(rawValue: actionField.selectedSegmentIndex)
-            {
-                switch(actionValue)
-                {
-                case .update:
-                    defaults.set("update", forKey: "action")
-                    break
-                case .delete:
-                    defaults.set("delete", forKey: "action")
-                    break
-                }
-            }
-
-            DispatchQueue.main.async() { () -> Void in
-                self.tableView.reloadRows(at: [IndexPath(item: 1, section: 0)], with: .automatic)
-            }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let defaults = UserDefaults.standard
-        if let attributeItem = AttributeItems(rawValue: indexPath.item)
-        {
-            switch(attributeItem)
-            {
-            case .name:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath as IndexPath) as! EditCell
-                nameField = cell.editField!
-                nameField!.delegate = self
-                nameField!.key = "attributeName"
-                nameField!.text = defaults.string(forKey: "attributeName")
-                cell.textField!.text = "Enter your attribute"
-            case .value:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath as IndexPath) as! EditCell
-                valueField = cell.editField!
-                valueField!.delegate = self
-                valueField!.key = "attributeValue"
-                valueField!.text = defaults.string(forKey: "attributeValue")
-                cell.textField!.text = "Enter your value"
-                if(defaults.string(forKey: "action")! == "delete")
-                {
-                    valueField!.textColor = UIColor.gray
-                }
-                else
-                {
-                    valueField!.textColor = UIColor.black
-                }
-            case .action:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "select", for: indexPath as IndexPath) as! EditCell
-                cell.textField!.text = "Choose an Action"
-                cell.selectField!.addTarget(self, action: #selector(self.changeSelect(sender:)), for: .valueChanged)
-                actionField = cell.selectField!
-                switch(defaults.string(forKey: "action")!)
-                {
-                case "update":
-                    cell.selectField!.selectedSegmentIndex=0;
-                    break
-                case "delete":
-                    cell.selectField!.selectedSegmentIndex=1;
-                    break
-                default:
-                    break;
-                }
-                return cell
-            case .sendQueue:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "view", for: indexPath as IndexPath)
-                cell.textLabel!.text = "Click to send via queue"
-                cellStatus(cell: cell, key: "queue")
-                return cell
-            }
-        }
-        return UITableViewCell.init()
-    }
-    
-
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AttributeItems.count
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
-    {
-        return "Send User Attributes"
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        if(indexPath.item == 2)
-        {
-            return 68
-        }
-        return 44
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
-        
-        if let attributeItem = AttributeItems(rawValue: indexPath.item)
-        {
-            switch(attributeItem)
-            {
-            case .name:
-                nameField?.becomeFirstResponder()
+        switch operation {
+        case .update:
+            switch valueType {
+            case .bool:
+                let boolValue = UserDefaults.standard.bool(forKey: UserDefaultKeys.bool.rawValue)
+                updateStatus(text: "Queued User Attribute Update\n\(name)=\(boolValue)", color: .queued)
+                MCEAttributesQueueManager.shared.updateUserAttributes([name:boolValue])
                 break
-            case .value:
-                valueField?.becomeFirstResponder()
-                break
-            default:
-                valueField?.resignFirstResponder()
-                nameField?.resignFirstResponder()
-            }
-            
-            if(attributeItem == .sendQueue)
-            {
-                let defaults = UserDefaults.standard
-                let action = defaults.string(forKey: "action")
-                let name = defaults.string(forKey: "attributeName")
-                let value = defaults.string(forKey: "attributeValue")
-                if(name == nil || value == nil)
-                {
-                    UIAlertView.init(title: "Please enter values", message: "Please enter names and values before pressing the send button", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+            case .date:
+                guard let dateValue = UserDefaults.standard.object(forKey: UserDefaultKeys.date.rawValue) as? Date else {
                     return
                 }
-            
-                status["queue"] = .sent
-                switch(action!)
-                {
-                case "delete":
-                    queue.deleteUserAttributes([name!])
-                    break
-                case "update":
-                    queue.updateUserAttributes([name! : value!])
-                    break
-                default:
-                    break                    
+                updateStatus(text: "Queued User Attribute Update\n\(name)=\(dateValue)", color: .queued)
+                MCEAttributesQueueManager.shared.updateUserAttributes([name:dateValue])
+                break
+            case .number:
+                guard let numberValue = UserDefaults.standard.object(forKey: UserDefaultKeys.number.rawValue) as? NSNumber else {
+                    return
                 }
-            
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.tableView.reloadRows(at: [indexPath as IndexPath], with: .automatic)
-                })
+                updateStatus(text: "Queued User Attribute Update\n\(name)=\(numberValue)", color: .queued)
+                MCEAttributesQueueManager.shared.updateUserAttributes([name:numberValue])
+                break
+            case .string:
+                guard let stringValue = UserDefaults.standard.string(forKey: UserDefaultKeys.string.rawValue) else {
+                    return
+                }
+                updateStatus(text: "Queued User Attribute Update\n\(name)=\(stringValue)", color: .queued)
+                MCEAttributesQueueManager.shared.updateUserAttributes([name:stringValue])
+                break
+            }
+            break
+        case .delete:
+            updateStatus(text: "Queued User Attribute Removal\nName \"\(name)\"", color: .queued)
+            MCEAttributesQueueManager.shared.deleteUserAttributes([name])
+            break
+        }
+    }
+    
+    @IBAction func valueTypeTap(sender: Any) {
+        UserDefaults.standard.set(valueTypeControl.selectedSegmentIndex, forKey: UserDefaultKeys.valueType.rawValue)
+        updateValueControls()
+    }
+    
+    @IBAction func operationTypeTap(sender: Any) {
+        UserDefaults.standard.set(operationTypeControl.selectedSegmentIndex, forKey: UserDefaultKeys.operation.rawValue)
+        updateValueControls()
+    }
+    
+    @IBAction func boolValueChanged(sender: Any) {
+        UserDefaults.standard.set(boolSwitch.isOn, forKey: UserDefaultKeys.bool.rawValue)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        UserDefaults.standard.register(defaults: [UserDefaultKeys.bool.rawValue : true, UserDefaultKeys.string.rawValue: "", UserDefaultKeys.number.rawValue: 0, UserDefaultKeys.date.rawValue: Date(), UserDefaultKeys.name.rawValue: ""])
+        
+        numberFormatter.numberStyle = .decimal
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.accessibilityIdentifier = "datePicker"
+        datePicker.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        keyboardToolbar.barStyle = .default
+        keyboardToolbar.isTranslucent = true
+        keyboardToolbar.tintColor = nil
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneClicked))
+        doneButton.accessibilityIdentifier = "doneButton"
+        keyboardToolbar.items = [doneButton]
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUserAttributesSuccess), name: MCENotificationName.UpdateUserAttributesSuccess.rawValue, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUserAttributesError), name: MCENotificationName.UpdateUserAttributesError.rawValue, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteUserAttributesError), name: MCENotificationName.DeleteUserAttributesError.rawValue, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteUserAttributesSuccess), name: MCENotificationName.DeleteUserAttributesSuccess.rawValue, object: nil)
+    }
+    
+    @objc func doneClicked(sender: Any) {
+        if valueTextField.isFirstResponder {
+            valueTextField.resignFirstResponder()
+            saveValue()
+        } else if nameTextField.isFirstResponder {
+            nameTextField.resignFirstResponder()
+            saveName()
+        }
+        
+    }
+    
+    func saveName() {
+        UserDefaults.standard.set(nameTextField.text, forKey: UserDefaultKeys.name.rawValue)
+    }
+    
+    func saveValue() {
+        guard let valueType = ValueTypes(rawValue: valueTypeControl.selectedSegmentIndex) else {
+            return
+        }
+        switch valueType {
+        case .date:
+            UserDefaults.standard.set(datePicker.date, forKey: UserDefaultKeys.date.rawValue)
+            valueTextField.text = dateFormatter.string(from: datePicker.date)
+            break
+        case .string:
+            UserDefaults.standard.set(valueTextField.text, forKey: UserDefaultKeys.string.rawValue)
+            break
+        case .number:
+            guard let text = valueTextField.text else { return }
+            let numberValue = numberFormatter.number(from: text)
+            UserDefaults.standard.set(numberValue, forKey: UserDefaultKeys.number.rawValue)
+            break
+        default:
+            break
+        }
+    }
+    
+    @objc func deleteUserAttributesError(note: NSNotification) {
+        guard let userInfo = note.userInfo, let error = userInfo["error"] as? Error, let keys = userInfo["keys"] as? [String] else {
+            return
+        }
+        updateStatus(text: "Couldn't Delete User Attributes Named\n\(keys.joined(separator: "\n"))\nbecause \(error.localizedDescription)", color: .failure)
+    }
+    
+    @objc func deleteUserAttributesSuccess(note: NSNotification) {
+        guard let userInfo = note.userInfo, let keys = userInfo["keys"] as? [String] else {
+            return
+        }
+        updateStatus(text: "Deleted User Attributes Named\n\(keys.joined(separator: "\n"))", color: .success)
+    }
+    
+    @objc func updateUserAttributesError(note: NSNotification) {
+        guard let userInfo = note.userInfo, let attributes = userInfo["attributes"] as? [String:Any], let error = userInfo["error"] as? Error else {
+            return
+        }
+        var keyvalues = [String]()
+        
+        for (key, value) in attributes {
+            keyvalues.append("\(key)=\(value)")
+        }
+        
+        updateStatus(text: "Couldn't Update User Attributes\n\(keyvalues.joined(separator: "\n"))\nbecause \(error.localizedDescription)", color: .failure)
+    }
+    
+    @objc func updateUserAttributesSuccess(note: NSNotification) {
+        guard let userInfo = note.userInfo, let attributes = userInfo["attributes"] as? [String:Any] else {
+            return
+        }
+        var keyvalues = [String]()
+        
+        for (key, value) in attributes {
+            keyvalues.append("\(key)=\(value)")
+        }
+        
+        updateStatus(text: "Updated User Attributes\n\(keyvalues.joined(separator: "\n"))", color: .success)
+    }
+    
+    func updateStatus(text: String, color: UIColor) {
+        DispatchQueue.main.async {
+            self.statusLabel.text = text
+            self.statusLabel.textColor = color
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        valueTypeControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultKeys.valueType.rawValue)
+        operationTypeControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: UserDefaultKeys.operation.rawValue)
+        nameTextField.text = UserDefaults.standard.string(forKey: UserDefaultKeys.name.rawValue)
+        valueTypeControl.accessibilityIdentifier = "attributeType"
+        operationTypeControl.accessibilityIdentifier = "attributeOperation"
+        updateValueControls()
+    }
+    
+    func hideAllValueControls() {
+        valueTextField.isEnabled = false
+        valueTextField.alpha = 1
+        valueTextField.text = "No value required for delete operation"
+        valueTypeControl.isEnabled = false
+        boolSwitch.isEnabled = false
+        boolSwitch.alpha = 0
+        booleanView.alpha = 0
+    }
+    
+    func showTextValueControls() {
+        valueTextField.resignFirstResponder()
+        valueTextField.isEnabled = true
+        valueTextField.alpha = 1
+        valueTypeControl.isEnabled = true
+        boolSwitch.isEnabled = false
+        boolSwitch.alpha = 0
+        booleanView.alpha = 0
+    }
+    
+    func showBoolValueControls() {
+        valueTextField.isEnabled = false
+        valueTextField.alpha = 0
+        valueTypeControl.isEnabled = true
+        boolSwitch.isEnabled = true
+        boolSwitch.alpha = 1
+        booleanView.alpha = 1
+    }
+    
+    func updateValueControls() {
+        guard let operation = OperationTypes(rawValue: operationTypeControl.selectedSegmentIndex), let valueType = ValueTypes(rawValue: valueTypeControl.selectedSegmentIndex) else {
+            return
+        }
+        
+        switch operation {
+        case .update:
+            switch valueType {
+            case .bool:
+                showBoolValueControls()
+                boolSwitch.isOn = UserDefaults.standard.bool(forKey: UserDefaultKeys.bool.rawValue)
+                break
+            case .date:
+                showTextValueControls()
+                guard let date = UserDefaults.standard.object(forKey: UserDefaultKeys.date.rawValue) as? Date else {
+                    return
+                }
+                valueTextField.text = dateFormatter.string(from: date)
+                datePicker.date = date
+                break
+            case .string:
+                showTextValueControls()
+                valueTextField.keyboardType = .default
+                valueTextField.text = UserDefaults.standard.string(forKey: UserDefaultKeys.string.rawValue)
+                break
+            case .number:
+                valueTextField.keyboardType = .decimalPad
+                showTextValueControls()
+                guard let numberValue = UserDefaults.standard.object(forKey: UserDefaultKeys.number.rawValue) as? NSNumber else {
+                    return
+                }
+                valueTextField.text = numberValue.stringValue
+                break
+            }
+            break
+        case .delete:
+            hideAllValueControls()
+            break
+        }
+    }
+}
 
+extension AttributesVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let startText = textField.text, let text = startText as? NSString else {
+            return false
+        }
+        textField.text = text.replacingCharacters(in: range, with: string)
+        if textField == valueTextField {
+            saveValue()
+        } else if textField == nameTextField {
+            saveName()
+        }
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == valueTextField {
+            if valueTypeControl.selectedSegmentIndex == ValueTypes.date.rawValue {
+                valueTextField.inputView = datePicker
+            } else {
+                valueTextField.inputView = nil
             }
         }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let keyedTextField = textField as? KeyedTextField
-        {
-            UserDefaults.standard.set(keyedTextField.text, forKey: keyedTextField.key!)
-        }
-        self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0), IndexPath(row: 1, section: 0)], with: .automatic)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        textField.inputAccessoryView = keyboardToolbar
+        keyboardToolbar.sizeToFit()
     }
 }

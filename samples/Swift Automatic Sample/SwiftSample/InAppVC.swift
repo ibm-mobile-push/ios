@@ -123,36 +123,36 @@ class InAppVC : UITableViewController, MCEActionProtocol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MCEInboxQueueManager.sharedInstance().syncInbox()
-        MCEActionRegistry.sharedInstance().registerTarget(self, with: #selector(self.displayVideo(userInfo:)), forAction: "showVideo")
-        MCEActionRegistry.sharedInstance().registerTarget(self, with: #selector(self.displayTopBanner(userInfo:)), forAction: "showTopBanner")
-        MCEActionRegistry.sharedInstance().registerTarget(self, with: #selector(self.displayBottomBanner(userInfo:)), forAction: "showBottomBanner")
-        MCEActionRegistry.sharedInstance().registerTarget(self, with: #selector(self.displayImage(userInfo:)), forAction: "showImage")
+        MCEInboxQueueManager.shared.syncInbox()
+        MCEActionRegistry.shared.registerTarget(self, with: #selector(self.displayVideo(userInfo:)), forAction: "showVideo")
+        MCEActionRegistry.shared.registerTarget(self, with: #selector(self.displayTopBanner(userInfo:)), forAction: "showTopBanner")
+        MCEActionRegistry.shared.registerTarget(self, with: #selector(self.displayBottomBanner(userInfo:)), forAction: "showBottomBanner")
+        MCEActionRegistry.shared.registerTarget(self, with: #selector(self.displayImage(userInfo:)), forAction: "showImage")
     }
     
     @objc func displayVideo(userInfo: NSDictionary?)
     {
-        MCEInAppManager.sharedInstance().executeRule(["video"])
+        MCEInAppManager.shared.executeRule(["video"])
     }
     
     @objc func displayTopBanner(userInfo: NSDictionary?)
     {
-        MCEInAppManager.sharedInstance().executeRule(["topBanner"])
+        MCEInAppManager.shared.executeRule(["topBanner"])
     }
     
     @objc func displayBottomBanner(userInfo: NSDictionary?)
     {
-        MCEInAppManager.sharedInstance().executeRule(["bottomBanner"])
+        MCEInAppManager.shared.executeRule(["bottomBanner"])
     }
     
     @objc func displayImage(userInfo: NSDictionary?)
     {
-        MCEInAppManager.sharedInstance().executeRule(["image"])
+        MCEInAppManager.shared.executeRule(["image"])
     }
     
     func displayNext(userInfo: NSDictionary?)
     {
-        MCEInAppManager.sharedInstance().executeRule(["all"])
+        MCEInAppManager.shared.executeRule(["all"])
     }
     
     override func tableView(_ tableView: UITableView,
@@ -187,7 +187,7 @@ class InAppVC : UITableViewController, MCEActionProtocol
             {
                 tableView.layer.contents = nil
             }
-            tableView.layer.contentsGravity = kCAGravityResizeAspectFill
+            tableView.layer.contentsGravity = CALayerContentsGravity.resizeAspectFill
             tableView.reloadData()
             break
         case EXECUTE_SECTION:
@@ -304,7 +304,7 @@ class InAppVC : UITableViewController, MCEActionProtocol
                 break
             }
             
-            MCEInAppManager.sharedInstance().processPayload(userInfo)
+            MCEInAppManager.shared.processPayload(userInfo)
             break
         default:
             break

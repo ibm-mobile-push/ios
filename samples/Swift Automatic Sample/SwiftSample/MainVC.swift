@@ -29,21 +29,21 @@ class MainVC : UITableViewController, UIViewControllerPreviewingDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        version!.text = MCESdk.sharedInstance().sdkVersion()
+        version!.text = MCESdk.shared.sdkVersion()
         if #available(iOS 9.0, *) {
             self.previewingContext = self.registerForPreviewing(with: self, sourceView: self.view)
         }
         
         // Show Inbox counts on main page
-        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.inboxUpdate), name: NSNotification.Name("MCESyncDatabase"), object: nil)
-        if(MCERegistrationDetails.sharedInstance().mceRegistered)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainVC.inboxUpdate), name: MCENotificationName.InboxCountUpdate.rawValue, object: nil)
+        if(MCERegistrationDetails.shared.mceRegistered)
         {
-            MCEInboxQueueManager.sharedInstance().syncInbox()
+            MCEInboxQueueManager.shared.syncInbox()
         }
         else
         {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name("MCERegisteredNotification"), object: nil, queue: .main, using: { (note) in
-                MCEInboxQueueManager.sharedInstance().syncInbox()
+            NotificationCenter.default.addObserver(forName: MCENotificationName.MCERegistered.rawValue, object: nil, queue: .main, using: { (note) in
+                MCEInboxQueueManager.shared.syncInbox()
             })
         }
     }
@@ -51,20 +51,13 @@ class MainVC : UITableViewController, UIViewControllerPreviewingDelegate
     // Show Inbox counts on main page
     @objc func inboxUpdate()
     {
-        guard let messages = MCEInboxDatabase.sharedInstance().inboxMessagesAscending(true) as? Array<MCEInboxMessage> else { return }
-        var unreadCount=0
-        for message in messages
-        {
-            if !message.isRead
-            {
-                unreadCount += 1
-            }
-        }
+        let unreadCount = MCEInboxDatabase.shared.unreadMessageCount()
+        let messageCount = MCEInboxDatabase.shared.messageCount()
         
         var subtitle = ""
-        if MCERegistrationDetails.sharedInstance().mceRegistered
+        if MCERegistrationDetails.shared.mceRegistered
         {
-            subtitle = "\(messages.count) messages, \(unreadCount) unread"
+            subtitle = "\(messageCount) messages, \(unreadCount) unread"
         }
         
         DispatchQueue.main.async {

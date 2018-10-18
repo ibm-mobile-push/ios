@@ -15,7 +15,7 @@ typedef void (^MCEMessageCallback)(MCEInboxMessage *message, NSError* error);
 @interface MCEInboxQueueManager : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEInboxQueueManager * sharedInstance NS_SWIFT_NAME(shared);
 
 /** The syncInbox method adds a sync task to the queue. First, it connects to the server to download inbox message updates. Next, it updates the local MCEInboxDatabase store. After the update is complete, it sends an NSNotification with the MCESyncDatabase name, and the MCEInboxTableViewController refreshes its contents. Note - only a single sync task is added to the queue at a time. Additional tasks are not added regardless if you make multiple calls while the task is queued or running. */
 -(void)syncInbox;

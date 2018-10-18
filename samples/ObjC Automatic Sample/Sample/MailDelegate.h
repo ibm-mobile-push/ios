@@ -15,6 +15,6 @@
 
 #import <IBMMobilePush/IBMMobilePush.h>
 
-@interface MailDelegate : NSObject <MFMailComposeViewControllerDelegate, MCEActionProtocol>
+@interface MailDelegate : NSObject <MCEActionProtocol, MFMailComposeViewControllerDelegate>
 -(void)sendEmail:(NSDictionary*)action;
 @end

@@ -275,7 +275,7 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
     frame.size.width = window.frame.size.width;
     frame.size.height = self.bannerHeight;
     
-    if([window respondsToSelector:@selector(safeAreaInsets)]) {
+    if (@available(iOS 11.0, *)) {
         frame.size.height += window.safeAreaInsets.bottom;
     }
 

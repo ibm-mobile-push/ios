@@ -11,6 +11,9 @@
 @import SpriteKit;
 
 @interface NotificationViewController : UIViewController
+{
+    NSInteger _selected;
+}
 @property IBOutlet UILabel * titleLabel;
 @property IBOutlet UILabel * subtitleLabel;
 @property IBOutlet UILabel * bodyLabel;

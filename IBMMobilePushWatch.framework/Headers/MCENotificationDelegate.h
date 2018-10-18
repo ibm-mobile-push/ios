@@ -19,6 +19,6 @@
 @interface MCENotificationDelegate : NSObject <UNUserNotificationCenterDelegate>
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCENotificationDelegate * sharedInstance NS_SWIFT_NAME(shared);
 
 @end

@@ -62,7 +62,7 @@
 
 #if TARGET_OS_WATCH==0
 /** The pushEnabled method returns if the user has enabled or disabled push. */
-+(BOOL)pushEnabled;
++ (void) pushEnabled: (void (^)(BOOL enabled))callback;
 #endif
 
 /** Returns cached data for specified URL.

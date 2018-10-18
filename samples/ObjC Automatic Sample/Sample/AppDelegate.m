@@ -63,7 +63,33 @@
 
 @implementation AppDelegate
 
+// This method updates the badge count when the number of unread messages changes.
+// If you have additional user messages that should be reflected, that can be done here.
+-(void)inboxUpdate {
+    int unreadCount = [[MCEInboxDatabase sharedInstance] unreadMessageCount];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIApplication.sharedApplication setApplicationIconBadgeNumber: unreadCount];
+    });
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    if(@available(iOS 12.0, *)) {
+        MCESdk.sharedInstance.openSettingsForNotification = ^(UNNotification *notification) {
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Should show app settings for notifications" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction: [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }]];
+            [[MCESdk.sharedInstance findCurrentViewController] presentViewController:alert animated:true completion: ^{
+                
+            }];
+        };
+    }
+    
+    [self inboxUpdate];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inboxUpdate) name: InboxCountUpdate object:nil];
+
     [[NSUserDefaults standardUserDefaults]registerDefaults:@{@"action":@"update",@"standardType":@"dial", @"standardDialValue":@"\"8774266006\"", @"standardUrlValue":@"\"http://ibm.com\"", @"customType":@"sendEmail", @"customValue":@"{\"subject\":\"Hello from Sample App\", \"body\": \"This is an example email body\", \"recipient\":\"fake-email@fake-site.com\"}", @"categoryId":@"example",@"button1":@"Accept",@"button2":@"Reject"}];
     
     if([UNUserNotificationCenter class]) {
@@ -77,7 +103,16 @@
         // iOS 10+ Push Message Registration
         UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
         center.delegate = MCENotificationDelegate.sharedInstance;
-        NSUInteger options = UNAuthorizationOptionAlert|UNAuthorizationOptionSound|UNAuthorizationOptionBadge|UNAuthorizationOptionCarPlay;
+        NSUInteger options = 0;
+#ifdef __IPHONE_12_0
+        if(@available(iOS 12.0, *)) {
+            options = UNAuthorizationOptionAlert|UNAuthorizationOptionSound|UNAuthorizationOptionBadge|UNAuthorizationOptionCarPlay|UNAuthorizationOptionProvidesAppNotificationSettings;
+        }
+        else
+#endif
+        {
+            options = UNAuthorizationOptionAlert|UNAuthorizationOptionSound|UNAuthorizationOptionBadge|UNAuthorizationOptionCarPlay;
+        }
         [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
             [UIApplication.sharedApplication performSelectorOnMainThread:@selector(registerForRemoteNotifications) withObject:nil waitUntilDone:TRUE];
             [center setNotificationCategories: applicationCategories];

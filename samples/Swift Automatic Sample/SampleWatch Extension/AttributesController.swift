@@ -21,13 +21,13 @@ class AttributesController: WKInterfaceController
     @IBAction func updateAttribute(sender: Any) {
         updateAttributeStatus?.setText("Sending")
         updateAttributeStatus?.setTextColor(.white)
-        MCEAttributesQueueManager.sharedInstance().updateUserAttributes(["onwatch": arc4random()])
+        MCEAttributesQueueManager.shared.updateUserAttributes(["onwatch": arc4random()])
     }
     
     @IBAction func deleteAttribute(sender: Any) {
         deleteAttributeStatus?.setText("Sending")
         deleteAttributeStatus?.setTextColor(.white)
-        MCEAttributesQueueManager.sharedInstance().deleteUserAttributes(["onwatch"])
+        MCEAttributesQueueManager.shared.deleteUserAttributes(["onwatch"])
     }
     
     override func awake(withContext context: Any?) {
@@ -45,7 +45,7 @@ class AttributesController: WKInterfaceController
     override func willActivate() {
         super.willActivate()
         
-        listeners.append(NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateUserAttributesError"), object: nil, queue: OperationQueue.main, using: { (note) in
+        listeners.append(NotificationCenter.default.addObserver(forName: MCENotificationName.UpdateUserAttributesError.rawValue, object: nil, queue: OperationQueue.main, using: { (note) in
             if let userInfo = note.userInfo
             {
                 if let attributes = userInfo["attributes"] as? Dictionary<AnyHashable,Any>
@@ -59,7 +59,7 @@ class AttributesController: WKInterfaceController
             }
         }))
         
-        listeners.append(NotificationCenter.default.addObserver(forName: NSNotification.Name("UpdateUserAttributesSuccess"), object: nil, queue: OperationQueue.main, using: { (note) in
+        listeners.append(NotificationCenter.default.addObserver(forName: MCENotificationName.UpdateUserAttributesSuccess.rawValue, object: nil, queue: OperationQueue.main, using: { (note) in
             if let userInfo = note.userInfo
             {
                 if let attributes = userInfo["attributes"] as? Dictionary<AnyHashable,Any>
@@ -82,7 +82,7 @@ class AttributesController: WKInterfaceController
             }
         }))
         
-        listeners.append(NotificationCenter.default.addObserver(forName: NSNotification.Name("DeleteUserAttributesError"), object: nil, queue: OperationQueue.main, using: { (note) in
+        listeners.append(NotificationCenter.default.addObserver(forName: MCENotificationName.DeleteUserAttributesError.rawValue, object: nil, queue: OperationQueue.main, using: { (note) in
             if let userInfo = note.userInfo
             {
                 if let attributes = userInfo["attributes"] as? Dictionary<AnyHashable,Any>
@@ -96,7 +96,7 @@ class AttributesController: WKInterfaceController
             }
         }))
         
-        listeners.append(NotificationCenter.default.addObserver(forName: NSNotification.Name("DeleteUserAttributesSuccess"), object: nil, queue: OperationQueue.main, using: { (note) in
+        listeners.append(NotificationCenter.default.addObserver(forName: MCENotificationName.DeleteUserAttributesSuccess.rawValue, object: nil, queue: OperationQueue.main, using: { (note) in
             if let userInfo = note.userInfo
             {
                 if let keys = userInfo["keys"] as? Array<String>

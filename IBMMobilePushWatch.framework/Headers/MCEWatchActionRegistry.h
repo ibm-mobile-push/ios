@@ -17,7 +17,7 @@
 @interface MCEWatchActionRegistry : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEWatchActionRegistry * sharedInstance NS_SWIFT_NAME(shared);
 
 /** This method is used to register an object to receive action messages for a specified action type name.
  

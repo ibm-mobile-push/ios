@@ -9,10 +9,8 @@
 
 
 #if __has_feature(modules)
-@import UIKit;
 @import Foundation;
 #else
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #endif
 

@@ -53,23 +53,19 @@
 {
     NSURL * url = [NSURL URLWithString: action[@"value"]];
     [self.client getPassFrom:url withCompletion:^(PKPass * pass, NSError * error){
-        if(error)
-        {
-            NSLog(@"Pass error %@", [error localizedDescription]);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[[MCESdk.sharedInstance.alertViewClass alloc] initWithTitle:@"Pass Verifcation Failed" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
-            });
-            return;
-        }
-        NSLog(@"Pass downloaded");
-        PKAddPassesViewController * passVC = [[PKAddPassesViewController alloc] initWithPass:pass];
-        
-        objc_setAssociatedObject(passVC, @"pass", pass, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
-        passVC.delegate=self;
-        
-        UIViewController * controller = MCESdk.sharedInstance.findCurrentViewController;
         dispatch_async(dispatch_get_main_queue(), ^{
+            if(error)
+            {
+                NSLog(@"Pass error %@", [error localizedDescription]);
+                [[[MCESdk.sharedInstance.alertViewClass alloc] initWithTitle:@"Pass Verifcation Failed" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
+                return;
+            }
+        
+            NSLog(@"Pass downloaded");
+            PKAddPassesViewController * passVC = [[PKAddPassesViewController alloc] initWithPass:pass];
+            passVC.delegate=self;
+            
+            UIViewController * controller = MCESdk.sharedInstance.findCurrentViewController;
             [controller presentViewController:passVC animated:TRUE completion:^(void){
                 NSLog(@"Pass presented to user");
             }];

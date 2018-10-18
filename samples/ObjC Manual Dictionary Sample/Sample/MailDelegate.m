@@ -47,7 +47,7 @@
             [[[MCESdk.sharedInstance.alertViewClass alloc] initWithTitle:@"Cannot send mail" message:@"Please verify that you have a mail account setup." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
             return;
         }
-        
+
         self.mailController = [[MFMailComposeViewController alloc] init];
         self.mailController.mailComposeDelegate=self;
         [self.mailController setSubject: action[@"value"][@"subject"]];

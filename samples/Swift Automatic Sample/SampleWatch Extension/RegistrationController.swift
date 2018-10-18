@@ -28,7 +28,7 @@ class RegistrationController: WKInterfaceController
     override func willActivate() {
         super.willActivate()
         updateRegistrationLabels()
-        observer = NotificationCenter.default.addObserver(forName: NSNotification.Name("MCERegisteredNotification"), object: nil, queue: OperationQueue.main, using: { (note) in
+        observer = NotificationCenter.default.addObserver(forName:   MCENotificationName.MCERegistered.rawValue, object: nil, queue: OperationQueue.main, using: { (note) in
             self.updateRegistrationLabels()
         })
     }
@@ -48,11 +48,11 @@ class RegistrationController: WKInterfaceController
             return
         }
         
-        if MCERegistrationDetails.sharedInstance().mceRegistered
+        if MCERegistrationDetails.shared.mceRegistered
         {
-            userIdLabel.setText(MCERegistrationDetails.sharedInstance().userId)
-            channelIdLabel.setText(MCERegistrationDetails.sharedInstance().channelId)
-            appKeyLabel.setText(MCERegistrationDetails.sharedInstance().appKey)
+            userIdLabel.setText(MCERegistrationDetails.shared.userId)
+            channelIdLabel.setText(MCERegistrationDetails.shared.channelId)
+            appKeyLabel.setText(MCERegistrationDetails.shared.appKey)
         }        
     }
     

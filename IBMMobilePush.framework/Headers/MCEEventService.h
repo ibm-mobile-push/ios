@@ -23,7 +23,7 @@
 @interface MCEEventService : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEEventService * sharedInstance NS_SWIFT_NAME(shared);
 
 /** The addEvent:immediate: method is used to add an event to the event queue and optionally flush the queue.
  

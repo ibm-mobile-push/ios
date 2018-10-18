@@ -28,7 +28,7 @@ class iBeaconVC: UITableViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let regions = MCELocationDatabase.sharedInstance().beaconRegions()
+        if let regions = MCELocationDatabase.shared.beaconRegions()
         {
             self.beaconRegions = regions.sortedArray(using: [ NSSortDescriptor(key: "major", ascending: true) ]) as! [CLBeaconRegion]
         }
@@ -37,22 +37,22 @@ class iBeaconVC: UITableViewController, CLLocationManagerDelegate {
             self.beaconRegions = []
         }
         
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: EnteredBeacon), object: nil, queue: OperationQueue.main) {
+        NotificationCenter.default.addObserver(forName: MCENotificationName.EnteredBeacon.rawValue, object: nil, queue: OperationQueue.main) {
             notification in
             self.beaconStatus[notification.userInfo!["major"] as! NSNumber] = String.init(format: "Entered Minor %@", notification.userInfo!["minor"] as! NSNumber)
             self.tableView.reloadData()
         }
         
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: ExitedBeacon), object: nil, queue: OperationQueue.main) {
+        NotificationCenter.default.addObserver(forName: MCENotificationName.ExitedBeacon.rawValue, object: nil, queue: OperationQueue.main) {
             notification in
             self.beaconStatus[notification.userInfo!["major"] as! NSNumber] = String.init(format: "Exited Minor %@", notification.userInfo!["minor"] as! NSNumber)
             self.tableView.reloadData()
         }
         
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: LocationDatabaseUpdated), object: nil, queue: OperationQueue.main)
+        NotificationCenter.default.addObserver(forName: MCENotificationName.LocationDatabaseUpdated.rawValue, object: nil, queue: OperationQueue.main)
         {
             notification in
-            self.beaconRegions = MCELocationDatabase.sharedInstance().beaconRegions().sortedArray(using: [ NSSortDescriptor(key: "major", ascending: true) ]) as! [CLBeaconRegion]
+            self.beaconRegions = MCELocationDatabase.shared.beaconRegions().sortedArray(using: [ NSSortDescriptor(key: "major", ascending: true) ]) as! [CLBeaconRegion]
             self.tableView.reloadData()
         }
         
@@ -67,7 +67,7 @@ class iBeaconVC: UITableViewController, CLLocationManagerDelegate {
         if(indexPath.section == 0)
         {
             let vertical = tableView.dequeueReusableCell(withIdentifier: "vertical", for: indexPath)
-            let config = MCESdk.sharedInstance().config;
+            let config = MCESdk.shared.config;
             if(indexPath.item==0)
             {
                 vertical.textLabel!.text = "UUID"
@@ -137,7 +137,7 @@ class iBeaconVC: UITableViewController, CLLocationManagerDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.item == 1
         {
-            MCESdk.sharedInstance().manualLocationInitialization()
+            MCESdk.shared.manualLocationInitialization()
         }
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

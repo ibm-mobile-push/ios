@@ -61,7 +61,6 @@
 		C39D40241BE01521006D06C0 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40231BE01521006D06C0 /* RegistrationVC.swift */; };
 		C39D40261BE01AD0006D06C0 /* StaticCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40251BE01AD0006D06C0 /* StaticCategoriesVC.swift */; };
 		C39D40281BE02349006D06C0 /* EditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40271BE02349006D06C0 /* EditCell.swift */; };
-		C39D402A1BE0240D006D06C0 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40291BE0240D006D06C0 /* EventsVC.swift */; };
 		C3A80AD81BA3686E00EE45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */; };
 		C3A80ADA1BA3687300EE45ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A80AD91BA3687300EE45ED /* CoreData.framework */; };
 		C3C09DD41D342AEC0076005A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */; };
@@ -98,6 +97,7 @@
 		C3E2324A1FAA49A500DCD58D /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E232491FAA49A500DCD58D /* RegistrationController.swift */; };
 		C3E2324C1FAA49B600DCD58D /* AttributesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2324B1FAA49B600DCD58D /* AttributesController.swift */; };
 		C3E2324E1FAA49C800DCD58D /* EventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E2324D1FAA49C800DCD58D /* EventsController.swift */; };
+		C3E7BD322153072D00468378 /* EventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E7BD312153072D00468378 /* EventVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,7 +243,6 @@
 		C39D40231BE01521006D06C0 /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		C39D40251BE01AD0006D06C0 /* StaticCategoriesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticCategoriesVC.swift; sourceTree = "<group>"; };
 		C39D40271BE02349006D06C0 /* EditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCell.swift; sourceTree = "<group>"; };
-		C39D40291BE0240D006D06C0 /* EventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
 		C3A80AD71BA3686E00EE45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		C3A80AD91BA3687300EE45ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C3C09DD31D342AEC0076005A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -301,6 +300,7 @@
 		C3E232491FAA49A500DCD58D /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		C3E2324B1FAA49B600DCD58D /* AttributesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesController.swift; sourceTree = "<group>"; };
 		C3E2324D1FAA49C800DCD58D /* EventsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsController.swift; sourceTree = "<group>"; };
+		C3E7BD312153072D00468378 /* EventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,7 +622,7 @@
 				C30252841BE16B3F00CA5D5D /* MailDelegate.swift */,
 				C39D40231BE01521006D06C0 /* RegistrationVC.swift */,
 				C39D40251BE01AD0006D06C0 /* StaticCategoriesVC.swift */,
-				C39D40291BE0240D006D06C0 /* EventsVC.swift */,
+				C3E7BD312153072D00468378 /* EventVC.swift */,
 				C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */,
 				C313803E1BE033D600BC5910 /* AttributesVC.swift */,
 				C31380401BE1247400BC5910 /* PushActionsVC.swift */,
@@ -789,7 +789,7 @@
 				TargetAttributes = {
 					C361A9941D3576E800D4EA9B = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -802,17 +802,17 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
 					C3D01E5A1A607F7E00C9A66C = {
 						CreatedOnToolsVersion = 6.1.1;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -831,7 +831,7 @@
 					};
 					C3E232271FAA47FC00DCD58D = {
 						CreatedOnToolsVersion = 9.1;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -960,6 +960,7 @@
 				C3C399111B20DE8B0080DC49 /* AddToCalendarPlugin.m in Sources */,
 				C336C1091F3E089400C33D40 /* ExamplePlugin.m in Sources */,
 				C3C399081B20DE7C0080DC49 /* SnoozeActionPlugin.m in Sources */,
+				C3E7BD322153072D00468378 /* EventVC.swift in Sources */,
 				C367FDC11BE2733300AD32AE /* CellStatusTableViewController.swift in Sources */,
 				C35F70B51C654EB000070DB6 /* MCEInboxPostTemplateVideoPlayerView.m in Sources */,
 				C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */,
@@ -986,7 +987,6 @@
 				C35F70B61C654EB000070DB6 /* MCEInboxPostTemplateView.m in Sources */,
 				C39D40241BE01521006D06C0 /* RegistrationVC.swift in Sources */,
 				C35F70AA1C654EB000070DB6 /* MCEInboxDefaultTemplateCell.m in Sources */,
-				C39D402A1BE0240D006D06C0 /* EventsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,8 +1087,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSampleNotificationService/SwiftSampleNotificationService-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1112,8 +1111,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSampleNotificationService/SwiftSampleNotificationService-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1125,7 +1123,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Carousel/Carousel.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1150,7 +1147,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Carousel/Carousel.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1291,8 +1287,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1322,8 +1317,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftSample/SwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1360,9 +1354,9 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "SampleWatch Extension/SampleWatch Extension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Debug;
 		};
@@ -1399,9 +1393,9 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SampleWatch Extension/SampleWatch Extension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Release;
 		};
@@ -1439,7 +1433,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Debug;
 		};
@@ -1477,7 +1471,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Release;
 		};

@@ -53,6 +53,12 @@
     "Set logfile to true to write logs to the iTunes sync directory for debugging": "",
     "logfile": true,
     
+    "Maximum size of log before it's rotated": "default is 10MB",
+    "maximumLogSize": 10000000,
+
+    "Maximum number of rotated log files": "default is to keep 7 in unix style rotation",
+    "maximumNumberOfLogFiles": 7,
+
     "watch": {
         "category": "mce-watch-category",
         "handoff": {

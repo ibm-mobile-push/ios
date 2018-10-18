@@ -9,11 +9,11 @@
 
 #if __has_feature(modules)
 @import UIKit;
+@import IBMMobilePush;
 #else
 #import <UIKit/UIKit.h>
-#endif
-
 #import <IBMMobilePush/IBMMobilePush.h>
+#endif
 
 @interface InAppVC : UITableViewController <MCEActionProtocol>
 @end

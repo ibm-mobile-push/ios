@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2015, 2017
+ * © Copyright IBM Corp. 2015, 2018
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -38,7 +38,7 @@
 {
     if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDatabase:) name:@"MCESyncDatabase" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDatabase:) name:MCESyncDatabase object:nil];
     }
     return self;
 }
@@ -57,12 +57,17 @@
 
 -(void)setContent
 {
+    if(![NSThread isMainThread]) {
+        [self performSelectorOnMainThread:@selector(setContent) withObject:nil waitUntilDone:false];
+        return;
+    }
+
     NSDictionary * messageDetails = self.inboxMessage.content[@"messageDetails"];
     NSDictionary * preview = self.inboxMessage.content[@"messagePreview"];
     
     MCEWebViewActionDelegate * actionDelegate = [MCEWebViewActionDelegate sharedInstance];
     [actionDelegate configureForSource: InboxSource inboxMessage: self.inboxMessage actions:self.inboxMessage.content[@"actions"] ];
-
+    
     self.webView.delegate=actionDelegate;
     [self.webView loadHTMLString:messageDetails[@"richContent"] baseURL:nil];
     
@@ -85,11 +90,11 @@
     [super viewWillAppear:animated];
     self.boxView.layer.borderWidth=1;
     self.boxView.layer.borderColor = [[UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1.0] CGColor];
-
+    
     CGSize statusBarSize = [[UIApplication sharedApplication] statusBarFrame].size;
     CGFloat statusBarHeight = MIN(statusBarSize.width, statusBarSize.height);
     CGFloat toolbarHeight = self.toolbar.frame.size.height;
-
+    
     // Adjust spacing between toolbar and top when translucent toolbar or when popup
     if([self isModal])
     {
@@ -97,13 +102,14 @@
         self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
         
         UIWindow * window = UIApplication.sharedApplication.keyWindow;
-        if([window respondsToSelector:@selector(safeAreaInsets)]) {
+        if (@available(iOS 11.0, *)) {
             if(window.safeAreaInsets.top > statusBarHeight) {
                 self.toolbarHeightConstraint.constant = toolbarHeight + window.safeAreaInsets.top;
             } else {
                 self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
             }
-            
+        } else {
+            self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
         }
     }
     else if(self.navigationController.navigationBar.translucent)

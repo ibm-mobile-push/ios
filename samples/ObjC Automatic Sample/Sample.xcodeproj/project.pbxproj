@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C302AE491D3FFC71007AFB66 /* SampleNotificationService.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C3B2A2B21D2593A600286475 /* SampleNotificationService.entitlements */; };
 		C314BF9C1FAD211C00F363C6 /* MailDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C314BF9B1FAD211B00F363C6 /* MailDelegate.m */; };
+		C314FBB02152A96E0055C36A /* EventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C314FBAF2152A96D0055C36A /* EventVC.m */; };
 		C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C317F74E1B41FF1B00962B55 /* MceConfig.json */; };
 		C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C31827031B71257B00D497A2 /* richnotification.xcdatamodel */; };
 		C31AAD5F1D25CA4000A8F6BD /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2A29A1D245B4E00286475 /* NotificationService.m */; };
@@ -100,7 +101,6 @@
 		C3E4F14F1A8BC69B00844271 /* RegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F14E1A8BC69B00844271 /* RegistrationVC.m */; };
 		C3E4F1521A8BE16600844271 /* PushActionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F1511A8BE16600844271 /* PushActionsVC.m */; };
 		C3E4F1551A8BE17700844271 /* AttributesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F1541A8BE17700844271 /* AttributesVC.m */; };
-		C3E4F1581A8BE18900844271 /* EventsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F1571A8BE18900844271 /* EventsVC.m */; };
 		C3E4F15B1A8BE19900844271 /* StaticCategoriesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F15A1A8BE19900844271 /* StaticCategoriesVC.m */; };
 		C3ED8B2D1BA8D9DF00B79D65 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED8B2C1BA8D9DF00B79D65 /* MainVC.m */; };
 /* End PBXBuildFile section */
@@ -185,6 +185,8 @@
 
 /* Begin PBXFileReference section */
 		C314BF9B1FAD211B00F363C6 /* MailDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailDelegate.m; sourceTree = "<group>"; };
+		C314FBAE2152A96D0055C36A /* EventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventVC.h; sourceTree = "<group>"; };
+		C314FBAF2152A96D0055C36A /* EventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventVC.m; sourceTree = "<group>"; };
 		C317F74E1B41FF1B00962B55 /* MceConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MceConfig.json; path = ../../../MceConfig.json; sourceTree = "<group>"; };
 		C31827031B71257B00D497A2 /* richnotification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = richnotification.xcdatamodel; path = ../../richnotification.xcdatamodel; sourceTree = "<group>"; };
 		C32FC40F1B44A5590035CAB8 /* InAppVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppVC.m; sourceTree = "<group>"; };
@@ -330,8 +332,6 @@
 		C3E4F1511A8BE16600844271 /* PushActionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushActionsVC.m; sourceTree = "<group>"; };
 		C3E4F1531A8BE17700844271 /* AttributesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesVC.h; sourceTree = "<group>"; };
 		C3E4F1541A8BE17700844271 /* AttributesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesVC.m; sourceTree = "<group>"; };
-		C3E4F1561A8BE18900844271 /* EventsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsVC.h; sourceTree = "<group>"; };
-		C3E4F1571A8BE18900844271 /* EventsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsVC.m; sourceTree = "<group>"; };
 		C3E4F1591A8BE19900844271 /* StaticCategoriesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticCategoriesVC.h; sourceTree = "<group>"; };
 		C3E4F15A1A8BE19900844271 /* StaticCategoriesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticCategoriesVC.m; sourceTree = "<group>"; };
 		C3E61CC31D1300A8006EC588 /* Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sample.entitlements; sourceTree = SOURCE_ROOT; };
@@ -679,8 +679,8 @@
 				C3E4F14E1A8BC69B00844271 /* RegistrationVC.m */,
 				C3E4F1591A8BE19900844271 /* StaticCategoriesVC.h */,
 				C3E4F15A1A8BE19900844271 /* StaticCategoriesVC.m */,
-				C3E4F1561A8BE18900844271 /* EventsVC.h */,
-				C3E4F1571A8BE18900844271 /* EventsVC.m */,
+				C314FBAE2152A96D0055C36A /* EventVC.h */,
+				C314FBAF2152A96D0055C36A /* EventVC.m */,
 				C3E4F1531A8BE17700844271 /* AttributesVC.h */,
 				C3E4F1541A8BE17700844271 /* AttributesVC.m */,
 				C3E4F1501A8BE16600844271 /* PushActionsVC.h */,
@@ -859,7 +859,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -886,7 +886,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1032,6 +1032,7 @@
 				C35F70861C654DE500070DB6 /* MCEInboxPostTemplateDisplay.m in Sources */,
 				C335717F1B3B6461003E0A7A /* MCEInboxDefaultTemplateDisplay.m in Sources */,
 				C335717C1B3B6461003E0A7A /* MCEInboxDefaultTemplate.m in Sources */,
+				C314FBB02152A96E0055C36A /* EventVC.m in Sources */,
 				C3C399111B20DE8B0080DC49 /* AddToCalendarPlugin.m in Sources */,
 				C3CF5BD11C57ED4B0026ECC8 /* MCEInAppVideoPlayerView.m in Sources */,
 				C3C399081B20DE7C0080DC49 /* SnoozeActionPlugin.m in Sources */,
@@ -1042,7 +1043,6 @@
 				C3E4F14F1A8BC69B00844271 /* RegistrationVC.m in Sources */,
 				C35F708A1C654DE500070DB6 /* MCEInboxPostTemplateVideoPlayerView.m in Sources */,
 				C375B6A71C52B08D0076E229 /* MCEInAppImageTemplate.m in Sources */,
-				C3E4F1581A8BE18900844271 /* EventsVC.m in Sources */,
 				C35F70881C654DE500070DB6 /* MCEInboxPostTemplateImage.m in Sources */,
 				C3E4F1551A8BE17700844271 /* AttributesVC.m in Sources */,
 				C35F70841C654DE500070DB6 /* MCEInboxPostTemplateCell.m in Sources */,
@@ -1158,7 +1158,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Carousel.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1183,7 +1182,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = Carousel.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1460,7 +1458,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Debug;
 		};
@@ -1501,7 +1499,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Release;
 		};
@@ -1536,7 +1534,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Debug;
 		};
@@ -1572,7 +1570,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
 			};
 			name = Release;
 		};

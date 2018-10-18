@@ -24,20 +24,20 @@ class EventsController: WKInterfaceController
         sendEventStatus?.setText("Sending")
         sendEventStatus?.setTextColor(.white)
         let event = MCEEvent(name: "watch", type: "watch", timestamp: nil, attributes: ["immediate": true])
-        MCEEventService.sharedInstance().add(event, immediate: true)
+        MCEEventService.shared.add(event, immediate: true)
     }
     
     @IBAction func queueEvent(sender: Any) {
         queueEventStatus?.setText("Queued")
         queueEventStatus?.setTextColor(.white)
         let event = MCEEvent(name: "watch", type: "watch", timestamp: nil, attributes: ["immediate": false])
-        MCEEventService.sharedInstance().add(event, immediate: false)
+        MCEEventService.shared.add(event, immediate: false)
     }
     
     @IBAction func sendQueue(sender: Any) {
         sendQueueStatus?.setText("Sending")
         sendQueueStatus?.setTextColor(.white)
-        MCEEventService.sharedInstance().sendEvents()
+        MCEEventService.shared.sendEvents()
     }
     
     override func didDeactivate() {
@@ -49,7 +49,7 @@ class EventsController: WKInterfaceController
     
     override func willActivate() {
         super.willActivate()
-        listeners.append(NotificationCenter.default.addObserver(forName: NSNotification.Name("MCEEventSuccess"), object: nil, queue: OperationQueue.main, using: { (note) in
+        listeners.append(NotificationCenter.default.addObserver(forName: MCENotificationName.eventSuccess.rawValue, object: nil, queue: OperationQueue.main, using: { (note) in
             for event in note.userInfo?["events"] as! [MCEEvent]
             {
                 if event.type == "watch" && event.name == "watch"
@@ -98,7 +98,7 @@ class EventsController: WKInterfaceController
             }
         }))
         
-        listeners.append(NotificationCenter.default.addObserver(forName: NSNotification.Name("MCEEventFailure"), object: nil, queue: OperationQueue.main, using: { (note) in
+        listeners.append(NotificationCenter.default.addObserver(forName: MCENotificationName.eventFailure.rawValue, object: nil, queue: OperationQueue.main, using: { (note) in
             
             for event in note.userInfo?["events"] as! [MCEEvent]
             {

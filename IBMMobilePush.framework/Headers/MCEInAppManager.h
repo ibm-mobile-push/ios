@@ -20,7 +20,7 @@
 @interface MCEInAppManager : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCEInAppManager * sharedInstance NS_SWIFT_NAME(shared);
 
 /** The processPayload: method reads the incoming APNS payload and if it finds an "inApp" block, it adds the inApp message contained to the database.
  

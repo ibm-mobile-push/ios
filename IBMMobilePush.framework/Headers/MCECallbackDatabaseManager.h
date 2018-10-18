@@ -19,7 +19,7 @@
 @interface MCECallbackDatabaseManager : NSObject
 
 /** This method returns the singleton object of this class. */
-+ (instancetype)sharedInstance;
+@property(class, nonatomic, readonly) MCECallbackDatabaseManager * sharedInstance NS_SWIFT_NAME(shared);
 
 /** The insertCallback:dictionary: method inserts a callback into the database.
  
