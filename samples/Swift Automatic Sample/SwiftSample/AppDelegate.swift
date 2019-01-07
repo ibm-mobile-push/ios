@@ -10,7 +10,7 @@
 import UIKit
 import IBMMobilePush
 
-@objc class AppDelegate : UIResponder, UIApplicationDelegate
+@objc class AppDelegate : UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate
 {
     var window: UIWindow? 
     
@@ -22,6 +22,11 @@ import IBMMobilePush
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool
     {
+        if let splitViewController = window?.rootViewController as? UISplitViewController, let navigationController = splitViewController.viewControllers.last as? UINavigationController {
+            navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+            splitViewController.delegate = self
+        }
+        
         if #available(iOS 12.0, *) {
             MCESdk.shared.openSettingsForNotification = { notification in
                 let alert = UIAlertController(title: "Should show app settings for notifications", message: nil, preferredStyle: .alert)
@@ -44,6 +49,8 @@ import IBMMobilePush
         UserDefaults.standard.register(defaults: ["action":"update", "standardType":"dial",  "standardDialValue":"\"8774266006\"",  "standardUrlValue":"\"http://ibm.com\"",  "customType":"sendEmail",  "customValue":"{\"subject\":\"Hello from Sample App\",  \"body\": \"This is an example email body\",  \"recipient\":\"fake-email@fake-site.com\"}",  "categoryId":"example", "button1":"Accept", "button2":"Reject"])
 
         if #available(iOS 10.0, *) {
+            application.registerForRemoteNotifications()
+
             // iOS 10+ Example static action category:
             let acceptAction = UNNotificationAction(identifier: "Accept", title: "Accept", options: [.foreground])
             let rejectAction = UNNotificationAction(identifier: "Reject", title: "Reject", options: [.destructive])
@@ -68,9 +75,6 @@ import IBMMobilePush
             center.requestAuthorization(options: options, completionHandler: { (granted, error) in
                 if let error = error {
                     print("Could not request authorization from APNS \(error.localizedDescription)")
-                }
-                DispatchQueue.main.sync {
-                    application.registerForRemoteNotifications()
                 }
                 center.setNotificationCategories(categories)
             })
@@ -217,5 +221,10 @@ import IBMMobilePush
             MCEEventService.shared.add(event, immediate: false)
         }
         completionHandler()
+    }
+
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool
+    {
+        return true
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5MB-yg-im5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8Vp-xj-ldm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,12 +23,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVX-nB-eJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-527" y="45"/>
+            <point key="canvasLocation" x="-2410" y="-9"/>
         </scene>
         <!--Inbox Table View Controller-->
         <scene sceneID="Rqm-w8-aBC">
             <objects>
-                <tableViewController storyboardIdentifier="inbox" id="OX9-Fk-FM3" customClass="MCEInboxTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Inbox" id="OX9-Fk-FM3" customClass="MCEInboxTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mb1-3y-CHq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +51,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2h7-4U-7Xt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="-628"/>
+            <point key="canvasLocation" x="-820" y="680"/>
         </scene>
         <!--Sample App-->
         <scene sceneID="2qe-mV-x1S">
@@ -109,7 +109,7 @@
                         <sections>
                             <tableViewSection footerTitle="Copyright (c) 2015 IBM. All rights reserved." id="B3y-ia-pQQ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="registration" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="registration" textLabel="dgP-lK-DVu" rowHeight="44" style="IBUITableViewCellStyleDefault" id="K18-P4-fMZ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="registration" textLabel="dgP-lK-DVu" rowHeight="44" style="IBUITableViewCellStyleDefault" id="K18-P4-fMZ">
                                         <rect key="frame" x="0.0" y="170" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K18-P4-fMZ" id="AkP-ji-SrY">
@@ -126,11 +126,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="Registration"/>
-                                        <connections>
-                                            <segue destination="IWj-P2-7wx" kind="show" id="5Tq-c8-kR7"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="inbox" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Registration Details" textLabel="lO7-JV-bHR" detailTextLabel="rf3-YM-N6U" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="76A-1U-nzR" userLabel="Inbox">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Registration Details" textLabel="lO7-JV-bHR" detailTextLabel="rf3-YM-N6U" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="76A-1U-nzR" userLabel="Inbox">
                                         <rect key="frame" x="0.0" y="214" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="76A-1U-nzR" id="Mkp-3f-jAS">
@@ -154,11 +151,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="Inbox"/>
-                                        <connections>
-                                            <segue destination="OX9-Fk-FM3" kind="show" id="UHj-MG-re8"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="altinbox" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Registration Details" textLabel="Jch-y1-QBp" detailTextLabel="7jp-8P-Y72" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="HgP-0R-7pZ" userLabel="Alternate Inbox">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Registration Details" textLabel="Jch-y1-QBp" detailTextLabel="7jp-8P-Y72" rowHeight="44" style="IBUITableViewCellStyleSubtitle" id="HgP-0R-7pZ" userLabel="Alternate Inbox">
                                         <rect key="frame" x="0.0" y="258" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HgP-0R-7pZ" id="BrB-0t-tXg">
@@ -181,11 +175,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="pFn-oV-4DU" kind="show" id="WDB-Xe-j7E"/>
-                                        </connections>
+                                        <accessibility key="accessibilityConfiguration" identifier="Alternate Inbox"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="inapp" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Registration Details" textLabel="U4s-TO-EIg" rowHeight="44" style="IBUITableViewCellStyleDefault" id="GUV-H7-XWY" userLabel="In App">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Registration Details" textLabel="U4s-TO-EIg" rowHeight="44" style="IBUITableViewCellStyleDefault" id="GUV-H7-XWY" userLabel="In App">
                                         <rect key="frame" x="0.0" y="302" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GUV-H7-XWY" id="eXO-xm-hBV">
@@ -201,11 +193,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Qhi-ls-MD1" kind="show" id="DSN-EI-VZl"/>
-                                        </connections>
+                                        <accessibility key="accessibilityConfiguration" identifier="In App"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="actions" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Push Actions" textLabel="hXI-bo-8xF" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Me4-30-MG1">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Push Actions" textLabel="hXI-bo-8xF" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Me4-30-MG1">
                                         <rect key="frame" x="0.0" y="346" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Me4-30-MG1" id="ksa-dC-hYA">
@@ -221,11 +211,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="3Rj-7c-Xf9" kind="show" id="TdE-yI-Bwe"/>
-                                        </connections>
+                                        <accessibility key="accessibilityConfiguration" identifier="Actions"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="categories" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Notifications" textLabel="mod-KW-97l" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Zd2-Ak-KGB">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Notifications" textLabel="mod-KW-97l" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Zd2-Ak-KGB">
                                         <rect key="frame" x="0.0" y="390" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zd2-Ak-KGB" id="VkJ-mo-pxG">
@@ -241,9 +229,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="WEG-Yi-jbo" kind="show" id="4aq-e9-BRz"/>
-                                        </connections>
+                                        <accessibility key="accessibilityConfiguration" identifier="Categories"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="events" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Events" textLabel="RoV-uB-is8" rowHeight="44" style="IBUITableViewCellStyleDefault" id="MtL-2G-ngT">
                                         <rect key="frame" x="0.0" y="434" width="375" height="44"/>
@@ -261,9 +247,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="VtI-VL-GKC" kind="show" id="CaD-vB-gTg"/>
-                                        </connections>
+                                        <accessibility key="accessibilityConfiguration" identifier="Events"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="attributes" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Attributes" textLabel="zxd-Pz-H8N" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Axy-wX-qN4">
                                         <rect key="frame" x="0.0" y="478" width="375" height="44"/>
@@ -282,9 +266,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="Attributes"/>
-                                        <connections>
-                                            <segue destination="Gqx-qB-RKx" kind="show" id="lMt-eC-gw4"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="geofences" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Attributes" textLabel="uig-0t-vRG" rowHeight="44" style="IBUITableViewCellStyleDefault" id="k4T-ip-UvH" userLabel="Geofences">
                                         <rect key="frame" x="0.0" y="522" width="375" height="44"/>
@@ -302,11 +283,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Ukg-D7-Esp" kind="show" id="k9C-5p-0V5"/>
-                                        </connections>
+                                        <accessibility key="accessibilityConfiguration" identifier="Geofences"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="beacons" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Attributes" textLabel="zRj-QR-KjA" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Eur-VL-E62" userLabel="iBeacons">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Attributes" textLabel="zRj-QR-KjA" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Eur-VL-E62" userLabel="iBeacons">
                                         <rect key="frame" x="0.0" y="566" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eur-VL-E62" id="5gf-Jt-sZ9">
@@ -322,9 +301,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="api-8o-fiE" kind="show" id="Byt-d7-Evb"/>
-                                        </connections>
+                                        <accessibility key="accessibilityConfiguration" identifier="iBeacons"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -345,12 +322,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSI-Oj-20x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196" y="45"/>
+            <point key="canvasLocation" x="-1588" y="-9"/>
         </scene>
         <!--Registration-->
         <scene sceneID="mWe-NS-XeR">
             <objects>
-                <tableViewController storyboardIdentifier="registration" title="Registration" id="IWj-P2-7wx" customClass="RegistrationVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Registration" title="Registration" id="IWj-P2-7wx" customClass="RegistrationVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="r00-wV-zNM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -470,12 +447,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRN-ti-hfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="-628"/>
+            <point key="canvasLocation" x="-1588" y="680"/>
         </scene>
         <!--Push Actions-->
         <scene sceneID="4Rh-nZ-tYb">
             <objects>
-                <tableViewController storyboardIdentifier="actions" id="3Rj-7c-Xf9" customClass="PushActionsVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Actions" id="3Rj-7c-Xf9" customClass="PushActionsVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="wMz-Aj-JDV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -581,12 +558,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVD-wP-a2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="452"/>
+            <point key="canvasLocation" x="1436" y="680"/>
         </scene>
         <!--Actionable Categories-->
         <scene sceneID="w2M-BS-hmc">
             <objects>
-                <tableViewController storyboardIdentifier="categories" id="WEG-Yi-jbo" userLabel="Actionable Categories" customClass="StaticCategoriesVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Categories" id="WEG-Yi-jbo" userLabel="Actionable Categories" customClass="StaticCategoriesVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="evY-fW-ebW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -627,12 +604,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uq-Tc-ziK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="953"/>
+            <point key="canvasLocation" x="2156" y="680"/>
         </scene>
         <!--In AppVC-->
         <scene sceneID="lAK-pX-h4m">
             <objects>
-                <tableViewController storyboardIdentifier="inapp" id="Qhi-ls-MD1" customClass="InAppVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="In App" id="Qhi-ls-MD1" customClass="InAppVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="eHN-mO-ZqU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -671,12 +648,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1697" y="-261"/>
+            <point key="canvasLocation" x="682" y="680"/>
         </scene>
         <!--Alternate Inbox Table View Controller-->
         <scene sceneID="Xew-Oe-upb">
             <objects>
-                <tableViewController storyboardIdentifier="altinbox" id="pFn-oV-4DU" customClass="MCEAlternateInboxTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Alternate Inbox" id="pFn-oV-4DU" customClass="MCEAlternateInboxTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="jLc-CZ-qcs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -699,12 +676,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apN-0A-noY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-788" y="-628"/>
+            <point key="canvasLocation" x="-70" y="680"/>
         </scene>
         <!--iBeacons-->
         <scene sceneID="T3w-Mj-JRb">
             <objects>
-                <tableViewController storyboardIdentifier="beacons" id="api-8o-fiE" customClass="iBeaconVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="iBeacons" id="api-8o-fiE" customClass="iBeaconVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="H4U-Xt-OrR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -775,12 +752,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Oq-zt-EDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="1307"/>
+            <point key="canvasLocation" x="5002" y="680"/>
         </scene>
         <!--Geofences-->
         <scene sceneID="mcG-qj-SrF">
             <objects>
-                <viewController storyboardIdentifier="geofences" id="Ukg-D7-Esp" customClass="GeofenceVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Geofences" id="Ukg-D7-Esp" customClass="GeofenceVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Cc-We-bE0"/>
                         <viewControllerLayoutGuide type="bottom" id="vIX-hH-dVg"/>
@@ -790,10 +767,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kiB-ja-nvc">
-                                <rect key="frame" x="0.0" y="101" width="375" height="566"/>
+                                <rect key="frame" x="0.0" y="57" width="375" height="610"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFM-go-952">
-                                <rect key="frame" x="16" y="72" width="50" height="21"/>
+                                <rect key="frame" x="16" y="28" width="50" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="5Ah-7d-LXh"/>
                                     <constraint firstAttribute="width" constant="50" id="OiO-dI-kJw"/>
@@ -805,7 +782,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yzy-o0-sfg">
-                                <rect key="frame" x="74" y="67" width="285" height="30"/>
+                                <rect key="frame" x="74" y="23" width="285" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="enableWithSender:" destination="Ukg-D7-Esp" eventType="touchUpInside" id="Jqp-hK-Ec7"/>
@@ -848,12 +825,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qiA-fU-nil" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189.5999999999999" y="148.87556221889056"/>
+            <point key="canvasLocation" x="4290" y="680"/>
         </scene>
         <!--Attributes-->
         <scene sceneID="dhz-s8-jR8">
             <objects>
-                <viewController id="Gqx-qB-RKx" customClass="AttributesVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Attributes" id="Gqx-qB-RKx" customClass="AttributesVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KMd-a7-1to"/>
                         <viewControllerLayoutGuide type="bottom" id="Ds9-75-ce4"/>
@@ -863,7 +840,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFG-bD-XUF">
-                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qpT-tt-1hZ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1077,12 +1054,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGL-JE-f1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2554" y="866"/>
+            <point key="canvasLocation" x="3545" y="680"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ahw-CG-sHq">
+            <objects>
+                <navigationController id="fdl-D2-EQs" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q6q-Ep-e6o">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IWj-P2-7wx" kind="relationship" relationship="rootViewController" id="o9e-W0-j8a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zcV-B6-PB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2410" y="680"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="nfT-eT-Sng">
+            <objects>
+                <splitViewController id="8Vp-xj-ldm" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="fdl-D2-EQs" kind="relationship" relationship="detailViewController" id="fEp-Mc-MmC"/>
+                        <segue destination="5MB-yg-im5" kind="relationship" relationship="masterViewController" id="eAP-Tu-thq"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XHz-w4-G0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3264" y="342"/>
         </scene>
         <!--Send Events-->
         <scene sceneID="utJ-2v-MY5">
             <objects>
-                <viewController id="VtI-VL-GKC" customClass="EventVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Events" id="VtI-VL-GKC" customClass="EventVC" customModule="SwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B24-DI-5bK"/>
                         <viewControllerLayoutGuide type="bottom" id="4nX-0j-7cm"/>
@@ -1092,7 +1098,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hR-wU-Dol">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6Y-z3-xfb">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -1401,7 +1407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyY-YW-iQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-908" y="716"/>
+            <point key="canvasLocation" x="2850" y="680"/>
         </scene>
     </scenes>
     <resources>

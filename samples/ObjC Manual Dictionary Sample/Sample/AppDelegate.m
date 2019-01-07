@@ -19,6 +19,8 @@
 #import "NotificationDelegate.h"
 #import <IBMMobilePush/IBMMobilePush.h>
 #import "MailDelegate.h"
+#import "RegistrationVC.h"
+#import "MainVC.h"
 
 // Action Plugins
 #import "ActionMenuPlugin.h"
@@ -75,6 +77,11 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+    navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
+    splitViewController.delegate = self;
+
     NSDictionary * config = @{
                                   @"baseUrl": @"https://api.ibm.xtify.com",
                                   @"appKey": @{
@@ -129,6 +136,7 @@
     [[NSUserDefaults standardUserDefaults]registerDefaults:@{@"action":@"update",@"standardType":@"dial", @"standardDialValue":@"\"8774266006\"", @"standardUrlValue":@"\"http://ibm.com\"", @"customType":@"sendEmail", @"customValue":@"{\"subject\":\"Hello from Sample App\", \"body\": \"This is an example email body\", \"recipient\":\"fake-email@fake-site.com\"}", @"categoryId":@"example",@"button1":@"Accept",@"button2":@"Reject"}];
     
     if([UNUserNotificationCenter class]) {
+        [application registerForRemoteNotifications];
         // iOS 10+ Example static action category:
         UNNotificationAction * acceptAction = [UNNotificationAction actionWithIdentifier:@"Accept" title:@"Accept" options:UNNotificationActionOptionForeground];
         UNNotificationAction * fooAction = [UNNotificationAction actionWithIdentifier:@"Foo" title:@"Foo" options:UNNotificationActionOptionForeground];
@@ -150,7 +158,6 @@
             options = UNAuthorizationOptionAlert|UNAuthorizationOptionSound|UNAuthorizationOptionBadge|UNAuthorizationOptionCarPlay;
         }
         [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            [UIApplication.sharedApplication performSelectorOnMainThread:@selector(registerForRemoteNotifications) withObject:nil waitUntilDone:TRUE];
             [center setNotificationCategories: applicationCategories];
         }];
     } else if ([UIApplication.sharedApplication respondsToSelector:@selector(registerUserNotificationSettings:)]) {
@@ -469,6 +476,12 @@
     {
         [[MCESdk sharedInstance] presentOrPerformNotification: notification.userInfo];
     }
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController
+collapseSecondaryViewController:(UIViewController *)secondaryViewController
+  ontoPrimaryViewController:(UIViewController *)primaryViewController {
+    return YES;
 }
 
 @end

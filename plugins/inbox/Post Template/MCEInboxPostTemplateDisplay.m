@@ -61,7 +61,8 @@
 -(void)setContent
 {
     self.contentView.fullScreen = TRUE;
-    [self.contentView setInboxMessage: self.inboxMessage resizeCallback: ^(CGSize size, NSURL * url, BOOL reload){
+    [self.contentView setInboxMessage: self.inboxMessage resizeCallback: ^(CGSize size, NSURL * url, BOOL reload) {
+        [MCEInboxPostTemplate.sharedInstance.contentSizeCache setObject:NSStringFromCGSize(size) forKey:url];
     }];
 }
 -(void)awakeFromNib
@@ -90,8 +91,8 @@
         self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;
         
         UIWindow * window = UIApplication.sharedApplication.keyWindow;
-        if([window respondsToSelector:@selector(safeAreaInsets)]) {
-            if (@available(iOS 11.0, *)) {
+        if (@available(iOS 11.0, *)) {
+            if(window.safeAreaInsets.top > statusBarHeight) {
                 self.toolbarHeightConstraint.constant = toolbarHeight + window.safeAreaInsets.top;
             } else {
                 self.toolbarHeightConstraint.constant = toolbarHeight + statusBarHeight;

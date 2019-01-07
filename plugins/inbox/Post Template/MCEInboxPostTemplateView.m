@@ -96,7 +96,6 @@ const int MARGIN = 8;
 
 -(IBAction)leftButton:(id)sender
 {
-    
     NSArray * actions = self.message.content[@"actions"];
     if(actions.count > 0)
     {
@@ -127,51 +126,26 @@ const int MARGIN = 8;
     NSArray * actions = self.message.content[@"actions"];
     if(actions)
     {
-        CGFloat width = [UIApplication sharedApplication].keyWindow.frame.size.width - MARGIN*2;
-        CGFloat actionWidth = floor(width / actions.count);
         self.actionMargin.constant = MARGIN;
-        NSString * leftButton = @"";
-        if([actions count] > 0)
-        {
-            leftButton = actions[0][@"name"];
-            [self resizeViewConstraints:self.leftButton size:CGSizeMake(actionWidth, 30)];
+        if([actions count] > 0) {
+            [self.leftButton setTitle: actions[0][@"name"] forState:UIControlStateNormal];
+        } else {
+            [self.leftButton setTitle: @"" forState:UIControlStateNormal];
         }
         
-        [self.leftButton setTitle: leftButton forState:UIControlStateNormal];
+        if([actions count] > 1) {
+            [self.rightButton setTitle: actions[1][@"name"] forState:UIControlStateNormal];
+        } else {
+            [self.rightButton setTitle: @"" forState:UIControlStateNormal];
+        }
         
-        NSString * rightButton = @"";
-        if([actions count] > 1)
-        {
-            rightButton = actions[1][@"name"];
-            [self resizeViewConstraints:self.rightButton size:CGSizeMake(actionWidth, 30)];
+        if([actions count] > 2) {
+            [self.centerButton setTitle: actions[2][@"name"] forState:UIControlStateNormal];
+        } else {
+            [self.centerButton setTitle: @"" forState:UIControlStateNormal];
         }
-        else
-        {
-            [self resizeViewConstraints:self.rightButton size:CGSizeMake(0, 30)];
-        }
-        [self.rightButton setTitle: rightButton forState:UIControlStateNormal];
-        
-        NSString * centerButton = @"";
-        if([actions count] > 2)
-        {
-            centerButton = actions[2][@"name"];
-            [self resizeViewConstraints:self.centerButton size:CGSizeMake(actionWidth, 30)];
-        }
-        else
-        {
-            [self resizeViewConstraints:self.centerButton size:CGSizeMake(0, 30)];
-        }
-        [self.centerButton setTitle: centerButton forState:UIControlStateNormal];
-        
-        [self resizeViewConstraints:self.buttonView size:CGSizeMake(width, 30)];
-    }
-    else
-    {
+    } else {
         self.actionMargin=0;
-        [self resizeViewConstraints:self.centerButton size:CGSizeZero];
-        [self resizeViewConstraints:self.rightButton size:CGSizeZero];
-        [self resizeViewConstraints:self.leftButton size:CGSizeZero];
-        [self resizeViewConstraints:self.buttonView size:CGSizeZero];
     }
 }
 
@@ -246,17 +220,19 @@ const int MARGIN = 8;
     NSString * imageUrlString = self.message ? self.message.content[@"contentImage"] : nil;
     if(videoUrlString || imageUrlString)
     {
-        self.contentVideoImageMargin.constant = MARGIN;
-        
         if(videoUrlString)
         {
             [self.videoActivity startAnimating];
             NSURL * url = [NSURL URLWithString:videoUrlString];
             [self loadVideo: url];
             [self resizeViewConstraints:self.contentVideo contentUrl: url];
+            self.contentImageView.alpha = 0;
+            self.contentVideoView.alpha = 1;
         }
         else
         {
+            self.contentImageView.alpha = 1;
+            self.contentVideoView.alpha = 0;
             NSURL * url = [NSURL URLWithString:imageUrlString];
             [self resizeViewConstraints:self.contentImage contentUrl: url];
             
@@ -288,9 +264,7 @@ const int MARGIN = 8;
     {
         [self.videoActivity stopAnimating];
         [self.contentActivity stopAnimating];
-        self.contentVideoImageMargin.constant = 0;
-        [self resizeViewConstraints:self.contentImage size:CGSizeZero];
-        [self resizeViewConstraints:self.contentVideo size:CGSizeZero];
+        self.contentConstraint.constant = 0;
     }
 }
 
@@ -311,9 +285,8 @@ const int MARGIN = 8;
 
 -(void)updateContentText
 {
-    CGFloat width = [UIApplication sharedApplication].keyWindow.frame.size.width - MARGIN*2;
+    CGFloat width = self.container.frame.size.width - MARGIN*2;
     self.contentText.text = self.message ? self.message.content[@"contentText"] : @"";
-    self.contentTextMargin.constant = [self.contentText.text length] ? MARGIN : 0;
     CGRect contentTextSize = [self.contentText textRectForBounds:CGRectMake(0, 0, width, CGFLOAT_MAX) limitedToNumberOfLines: self.fullScreen ? 0 : 2];
     [self resizeViewConstraints:self.contentText size:contentTextSize.size];
 }
@@ -380,7 +353,7 @@ const int MARGIN = 8;
 
 -(void)loadVideo:(NSURL*)url
 {
-    CGFloat width = [UIApplication sharedApplication].keyWindow.frame.size.width - MARGIN*2;
+    CGFloat width = self.container.frame.size.width - MARGIN*2;
     [self resizeViewConstraints: self.videoPlay size: self.videoPlay.image.size];
     [self resizeViewConstraints: self.videoProgress size: CGSizeMake(width, 2)];
     
@@ -453,26 +426,26 @@ const int MARGIN = 8;
 
 -(void) resizeViewConstraints: (UIView*)view contentUrl:(NSURL*)url
 {
-    NSCache * contentSizeCache = [MCEInboxPostTemplate sharedInstance].contentSizeCache;
-    CGFloat width = [UIApplication sharedApplication].keyWindow.frame.size.width - MARGIN*2;
-    CGSize viewSize = CGSizeMake(width, UNKNOWN_IMAGE_HEIGHT);
-    
-    NSString * contentSizeString = [contentSizeCache objectForKey: url];
-    if(contentSizeString)
-    {
-        self.reload = FALSE;
-        CGSize cachedContentSize = CGSizeFromString(contentSizeString);
-        if(cachedContentSize.height > 0 && cachedContentSize.width > 0)
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSCache * contentSizeCache = [MCEInboxPostTemplate sharedInstance].contentSizeCache;
+        CGFloat width = self.container.frame.size.width;
+        CGFloat height = 0;
+        NSString * contentSizeString = [contentSizeCache objectForKey: url];
+        if(contentSizeString)
         {
-            viewSize.height = (cachedContentSize.height/cachedContentSize.width) * viewSize.width;
+            self.reload = FALSE;
+            CGSize cachedContentSize = CGSizeFromString(contentSizeString);
+            if(cachedContentSize.height > 0 && cachedContentSize.width > 0)
+            {
+                if(width < cachedContentSize.width) {
+                    height = (cachedContentSize.height/cachedContentSize.width) * width;
+                } else {
+                    height = cachedContentSize.height;
+                }
+            }
         }
-        else
-        {
-            viewSize.height = 0;
-        }
-    }
-    
-    [self resizeViewConstraints:view size:viewSize];
+        self.contentConstraint.constant = height;
+    });
 }
 
 -(void)resizeViewConstraints: (UIView*)view size:(CGSize)size

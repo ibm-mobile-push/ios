@@ -338,6 +338,7 @@
 		C3E61CC31D1300A8006EC588 /* Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Sample.entitlements; sourceTree = SOURCE_ROOT; };
 		C3ED8B2B1BA8D9DF00B79D65 /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
 		C3ED8B2C1BA8D9DF00B79D65 /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
+		C3F143CE21923753000BF0F9 /* Manual Dictionary SampleNotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Manual Dictionary SampleNotificationService.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -634,6 +635,7 @@
 		C3D01E521A607F7E00C9A66C = {
 			isa = PBXGroup;
 			children = (
+				C3F143CE21923753000BF0F9 /* Manual Dictionary SampleNotificationService.entitlements */,
 				C31827031B71257B00D497A2 /* richnotification.xcdatamodel */,
 				C3C399051B20DE740080DC49 /* Plugins */,
 				C3B2A2981D245B4E00286475 /* SampleNotificationService */,
@@ -1234,6 +1236,7 @@
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.notification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1263,6 +1266,7 @@
 				INFOPLIST_FILE = SampleNotificationService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = INSERT.BUNDLE.ID.HERE.notification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1367,7 +1371,7 @@
 					"$(PROJECT_DIR)/Sample",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1402,7 +1406,7 @@
 					"$(PROJECT_DIR)/Sample",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sample/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -97,4 +97,27 @@
     [self.navigationController pushViewController:viewControllerToCommit animated:TRUE];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString * identifier = cell.accessibilityIdentifier;
+    if(!identifier) {
+        NSLog(@"Couldn't determine view controller to show!");
+        return;
+    }
+    UIViewController * viewController = [self.storyboard instantiateViewControllerWithIdentifier: identifier];
+    if(viewController) {
+        if(UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController: viewController];
+            viewController.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+            [self.splitViewController showDetailViewController:navigationController sender:self];
+            
+        } else {
+            [self.navigationController pushViewController:viewController animated:true];
+        }
+    } else {
+        NSLog(@"Couldn't find view controller to show!");
+        return;
+    }
+}
+
 @end

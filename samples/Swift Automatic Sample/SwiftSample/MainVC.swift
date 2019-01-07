@@ -99,6 +99,28 @@ class MainVC : UITableViewController, UIViewControllerPreviewingDelegate
         }
         return nil
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        guard let identifier = cell?.accessibilityIdentifier as? String else {
+            print("Couldn't determine view controller to show!")
+            return
+        }
+        
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) else {
+            print("Couldn't find view controller to show")
+            return
+            return
+        }
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let navigationController = UINavigationController(rootViewController: viewController)
+            viewController.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            splitViewController?.showDetailViewController(navigationController, sender: self)
+        } else {
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }
 
 

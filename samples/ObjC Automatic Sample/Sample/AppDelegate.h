@@ -12,6 +12,6 @@
 #import <UIKit/UIKit.h>
 #endif
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UISplitViewControllerDelegate>
 @property (strong, nonatomic) UIWindow *window;
 @end

@@ -95,14 +95,14 @@ extern CGFloat UNKNOWN_IMAGE_HEIGHT;
     }
     
     CGFloat width = tableView.frame.size.width - MARGIN * 2;
-    CGFloat height = HEADER_IMAGE_SIZE.height + MARGIN * 2;
+    CGFloat height = HEADER_IMAGE_SIZE.height;
     
     NSString * videoUrlString = inboxMessage.content[@"contentVideo"];
     NSString * imageUrlString = inboxMessage.content[@"contentImage"];
     NSString * cachedContentSize = nil;
     if(videoUrlString || imageUrlString)
     {
-        height += MARGIN;
+        height += MARGIN*2;
         
         if(videoUrlString)
         {
@@ -119,7 +119,11 @@ extern CGFloat UNKNOWN_IMAGE_HEIGHT;
             CGSize contentSize = CGSizeFromString(cachedContentSize);
             if(contentSize.height > 0 && contentSize.width > 0)
             {
-                height += width * contentSize.height / contentSize.width;
+                if(width < contentSize.width) {
+                    height += width * contentSize.height / contentSize.width;
+                } else {
+                    height += contentSize.height;
+                }
             }
         }
         else
@@ -131,7 +135,7 @@ extern CGFloat UNKNOWN_IMAGE_HEIGHT;
     NSString * contentText = inboxMessage.content[@"contentText"];
     if(contentText)
     {
-        height += MARGIN*2;
+        height += MARGIN;
         
         self.fakeContentView.text = contentText;
         CGRect contentRect = [self.fakeContentView textRectForBounds:CGRectMake(0, 0, width, CGFLOAT_MAX) limitedToNumberOfLines: 2];

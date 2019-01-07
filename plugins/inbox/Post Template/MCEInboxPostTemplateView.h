@@ -33,7 +33,7 @@ extern const int MARGIN;
 @property IBOutlet UILabel * contentText;
 @property IBOutlet UIView * container;
 
-@property IBOutlet UIView * buttonView;
+@property IBOutlet UIStackView * buttonView;
 @property IBOutlet UIButton * leftButton;
 @property IBOutlet UIButton * rightButton;
 @property IBOutlet UIButton * centerButton;
@@ -44,9 +44,9 @@ extern const int MARGIN;
 @property IBOutlet UIView * videoCover;
 @property IBOutlet UIProgressView * videoProgress;
 
-
-@property IBOutlet NSLayoutConstraint * contentVideoImageMargin;
-@property IBOutlet NSLayoutConstraint * contentTextMargin;
+@property IBOutlet UIView * contentImageView;
+@property IBOutlet UIView * contentVideoView;
+@property IBOutlet NSLayoutConstraint * contentConstraint;
 @property IBOutlet NSLayoutConstraint * actionMargin;
 @property IBOutlet NSLayoutConstraint * headerMargin;
 @property IBOutlet NSLayoutConstraint * subheaderMargin;
