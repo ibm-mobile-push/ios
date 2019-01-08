@@ -11,7 +11,6 @@
 		C314BF9C1FAD211C00F363C6 /* MailDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C314BF9B1FAD211B00F363C6 /* MailDelegate.m */; };
 		C314FBB02152A96E0055C36A /* EventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C314FBAF2152A96D0055C36A /* EventVC.m */; };
 		C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C317F74E1B41FF1B00962B55 /* MceConfig.json */; };
-		C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C31827031B71257B00D497A2 /* richnotification.xcdatamodel */; };
 		C31AAD5F1D25CA4000A8F6BD /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B2A29A1D245B4E00286475 /* NotificationService.m */; };
 		C32FC4111B44A5590035CAB8 /* InAppVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C32FC40F1B44A5590035CAB8 /* InAppVC.m */; };
 		C335717C1B3B6461003E0A7A /* MCEInboxDefaultTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = C33571671B3B6461003E0A7A /* MCEInboxDefaultTemplate.m */; };
@@ -188,7 +187,6 @@
 		C314FBAE2152A96D0055C36A /* EventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventVC.h; sourceTree = "<group>"; };
 		C314FBAF2152A96D0055C36A /* EventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventVC.m; sourceTree = "<group>"; };
 		C317F74E1B41FF1B00962B55 /* MceConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MceConfig.json; path = ../../../MceConfig.json; sourceTree = "<group>"; };
-		C31827031B71257B00D497A2 /* richnotification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = richnotification.xcdatamodel; path = ../../richnotification.xcdatamodel; sourceTree = "<group>"; };
 		C32FC40F1B44A5590035CAB8 /* InAppVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppVC.m; sourceTree = "<group>"; };
 		C32FC4101B44A5590035CAB8 /* InAppVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppVC.h; sourceTree = "<group>"; };
 		C33571661B3B6461003E0A7A /* MCEInboxDefaultTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxDefaultTemplate.h; sourceTree = "<group>"; };
@@ -635,7 +633,6 @@
 			isa = PBXGroup;
 			children = (
 				C3F143CD21923724000BF0F9 /* Notification Service.entitlements */,
-				C31827031B71257B00D497A2 /* richnotification.xcdatamodel */,
 				C3C399051B20DE740080DC49 /* Plugins */,
 				C3B2A2981D245B4E00286475 /* SampleNotificationService */,
 				C3E2319D1FAA24CD00DCD58D /* watchkitapp */,
@@ -1040,7 +1037,6 @@
 				C3C399081B20DE7C0080DC49 /* SnoozeActionPlugin.m in Sources */,
 				C3E4F1521A8BE16600844271 /* PushActionsVC.m in Sources */,
 				C35F708B1C654DE500070DB6 /* MCEInboxPostTemplateView.m in Sources */,
-				C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */,
 				C3C399141B20DE900080DC49 /* ActionMenuPlugin.m in Sources */,
 				C3E4F14F1A8BC69B00844271 /* RegistrationVC.m in Sources */,
 				C35F708A1C654DE500070DB6 /* MCEInboxPostTemplateVideoPlayerView.m in Sources */,

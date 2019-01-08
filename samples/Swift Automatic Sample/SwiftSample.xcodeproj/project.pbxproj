@@ -16,7 +16,6 @@
 		C31380831BE1567700BC5910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380821BE1567700BC5910 /* AppDelegate.swift */; };
 		C314C8761F3E4DC10096691B /* ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C314C8751F3E4DC10096691B /* ExampleViewController.xib */; };
 		C317F74F1B41FF1B00962B55 /* MceConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C317F74E1B41FF1B00962B55 /* MceConfig.json */; };
-		C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C31827031B71257B00D497A2 /* richnotification.xcdatamodel */; };
 		C3211D971DEE1D8300F1CDFA /* iBeaconVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3211D961DEE1D8300F1CDFA /* iBeaconVC.swift */; };
 		C33571811B3B6461003E0A7A /* MCEInboxActionPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */; };
 		C336C1091F3E089400C33D40 /* ExamplePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C336C1061F3E089400C33D40 /* ExamplePlugin.m */; };
@@ -179,7 +178,6 @@
 		C31380821BE1567700BC5910 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C314C8751F3E4DC10096691B /* ExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleViewController.xib; sourceTree = "<group>"; };
 		C317F74E1B41FF1B00962B55 /* MceConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MceConfig.json; path = ../../MceConfig.json; sourceTree = SOURCE_ROOT; };
-		C31827031B71257B00D497A2 /* richnotification.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = richnotification.xcdatamodel; path = ../../richnotification.xcdatamodel; sourceTree = "<group>"; };
 		C3211D961DEE1D8300F1CDFA /* iBeaconVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iBeaconVC.swift; sourceTree = "<group>"; };
 		C335716E1B3B6461003E0A7A /* MCEInboxActionPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCEInboxActionPlugin.h; sourceTree = "<group>"; };
 		C335716F1B3B6461003E0A7A /* MCEInboxActionPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEInboxActionPlugin.m; sourceTree = "<group>"; };
@@ -585,7 +583,6 @@
 			isa = PBXGroup;
 			children = (
 				C3C62E761D35788900990096 /* SwiftSample.entitlements */,
-				C31827031B71257B00D497A2 /* richnotification.xcdatamodel */,
 				C3C399051B20DE740080DC49 /* Plugins */,
 				C361A9961D3576E900D4EA9B /* SwiftSampleNotificationService */,
 				C3E2321D1FAA47FB00DCD58D /* SampleWatch */,
@@ -969,7 +966,6 @@
 				C3E7BD322153072D00468378 /* EventVC.swift in Sources */,
 				C367FDC11BE2733300AD32AE /* CellStatusTableViewController.swift in Sources */,
 				C35F70B51C654EB000070DB6 /* MCEInboxPostTemplateVideoPlayerView.m in Sources */,
-				C31827041B71257B00D497A2 /* richnotification.xcdatamodel in Sources */,
 				C3DC92921C59567B0006CF55 /* MCEInAppMediaTemplate.m in Sources */,
 				C3C399141B20DE900080DC49 /* ActionMenuPlugin.m in Sources */,
 				C3CF5BED1C5803C50026ECC8 /* MCEInAppVideoTemplate.m in Sources */,
