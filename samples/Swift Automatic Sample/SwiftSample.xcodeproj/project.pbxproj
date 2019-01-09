@@ -55,6 +55,7 @@
 		C3942CC31D70B1B20099BA1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC21D70B1B20099BA1E /* MapKit.framework */; };
 		C3942CC51D70B1D00099BA1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3942CC41D70B1D00099BA1E /* CoreLocation.framework */; };
 		C3942CD01D70B39C0099BA1E /* GeofenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3942CCF1D70B39C0099BA1E /* GeofenceVC.swift */; };
+		C3962CE121E649EA00AEC152 /* MceConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = C317F74E1B41FF1B00962B55 /* MceConfig.json */; };
 		C39AAC531C5815FF0096DBD1 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C39AAC521C5815FF0096DBD1 /* background.jpg */; };
 		C39AAC551C5816D40096DBD1 /* MCEInAppVideoTemplateForeground.xib in Resources */ = {isa = PBXBuildFile; fileRef = C39AAC541C5816D40096DBD1 /* MCEInAppVideoTemplateForeground.xib */; };
 		C39D40241BE01521006D06C0 /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D40231BE01521006D06C0 /* RegistrationVC.swift */; };
@@ -866,6 +867,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3962CE121E649EA00AEC152 /* MceConfig.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
