@@ -343,6 +343,12 @@ class EventVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        customEvent.accessibilityIdentifier = "customEvent"
+        simulateEvent.accessibilityIdentifier = "simulateEvent"
+        typeSwitch.accessibilityIdentifier = "typeSwitch"
+        attributeTypeSwitch.accessibilityIdentifier = "attributeTypeSwitch"
+        nameSwitch.accessibilityIdentifier = "nameSwitch"
+
         updateTypeSelections(self)
     }
     

@@ -20,6 +20,17 @@ import IBMMobilePush
         }
     }
     
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let controller = UIAlertController(title: "Custom URL Clicked", message: url.absoluteString, preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (action) in
+            
+        }))
+        window?.rootViewController?.present(controller, animated: true, completion: {
+            
+        })
+        return true
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool
     {
         if let splitViewController = window?.rootViewController as? UISplitViewController, let navigationController = splitViewController.viewControllers.last as? UINavigationController {

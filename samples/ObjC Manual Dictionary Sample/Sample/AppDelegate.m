@@ -76,6 +76,20 @@
     });
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    UIAlertController * controller = [UIAlertController alertControllerWithTitle:@"Custom URL Clicked" message:url.absoluteString preferredStyle:UIAlertControllerStyleAlert];
+    [controller addAction: [UIAlertAction actionWithTitle:@"Okay" style: UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [controller dismissViewControllerAnimated:TRUE completion:^{
+            
+        }];
+    }]];
+    [self.window.rootViewController presentViewController:controller animated:true completion:^{
+        
+    }];
+    
+    return true;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
@@ -83,7 +97,7 @@
     splitViewController.delegate = self;
 
     NSDictionary * config = @{
-                                  @"baseUrl": @"https://api.ibm.xtify.com",
+                                  @"baseUrl": @"https://sdk.ibm.xtify.com",
                                   @"appKey": @{
                                       @"dev":  @"INSERT DEV APPKEY HERE",
                                       @"prod": @"INSERT PROD APPKEY HERE"

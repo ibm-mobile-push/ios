@@ -129,7 +129,11 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.customEvent.accessibilityIdentifier = @"customEvent";
+    self.simulateEvent.accessibilityIdentifier = @"simulateEvent";
+    self.typeSwitch.accessibilityIdentifier = @"typeSwitch";
+    self.attributeTypeSwitch.accessibilityIdentifier = @"attributeTypeSwitch";
+    self.nameSwitch.accessibilityIdentifier = @"nameSwitch";
     [self updateTypeSelections:self];
 }
 

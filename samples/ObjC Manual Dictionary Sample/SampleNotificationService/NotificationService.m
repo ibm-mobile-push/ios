@@ -14,7 +14,7 @@
 
 -(instancetype)init {
     NSDictionary * config = @{
-                              @"baseUrl": @"https://api.ibm.xtify.com",
+                              @"baseUrl": @"https://sdk.ibm.xtify.com",
                               @"appKey": @{
                                       @"dev":  @"INSERT DEV APPKEY HERE",
                                       @"prod": @"INSERT PROD APPKEY HERE"

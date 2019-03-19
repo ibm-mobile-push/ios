@@ -1144,6 +1144,7 @@
                                             </segmentedControl>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="required" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hOp-Sg-w9q">
                                                 <rect key="frame" x="112.5" y="181" width="246.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="eventName"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1153,6 +1154,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="QOR-Pa-2Sq">
                                                 <rect key="frame" x="112.5" y="227" width="246.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="eventAttribution"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1198,6 +1200,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-Xx-NfJ">
                                                 <rect key="frame" x="112.5" y="273" width="246.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="eventMailingId"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1207,6 +1210,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="optional" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="2Xn-fb-pZG">
                                                 <rect key="frame" x="112.5" y="365" width="246.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="attributeName"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1228,12 +1232,14 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No status yet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEJ-U2-4nL">
                                                 <rect key="frame" x="16" y="575.5" width="343" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="eventStatus"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="oP3-FX-hcX">
                                                 <rect key="frame" x="112.5" y="455" width="246.5" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="attributeValue"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1255,6 +1261,7 @@
                                             </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr7-LR-cG5">
                                                 <rect key="frame" x="16" y="501" width="78" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="sendEvent"/>
                                                 <state key="normal" title="Send Event"/>
                                                 <connections>
                                                     <action selector="sendEvent:" destination="Q2M-rX-GZH" eventType="touchUpInside" id="tL9-Px-3M0"/>
@@ -1277,6 +1284,7 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="idv-XJ-LAV">
                                                         <rect key="frame" x="99" y="0.0" width="51" height="31"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="attributeBool"/>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="True" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hn-Hz-MIy">
                                                         <rect key="frame" x="156" y="5.5" width="90.5" height="20.5"/>
