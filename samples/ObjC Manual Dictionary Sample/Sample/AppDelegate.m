@@ -95,42 +95,6 @@
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
     splitViewController.delegate = self;
-
-    NSDictionary * config = @{
-                                  @"baseUrl": @"https://sdk.ibm.xtify.com",
-                                  @"appKey": @{
-                                      @"dev":  @"INSERT DEV APPKEY HERE",
-                                      @"prod": @"INSERT PROD APPKEY HERE"
-                                  },
-                                  @"autoReinitialize": @YES,
-                                  @"invalidateExistingUser": @NO,
-                                  @"location": @{
-                                      @"autoInitialize": @YES,
-                                      @"sync": @{
-                                          @"syncRadius": @100000,
-                                          @"syncInterval": @300
-                                      },
-                                      @"geofence": @{
-                                          @"accuracy": @"3km"
-                                      },
-                                      @"ibeacon": @{
-                                          @"UUID": @"SET YOUR IBEACON UUID HERE"
-                                      }
-                                  },
-                                  @"autoInitialize": @YES,
-                                  @"sessionTimeout": @20,
-                                  @"loglevel": @"verbose",
-                                  @"logfile": @YES,
-                                  @"watch": @{
-                                      @"category": @"mce-watch-category",
-                                      @"handoff": @{
-                                          @"userActivityName": @"com.mce.application",
-                                          @"interfaceController": @"handoff"
-                                      }
-                                  }
-                              };
-
-    [MCESdk.sharedInstance handleApplicationLaunchWithConfig: config];
     
     if(@available(iOS 12.0, *)) {
         MCESdk.sharedInstance.openSettingsForNotification = ^(UNNotification *notification) {
@@ -216,6 +180,41 @@
 {
     if(self=[super init])
     {
+        NSDictionary * config = @{
+                                  @"baseUrl": @"https://sdk.ibm.xtify.com",
+                                  @"appKey": @{
+                                          @"dev":  @"INSERT DEV APPKEY HERE",
+                                          @"prod": @"INSERT PROD APPKEY HERE"
+                                          },
+                                  @"autoReinitialize": @YES,
+                                  @"invalidateExistingUser": @NO,
+                                  @"location": @{
+                                          @"autoInitialize": @YES,
+                                          @"sync": @{
+                                                  @"syncRadius": @100000,
+                                                  @"syncInterval": @300
+                                                  },
+                                          @"geofence": @{
+                                                  @"accuracy": @"3km"
+                                                  },
+                                          @"ibeacon": @{
+                                                  @"UUID": @"SET YOUR IBEACON UUID HERE"
+                                                  }
+                                          },
+                                  @"autoInitialize": @YES,
+                                  @"sessionTimeout": @20,
+                                  @"loglevel": @"verbose",
+                                  @"logfile": @YES,
+                                  @"watch": @{
+                                          @"category": @"mce-watch-category",
+                                          @"handoff": @{
+                                                  @"userActivityName": @"com.mce.application",
+                                                  @"interfaceController": @"handoff"
+                                                  }
+                                          }
+                                  };
+        
+        [MCESdk.sharedInstance handleApplicationLaunchWithConfig: config];
         MCESdk.sharedInstance.presentNotification = ^BOOL(NSDictionary * userInfo){
             NSLog(@"Checking if should present notification!");
             
