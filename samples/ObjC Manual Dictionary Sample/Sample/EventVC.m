@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2018, 2018
+ * © Copyright IBM Corp. 2018, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -92,20 +92,20 @@ typedef enum : NSUInteger {
 }
 
 -(void) doneClicked: (id)sender {
-    if(self.nameField.isFirstResponder) {
-        [self.nameField resignFirstResponder];
-    } else if(self.attributionField.isFirstResponder) {
-        [self.attributionField resignFirstResponder];
-    } else if(self.mailingIdField.isFirstResponder) {
-        [self.mailingIdField resignFirstResponder];
-    } else if(self.attributeNameField.isFirstResponder) {
-        [self.attributeNameField resignFirstResponder];
-    } else if(self.attributeValueField.isFirstResponder) {
-        if(self.attributeTypeSwitch.selectedSegmentIndex == DateValue) {
-            self.attributeValueField.text = [dateFormatter stringFromDate: datePicker.date];
-        }
-        [self.attributeValueField resignFirstResponder];
-    }
+     if(self.nameField.isFirstResponder) {
+         [self.nameField resignFirstResponder];
+     } else if(self.attributionField.isFirstResponder) {
+         [self.attributionField resignFirstResponder];
+     } else if(self.mailingIdField.isFirstResponder) {
+         [self.mailingIdField resignFirstResponder];
+     } else if(self.attributeNameField.isFirstResponder) {
+         [self.attributeNameField resignFirstResponder];
+     } else if(self.attributeValueField.isFirstResponder) {
+         if(self.attributeTypeSwitch.selectedSegmentIndex == DateValue) {
+             self.attributeValueField.text = [dateFormatter stringFromDate: datePicker.date];
+         }
+         [self.attributeValueField resignFirstResponder];
+     }
 }
 
 -(void)sendEventFailure:(NSNotification*)note {
@@ -191,7 +191,7 @@ typedef enum : NSUInteger {
             }
         }
     }
-    
+
     if(name && type) {
         MCEEvent * event = [[MCEEvent alloc] initWithName:name type:type timestamp:nil attributes:attributes attribution:attribution mailingId:mailingId];
         [MCEEventService.sharedInstance addEvent:event immediate:TRUE];
@@ -210,11 +210,16 @@ typedef enum : NSUInteger {
 }
 
 - (IBAction) updateTypeSelections:(id)sender {
+    [self.attributeTypeSwitch setEnabled: true];
+    [self.attributeNameField setEnabled: true];
+    [self.attributeValueField setEnabled: true];
+    [self.booleanSwitch setEnabled: true];
+
     [self doneClicked: self];
     for(int i=0; i<self.attributeTypeSwitch.numberOfSegments;i++) {
         [self.attributeTypeSwitch setEnabled:true forSegmentAtIndex:i];
     }
-    
+
     switch(self.customEvent.selectedSegmentIndex) {
         case CustomEvent:
             self.nameSwitch.hidden = TRUE;
@@ -226,7 +231,7 @@ typedef enum : NSUInteger {
             self.nameField.hidden = TRUE;
             self.nameSwitch.hidden = FALSE;
             self.simulateEvent.enabled = TRUE;
-            
+
             switch (self.simulateEvent.selectedSegmentIndex) {
                 case AppEvent:
                     [self updateTypeSegments:@[@"application"]];
@@ -336,6 +341,11 @@ typedef enum : NSUInteger {
     self.attributeNameField.text = @"";
     self.attributeValueField.text = @"";
     [self allowOnlyAttributeType: UISegmentedControlNoSegment];
+    [self.attributeNameField setEnabled:false];
+    [self.attributeTypeSwitch setEnabled:false];
+    [self.attributeValueField setEnabled: false];
+    [self.booleanSwitch setEnabled: false];
+
     for(int i=0; i<self.attributeTypeSwitch.numberOfSegments;i++) {
         [self.attributeTypeSwitch setEnabled:false forSegmentAtIndex:i];
     }
@@ -352,11 +362,17 @@ typedef enum : NSUInteger {
 }
 
 -(void)onlyAllowStringAttributes {
+    [self.attributeTypeSwitch setEnabled:false];
+    [self.attributeNameField setEnabled: true];
+    [self.booleanSwitch setEnabled: false];
     self.attributeTypeSwitch.selectedSegmentIndex = StringValue;
     [self allowOnlyAttributeType: StringValue];
 }
 
 -(void)onlyAllowNumberAttributes {
+    [self.attributeTypeSwitch setEnabled:false];
+    [self.attributeNameField setEnabled: true];
+    [self.booleanSwitch setEnabled: false];
     self.attributeTypeSwitch.selectedSegmentIndex = NumberValue;
     [self allowOnlyAttributeType: NumberValue];
 }

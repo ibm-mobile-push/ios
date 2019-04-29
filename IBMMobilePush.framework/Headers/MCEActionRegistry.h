@@ -30,17 +30,21 @@
 /** This method returns the singleton object of this class. */
 @property(class, nonatomic, readonly) MCEActionRegistry * sharedInstance NS_SWIFT_NAME(shared);
 
-/** This method returns true if the action registered for the specified action type expects user text input. 
+/** Method is deprecated, please do not use.
+ 
+ This method returns true if the action registered for the specified action type expects user text input.
  @param action The name of the action registered.
  @return TRUE or FALSE depending if the action expects user text input.
  */
--(BOOL)actionIncludesUserText:(NSString*)action;
+-(BOOL)actionIncludesUserText:(NSString*)action __attribute__((deprecated));
 
-/** This method calls the registered action handler's configureAlertTextField method. 
+/** Method is deprecated, please do not use.
+ 
+ This method calls the registered action handler's configureAlertTextField method.
  @param textField The UITextField object to be configured
  @param action The name of the action registered.
  */
--(void)configureAlertTextField:(UITextField*)textField forAction:(NSString*)action;
+-(void)configureAlertTextField:(UITextField*)textField forAction:(NSString*)action __attribute__((deprecated));
 
 /** This method is used to register an object to receive action messages for a specified action type name.
  
@@ -53,14 +57,20 @@
  */
 -(BOOL)registerTarget:(NSObject <MCEActionProtocol> *)target withSelector:(SEL)selector forAction:(NSString*)type;
 
-/** This method performs the registered specified action for the APNS payload.
+/** This method removes the registration for handling a specified action type name.
  
- @param action the action dictionary to be executed. (either the "notification-action" or one of the "category-actions")
- @param payload the full APNS payload
- @param source the event type value to report
- 
+ @param type action the specified action type name to be used in the APNS payload as the type value
  */
--(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source;
+-(void)unregisterAction:(NSString*)type;
+
+/** Method is deprecated, please use -performAction:forPayload:source:attributes:userText: instead. */
+-(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source __attribute__((deprecated));
+
+/** Method is deprecated, please use -performAction:forPayload:source:attributes:userText: instead. */
+-(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source attributes: (NSDictionary*)attributes __attribute__((deprecated));
+
+/** Method is deprecated, please use -performAction:forPayload:source:attributes:userText: instead. */
+-(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source userText: (NSString*)userText __attribute__((deprecated));
 
 /** This method performs the registered specified action for the APNS payload.
  
@@ -68,25 +78,19 @@
  @param payload the full APNS payload
  @param source the event type value to report
  @param attributes Additional attributes for event payload
- 
- */
--(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source attributes: (NSDictionary*)attributes;
-
-/** This method performs the registered specified action for the APNS payload.
- 
- @param action the action dictionary to be executed. (either the "notification-action" or one of the "category-actions")
- @param payload the full APNS payload
- @param source the event type value to report
  @param userText Text entered by the user
  */
--(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source userText: (NSString*)userText;
 
-/** This method allows the action plugins to specifiy if they want the user prompted for text input if it isn't provided by the standard text input push method.
+-(void)performAction:(NSDictionary*)action forPayload:(NSDictionary*)payload source: (NSString*) source attributes:(NSDictionary*)attributes userText: (NSString*)userText;
+
+/** Method is deprecated, please do not use. 
+ 
+ This method allows the action plugins to specifiy if they want the user prompted for text input if it isn't provided by the standard text input push method.
  
  @param action the action dictionary to be evaluated. (either the "notification-action" or one of the "category-actions")
  
  @return TRUE or FALSE depending if the action plugin wants the user to be prompted for text input if it wasn't provided otherwise.
 */
--(BOOL)actionExpectsUserText:(NSDictionary*)action;
+-(BOOL)actionExpectsUserText:(NSDictionary*)action __attribute__((deprecated));
 
 @end

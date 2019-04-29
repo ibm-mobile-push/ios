@@ -59,6 +59,15 @@
     "Maximum number of rotated log files": "default is to keep 7 in unix style rotation",
     "maximumNumberOfLogFiles": 7,
 
+    "This flag can be used to disable internal database encryption, this is typically only done for testing so the databases can be read in development. Default value is ": true,
+    "databaseEncryption": true,
+    
+    "This setting can be used to change the frequency of key rotation for database encryption. The default value is ": 30,
+    "databaseKeyRotationDays": 30,
+    
+    "This flag can be used to disallow jailbroken devices from being able to register. The default value is ": true,
+    "allowJailbrokenDevices": true,
+
     "watch": {
         "category": "mce-watch-category",
         "handoff": {

@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2018, 2018
+ * © Copyright IBM Corp. 2018, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -67,6 +67,11 @@ class EventVC: UIViewController {
     var numberFormatter = NumberFormatter()
     
     @IBAction func updateTypeSelections(_ sender: Any) {
+        attributeTypeSwitch.isEnabled = true
+        attributeNameField.isEnabled = true
+        attributeValueField.isEnabled = true
+        booleanSwitch.isEnabled = true
+        
         doneClicked()
         for i in ValueTypes.allCases {
             attributeTypeSwitch.setEnabled(true, forSegmentAt: i.rawValue)
@@ -175,6 +180,8 @@ class EventVC: UIViewController {
     }
     
     func onlyAllowNumberAttributes() {
+        attributeTypeSwitch.isEnabled = false
+        booleanSwitch.isEnabled = false
         allowOnlyAttributeType(ValueTypes.number)
         attributeTypeSwitch.selectedSegmentIndex = ValueTypes.number.rawValue
     }
@@ -193,9 +200,15 @@ class EventVC: UIViewController {
         attributeNameField.text = ""
         attributeValueField.text = ""
         allowOnlyAttributeType(nil)
+        attributeNameField.isEnabled = false
+        attributeTypeSwitch.isEnabled = false
+        attributeValueField.isEnabled = false
+        booleanSwitch.isEnabled = false
     }
     
     func onlyAllowStringAttributes() {
+        attributeTypeSwitch.isEnabled = false
+        booleanSwitch.isEnabled = false
         allowOnlyAttributeType(ValueTypes.string)
         attributeTypeSwitch.selectedSegmentIndex = ValueTypes.string.rawValue
     }

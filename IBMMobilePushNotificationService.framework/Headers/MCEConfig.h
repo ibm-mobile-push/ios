@@ -77,8 +77,17 @@
 /** A configuration flag writes databases to the iTunes file sharing location instead of private storage */
 @property BOOL privateDatabaseStorage;
 
+/** A configuration flag that determines if the databases are encrypted or not, the default value is true. */
+@property BOOL databaseEncryption;
+
+/** Database encryption key rotation frequency in day, the default value is 30 days. */
+@property int databaseKeyRotationDays;
+
 /** This configuration flag allows the SDK to register with the server when the registration has been invalidated when it is set to true. When it is false, the application should check the MCERegistrationDetails.sharedInstance.userInvalidated response and when true execute MCESdk.sharedInstance's manualInitialization method in order to register with the server again. */
 @property BOOL autoReinitialize;
+
+/** This configuration flag allows jailbroken devices to continue to initialize the SDK. If it is set to false, jailbroken devices will not be allowed. The default value is true. */
+@property BOOL allowJailbrokenDevices;
 
 @end
 

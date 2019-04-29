@@ -71,9 +71,6 @@ import IBMMobilePush
             categories.insert(category)
             
             // iOS 10+ Push Message Registration
-            let center = UNUserNotificationCenter.current()
-            center.delegate=MCENotificationDelegate.shared
-            
             let options: UNAuthorizationOptions = {
 #if canImport(NaturalLanguage)
             if #available(iOS 12.0, *) {
@@ -83,6 +80,7 @@ import IBMMobilePush
                 return [.alert, .sound, .carPlay, .badge]
             }()
 
+            let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: options, completionHandler: { (granted, error) in
                 if let error = error {
                     print("Could not request authorization from APNS \(error.localizedDescription)")

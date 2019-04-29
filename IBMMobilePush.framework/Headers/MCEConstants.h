@@ -108,3 +108,9 @@ extern const MCENotificationName InboxCountUpdate;
 
 /** Called when the Inbox Database has been changed */
 extern const MCENotificationName MCESyncDatabase;
+
+/** Called when a custom action is opened by a user but is not registered in the application */
+extern const MCENotificationName MCECustomPushNotRegistered;
+
+/** Called when a custom action is opened by a user but is not registered in the application, but was previously registered in the application */
+extern const MCENotificationName MCECustomPushNotYetRegistered;

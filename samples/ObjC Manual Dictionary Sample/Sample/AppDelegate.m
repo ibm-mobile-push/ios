@@ -159,8 +159,6 @@
         NSSet * applicationCategories = [NSSet setWithObject: category];
         
         // iOS 10+ Push Message Registration
-        UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = MCENotificationDelegate.sharedInstance;
         NSUInteger options = 0;
 #ifdef __IPHONE_12_0
         if(@available(iOS 12.0, *)) {
@@ -171,6 +169,8 @@
         {
             options = UNAuthorizationOptionAlert|UNAuthorizationOptionSound|UNAuthorizationOptionBadge|UNAuthorizationOptionCarPlay;
         }
+        
+        UNUserNotificationCenter * center = [UNUserNotificationCenter currentNotificationCenter];
         [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
             [center setNotificationCategories: applicationCategories];
         }];
