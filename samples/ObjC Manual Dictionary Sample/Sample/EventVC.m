@@ -7,6 +7,10 @@
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
+// TODO
+// UI Tests
+// Allow sending delayed (non immediate) events
+
 #import "EventVC.h"
 #import "AttributesVC.h"
 #import <IBMMobilePush/IBMMobilePush.h>

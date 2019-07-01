@@ -171,7 +171,9 @@ import IBMMobilePush
     {
         if isExampleCategory(userInfo: userInfo as NSDictionary)
         {
-            UIAlertView.init(title: "Static category handler", message: "Static Category, no choice made", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+            let alert = UIAlertController(title: "Static category handler", message: "Static Category, no choice made", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            application.keyWindow?.rootViewController?.present(alert, animated: true)
         }
     }
     
@@ -195,26 +197,30 @@ import IBMMobilePush
                     let message = other!["deniedMessage"]
                     if identifier == "Accept"
                     {
-                        UIAlertView.init(title: "Static category handler", message: "User pressed \(identifier ?? "") for \(name ?? "") quantity \(quantity ?? "")", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+                        let alert = UIAlertController(title: "Static category handler", message: "User pressed \(identifier ?? "") for \(name ?? "") quantity \(quantity ?? "")", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                        application.keyWindow?.rootViewController?.present(alert, animated: true)
                         return
                     }
                     if identifier == "Reject"
                     {
-                        UIAlertView.init(title: "Static category handler", message: "User pressed \(identifier ?? "") persistance \(persist ?? ""), reason \(message ?? "")", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK")
-                            .show()
+                        let alert = UIAlertController(title: "Static category handler", message: "User pressed \(identifier ?? "") persistance \(persist ?? ""), reason \(message ?? "")", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                        application.keyWindow?.rootViewController?.present(alert, animated: true)
                         return
                     }
                 }
             }
         
-            UIAlertView.init(title: "Static category handler", message: "Static Category, \(identifier ?? "") button clicked", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK")
-                .show()
+            let alert = UIAlertController(title: "Static category handler", message: "Static Category, \(identifier ?? "") button clicked", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            application.keyWindow?.rootViewController?.present(alert, animated: true)
             
             // Send event to Xtify Servers
             let eventName = "Name of event"
             let eventType = "Type of event"
             let attributes = NSDictionary()
-            let event = MCEEvent.init()
+            let event = MCEEvent()
             let attribution = aps["attribution"] as? String
             let mailingId = aps["mailingId"] as? String
             event.fromDictionary(["name":eventName, "type": eventType, "timestamp": NSDate.init(), "attributes": attributes])

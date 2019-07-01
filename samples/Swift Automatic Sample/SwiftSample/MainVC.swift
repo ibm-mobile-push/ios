@@ -102,14 +102,13 @@ class MainVC : UITableViewController, UIViewControllerPreviewingDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        guard let identifier = cell?.accessibilityIdentifier as? String else {
+        guard let identifier = cell?.accessibilityIdentifier else {
             print("Couldn't determine view controller to show!")
             return
         }
         
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) else {
             print("Couldn't find view controller to show")
-            return
             return
         }
         

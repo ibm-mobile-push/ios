@@ -101,7 +101,7 @@ class AttributesController: WKInterfaceController
             {
                 if let keys = userInfo["keys"] as? Array<String>
                 {
-                    if keys.index(of: "onwatch") != NSNotFound
+                    if keys.firstIndex(of: "onwatch") != NSNotFound
                     {
                         self.deleteAttributeStatus?.setText("Received")
                         self.deleteAttributeStatus?.setTextColor(.green)

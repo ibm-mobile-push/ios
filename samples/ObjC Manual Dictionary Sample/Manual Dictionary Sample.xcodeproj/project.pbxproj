@@ -113,7 +113,6 @@ C3E231DF1FAA3A4E00DCD58D /* AttributesController.m in Sources */ = {isa = PBXBui
 C3E231E01FAA3A4E00DCD58D /* EventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E231DD1FAA3A4E00DCD58D /* EventsController.m */; };
 C3E345DB1C59244300C25A9E /* MCEAlternateInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E345DA1C59244300C25A9E /* MCEAlternateInboxTableViewController.m */; };
 C3E4F14F1A8BC69B00844271 /* RegistrationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F14E1A8BC69B00844271 /* RegistrationVC.m */; };
-C3E4F1521A8BE16600844271 /* PushActionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F1511A8BE16600844271 /* PushActionsVC.m */; };
 C3E4F1551A8BE17700844271 /* AttributesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F1541A8BE17700844271 /* AttributesVC.m */; };
 C3E4F15B1A8BE19900844271 /* StaticCategoriesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4F15A1A8BE19900844271 /* StaticCategoriesVC.m */; };
 C3ED8B2D1BA8D9DF00B79D65 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ED8B2C1BA8D9DF00B79D65 /* MainVC.m */; };
@@ -353,8 +352,6 @@ C3E345D91C59244300C25A9E /* MCEAlternateInboxTableViewController.h */ = {isa = P
 C3E345DA1C59244300C25A9E /* MCEAlternateInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCEAlternateInboxTableViewController.m; sourceTree = "<group>"; };
 C3E4F14D1A8BC69B00844271 /* RegistrationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationVC.h; sourceTree = "<group>"; };
 C3E4F14E1A8BC69B00844271 /* RegistrationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationVC.m; sourceTree = "<group>"; };
-C3E4F1501A8BE16600844271 /* PushActionsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushActionsVC.h; sourceTree = "<group>"; };
-C3E4F1511A8BE16600844271 /* PushActionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushActionsVC.m; sourceTree = "<group>"; };
 C3E4F1531A8BE17700844271 /* AttributesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesVC.h; sourceTree = "<group>"; };
 C3E4F1541A8BE17700844271 /* AttributesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesVC.m; sourceTree = "<group>"; };
 C3E4F1591A8BE19900844271 /* StaticCategoriesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticCategoriesVC.h; sourceTree = "<group>"; };
@@ -719,8 +716,6 @@ C3D01E5D1A607F7E00C9A66C /* Sample */ = {
 		C3E4F15A1A8BE19900844271 /* StaticCategoriesVC.m */,
 		C3E4F1531A8BE17700844271 /* AttributesVC.h */,
 		C3E4F1541A8BE17700844271 /* AttributesVC.m */,
-		C3E4F1501A8BE16600844271 /* PushActionsVC.h */,
-		C3E4F1511A8BE16600844271 /* PushActionsVC.m */,
 		C362D3871A8C68690095814E /* EditCell.h */,
 		C362D3881A8C68690095814E /* EditCell.m */,
 		C3D01E5E1A607F7E00C9A66C /* Supporting Files */,
@@ -908,7 +903,7 @@ C3D01E531A607F7E00C9A66C /* Project object */ = {
 	isa = PBXProject;
 	attributes = {
 		LastSwiftUpdateCheck = 1010;
-		LastUpgradeCheck = 0700;
+		LastUpgradeCheck = 1020;
 		ORGANIZATIONNAME = "IBM ExperienceOne Xtify";
 		TargetAttributes = {
 			C3624A1D203F63E9003B324C = {
@@ -980,10 +975,9 @@ C3D01E531A607F7E00C9A66C /* Project object */ = {
 	};
 	buildConfigurationList = C3D01E561A607F7E00C9A66C /* Build configuration list for PBXProject "Manual Dictionary Sample" */;
 	compatibilityVersion = "Xcode 3.2";
-	developmentRegion = English;
+	developmentRegion = en;
 	hasScannedForEncodings = 0;
 	knownRegions = (
-		English,
 		en,
 		Base,
 	);
@@ -1122,7 +1116,6 @@ C3D01E571A607F7E00C9A66C /* Sources */ = {
 		C3C399111B20DE8B0080DC49 /* AddToCalendarPlugin.m in Sources */,
 		C3CF5BD11C57ED4B0026ECC8 /* MCEInAppVideoPlayerView.m in Sources */,
 		C3C399081B20DE7C0080DC49 /* SnoozeActionPlugin.m in Sources */,
-		C3E4F1521A8BE16600844271 /* PushActionsVC.m in Sources */,
 		C35F708B1C654DE500070DB6 /* MCEInboxPostTemplateView.m in Sources */,
 		C3C399141B20DE900080DC49 /* ActionMenuPlugin.m in Sources */,
 		C3E4F14F1A8BC69B00844271 /* RegistrationVC.m in Sources */,
@@ -1451,17 +1444,28 @@ C3D01E7C1A607F7F00C9A66C /* Debug */ = {
 	isa = XCBuildConfiguration;
 	buildSettings = {
 		ALWAYS_SEARCH_USER_PATHS = NO;
+		CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 		CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 		CLANG_CXX_LIBRARY = "libc++";
 		CLANG_ENABLE_MODULES = YES;
 		CLANG_ENABLE_OBJC_ARC = YES;
+		CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 		CLANG_WARN_BOOL_CONVERSION = YES;
+		CLANG_WARN_COMMA = YES;
 		CLANG_WARN_CONSTANT_CONVERSION = YES;
+		CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 		CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 		CLANG_WARN_EMPTY_BODY = YES;
 		CLANG_WARN_ENUM_CONVERSION = YES;
+		CLANG_WARN_INFINITE_RECURSION = YES;
 		CLANG_WARN_INT_CONVERSION = YES;
+		CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+		CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+		CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 		CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+		CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+		CLANG_WARN_STRICT_PROTOTYPES = YES;
+		CLANG_WARN_SUSPICIOUS_MOVE = YES;
 		CLANG_WARN_UNREACHABLE_CODE = YES;
 		CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 		"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1470,6 +1474,7 @@ C3D01E7C1A607F7F00C9A66C /* Debug */ = {
 		ENABLE_TESTABILITY = YES;
 		GCC_C_LANGUAGE_STANDARD = gnu99;
 		GCC_DYNAMIC_NO_PIC = NO;
+		GCC_NO_COMMON_BLOCKS = YES;
 		GCC_OPTIMIZATION_LEVEL = 0;
 		GCC_PREPROCESSOR_DEFINITIONS = (
 			"DEBUG=1",
@@ -1494,17 +1499,28 @@ C3D01E7D1A607F7F00C9A66C /* Release */ = {
 	isa = XCBuildConfiguration;
 	buildSettings = {
 		ALWAYS_SEARCH_USER_PATHS = NO;
+		CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 		CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 		CLANG_CXX_LIBRARY = "libc++";
 		CLANG_ENABLE_MODULES = YES;
 		CLANG_ENABLE_OBJC_ARC = YES;
+		CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 		CLANG_WARN_BOOL_CONVERSION = YES;
+		CLANG_WARN_COMMA = YES;
 		CLANG_WARN_CONSTANT_CONVERSION = YES;
+		CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 		CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 		CLANG_WARN_EMPTY_BODY = YES;
 		CLANG_WARN_ENUM_CONVERSION = YES;
+		CLANG_WARN_INFINITE_RECURSION = YES;
 		CLANG_WARN_INT_CONVERSION = YES;
+		CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+		CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+		CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 		CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+		CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+		CLANG_WARN_STRICT_PROTOTYPES = YES;
+		CLANG_WARN_SUSPICIOUS_MOVE = YES;
 		CLANG_WARN_UNREACHABLE_CODE = YES;
 		CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 		"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1512,6 +1528,7 @@ C3D01E7D1A607F7F00C9A66C /* Release */ = {
 		ENABLE_NS_ASSERTIONS = NO;
 		ENABLE_STRICT_OBJC_MSGSEND = YES;
 		GCC_C_LANGUAGE_STANDARD = gnu99;
+		GCC_NO_COMMON_BLOCKS = YES;
 		GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 		GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 		GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1521,6 +1538,7 @@ C3D01E7D1A607F7F00C9A66C /* Release */ = {
 		IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 		MTL_ENABLE_DEBUG_INFO = NO;
 		SDKROOT = iphoneos;
+		SWIFT_COMPILATION_MODE = wholemodule;
 		TARGETED_DEVICE_FAMILY = "1,2";
 		VALIDATE_PRODUCT = YES;
 	};

@@ -57,6 +57,10 @@ class GeofenceVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
                 status.setTitle("ENABLED WHEN IN USE", for: .normal)
                 status.setTitleColor(.gray, for: .normal)
                 break
+            @unknown default:
+                status.setTitle("UNKNOWN", for: .normal)
+                status.setTitleColor(.gray, for: .normal)
+                break
             }
         }
         else

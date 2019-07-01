@@ -352,8 +352,8 @@ const CGFloat DEFAULT_BANNER_DISPLAY_DURATION = 5;
         payload[@"mce"][@"mailingId"] = self.inAppMessage.mailingId;
     }
     [self dismiss:self];
-    [[MCEInAppManager sharedInstance] disable: self.inAppMessage];
-    [[MCEActionRegistry sharedInstance] performAction:self.inAppMessage.content[@"action"] forPayload: payload source:InAppSource];
+    [MCEInAppManager.sharedInstance disable: self.inAppMessage];
+    [MCEActionRegistry.sharedInstance performAction:self.inAppMessage.content[@"action"] forPayload:payload source:InAppSource attributes:nil userText:nil];
 }
 
 -(void)setInAppMessage:(MCEInAppMessage *)inAppMessage

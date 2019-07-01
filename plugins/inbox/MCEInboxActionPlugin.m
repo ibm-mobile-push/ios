@@ -60,7 +60,7 @@
     }
     
     NSString * template = action[@"template"];
-    self.displayViewController = [[MCETemplateRegistry sharedInstance] viewControllerForTemplate: template];
+    self.displayViewController = (UIViewController<MCETemplateDisplay> *) [[MCETemplateRegistry sharedInstance] viewControllerForTemplate: template];
     
     if(!self.displayViewController)
     {

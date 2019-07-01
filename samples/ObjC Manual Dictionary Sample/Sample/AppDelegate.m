@@ -42,12 +42,6 @@
 #import "MCEInAppImageTemplate.h"
 #import "MCEInAppBannerTemplate.h"
 
-@interface MyAlertView : UIAlertView
-@end
-
-@implementation MyAlertView
-@end
-
 @interface MyAlertController : UIAlertController
 
 @end
@@ -110,7 +104,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inboxUpdate) name: InboxCountUpdate object:nil];
     [self inboxUpdate];
-
+    
     [[NSUserDefaults standardUserDefaults]registerDefaults:@{@"action":@"update",@"standardType":@"dial", @"standardDialValue":@"\"8774266006\"", @"standardUrlValue":@"\"http://ibm.com\"", @"customType":@"sendEmail", @"customValue":@"{\"subject\":\"Hello from Sample App\", \"body\": \"This is an example email body\", \"recipient\":\"fake-email@fake-site.com\"}", @"categoryId":@"example",@"button1":@"Accept",@"button2":@"Reject"}];
     
     if([UNUserNotificationCenter class]) {
@@ -223,9 +217,8 @@
         };
         
         // This shows how you might overwrite the alert class
-        [MCESdk sharedInstance].customAlertViewClass = [MyAlertView class];
         [MCESdk sharedInstance].customAlertControllerClass = [MyAlertController class];
-
+        
         // Register Inbox plugins
         [MCEInboxActionPlugin registerPlugin];
         [MCEInboxPostTemplate registerTemplate];
@@ -262,7 +255,7 @@
     {
         [[MCESdk sharedInstance] presentDynamicCategoryNotification: userInfo];
     }
-
+    
     // This is just example code on how you might handle a static action category
     if(userInfo[@"aps"] && [userInfo[@"aps"][@"category"] isEqual: @"example"])
     {
@@ -273,13 +266,19 @@
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
+
 #pragma mark Local Notification Action Clicked
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler
-{
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
     // IBMMobilePush Integration
     [[MCESdk sharedInstance] processDynamicCategoryNotification: notification.userInfo identifier:identifier userText: nil];
     completionHandler();
 }
+#pragma clang diagnostic pop
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
 
 #pragma mark Remote Notification Action Clicked
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
@@ -287,12 +286,12 @@
     // IBMMobilePush Integration
     [[MCEInAppManager sharedInstance] processPayload: userInfo];
     [[MCESdk sharedInstance] processCategoryNotification: userInfo identifier:identifier];
-
+    
     // This is just example code on how you might handle a static action category
     if(userInfo[@"aps"] && [userInfo[@"aps"][@"category"] isEqual: @"example"])
     {
         NSLog(@"Static Category, %@ button clicked", identifier);
-
+        
         NSDictionary * values = userInfo[@"category-values"];
         if(values)
         {
@@ -317,7 +316,7 @@
         }
         
         [[[MCESdk.sharedInstance.alertViewClass alloc] initWithTitle:@"Static category handler" message:[NSString stringWithFormat: @"Static Category, %@ button clicked", identifier] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]show];
-
+        
         // Send event to Xtify Servers
         NSString * eventName = @"Name of event";
         NSString * eventType = @"Type of event";
@@ -352,10 +351,10 @@
     // This is required by iOS
     completionHandler();
 }
-
+#pragma clang diagnostic pop
 
 #pragma mark Handoff Support
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *restorableObjects))restorationHandler
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray<id<UIUserActivityRestoring>> * __nullable restorableObjects))restorationHandler
 {
     // This is needed If you want the Watch to be able to handoff actions to the iPhone
     if([userActivity.activityType isEqual: MCEConfig.sharedInstance.handoffUserActivityName])
@@ -364,7 +363,7 @@
         NSDictionary * payload = userActivity.userInfo[@"payload"];
         if(action && [action isKindOfClass:NSDictionary.class] && payload && [payload isKindOfClass:NSDictionary.class])
         {
-            [[MCEActionRegistry sharedInstance] performAction: action forPayload:payload source: SimpleNotificationSource userText:nil];
+            [MCEActionRegistry.sharedInstance performAction:action forPayload:payload source:SimpleNotificationSource attributes:nil userText:nil];
             restorationHandler(@[self.window.rootViewController]);
             return TRUE;
         }
@@ -451,6 +450,9 @@
     [[MCESdk sharedInstance]deviceTokenRegistartionFailed];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
+
 #pragma mark Remote Notification Action Clicked with Text Input
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^_Nonnull __strong)())completionHandler
 {
@@ -458,6 +460,10 @@
     [[MCESdk sharedInstance] processDynamicCategoryNotification: userInfo identifier:identifier userText: responseInfo[ UIUserNotificationActionResponseTypedTextKey]];
     completionHandler();
 }
+#pragma clang diagnostic pop
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
 
 #pragma mark Local Notification Action Clicked with Text Input
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^_Nonnull __strong)())completionHandler
@@ -468,6 +474,7 @@
     
     completionHandler();
 }
+#pragma clang diagnostic pop
 
 #pragma mark Remote Notification Clicked
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo

@@ -24,7 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [version setText: MCESdk.sharedInstance.sdkVersion];
+    [self.version setText: MCESdk.sharedInstance.sdkVersion];
     
     if ([self isForceTouchAvailable]) {
         self.previewingContext = [self registerForPreviewingWithDelegate:self sourceView:self.view];
@@ -56,8 +56,8 @@
         {
             subtitle = [NSString stringWithFormat:@"%d messages, %d unread", messageCount, unreadCount];
         }
-        inboxCell.detailTextLabel.text = subtitle;
-        altInboxCell.detailTextLabel.text = subtitle;
+        self.inboxCell.detailTextLabel.text = subtitle;
+        self.altInboxCell.detailTextLabel.text = subtitle;
         [self.tableView reloadData];
     });
 }

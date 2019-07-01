@@ -28,7 +28,7 @@
 }
 
 #pragma mark Remote or Local notification or notification action clicked, potentially with text input
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler;
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler;
 {
     // IBMMobilePush Integration
     NSDictionary * userInfo = response.notification.request.content.userInfo;

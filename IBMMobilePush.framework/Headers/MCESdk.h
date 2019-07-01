@@ -3,7 +3,7 @@
  *
  * 5725E28, 5725I03
  *
- * © Copyright IBM Corp. 2014, 2018
+ * © Copyright IBM Corp. 2014, 2019
  * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
 
@@ -40,14 +40,14 @@
 
 /** Initialize SDK, must be called in either application delegate init or application:didFinishLaunchingWithOptions:.
  
- This method loads configuration from MceConfig.plist. Either this method or handleApplicationLaunch: must be called before any other SDK method is called.
+ This method loads configuration from MceConfig.json. Either this method or handleApplicationLaunch: must be called before any other SDK method is called.
 */
 - (void)handleApplicationLaunch;
 
 
 /** Initialize SDK, must be called in either application delegate init or application:didFinishLaunchingWithOptions:. Either this method or handleApplicationLaunch must be called before any other SDK method is called.
  
- @param config Configuration is passed in via config dictionary instead of being loaded from MceConfig.plist.
+ @param config Configuration is passed in via config dictionary instead of being loaded from MceConfig.json.
  */
 - (void)handleApplicationLaunchWithConfig:(NSDictionary *)config;
 
@@ -63,7 +63,7 @@
  */
 - (void) manualInitialization;
 
-/** Manually initialize location services for SDK, requires location's autoInitialize=FALSE MceConfig.plist flag. This is used to delay location services initalization until desired. */
+/** Manually initialize location services for SDK, requires location's autoInitialize=FALSE MceConfig.json flag. This is used to delay location services initialization until desired. */
 -(void)manualLocationInitialization;
 
 /** Shows a dynamic category notification, integration point of the application delegate application:didReceiveRemoteNotification:fetchCompletionHandler: method.

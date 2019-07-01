@@ -59,7 +59,7 @@
     [center requestAuthorizationWithOptions: options completionHandler:^(BOOL granted, NSError * _Nullable error) {
         // Enable or disable features based on authorization.
         NSLog(@"Notifications response %d, %@", granted, error);
-        [center setNotificationCategories: nil];
+        [center setNotificationCategories: [NSSet set]];
     }];
 }
 

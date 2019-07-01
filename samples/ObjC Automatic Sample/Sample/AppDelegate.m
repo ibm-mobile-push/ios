@@ -42,12 +42,6 @@
 #import "RegistrationVC.h"
 #import "MainVC.h"
 
-@interface MyAlertView : UIAlertView
-@end
-
-@implementation MyAlertView
-@end
-
 @interface MyAlertController : UIAlertController
 
 @end
@@ -196,7 +190,6 @@
             // return FALSE if you don't want the notification to show to the user when the app is active
             return TRUE;
         };
-        [MCESdk sharedInstance].customAlertViewClass = [MyAlertView class];
         [MCESdk sharedInstance].customAlertControllerClass = [MyAlertController class];
 
         // MCE Inbox plugins
@@ -225,11 +218,13 @@
     return self;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^_Nonnull __strong)())completionHandler
+#pragma clang diagnostic pop
 {
     NSLog(@"responseInfo: %@", responseInfo);
 }
-
 
 #pragma mark Process Static Category No Choice Made
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
@@ -241,8 +236,12 @@
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wstrict-prototypes"
+
 #pragma mark Process Static Category Choice Made
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler
+#pragma clang diagnostic pop
 {
     if(userInfo[@"aps"] && [userInfo[@"aps"][@"category"] isEqual: @"example"])
     {

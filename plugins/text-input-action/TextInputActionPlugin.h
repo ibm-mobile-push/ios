@@ -9,11 +9,13 @@
  
 #if __has_feature(modules)
 @import UIKit;
+@import IBMMobilePush;
 #else
 #import <UIKit/UIKit.h>
+#import <IBMMobilePush/IBMMobilePush.h>
 #endif
 
-@interface TextInputActionPlugin : NSObject
+@interface TextInputActionPlugin : NSObject <MCEActionProtocol>
 @property(class, nonatomic, readonly) TextInputActionPlugin * sharedInstance NS_SWIFT_NAME(shared);
 -(void)performAction:(NSDictionary*)action withPayload:(NSDictionary*)payload textInput:(NSString*)textInput;
 +(void)registerPlugin;

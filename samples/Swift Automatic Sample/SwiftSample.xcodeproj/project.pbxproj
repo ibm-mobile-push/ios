@@ -10,7 +10,6 @@
 C30252821BE168D600CA5D5D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30252811BE168D600CA5D5D /* main.swift */; };
 C30252851BE16B3F00CA5D5D /* MailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30252841BE16B3F00CA5D5D /* MailDelegate.swift */; };
 C313803F1BE033D600BC5910 /* AttributesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313803E1BE033D600BC5910 /* AttributesVC.swift */; };
-C31380411BE1247400BC5910 /* PushActionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380401BE1247400BC5910 /* PushActionsVC.swift */; };
 C31380441BE1455400BC5910 /* InAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380431BE1455400BC5910 /* InAppVC.swift */; };
 C31380471BE154B900BC5910 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380461BE154B900BC5910 /* MainVC.swift */; };
 C31380831BE1567700BC5910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31380821BE1567700BC5910 /* AppDelegate.swift */; };
@@ -196,7 +195,6 @@ C30252811BE168D600CA5D5D /* main.swift */ = {isa = PBXFileReference; fileEncodin
 C30252841BE16B3F00CA5D5D /* MailDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailDelegate.swift; sourceTree = "<group>"; };
 C31223981AD46573004175D7 /* IBMMobilePush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IBMMobilePush.framework; path = ../../IBMMobilePush.framework; sourceTree = "<group>"; };
 C313803E1BE033D600BC5910 /* AttributesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesVC.swift; sourceTree = "<group>"; };
-C31380401BE1247400BC5910 /* PushActionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushActionsVC.swift; sourceTree = "<group>"; };
 C31380431BE1455400BC5910 /* InAppVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppVC.swift; sourceTree = "<group>"; };
 C31380461BE154B900BC5910 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 C31380821BE1567700BC5910 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -656,7 +654,6 @@ C3D01E5D1A607F7E00C9A66C /* SwiftSample */ = {
 		C3E7BD312153072D00468378 /* EventVC.swift */,
 		C367FDC01BE2733300AD32AE /* CellStatusTableViewController.swift */,
 		C313803E1BE033D600BC5910 /* AttributesVC.swift */,
-		C31380401BE1247400BC5910 /* PushActionsVC.swift */,
 		C317F74E1B41FF1B00962B55 /* MceConfig.json */,
 		C39D40271BE02349006D06C0 /* EditCell.swift */,
 		C3D01E5E1A607F7E00C9A66C /* Supporting Files */,
@@ -834,7 +831,7 @@ C3D01E531A607F7E00C9A66C /* Project object */ = {
 	isa = PBXProject;
 	attributes = {
 		LastSwiftUpdateCheck = 1010;
-		LastUpgradeCheck = 0910;
+		LastUpgradeCheck = 1020;
 		ORGANIZATIONNAME = "IBM ExperienceOne Xtify";
 		TargetAttributes = {
 			C361A9941D3576E800D4EA9B = {
@@ -900,10 +897,9 @@ C3D01E531A607F7E00C9A66C /* Project object */ = {
 	};
 	buildConfigurationList = C3D01E561A607F7E00C9A66C /* Build configuration list for PBXProject "SwiftSample" */;
 	compatibilityVersion = "Xcode 3.2";
-	developmentRegion = English;
+	developmentRegion = en;
 	hasScannedForEncodings = 0;
 	knownRegions = (
-		English,
 		en,
 		Base,
 	);
@@ -1042,7 +1038,6 @@ C3D01E571A607F7E00C9A66C /* Sources */ = {
 		C3CF5BE81C5803C50026ECC8 /* MCEInAppImageTemplate.m in Sources */,
 		C35F70A91C654EB000070DB6 /* MCEInboxDefaultTemplate.m in Sources */,
 		C31380831BE1567700BC5910 /* AppDelegate.swift in Sources */,
-		C31380411BE1247400BC5910 /* PushActionsVC.swift in Sources */,
 		C30252821BE168D600CA5D5D /* main.swift in Sources */,
 		C30252851BE16B3F00CA5D5D /* MailDelegate.swift in Sources */,
 		C39D40281BE02349006D06C0 /* EditCell.swift in Sources */,
@@ -1330,6 +1325,7 @@ C3D01E7C1A607F7F00C9A66C /* Debug */ = {
 	isa = XCBuildConfiguration;
 	buildSettings = {
 		ALWAYS_SEARCH_USER_PATHS = NO;
+		CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 		CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 		CLANG_CXX_LIBRARY = "libc++";
 		CLANG_ENABLE_MODULES = YES;
@@ -1338,12 +1334,14 @@ C3D01E7C1A607F7F00C9A66C /* Debug */ = {
 		CLANG_WARN_BOOL_CONVERSION = YES;
 		CLANG_WARN_COMMA = YES;
 		CLANG_WARN_CONSTANT_CONVERSION = YES;
+		CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 		CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 		CLANG_WARN_EMPTY_BODY = YES;
 		CLANG_WARN_ENUM_CONVERSION = YES;
 		CLANG_WARN_INFINITE_RECURSION = YES;
 		CLANG_WARN_INT_CONVERSION = YES;
 		CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+		CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 		CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 		CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 		CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1382,6 +1380,7 @@ C3D01E7D1A607F7F00C9A66C /* Release */ = {
 	isa = XCBuildConfiguration;
 	buildSettings = {
 		ALWAYS_SEARCH_USER_PATHS = NO;
+		CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 		CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 		CLANG_CXX_LIBRARY = "libc++";
 		CLANG_ENABLE_MODULES = YES;
@@ -1390,12 +1389,14 @@ C3D01E7D1A607F7F00C9A66C /* Release */ = {
 		CLANG_WARN_BOOL_CONVERSION = YES;
 		CLANG_WARN_COMMA = YES;
 		CLANG_WARN_CONSTANT_CONVERSION = YES;
+		CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 		CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 		CLANG_WARN_EMPTY_BODY = YES;
 		CLANG_WARN_ENUM_CONVERSION = YES;
 		CLANG_WARN_INFINITE_RECURSION = YES;
 		CLANG_WARN_INT_CONVERSION = YES;
 		CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+		CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 		CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 		CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 		CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1418,6 +1419,7 @@ C3D01E7D1A607F7F00C9A66C /* Release */ = {
 		IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 		MTL_ENABLE_DEBUG_INFO = NO;
 		SDKROOT = iphoneos;
+		SWIFT_COMPILATION_MODE = wholemodule;
 		TARGETED_DEVICE_FAMILY = "1,2";
 		VALIDATE_PRODUCT = YES;
 	};

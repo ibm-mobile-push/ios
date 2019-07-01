@@ -35,6 +35,9 @@
 /** The mailingId property is used to set the mailingId value of the event. */
 @property NSString * mailingId;
 
+/** When the event was sent to the server */
+@property NSDate * sent;
+
 /** The toDictionary method is used to return the contents of the MCEEvent object as a dictionary. */
 - (NSDictionary*)toDictionary;
 

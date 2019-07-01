@@ -109,6 +109,9 @@ class iBeaconVC: UITableViewController, CLLocationManagerDelegate {
                         vertical.detailTextLabel!.text = "ENABLED WHEN IN USE"
                         vertical.detailTextLabel!.textColor = .gray
                         break
+                    @unknown default:
+                        vertical.detailTextLabel!.text = "UNKNOWN"
+                        vertical.detailTextLabel!.textColor = .gray
                     }
                 }
                 else

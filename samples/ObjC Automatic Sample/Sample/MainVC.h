@@ -13,10 +13,8 @@
 #endif
 
 @interface MainVC : UITableViewController <UIViewControllerPreviewingDelegate>
-{
-    IBOutlet UILabel * version;
-    IBOutlet UITableViewCell * inboxCell;
-    IBOutlet UITableViewCell * altInboxCell;
-}
+@property IBOutlet UILabel * version;
+@property IBOutlet UITableViewCell * inboxCell;
+@property IBOutlet UITableViewCell * altInboxCell;
 @end
 

@@ -32,7 +32,6 @@ FOUNDATION_EXPORT const unsigned char IBMMobilePushVersionString[];
 #import <IBMMobilePush/MCEConfig.h>
 #import <IBMMobilePush/MCEConstants.h>
 #import <IBMMobilePush/MCEEvent.h>
-#import <IBMMobilePush/MCEEventClient.h>
 #import <IBMMobilePush/MCEEventService.h>
 #import <IBMMobilePush/MCEGeofence.h>
 #import <IBMMobilePush/MCEArea.h>

@@ -214,7 +214,14 @@ class InAppVC : UITableViewController, MCEActionProtocol
             break
         case CANNED_SECTION:
             var userInfo: [AnyHashable : Any] = Dictionary()
-            var body = ""
+            guard let past = MCEApiUtil.date(toIso8601Format: NSDate.distantPast) else {
+                print("Couldn't create distant past ISO 8601 string");
+                return
+            }
+            guard let future = MCEApiUtil.date(toIso8601Format: NSDate.distantFuture) else {
+                print("Couldn't create distant future ISO 8601 string");
+                return
+            }
             switch(indexPath.item)
             {
             case TOP_BANNER_ITEM:
@@ -233,8 +240,8 @@ class InAppVC : UITableViewController, MCEActionProtocol
                             "icon": "note",
                             "color": "0077ff"
                         ],
-                        "triggerDate": MCEApiUtil.date(toIso8601Format: NSDate.distantPast),
-                        "expriationDate": MCEApiUtil.date(toIso8601Format: NSDate.distantFuture)
+                        "triggerDate": past,
+                        "expriationDate": future
                     ]
                 ]
                 break
@@ -254,8 +261,8 @@ class InAppVC : UITableViewController, MCEActionProtocol
                             "icon": "note",
                             "color": "0077ff"
                         ],
-                        "triggerDate": MCEApiUtil.date(toIso8601Format: NSDate.distantPast),
-                        "expriationDate": MCEApiUtil.date(toIso8601Format: NSDate.distantFuture)
+                        "triggerDate": past,
+                        "expriationDate": future
                     ]
                 ]
                 break
@@ -275,8 +282,8 @@ class InAppVC : UITableViewController, MCEActionProtocol
                             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt.",
                             "image": "https://www.ibm.com/us-en/images/homepage/leadspace/01172016_ls_dynamic-pricing-announcement_bg_14018_2732x1300.jpg"
                         ],
-                        "triggerDate": MCEApiUtil.date(toIso8601Format: NSDate.distantPast),
-                        "expriationDate": MCEApiUtil.date(toIso8601Format: NSDate.distantFuture)
+                        "triggerDate": past,
+                        "expriationDate": future
                     ]
                 ]
                 break
@@ -295,8 +302,8 @@ class InAppVC : UITableViewController, MCEActionProtocol
                             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus, eros sed imperdiet finibus, purus nibh placerat leo, non fringilla massa tortor in tellus. Donec aliquet pharetra dui ac tincidunt. Ut eu mi at ligula varius suscipit. Vivamus quis quam nec urna sollicitudin egestas eu at elit. Nulla interdum non ligula in lobortis. Praesent lobortis justo at cursus molestie. Aliquam lectus velit, elementum non laoreet vitae, blandit tempus metus. Nam ultricies arcu vel lorem cursus aliquam. Nunc eget tincidunt ligula, quis suscipit libero. Integer velit nisi, lobortis at malesuada at, dictum vel nisi. Ut vulputate nunc mauris, nec porta nisi dignissim ac. Sed ut ante sapien. Quisque tempus felis id maximus congue. Aliquam quam eros, congue at augue et, varius scelerisque leo. Vivamus sed hendrerit erat. Mauris quis lacus sapien. Nullam elit quam, porttitor non nisl et, posuere volutpat enim. Praesent euismod at lorem et vulputate. Maecenas fermentum odio non arcu iaculis egestas. Praesent et augue quis neque elementum tincidunt.",
                             "video":"http://techslides.com/demos/sample-videos/small.mp4"
                         ],
-                        "triggerDate": MCEApiUtil.date(toIso8601Format: NSDate.distantPast),
-                        "expriationDate": MCEApiUtil.date(toIso8601Format: NSDate.distantFuture)
+                        "triggerDate": past,
+                        "expriationDate": future
                     ]
                 ]
                 break

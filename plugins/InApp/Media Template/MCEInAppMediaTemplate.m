@@ -29,7 +29,7 @@
         payload[@"mce"][@"mailingId"] = self.inAppMessage.mailingId;
     }
     
-    [[MCEActionRegistry sharedInstance] performAction:self.inAppMessage.content[@"action"] forPayload:payload source:InAppSource];
+    [MCEActionRegistry.sharedInstance performAction:self.inAppMessage.content[@"action"] forPayload:payload source:InAppSource attributes:nil userText:nil];
 }
 
 -(void)setTextHeight

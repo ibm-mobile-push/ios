@@ -97,27 +97,24 @@ const int MARGIN = 8;
 -(IBAction)leftButton:(id)sender
 {
     NSArray * actions = self.message.content[@"actions"];
-    if(actions.count > 0)
-    {
-        [[MCEActionRegistry sharedInstance]performAction:actions[0] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId}];
+    if(actions.count > 0) {
+        [MCEActionRegistry.sharedInstance performAction:actions[0] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId} userText:nil];
     }
 }
 
 -(IBAction)rightButton:(id)sender
 {
     NSArray * actions = self.message.content[@"actions"];
-    if(actions.count > 1)
-    {
-        [[MCEActionRegistry sharedInstance]performAction:actions[1] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId}];
+    if(actions.count > 1) {
+        [MCEActionRegistry.sharedInstance performAction:actions[1] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId} userText:nil];
     }
 }
 
 -(IBAction)centerButton:(id)sender
 {
     NSArray * actions = self.message.content[@"actions"];
-    if(actions.count > 2)
-    {
-        [[MCEActionRegistry sharedInstance]performAction:actions[2] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId}];
+    if(actions.count > 2) {
+        [MCEActionRegistry.sharedInstance performAction:actions[2] forPayload:self.payload source:InboxSource attributes:@{@"richContentId": self.message.richContentId, @"inboxMessageId": self.message.inboxMessageId} userText:nil];
     }
 }
 

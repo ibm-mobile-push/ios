@@ -35,8 +35,8 @@
     
     int index=0;
     for (NSDictionary * action in userInfo[@"category-actions"]) {
-        [alertController addAction: [UIAlertAction actionWithTitle:action[@"name"] style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
-            [[MCEActionRegistry sharedInstance] performAction: action forPayload:userInfo source:SimpleNotificationSource];
+        [alertController addAction: [UIAlertAction actionWithTitle:action[@"name"] style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction) {
+            [MCEActionRegistry.sharedInstance performAction:action forPayload:userInfo source:SimpleNotificationSource attributes:nil userText:nil];
         }]];
         index++;
     }

@@ -31,6 +31,9 @@ class MailDelegate : NSObject, MFMailComposeViewControllerDelegate, MCEActionPro
         case .failed:
             print("Mail send failed")
             break
+        @unknown default:
+            print("Unknown mail status")
+            break
         }
         controller.dismiss(animated: true) { () -> Void in
             
@@ -44,7 +47,9 @@ class MailDelegate : NSObject, MFMailComposeViewControllerDelegate, MCEActionPro
             print("Custom action with value \(action["value"] ?? "")")
             if !MFMailComposeViewController.canSendMail()
             {
-                UIAlertView.init(title: "Cannot send mail", message: "Please verify that you have a mail account setup.", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+                let alert = UIAlertController(title: "Cannot send mail", message: "Please verify that you have a mail account setup.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
                 return
             }
             
@@ -68,8 +73,9 @@ class MailDelegate : NSObject, MFMailComposeViewControllerDelegate, MCEActionPro
                 }
             }
             
-            UIAlertView.init(title: "Cannot send mail", message: "Incorrect package contents.", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
-            
+            let alert = UIAlertController(title: "Cannot send mail", message: "Incorrect package contents.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
         }
     }
     
