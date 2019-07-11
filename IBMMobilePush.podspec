@@ -26,12 +26,12 @@ Pod::Spec.new do |s|
 
   s.vendored_frameworks = 'IBMMobilePush.framework'
   
-  s.library = 'sqlite3'
-  s.frameworks = 'CoreTelephony', 'CoreData', 'CoreLocation'
+  # s.library = 'sqlite3'
+  # s.frameworks = 'CoreTelephony', 'CoreData', 'CoreLocation'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.dependency 'AFNetworking', '~> 2.3'
 
-  s.resources = ["MceConfig.json"]
+  # s.resources = ["MceConfig.json"]
 
 end

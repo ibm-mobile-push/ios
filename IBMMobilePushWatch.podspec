@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
   s.platform     = :watchos, '4.0'
   s.requires_arc = true
   s.vendored_frameworks = 'IBMMobilePushWatch.framework'
-  s.library = 'sqlite3'
-  #s.frameworks = 'CoreTelephony', 'CoreData', 'CoreLocation'
+  # s.library = 'sqlite3'
+  # s.frameworks = 'CoreTelephony', 'CoreData', 'CoreLocation'
 end

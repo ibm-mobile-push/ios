@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
   s.vendored_frameworks = 'IBMMobilePushNotificationService.framework'
-  #s.library = 'sqlite3'
-  #s.frameworks = 'CoreTelephony', 'CoreData', 'CoreLocation'
+  # s.library = 'sqlite3'
+  # s.frameworks = 'CoreTelephony', 'CoreData', 'CoreLocation'
 end
