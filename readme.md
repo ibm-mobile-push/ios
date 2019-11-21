@@ -1,0 +1,2 @@
+# Repository Moved
+IBM Mobile Push is no longer available, it has been replaced with Acoustic Mobile Push which uses the same native API and web services. Please update your bookmarks to point to [our new home](https://github.com/Acoustic-Mobile-Push/iOS).
